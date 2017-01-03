@@ -1,0 +1,7 @@
+!replace_item "IDLE_airflow_hw_stepper" [type="Hardware IO", pin="StepperController, On board", board_conditioning="Stepper Motor Controller", cpu_mode="Stepper Motor Control %"]
+
+!replace_item "UEGO_0_heater_HW" [type="Hardware IO", pin="UEGO0_Heater_LowsideOut, On board", board_conditioning="Low-side driver, 6 Amp", cpu_mode="Frequency and Duty Output (PWM)"]
+
+!create_item "EAL_EngineDescription" [type="Engine Description", thread_ID=OAL_THREAD_WITH_SLEEP_200]
+
+

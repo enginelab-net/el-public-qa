@@ -1,0 +1,4 @@
+{if defined(VBAT)
+.\Test_Vbat.elcfg
+}
+

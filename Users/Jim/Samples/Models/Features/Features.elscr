@@ -1,0 +1,52 @@
+## System wide naming conventions should be performed here if specified.
+
+## ***************************************************************
+## Airflow feature
+{if defined(AF)
+!echo Airflow feature
+include=.\Airflow\AF.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## Fuel feature
+{if defined(FUEL)
+include=.\Fuel\Fuel.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## IGNition feature
+{if defined(IGN)
+include=.\Ignition\IGN.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## Idle feature
+{if defined(IDLE)
+include=.\Idle\Idle.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## System State feature
+{if defined(SS)
+!echo System State feature
+include=.\SystemState\SS.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## Sensors feature
+{if defined(SENSORS)
+!echo Sensors feature
+include=.\Sensors\SENSORS.elscr
+}
+{if defined(SENSORS_PLANT)
+!echo Sensors feature
+include=.\Sensors\SENSORS.elscr
+}
+## ***************************************************************
+
+

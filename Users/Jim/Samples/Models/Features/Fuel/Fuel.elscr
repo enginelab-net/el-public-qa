@@ -1,0 +1,42 @@
+## ***************************************************************
+## Model targets
+## ***************************************************************
+
+## ***************************************************************
+## Fuelflow simple feature
+{if defined(FUELFLOW)
+include=.\FuelFlow\FuelFlow.elscr
+!notebook new_note "Fuel submodel" [vendor="Enginelab, Inc.", item_or_group="Fuelflow submodel", message="This is the main fuel submodel (/Fuel/Fuel.elscr)."] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Fuel LambdaStagedFuelSubsystem feature
+{if defined(FUEL_LSFS)
+!define FUEL_LSFS
+include=.\LSFS\LSFS.elscr
+!notebook add_element "Fuel submodel" [item_or_group="Lsfs submodel"] 
+!notebook add_message "Fuel submodel" [message="The Lambda Staged Fuel Submodel will handle the main fuel delivery for the system."] 
+}
+## ***************************************************************
+
+include=.\EAL_required\EAL_required.elscr
+!notebook add_element "Fuel submodel" [item_or_group="FUEL EAL required submodel"] 
+
+## ***************************************************************
+## Fuel LambdaStagedFuelSubsystem feature
+{if defined(FUEL_INJECTORS_TRIM)
+include=.\Trim\Trim.elscr
+!notebook add_element "Fuel submodel" [item_or_group="FUEL Trim submodel"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Fuel Lambda target feature
+{if defined(FUEL_LAMBDA_TARGET)
+include=.\Lambda\Lambda.elscr
+!notebook add_element "Fuel submodel" [item_or_group="FUEL Lambda target submodel"] 
+}
+## ***************************************************************
+
+

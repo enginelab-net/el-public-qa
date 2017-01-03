@@ -1,0 +1,81 @@
+## ***************************************************************
+## Oxygen sensor cj125 feature
+##****************************************************************************************************************************
+
+{if defined(SENSOR_OXYGEN_UEGO_CJ125V2_MEASURE_COUNT)
+!else
+!set SENSOR_OXYGEN_UEGO_CJ125V2_MEASURE_COUNT 3
+}
+{if defined(SENSOR_OXYGEN_UEGO_CJ125V2_CAL_COUNT)
+!else
+!set SENSOR_OXYGEN_UEGO_CJ125V2_CAL_COUNT 3
+}
+{if defined(SENSOR_OXYGEN_UEGO_CJ125V2_READ_COUNT)
+!else
+!set SENSOR_OXYGEN_UEGO_CJ125V2_READ_COUNT 3
+}
+## A filter of 0 will use the new value. 
+{if defined(SENSOR_OXYGEN_UEGO_CJ125V2_UR_MEASURED_FILTER)
+!else
+!set SENSOR_OXYGEN_UEGO_CJ125V2_UR_MEASURED_FILTER 0.8
+}
+{if defined(SENSOR_OXYGEN_UEGO_CJ125V2_UR_CAL_FILTER)
+!else
+!set SENSOR_OXYGEN_UEGO_CJ125V2_UR_CAL_FILTER 0.8
+}
+
+!create_item "UEGO_0_cj125v2" [type="CJ125 Interface v2"]
+!change_item "UEGO_0_cj125v2" [thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "UEGO_0_cj125v2" [add_input="measure_count"]
+!change_item "UEGO_0_cj125v2" [add_input="cal_count"]
+!change_item "UEGO_0_cj125v2" [add_input="read_count"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_reset"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_UR_measured [V]"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_UR_cal [V]"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_init1"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_init2"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_ident"]
+!change_item "UEGO_0_cj125v2" [add_input="UEGO_0_cj125v2_diag"]
+!change_item "UEGO_0_cj125v2" [add_input="UR_measured_filter"]
+!change_item "UEGO_0_cj125v2" [add_input="UR_cal_filter"]
+
+!replace_item measure_count        [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_MEASURE_COUNT]
+!replace_item cal_count            [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_CAL_COUNT]
+!replace_item read_count           [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_READ_COUNT]
+!replace_item UR_measured_filter   [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_UR_MEASURED_FILTER]
+!replace_item UR_cal_filter        [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_UR_CAL_FILTER]
+
+!create_item "UEGO_0_cj125v2_init1" [type="No Operation"]
+!create_item "UEGO_0_cj125v2_init2" [type="No Operation"]
+!create_item "UEGO_0_cj125v2_ident" [type="No Operation"]
+!create_item "UEGO_0_cj125v2_diag" [type="No Operation"]
+!create_item "UEGO_0_cj125v2_reset" [type="No Operation"]
+
+!create_item "UEGO_0_cj125v2_UR_measured [V]" [type="No Operation"]
+!create_item "UEGO_0_cj125v2_UR_cal [V]" [type="No Operation"]
+
+{resolve_externs
+UEGO_0_heater_UR_measured->UEGO_0_cj125v2_UR_measured [V]
+UEGO_0_heater_UR_desired->UEGO_0_cj125v2_UR_cal [V]
+}
+
+!create_item "UEGO_0_cj125v2_error" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="UEGO_0_cj125v2_diag"]
+!change_item "UEGO_0_cj125v2_error" [if_else_add_expression="(i0 and 192) = 0"]
+!change_item "UEGO_0_cj125v2_error" [if_else_add_expression="(i0 and 192) = 64"]
+!change_item "UEGO_0_cj125v2_error" [if_else_add_expression="(i0 and 192) = 128"]
+
+##****************************************************************************************************************************
+!notebook new_note "UEGO_0_cj125v2_diag" [vendor="Enginelab, Inc.", message="This is the diagnostic output of the cj125 device. The value is a 16bit value that generally starts with 0xE8. The following 8 bits have the following meaning:\n"]
+!notebook add_message "UEGO_0_cj125v2_diag" [message="0x3F (0xE83F - 59455) - Short circuit to ground\n"]
+!notebook add_message "UEGO_0_cj125v2_diag" [message="0x7F (0xE87F - 59519) - Open load\n"]
+!notebook add_message "UEGO_0_cj125v2_diag" [message="0xBF (0xE8BF - 59583) - Short circuit to Vbatt\n"]
+!notebook add_message "UEGO_0_cj125v2_diag" [message="0xFF (0xE8FF - 59647) - No failure\n"]
+!notebook new_note "UEGO_0_cj125v2_error" [vendor="Enginelab, Inc.", message="This is the error parsing of the diag channel UEGO_0_cj125v2_diag:\n"]
+!notebook add_message "UEGO_0_cj125v2_error" [message="1 - Short circuit to ground\n"]
+!notebook add_message "UEGO_0_cj125v2_error" [message="2 - Open load\n"]
+!notebook add_message "UEGO_0_cj125v2_error" [message="3 - Short circuit to Vbatt\n"]
+!notebook add_message "UEGO_0_cj125v2_error" [message="0 - No failure\n"]
+!notebook new_note "UEGO_0_cj125v2 submodel" [vendor="Enginelab, Inc.", item_wildcard= "UEGO_0_cj125v2", message="The UEGO 0 cj125v2 items."]
+
+
+

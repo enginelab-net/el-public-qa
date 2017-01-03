@@ -1,0 +1,193 @@
+#////////////////
+
+#Optional Outputs
+
+#////////////////
+
+{if defined(OPTIONAL_OUTPUTS)
+
+.\Fuel_Pump_Output.elcfg
+#LowsideSwitch_0 pin c1-34
+                #Fuel_Pump_Enable
+                #Fuel_Pump_Enable_Clamp
+                #Fuel_Pump_Prime_Time [s]
+                #Fuel_Pump_Prime_Time_Clamp
+                #Fuel_Pump_Prime_Time [ms]
+                #Fuel_Pump_Timer_Event
+                #Fuel_Pump_Timer_Reset
+                #Fuel_Pump_Timer
+                #Fuel_Pump_Duty_Cycle [%] - lookup table for duty cycle vs fuel flow
+                        #use duty cule 100 while timer is running
+                #Fuel_Pump_Duty_Cycle_Test_1 
+                #Fuel_Pump_Duty_Cycle_Test
+                #Fuel_Pump_DutyCylce
+                #Fuel_PWM_Frequency [hz]
+                #Fuel_Pump_Test - run pump if ewnabled and timer on or engine turning
+                #Fuel_Pump_Output - assigned to c1-34 lowside_0
+
+.\CLT_Fan_Control.elcfg
+#LowsideSwitch_2 pin c1-17
+                #Function to control Coolant fan
+                #CLT_Fan_Enable
+                #CLT_Fan_Enable_Clamp
+                #CLT_Fan_Off
+                #CLT_Fan_On
+                #CLT_Fan_Limiter
+                #CLT_Fan_Test
+                #CLT_Fan_Output
+
+.\Tach_output.elcfg
+#LowsideSwitch_9 pin c2-29
+                #Tach_Output_Enable
+                #Tach_Output_Enable_Clamp
+                #Tach_Pulses_per_Rev
+                #Tach_Frequency [hz]
+                #PWM_duty_Cycle [%]
+                #Tach_Output
+
+
+.\Idle_Control.elcfg
+                #This function calculates a target idle RPM and a target point to begin slowing engine decel on throttle close
+                #Idle set point comes from a 2d table that uses coolant temp and cycle count so sets warm/cold/post start idle
+                #There is a limiter to detect throttle pedal closed
+                #There is a ramp down enable RPM which is the rpm above the idle set point to slow engine decel rate
+                #There is a decay rate that is used in a proportional controler to down tartget rpm from the enbal point to the set point.
+                #the funtion output is the Idle_Target that can be used by a control fuction
+
+                #ETC_Idle_Control_Enable
+                #ETC_Idle_Control_Enable_Clamp
+                #Idle _Enable_Pedal _Position [%]
+                #Idle _Disable_Pedal _Position [%]
+                #Idle _Pedal _Position_Limiter
+
+
+                #Idle_Set_Point [rpm]
+                #Idle_Ramp_Down_Enable [rpm] - rpm above idle target to start ramping to target
+                #Idle_Ramp_Down_RPM
+                #Idle_Ramp_Down_Disable
+                #Idle_Ramp_Down_Limiter
+
+
+                #Idle_Ramp_Down_Rate [%]
+                #Idle_Ramp_Down_Cycle_Test
+                #Idle_Ramp_Down_Cycle_Test_O
+                #Idle_Ramp_Down_Cycle_Test_3
+                #Idle_Ramp_Down_Cycle_Test_2
+                #Idle_Ramp_Down_Cycle_Test_1
+                #Idle_Target
+
+                #Idle_Ramp_Down_Cycle_Count_Last
+                #Idle_Ramp_Down_Limiter_Last
+                #Idle _Pedal _Position_Limiter_Last
+
+.\ETC_Output_Pololu.elcfg
+#HBridge_0 output 1 c1-53
+#HBridge_0 output 2 c1-54
+                #This function controls throttle position based on pedal posiotn or RPM depending on mode.
+                #The modes are:
+                        #Normal - throttle is cotroled to pedal posiont
+                        #Cranking - throttle is set to a cranking % open position. Active when RPM less than runthreshold and pedal command less than crank position.
+                        #Stall Saver - throttle is set to a stall % open position. Active when RPM less than idle set point and above run threshjold and pedal command less than crank position
+                        #Idle - throttle is controled to keep rmp are idle target. Active when RPM above stall set point and throttle is closed.
+                #ETC_1_Enable
+                #ETC_1_Enable_Clamp
+
+                #ETC_Stall_Saver_Enable
+                #ETC_Stall_Saver_Enable_Clamp
+
+                #ETC_Stall_Saver_Position [%] - position to open throttle to when stall is detected
+                #ETC_Stall_Saver_Position_Clamp
+
+                #ETC_Stall_Saver_Engage [rpm] - rpm below Idle target that Stall saver should activate
+                #ETC_Stall_Saver_Engage - rpm stall save will engage, clamped at 0-2000
+
+                #ETC_Cranking_Position [%] - Position to set throttel during cranking
+                #ETC_Cranking_Position_Clamp - Position clamped to 15%
+
+                #ETC_Positon_Source_Test = 0= pedal, 1 = fixed cranking, 2=Stall saver
+                #Throttle_Position_Translation [%] - Desire throttle position vs Pedal position
+
+                #ETC_Positon_Target - Desire Throttle position
+
+                        #PID to control to desired throttle posiiton 
+                #ETC_Proportional_Coefficient
+                #ETC_Integral_Coefficient
+                #ETC_Derivative_Coefficient
+                #(ETC_1_Enable_Clamp)
+                #ETC_Integral_Hold
+                #ETC_Integral_Lower_Clamp
+                #ETC_Integral_Upper_Clamp
+                #ETC_1_PID
+
+                        #PID to control to desired RPM
+                #ETC_Idle_Proportional_Coefficient
+                #ETC_Idle_Integral_Coefficient
+                #ETC_Idle_Derivative_Coefficient
+                #(ETC_1_Enable_ETCClamp)
+                #ETC_Idle_Integral_Hold
+                #ETC_Idle_Integral_Lower_Clamp
+                #ETC_Idle_Integral_Upper_Clamp
+                #ETC_Idle_PID
+
+                #ETC_Control_Method_Test - 0 = poition control, 1= rpm control
+                #ETC_Control_Method
+
+                #ETC_Polarity_Test  -  0 = throttle should be diven open (+), 1= driven closed (-)
+                #ETC_HBridge0_Enable_Test - Safe to enable the H-bridges?
+		#ETC_Polarity_Test_Last
+                #HBridge0_Enable
+                #HBridge1_Enable
+
+                #ETC_Control_Method_Invert
+                #ETC_PWM_Duty_Cycle - output always always positve
+
+			#MC33926 chip en - When EN is logic HIGH, the device is operational. When EN is logic LOW, the device is 
+					#placed in Sleep mode. (logic input with ~80 ?A sink so default condition = Sleep mode.)
+
+			#IN1 - Logic input control of OUT1; e.g., when IN1 is logic HIGH, OUT1 is set to VPWR,and when IN1 is logic LOW, 
+				#OUT1 is set to PGND. (Schmitt trigger Input with~80 ?A source so default condition = OUT1 HIGH.)
+
+			#IN2 - Logic input control of OUT2; e.g., when IN2 is logic HIGH, OUT2 is set to VPWR,and when IN2 is logic LOW, 
+				#OUT2 is set to PGND. (Schmitt trigger input with~80 ?A source so default condition = OUT2 HIGH.)
+
+
+
+                #ETC_HBridge0_Input1_High
+                #ETC_HBridge0_Input1_Low
+                #ETC_HBridge0_Input1
+
+                #ETC_HBridge0_Input2_High
+                #ETC_HBridge0_Input2_Low
+                #ETC_HBridge0_Input2
+
+                #ETC_HBridge1_Input1_High
+                #ETC_HBridge1_Input1_Low
+                #ETC_HBridge1_Input1
+
+                #ETC_HBridge1_Input2_High
+                #ETC_HBridge1_Input2_Low
+                #ETC_HBridge1_Input2
+
+
+
+
+                #ETC_HBridge0_Frequency
+
+                #HBridge0_Input1
+                #HBridge0_Input2
+
+
+
+
+        #C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\PWM_Output.elcfg
+                #Generic PWM function
+                #PWM_Frequency [hz]
+                #PWM_duty_Cycle [%]
+                #PWM_Timer_1_Event
+                #PWM_On_Time [ms]
+                #PWM_Off_Time [ms]
+                #PWM_Output
+                #PWM_Timer_2_Event
+                #PWM_On_Timer
+
+}

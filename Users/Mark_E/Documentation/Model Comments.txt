@@ -1,0 +1,860 @@
+# Append Scripts  (file extension .elscr) are used to quickly pull submodels from multiple files and/or subfolders.
+# The # sign is used for comments, and is only recognized when used as the first character in the line. Do not add comments on the same line as valid commands.
+
+# After a script is run, a log file (extension .elscr.log) is generated that will display the results
+
+
+# The output_types option determines if channel types will be included in the wizard mapping file (extension .wizm). If this line is not included, default behavior is output_types=true
+output_types=true
+
+
+# Filters are (lowercase) but are the same names for the types of channels used in HostConsole. Other possible values 'all' and 'none'.  Defaults to all types being output.
+model_filters=all
+
+# First the hardware dependent models.
+C:\assembla\trunk\Users\Mark\Models\Plant\Test_Vbat.elcfg
+
+
+#sensors - setup the sensors on analog inptus
+C:\assembla\trunk\Users\Mark\Models\Sensors\Analog_Temp_Resistor.elcfg
+	#Analog_Temp_Resistor [ohm]
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_MAP.elcfg
+#(analog 8)
+	#Test_MAP
+	#Raw_MAP [V]
+	#MAP_Smooth_Coef
+	#MAP_Coef_Clamp
+	#MAP_Smooth [V]
+	#MAP [kPa]
+	#MAP [Pa]
+
+	
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_Baro.elcfg
+#(analog 10)
+	#Test_Baro
+	#PHW_Baro
+	#Raw_Baro [V]
+	#Baro_Smoothing_Coef - amount of last value to use in calculation, user set point
+	#Baro_Smoothing_Clamp - clamps Baro_Smoothing_Coef to 0-1 range
+	#Baro_Smooth [V] - baro voltage with smoothing applied
+	#Baro [kPa] - Baro value in kPa 
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_TPS.elcfg
+#(analog 7)
+	#Test_TPS
+	#PHW_TPS [V]
+	#Raw_TPS [V]
+	#TPS_Smoothing_Coef
+	#TPS_Smoothing_Clamp
+	#TPS_Smooth [V]
+	#TPS_Close [V]
+	#TPS_Open [V]
+	#TPS [%]
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_TPS_Track.elcfg
+#(analog 16)
+	#Test_TPS_Track
+	#PHW_TPS_Track [V]
+	#Raw_TPS_Track [V]
+	#TPS_Track_Smoothing_Coef
+	#TPS_Track_Smoothing_Clamp
+	#TPS_Track_Smooth [V]
+	#TPS_Track_Close [V]
+	#TPS_Track_Open [V]
+	#TPS_Track [%]
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_Throttle_Pedal.elcfg
+#(analog 18)
+	#Test_Throttle_Pedal
+	#PHW_Throttle_Pedal [V]
+	#Raw_Throttle_Pedal [V]
+	#Throttle_Pedal_Smoothing_Coef
+	#Throttle_Pedal_Smoothing_Clamp
+	#Throttle_Pedal_Smooth [V]
+	#Throttle_Pedal_Close [V]
+	#Throttle_Pedal_Open [V]
+	#Throttle_Pedal [%]
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_Throttle_Pedal_Track.elcfg
+#(analog 19)
+	#Test_Throttle_Pedal_Track
+	#PHW_Throttle_Pedal_Track [V]
+	#Raw_Throttle_Pedal_Track [V]
+	#Throttle_Pedal_Track_Smoothing_Coef
+	#Throttle_Pedal_Track_Smoothing_Clamp
+	#Throttle_Pedal_Track_Smooth [V]
+	#Throttle_Pedal_Track_Close [V]
+	#Throttle_Pedal_Track_Open [V]
+	#Throttle_Pedal_Track [%]
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_lambda1.elcfg
+#(analog 20)
+	#Test_lambda1
+	#PHW_lambda1 [V]
+	#Raw_lambda1 [V]
+	#lambda1_Smoothing_Coef
+	#lambda1_Smoothing_Clamp
+	#lambda1_Smooth [V]
+	#lambda1
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_lambda2.elcfg
+#(analog 14)
+	#Test_lambda2
+	#PHW_lambda2 [V]
+	#Raw_lambda2 [V]
+	#lambda2_Smoothing_Coef
+	#lambda2_Smoothing_Clamp
+	#lambda2_Smooth [V]
+	#lambda2
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_Fuel_Pres.elcfg
+#(analog 9)
+	#Test_Fuel_Pres
+	#PHW_Fuel_Pres [V]
+	#Raw_Fuel_Pres [V]
+	#Fuel_Pres_Smoothing_Coef
+	#Fuel_Pres_Smoothing_Clamp
+	#Fuel_Pres_Smooth [V]
+	#Fuel_Pres [kPa]
+
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_NBO2_0.elcfg
+	#This funciton reads the NBO2 sensor at user specified angles and creates a running average for 3 angle windows.
+	#I converts the sensor voltage to approximate lambda using user defined table values
+	#It shifts the angle with base on RPM to account for flow time using values from a user defined table
+	#Note - there is anot much precision on the angle..this function is for non-critical items.
+#(analog 11)
+		#Set the sensor value for testing
+	#Test_NBO2_0
+	#PHW_NBO2_0
+
+		#user inputs
+	#NBO2_0_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+	#NBO2_0_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+	#NBO2_0_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+	#NBO2_0_Signal_1_Open [deg] - crank position to open the Angle Window 
+	#NBO2_0_Signal_2_Open [deg]
+	#NBO2_0_Signal_3_Open [deg]
+		#Add the latency to the open angle and decide if the value is over 720 and should roll over
+	#NBO2_0_Signal_1_Open_Test_0   - add lateny to open angle
+	#NBO2_0_Signal_2_Open_Test_0
+	#NBO2_0_Signal_3_Open_Test_0
+
+	#NBO2_0_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+	#NBO2_0_Signal_2_Open_Test_1
+	#NBO2_0_Signal_3_Open_Test_1
+
+	#NBO2_0_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+	#NBO2_0_Signal_2_Open_Test
+	#NBO2_0_Signal_3_Open_Test
+
+	#NBO2_0_Signal_1_Open - use correct math based on test result
+	#NBO2_0_Signal_2_Open
+	#NBO2_0_Signal_3_Open
+
+		#Add the ewindow to the open angle decide if the value is over 720 and should roll over
+	#NBO2_0_Signal_1_Window_Test_0
+	#NBO2_0_Signal_2_Window_Test_0
+	#NBO2_0_Signal_3_Window_Test_0
+
+	#NBO2_0_Signal_1_Window_Test_1
+	#NBO2_0_Signal_2_Window_Test_1
+	#NBO2_0_Signal_3_Window_Test_1
+
+	#NBO2_0_Signal_1_Window_Test
+	#NBO2_0_Signal_2_Window_Test
+	#NBO2_0_Signal_3_Window_Test
+
+	#NBO2_0_Signal_1_Close
+	#NBO2_0_Signal_2_Close
+	#NBO2_0_Signal_3_Close
+
+		#Updade the value is the crank is within the window
+	#NBO2_0_Signal_1_Test - 0=dump the value, 1= update reading
+	#NBO2_0_Signal_2_Test
+	#NBO2_0_Signal_3_Test
+	#NBO2_0_Signal_1_Test_0
+	#NBO2_0_Signal_2_Test_0
+	#NBO2_0_Signal_3_Test_0
+	#NBO2_0_Signal_Smoothing_Coef
+	#NBO2_0_Signal_Smoothing_Clamp
+	#NBO2_0_Signal_1_Test_1
+	#NBO2_0_Signal_2_Test_1
+	#NBO2_0_Signal_3_Test_1
+	#NBO2_0_Signal_1
+	#NBO2_0_Signal_2
+	#NBO2_0_Signal_3
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_NBO2_1.elcfg
+	#This funciton reads the NBO2 sensor at user specified angles and creates a running average for 3 angle windows.
+	#I converts the sensor voltage to approximate lambda using user defined table values
+	#It shifts the angle with base on RPM to account for flow time using values from a user defined table
+	#Note - there is anot much precision on the angle..this function is for non-critical items.
+#(analog 12)
+		#Set the sensor value for testing
+	#Test_NBO2_1
+	#PHW_NBO2_1
+
+		#user inputs
+	#NBO2_1_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+	#NBO2_1_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+	#NBO2_1_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+	#NBO2_1_Signal_1_Open [deg] - crank position to open the Angle Window 
+	#NBO2_1_Signal_2_Open [deg]
+	#NBO2_1_Signal_3_Open [deg]
+		#Add the latency to the open angle and decide if the value is over 720 and should roll over
+	#NBO2_1_Signal_1_Open_Test_0   - add lateny to open angle
+	#NBO2_1_Signal_2_Open_Test_0
+	#NBO2_1_Signal_3_Open_Test_0
+
+	#NBO2_1_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+	#NBO2_1_Signal_2_Open_Test_1
+	#NBO2_1_Signal_3_Open_Test_1
+
+	#NBO2_1_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+	#NBO2_1_Signal_2_Open_Test
+	#NBO2_1_Signal_3_Open_Test
+
+	#NBO2_1_Signal_1_Open - use correct math based on test result
+	#NBO2_1_Signal_2_Open
+	#NBO2_1_Signal_3_Open
+
+		#Add the ewindow to the open angle decide if the value is over 720 and should roll over
+	#NBO2_1_Signal_1_Window_Test_0
+	#NBO2_1_Signal_2_Window_Test_0
+	#NBO2_1_Signal_3_Window_Test_0
+
+	#NBO2_0_Signal_1_Window_Test_1
+	#NBO2_0_Signal_2_Window_Test_1
+	#NBO2_0_Signal_3_Window_Test_1
+
+	#NBO2_1_Signal_1_Window_Test
+	#NBO2_1_Signal_2_Window_Test
+	#NBO2_1_Signal_3_Window_Test
+
+	#NBO2_1_Signal_1_Close
+	#NBO2_1_Signal_2_Close
+	#NBO2_1_Signal_3_Close
+
+		#Updade the value is the crank is within the window
+	#NBO2_1_Signal_1_Test - 0=dump the value, 1= update reading
+	#NBO2_1_Signal_2_Test
+	#NBO2_1_Signal_3_Test
+	#NBO2_1_Signal_1_Test_0
+	#NBO2_1_Signal_2_Test_0
+	#NBO2_1_Signal_3_Test_0
+	#NBO2_1_Signal_Smoothing_Coef
+	#NBO2_1_Signal_Smoothing_Clamp
+	#NBO2_1_Signal_1_Test_1
+	#NBO2_1_Signal_2_Test_1
+	#NBO2_1_Signal_3_Test_1
+	#NBO2_1_Signal_1
+	#NBO2_1_Signal_2
+	#NBO2_1_Signal_3
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_NBO2_2.elcfg
+	#This funciton reads the NBO2 sensor at user specified angles and creates a running average for 3 angle windows.
+	#I converts the sensor voltage to approximate lambda using user defined table values
+	#It shifts the angle with base on RPM to account for flow time using values from a user defined table
+	#Note - there is anot much precision on the angle..this function is for non-critical items.
+#(analog 15)
+		#Set the sensor value for testing
+	#Test_NBO2_2
+	#PHW_NBO2_2
+
+		#user inputs
+	#NBO2_2_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+	#NBO2_2_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+	#NBO2_2_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+	#NBO2_2_Signal_1_Open [deg] - crank position to open the Angle Window 
+	#NBO2_2_Signal_2_Open [deg]
+	#NBO2_2_Signal_3_Open [deg]
+		#Add the latency to the open angle and decide if the value is over 720 and should roll over
+	#NBO2_2_Signal_1_Open_Test_0   - add lateny to open angle
+	#NBO2_2_Signal_2_Open_Test_0
+	#NBO2_2_Signal_3_Open_Test_0
+
+	#NBO2_2_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+	#NBO2_2_Signal_2_Open_Test_1
+	#NBO2_2_Signal_3_Open_Test_1
+
+	#NBO2_2_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+	#NBO2_2_Signal_2_Open_Test
+	#NBO2_2_Signal_3_Open_Test
+
+	#NBO2_2_Signal_1_Open - use correct math based on test result
+	#NBO2_2_Signal_2_Open
+	#NBO2_2_Signal_3_Open
+
+		#Add the ewindow to the open angle decide if the value is over 720 and should roll over
+	#NBO2_2_Signal_1_Window_Test_0
+	#NBO2_2_Signal_2_Window_Test_0
+	#NBO2_2_Signal_3_Window_Test_0
+
+	#NBO2_2_Signal_1_Window_Test_1
+	#NBO2_2_Signal_2_Window_Test_1
+	#NBO2_2_Signal_3_Window_Test_1
+
+	#NBO2_2_Signal_1_Window_Test
+	#NBO2_2_Signal_2_Window_Test
+	#NBO2_2_Signal_3_Window_Test
+
+	#NBO2_2_Signal_1_Close
+	#NBO2_2_Signal_2_Close
+	#NBO2_2_Signal_3_Close
+
+		#Updade the value is the crank is within the window
+	#NBO2_2_Signal_1_Test - 0=dump the value, 1= update reading
+	#NBO2_2_Signal_2_Test
+	#NBO2_2_Signal_3_Test
+	#NBO2_2_Signal_1_Test_0
+	#NBO2_2_Signal_2_Test_0
+	#NBO2_2_Signal_3_Test_0
+	#NBO2_2_Signal_Smoothing_Coef
+	#NBO2_2_Signal_Smoothing_Clamp
+	#NBO2_2_Signal_1_Test_1
+	#NBO2_2_Signal_2_Test_1
+	#NBO2_2_Signal_3_Test_1
+	#NBO2_2_Signal_1
+	#NBO2_2_Signal_2
+	#NBO2_2_Signal_3
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_NBO2_3.elcfg
+	#This funciton reads the NBO2 sensor at user specified angles and creates a running average for 3 angle windows.
+	#I converts the sensor voltage to approximate lambda using user defined table values
+	#It shifts the angle with base on RPM to account for flow time using values from a user defined table
+	#Note - there is anot much precision on the angle..this function is for non-critical items.
+#(analog 17)
+		#Set the sensor value for testing
+	#Test_NBO2_3
+	#PHW_NBO2_3
+
+		#user inputs
+	#NBO2_3_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+	#NBO2_3_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+	#NBO2_3_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+	#NBO2_3_Signal_1_Open [deg] - crank position to open the Angle Window 
+	#NBO2_3_Signal_2_Open [deg]
+	#NBO2_3_Signal_3_Open [deg]
+		#Add the latency to the open angle and decide if the value is over 720 and should roll over
+	#NBO2_3_Signal_1_Open_Test_0   - add lateny to open angle
+	#NBO2_3_Signal_2_Open_Test_0
+	#NBO2_3_Signal_3_Open_Test_0
+
+	#NBO2_3_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+	#NBO2_3_Signal_2_Open_Test_1
+	#NBO2_3_Signal_3_Open_Test_1
+
+	#NBO2_3_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+	#NBO2_3_Signal_2_Open_Test
+	#NBO2_3_Signal_3_Open_Test
+
+	#NBO2_3_Signal_1_Open - use correct math based on test result
+	#NBO2_3_Signal_2_Open
+	#NBO2_3_Signal_3_Open
+
+		#Add the ewindow to the open angle decide if the value is over 720 and should roll over
+	#NBO2_3_Signal_1_Window_Test_0
+	#NBO2_3_Signal_2_Window_Test_0
+	#NBO2_3_Signal_3_Window_Test_0
+
+	#NBO2_3_Signal_1_Window_Test_1
+	#NBO2_3_Signal_2_Window_Test_1
+	#NBO2_3_Signal_3_Window_Test_1
+
+	#NBO2_3_Signal_1_Window_Test
+	#NBO2_3_Signal_2_Window_Test
+	#NBO2_3_Signal_3_Window_Test
+
+	#NBO2_3_Signal_1_Close
+	#NBO2_3_Signal_2_Close
+	#NBO2_3_Signal_3_Close
+
+		#Updade the value is the crank is within the window
+	#NBO2_3_Signal_1_Test - 0=dump the value, 1= update reading
+	#NBO2_3_Signal_2_Test
+	#NBO2_3_Signal_3_Test
+	#NBO2_3_Signal_1_Test_0
+	#NBO2_3_Signal_2_Test_0
+	#NBO2_3_Signal_3_Test_0
+	#NBO2_3_Signal_Smoothing_Coef
+	#NBO2_3_Signal_Smoothing_Clamp
+	#NBO2_3_Signal_1_Test_1
+	#NBO2_3_Signal_2_Test_1
+	#NBO2_3_Signal_3_Test_1
+	#NBO2_3_Signal_1
+	#NBO2_3_Signal_2
+	#NBO2_3_Signal_3
+
+#(analog 20)
+#(analog 21)
+#(analog 22)
+#(analog 23)
+
+
+C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_CLT.elcfg
+	#(analog 1)
+	#Test_CLT
+	#PHW_CLT [C]
+	#Raw_CLT [C]
+	#CLT_Smoothing_Coef
+	#CLT_Smoothing_Clamp
+	#CLT_Smooth [C]
+	#CLT [C]
+	#CLT [K] - converts CLT [C] to units of [K]
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_IAT.elcfg
+#(analog 2)
+	#Test_IAT
+	#PHW_IAT [C]
+	#Raw_IAT [C]
+	#IAT_Smoothing_Coef
+	#IAT_Smoothing_Clamp
+	#IAT_Smooth [C]
+	#IAT [C]
+	#IAT [K] - converts IAT [C] to units of [K]
+
+#Analog 3
+#Analog 4
+#Analog 5
+
+	C:\assembla\trunk\Users\Mark\Models\Sensors\Sensor_Fuel_Temp.elcfg
+#(analog 6)
+	#Test_Fuel_Temp
+	#PHW_Fuel_Temp [C]
+	#Raw_Fuel_Temp [C]
+	#Fuel_Temp_Smoothing_Coef
+	#Fuel_Temp_Smoothing_Clamp
+	#Fuel_Temp_Smooth [C]
+	#Fuel_Temp [C]
+
+
+
+#Engine Basics
+C:\assembla\trunk\Users\Mark\Models\Engine\Engine_Setup.elcfg
+	#Run_Threshold - user setpoint for rpm above which the engine is considered running
+	#Redline  - user setpoint for redline
+	#Rev_Limiter_Fuel_Kill_Enable
+	#Rev_Limiter_Fuel_Kill_Enable_Clamp
+	#Rev_Limiter_Spark_Kill_Enable
+	#Rev_Limiter_Spark_Kill_Enable_Clamp
+	#Rev_Fuel_Kill
+	#Rev_Spark_Kill
+
+
+
+
+	#Number_of_Cylinders
+
+
+
+
+
+	#Engine_Running - 0 = not running
+	#		  1 = running
+
+		#Timers/counters
+
+	#Cycle_Increment
+	#Cycle_Count
+	#Cycle_Angle_Last 
+		#Note - may want a way to re-set cycle count
+
+
+   		#Maintains msec and sec clocks counting the time the enigne has been running
+	#Run_Timer_Reset - If/else to reset the count if the rpm drops below the run threshold
+	#Run_Timer_Dummy - place holder in the timer.
+	#Run_Time [msec] 
+	#Run_Time [s]
+
+#Spark Control
+
+C:\assembla\trunk\Users\Mark\Models\Spark\Spark.elcfg
+	#Coil_Enable
+	#Coil_Enable_Clamp
+	#Timing Lock_Enable
+	#Timing_Lock_Enable_Clamp
+	#Timing_Lock [degBTDC]
+	#Timing Lock_Test_1
+	#Coil_Enable_Test - 1 if coil enable set and engine is turning
+	#Coil_Enable_Test_0
+   		#Sets the correct coil dwell for current conditions
+	#Dwell_table [msec] - userlookup table for dwell [msec] vs Battery voltage [V]
+	#Coil_Enable_Test_1 - coil chage time in [us/10]
+	#CoilDwellX [us/10] - EAL required variable to set dwell in [us/10] units
+
+	#Timing Lock_Enable_Test - is timing lock on?
+	#Spark_Timing [degBTDC] - user lookup table for ignition timing [degBTDC] vs rpm and MAP
+   		#Sets the correct ignition timing for current conditions
+	#SpkTimingX [degBTDC] - EAL required variable to set spark timing in [degBTDC]
+	#Coil_Enable_Invert - invert the coil enable input
+	#CoilDriverEnable - turn on the coil drivers - 0= on, 1=off
+
+
+#Fuel Control
+C:\assembla\trunk\Users\Mark\Models\Fuel\Gasoline_Constants.elcfg
+   #Basic physical propereties of gasoline preset to normal values but can be changed by user
+	#Fuel_Molar_Mass [g/mol]
+	#Fuel_Stoich_Ratio
+	#Fuel_Density [kg/m3]
+	#Fuel_Density_Tep_Coef [kg/m3/C]
+	#Fuel_Cooling [C] - This is the amount of inlet air temp cooling due to fuel vaporization
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Load.elcfg
+  #Creates a normallized MAP value to sepatemanifold pressue changes due to barometric pressure from pressure changes due to throttle position
+	#Load [%] - MAP/Baro
+
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\MAF.elcfg
+   #Calculates the Mass Air Flow using the predefined speed density function.
+	#VE [%] - user lookup table for VE
+	#R [J/g*degK]
+	#IAT_Cooled [K] applied the fuel cooling effect (Fuel_Cooling [C]) to the IAT
+	#Delta_CLT_IAT [C] - temp difference between CLT and IAT
+	#CLT_IAT_Bias - user lookup to set amount or CLT ot use in MAF calculation.....I'm not sure this is useful but it's required by the Speed Density function
+	#MAF [g/s] - Mass air Follow in [g/s] 
+ 
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Cylinder_Base_Fuel.elcfg
+   		#Calculates the per cylinder fuel required in [g]
+	#Lambda_Target - user lookup for desired lambda vs load and rpm
+	#Dummy_injector_flow [g/s] - the canned function is trying to calculate a pulse width so by using a flow rate of 1e+007 g/s the output is flow in [g]
+	#Air/Fuel_Ratio - Lambda_Target x Fuel_Stoich_Ratio
+	#Cylinder_Base_Fuel [g] - required fuel per cylinder per cycle in [g]
+
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Start_Adder.elcfg
+
+	#Start_Adder_Enable
+	#Start_adder_Clamp - restrict value to 0-1 (also the layout should be setup to only accept 0/1)
+	#Start_Enrich [g] - user lookup for extra fuel required vs temp and cycles
+	#Start_Adder [g] - if enabled use Adder, if not set value to 0
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\CLT_Fuel_Corr.elcfg
+	#CLT_Fuel_Enable
+	#CLT_Fuel_Enable_Clamp - restrict value to 0-1 (also the layout should be setup to only accept 0/1)
+	#CLT_Fuel_Correction [%] - user lookup for extra fuel required vs temp
+	#CLT_Fuel_Corr [%] - if enabled use corr, if not set value to 0
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Flood_Clear.elcfg
+   #Routine to cut fuel during cranking if throttle is full open to clear flood
+	#Flood_Clear_Enable - input to enable feature
+	#Flood_Clear_Enable_Clamp - limit value to 0-1 (should also set the layout to only allow 0/1 input)
+	#Flood_Test - True if enabled AND engine not running AND throttle open more than 90% 
+	#Flood_Clear - inverts test resuls so 0 = flooded and 1 = not flooded which will set Fuel_Req to 0 when flooded
+
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\lambda_Fuel_Error.elcfg
+   #Calculates the difference between lambda and lambda target in [g] and as a ratio
+	#Lambda_Error_Ratio_Bank1
+	#Fuel_Error_Bank1 [g]  - difference in [g] between desired lambda and actual lambda
+	#Lambda_Error_Ratio_Bank2
+	#Fuel_Error_Bank2 [g]  - difference in [g] between desired lambda and actual lambda
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Fuel_Req_Subtotal.elcfg
+   #fuel requirement subtotal should come after all global corrections EXCEPT wall wetting...this is the number wallwetting is applied to
+	#Fuel_Req_Subtotal [g] - totals up all the fuel corrections other than wall wetting stuff in [g]
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Wall_Wetting.elcfg
+   		#Determines if wetting (accel/decel) fuel corrections should be enabled.
+	#Fuel_Wetting_Enable - input to enable feature
+	#Fuel_Wetting_Enable_Clamp - limit value to 0-1 (should also set the layout to only allow 0/1 input)
+	#Fuel_Wetting_Enbale_Time [s] - run time before system enables
+	#Fuel_Wetting_Enable_Time_Clamp - limit value to 0-120
+	#Fuel_Wetting_Enable_Test - if enable and enable time contions met = 1, else 0
+	#Fuel_Wetting_Enable_Test_Last
+	#Wetting_Cycle_Count_Last
+
+
+	#Fuel_Stored_Base [mg] - fuel stored in manifold vs MAP and RPM
+	#Fuel_Stored_CLT_Corr_Enable
+	#Fuel_Stored_CLT_Corr_Enable_Clamp
+	#Fuel_Stored_CLT_Corr [%] - CLT correction for stored fuel
+	#Fuel_Stored_IAT_Corr_Enable
+	#Fuel_Stored_IAT_Corr_Enable_Clamp
+	#Fuel_Stored_IAT_Corr [%] - IAT correction for stored fuel
+	#Fuel_Stored_Angle_Corr_Enable
+	#Fuel_Stored_Angle_Corr_Enable_Clamp
+	#Fuel_Stored_Angle_Corr [%]
+	#Fuel_Stored_Target [g] - Fuel_Stored_base* 0.001 * (1+Fuel_Stored_CLT_Corr [%]*0.01*Fuel_Stored_CLT_Corr_Enable_Clamp) * (1+Fuel_Stored_IAT_Corr [%]*0.01*Fuel_Stored_IAT_Corr_Enable_Clamp)*(1+Fuel_Stored_Angle_Corr [%]*.01*Fuel_Stored_Angle_Corr_Enable_Clamp)
+
+	#Fuel_Stored_Delta [mg] - fuel stored_Target - Fuel_Stored_Current
+	#Fuel_Stored_Correction [%] - % correction to make based on Fuel_Stored_Delta and RPM
+	#Fuel_Stored Correction [g]
+
+
+   		#This is the running total of fuel that is currently stored in each intake path in [g].  The stored fuel is set to the target prior to system becoming active.
+
+	#Fuel_Stored [g] - running total of fuel stored
+	#Fuel_Stored_Current [g]  - select Fuel_stored or Fuel_stored_Target to set as current.
+
+C:\assembla\trunk\Users\Mark\Models\Fuel\Fuel_Req.elcfg
+   #fuel requirement is the desire fuel in grams
+	#Fuel_Req [g]
+	#Fuel_Req [g/s] - fuel flow rate g x #cyl x rpm/120, (/120 replaced with x0.0083333)
+
+#convert grams of fuel into pulse width
+C:\assembla\trunk\Users\Mark\Models\Fuel\Injector_Time.elcfg
+	#Enable_Injectors
+	#Enable_Injectors_Clamp
+	#Injector_On - 1 if Enable_Injectors = 1 and rpm > 1
+
+
+	#Differential_Fuel_Pres [kPa] - Fuel Pressure ralative to MAP [kPa]
+	#Flow_Rate [g/s] - injector flow rate vs differentail pressure in [g/s]
+	#Offset [msec] - the offset of "deadtime" for the injector vs differentail fuel pressure vs battery voltage
+
+	#FI_TimingX [degBTDC] - reguired variable, user lookup table for injection end time
+
+	#Base_Injector_Time [msec] - calculates the inj
+	#Shor_Pulse_Adder [msec] - user lookup for short pulse correction
+
+	#Cylinder_Fuel_Trim Enable
+	#Cylinder_Fuel_Trim Enable_Clamp
+	#Cylinder_1_Fuel_Trim [%]
+	#Cylinder_2_Fuel_Trim [%]
+	#Cylinder_3_Fuel_Trim [%]
+	#Cylinder_4_Fuel_Trim [%]
+	#Cylinder_5_Fuel_Trim [%]
+	#Cylinder_6_Fuel_Trim [%]
+	#Cylinder_7_Fuel_Trim [%]
+	#Cylinder_8_Fuel_Trim [%]
+	#Cylinder_9_Fuel_Trim [%]
+	#Cylinder_10_Fuel_Trim [%]
+	#Cylinder_11_Fuel_Trim [%]
+	#Cylinder_12_Fuel_Trim [%]
+
+
+	#ReqFuel1 [us/10] - Req variable for fuel in [usec/10], global injection time
+	#ReqFuel2 [us/10]
+	#ReqFuel3 [us/10]
+	#ReqFuel4 [us/10]
+	#ReqFuel5 [us/10]
+	#ReqFuel6 [us/10]
+	#ReqFuel7 [us/10]
+	#ReqFuel8 [us/10]
+	#ReqFuel9 [us/10]
+	#ReqFuel10 [us/10]
+	#ReqFuel11 [us/10]
+	#ReqFuel12 [us/10]
+
+
+
+
+
+#Values required by EAL for lowZ injectors, not used in this project
+C:\assembla\trunk\Users\Mark\Models\Fuel\Fuel_basic.elcfg
+	#FI_DutyCycX %high: Duty cycle during PWM after the injector is open. (Applies to peak and hold). Set to 100 for high impedance injectors.
+	#FI_CyclTimeX us/10: Cycle time during PWM after injector is open. (Applies to peak and hold). Set to anything >= 100 for high impedance injectors.
+	#FI_OpenTimeX us/10: Injector open time. PWM will proceed following this time setting.
+
+
+
+#Engine specific
+C:\assembla\trunk\Users\Mark\Models\Engine\EngineDescription.elcfg
+
+C:\assembla\trunk\Users\Mark\Models\Engine\EngineTimingGenerator.elcfg
+	#RPM_Generator
+	#CrankToothWidth
+	#Cam0Timing
+	#Cam1Timing - NOT USED
+	#Cam2Timing - NOT USED
+	#Cam3Timing - NOT USED
+	#SignalsPresent
+	#SignalsInvert
+	#EngineGenerator
+
+C:\assembla\trunk\Users\Mark\Models\Engine\Angle_Generator.elcfg
+    #This Function creates a simulated crank angle (0-720 degree) to go with simulated RPM
+	#Angle_Timer_Reset
+	#Angle_Timer_Dummy
+	#Angle_Timer Activate
+	#Angle_Timer
+	#Angle_Time_Delta
+	#Angle_Increment
+	#Raw_Angle
+	#Angle_Rollover_Test
+	#Temp_Angle_1
+	#Temp_Angle_2
+	#Crank_Angle_Simulated
+	#Angle_Last
+	#Angle_Timer_Last
+	#
+
+
+#////////////////
+
+#Optional Outputs
+
+#////////////////
+
+
+C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\Fuel_Pump_Output.elcfg
+	#Fuel_Pump_Enable
+	#Fuel_Pump_Enable_Clamp
+	#Fuel_Pump_Prime_Time [s]
+	#Fuel_Pump_Prime_Time_Clamp
+	#Fuel_Pump_Prime_Time [ms]
+	#Fuel_Pump_Timer_Event
+	#Fuel_Pump_Timer_Reset
+	#Fuel_Pump_Timer
+	#Fuel_Pump_Duty_Cycle [%] - lookup table for duty cycle vs fuel flow
+		#use duty cule 100 while timer is running
+	#Fuel_Pump_Duty_Cycle_Test_1 
+	#Fuel_Pump_Duty_Cycle_Test
+	#Fuel_Pump_DutyCylce
+	#Fuel_PWM_Frequency [hz]
+	#Fuel_Pump_Test - run pump if ewnabled and timer on or engine turning
+	#Fuel_Pump_Output - assigned to c1-34 lowside_0
+
+C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\CLT_Fan_Control.elcfg
+   #Function to control Coolant fan
+	#CLT_Fan_Enable
+	#CLT_Fan_Enable_Clamp
+	#CLT_Fan_Off
+	#CLT_Fan_On
+	#CLT_Fan_Limiter
+	#CLT_Fan_Test
+	#CLT_Fan_Output
+
+C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\Tach_output.elcfg
+	#Tach_Output_Enable
+	#Tach_Output_Enable_Clamp
+	#Tach_Pulses_per_Rev
+	#Tach_Frequency [hz]
+	#PWM_duty_Cycle [%]
+	#Tach_Output
+
+C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\Idle_Control.elcfg
+		#This function setups up closed loop control of the idle RPM
+	#ETC_Idle_Control_Enable
+	#ETC_Idle_Control_Enable_Clamp
+	#Idle _Enable_Pedal _Position [%]
+	#Idle _Disable_Pedal _Position [%]
+	#Idle _Pedal _Position_Limiter
+
+
+	#Idle_Set_Point [rpm]
+	#Idle_Ramp_Down_Enable [rpm] - rpm above idle target to start ramping to target
+	#Idle_Ramp_Down_RPM
+	#Idle_Ramp_Down_Disable
+	#Idle_Ramp_Down_Limiter
+
+
+	#Idle_Ramp_Down_Rate [%]
+	#Idle_Ramp_Down_Cycle_Test
+	#Idle_Ramp_Down_Cycle_Test_O
+	#Idle_Ramp_Down_Cycle_Test_3
+	#Idle_Ramp_Down_Cycle_Test_2
+	#Idle_Ramp_Down_Cycle_Test_1
+	#Idle_Target
+
+	#Idle_Ramp_Down_Cycle_Count_Last
+	#Idle_Ramp_Down_Limiter_Last
+ 	#Idle _Pedal _Position_Limiter_Last
+
+C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\ETC_Output.elcfg
+
+	#ETC_1_Enable
+	#ETC_1_Enable_Clamp
+
+	#ETC_Stall_Saver_Enable
+	#ETC_Stall_Saver_Enable_Clamp
+
+	#ETC_Stall_Saver_Position [%] - position to open throttl to when stall is detected
+	#ETC_Stall_Saver_Position_Clamp
+
+	#ETC_Stall_Saver_Engage [rpm] - rpm below Idle target that Stall saver should activate
+	#ETC_Stall_Saver_Engage - rpm stall save will engage, clamped at 0-2000
+
+	#ETC_Cranking_Position [%] - Position to set throttel during cranking
+	#ETC_Cranking_Position_Clamp - Position clamped to 15%
+
+	#ETC_Positon_Source_Test = 0= pedal, 1 = fixed cranking, 2=Stall saver
+	#Throttle_Position_Translation [%] - Desire throttle position vs Pedal position
+
+	#ETC_Positon_Target - Desire Throttle position
+
+		#PID to control to desired throttle posiiton 
+	#ETC_Proportional_Coefficient
+	#ETC_Integral_Coefficient
+	#ETC_Derivative_Coefficient
+	#(ETC_1_Enable_Clamp)
+	#ETC_Integral_Hold
+	#ETC_Integral_Lower_Clamp
+	#ETC_Integral_Upper_Clamp
+	#ETC_1_PID
+		#Throttle_Pedal [%] - temp fopr testing
+
+
+		#PID to control to desired RPM
+	#ETC_Idle_Proportional_Coefficient
+	#ETC_Idle_Integral_Coefficient
+	#ETC_Idle_Derivative_Coefficient
+	#(ETC_1_Enable_ETCClamp)
+	#ETC_Idle_Integral_Hold
+	#ETC_Idle_Integral_Lower_Clamp
+	#ETC_Idle_Integral_Upper_Clamp
+	#ETC_Idle_PID
+
+	#ETC_Control_Method_Test - 0 = poition control, 1= rpm control
+	#ETC_Control_Method
+
+	#ETC_Polarity_Test  -  0 = throttle should be diven open (+), 1= driven closed (-)
+	#ETC_Control_Method_Invert
+	#ETC_PWM_Duty_Cycle - output always always positve
+
+ 
+	#ETC_HBridge0_Input1_High
+	#ETC_HBridge0_Input1_Low
+	#ETC_HBridge0_Input1
+
+	#ETC_HBridge0_Input2_High
+	#ETC_HBridge0_Input2_Low
+	#ETC_HBridge0_Input2
+
+	#ETC_HBridge0_Enable_Test
+	#ETC_HBridge0_Frequency
+
+	#HBridge0_Input1
+	#HBridge0_Input2
+	#HBridge0_Enable
+
+
+
+#C:\assembla\trunk\Users\Mark\Models\Optional_Outputs\PWM_Output.elcfg
+   #Generic PWM function
+	#PWM_Frequency [hz]
+	#PWM_duty_Cycle [%]
+	#PWM_Timer_1_Event
+	#PWM_On_Time [ms]
+	#PWM_Off_Time [ms]
+	#PWM_Output
+	#PWM_Timer_2_Event
+	#PWM_On_Timer
+
+
+
+{no_ops_to_convert
+}
+!convert_no_ops
+
+
+{externs_to_resolve
+}
+!resolve_externs
+
+#The No-Op conversions listed below are employed to decrease memory usage by deleting the No-Op items and replacing them with constants in each item that referenced the original No-Op. A mapping file (extension .ITWIZM) will be generated when the script is run, this file is used by the InfinityTuner Wizard to allow the deleted No-Op values to be edited.
+
+convert_no_ops=end_of_script
+{no_ops_to_convert
+}
+
+
+
+

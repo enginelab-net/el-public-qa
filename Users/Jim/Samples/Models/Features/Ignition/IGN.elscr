@@ -1,0 +1,410 @@
+## ***************************************************************
+## Model targets
+## ***************************************************************
+
+## ***************************************************************
+## IGNition feature
+## ***************************************************************
+
+## ***************************************************************
+## IGN use a 1D or a 2D table for a dwell lookup.
+{if defined(IGN_SPKDWELL_TABLE_1D)
+!create_item "SPK_Dwell_1Dtable [ms]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="SENSOR_BatteryVoltage [V]"]
+{if defined(IGN_SPKDWELL_TABLE_1D_INPUT)
+!change_item "SPK_Dwell_1Dtable [ms]" [delete_inputs, add_input=IGN_SPKDWELL_TABLE_1D_INPUT]
+}
+
+!create_item "SPK_DwellX [ms]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="SPK_Dwell_1Dtable [ms]", math_expression="i0"]
+}
+
+{if defined(IGN_SPKDWELL_TABLE_2D)
+!create_item "SPK_Dwell_2Dtable [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_BatteryVoltage [V]"]
+{if defined(IGN_SPKDWELL_TABLE_2D_INPUT_0)
+!change_item "SPK_Dwell_2Dtable [ms]" [input0=IGN_SPKDWELL_TABLE_2D_INPUT_0]
+}
+{if defined(IGN_SPKDWELL_TABLE_2D_INPUT_1)
+!change_item "SPK_Dwell_2Dtable [ms]" [input0=IGN_SPKDWELL_TABLE_2D_INPUT_1]
+}
+{if defined(IGN_SPKDWELL_TABLE_2D_CSV)
+!change_item "SPK_Dwell_2Dtable [ms]" [2Dtable_csv=IGN_SPKDWELL_TABLE_2D_CSV]
+}
+
+!create_item "SPK_DwellX [ms]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="SPK_Dwell_2Dtable [ms]", math_expression="i0"]
+}
+## ***************************************************************
+
+## ***************************************************************
+{if defined(IGN_SPKTIMING_TABLE_2D)
+!create_item "SPK_Timing_table [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+
+{if defined(IGN_SPKTIMING_TABLE_2D_INPUT_0)
+!change_item "SPK_Timing_table [degBTDC]" [input0=IGN_SPKDWELL_TABLE_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TABLE_2D_INPUT_1)
+!change_item "SPK_Timing_table [degBTDC]" [input1=IGN_SPKDWELL_TABLE_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TABLE_2D_CSV)
+!change_item "SPK_Timing_table [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TABLE_2D_CSV]
+}
+}
+
+{if defined(IGN_SPKTIMING_TABLE_1D)
+!create_item "SPK_Timing_table [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+
+{if defined(IGN_SPKTIMING_TABLE_1D_INPUT)
+!change_item "SPK_Timing_table [degBTDC]" [input0=IGN_SPKTIMING_TABLE_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TABLE_1D_CSV)
+!change_item "SPK_Timing_table [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TABLE_1D_CSV]
+}
+}
+
+## If the trim is NOT defined, just set the spark timing to the table.
+{if defined (IGN_SPKTIMING_TRIM_TABLES)
+!else
+!create_item "SPK_TimingX [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", math_expression="sum_inputs"]
+}
+## ***************************************************************
+{if defined (IGN_SPKTIMING_TRIM_TABLES)
+
+{if defined (IGN_SPKTIMING_TRIM_TABLES_1D)
+{if EAL_NUM_SPARKS > "00"
+!create_item "SPK_Timing_TRIM_1 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_1 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_1 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing1 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_1 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "01"
+!create_item "SPK_Timing_TRIM_2 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_2 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_2 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing2 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_2 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "02"
+!create_item "SPK_Timing_TRIM_3 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_3 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_3 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing3 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_3 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "03"
+!create_item "SPK_Timing_TRIM_4 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_4 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_4 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing4 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_4 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "04"
+!create_item "SPK_Timing_TRIM_5 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_5 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_5 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing5 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_5 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "05"
+!create_item "SPK_Timing_TRIM_6 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_6 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_6 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing6 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_6 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "06"
+!create_item "SPK_Timing_TRIM_7 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_7 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_7 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing7 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_7 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "07"
+!create_item "SPK_Timing_TRIM_8 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_8 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_8 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing8 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_8 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "08"
+!create_item "SPK_Timing_TRIM_9 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_9 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_9 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing9 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_9 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "09"
+!create_item "SPK_Timing_TRIM_10 [degBTDC]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_INPUT)
+!change_item "SPK_Timing_TRIM_10 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_1D_INPUT]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_1D_CSV)
+!change_item "SPK_Timing_TRIM_10 [degBTDC]" [1Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_1D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing10 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_10 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+}
+## ***************************************************************
+
+## ***************************************************************
+{if defined (IGN_SPKTIMING_TRIM_TABLES_2D)
+{if EAL_NUM_SPARKS > "00"
+!create_item "SPK_Timing_TRIM_1 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_1 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_1 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_1 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing1 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_1 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "01"
+!create_item "SPK_Timing_TRIM_2 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_2 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_2 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_2 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing2 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_2 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "02"
+!create_item "SPK_Timing_TRIM_3 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_3 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_3 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_3 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing3 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_3 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "03"
+!create_item "SPK_Timing_TRIM_4 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_4 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_4 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_4 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing4 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_4 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "04"
+!create_item "SPK_Timing_TRIM_5 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_5 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_5 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_5 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing5 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_5 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "05"
+!create_item "SPK_Timing_TRIM_6 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_6 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_6 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_6 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing6 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_6 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "06"
+!create_item "SPK_Timing_TRIM_7 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_7 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_7 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_7 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing7 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_7 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "07"
+!create_item "SPK_Timing_TRIM_8 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_8 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_8 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_8 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing8 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_8 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "08"
+!create_item "SPK_Timing_TRIM_9 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_9 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_9 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_9 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing9 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_9 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+
+{if EAL_NUM_SPARKS > "09"
+!create_item "SPK_Timing_TRIM_10 [degBTDC]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0)
+!change_item "SPK_Timing_TRIM_10 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1)
+!change_item "SPK_Timing_TRIM_10 [degBTDC]" [input0=IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(IGN_SPKTIMING_TRIM_TABLES_2D_CSV)
+!change_item "SPK_Timing_TRIM_10 [degBTDC]" [2Dtable_csv=IGN_SPKTIMING_TRIM_TABLES_2D_CSV]
+}
+{if defined(IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE)
+!create_item "SPK_Timing10 [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", add_input="SPK_Timing_TRIM_10 [degBTDC]", math_expression="sum_inputs"]
+}
+}
+}
+
+}
+
+{if defined(IGN_SPKTIMING_TRIM_IDLE)
+{if defined(IGN_SPKTIMING_TRIM_TABLES)
+{if EAL_NUM_SPARKS > "00"
+!change_item "SPK_Timing1 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "01"
+!change_item "SPK_Timing2 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "02"
+!change_item "SPK_Timing3 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "03"
+!change_item "SPK_Timing4 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "04"
+!change_item "SPK_Timing5 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "05"
+!change_item "SPK_Timing6 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "06"
+!change_item "SPK_Timing7 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "07"
+!change_item "SPK_Timing8 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "08"
+!change_item "SPK_Timing9 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+{if EAL_NUM_SPARKS > "09"
+!change_item "SPK_Timing10 [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+!else
+!change_item "SPK_TimingX [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+}
+}
+
+## ***************************************************************
+
+!notebook new_note "Ignition spark dwell" [vendor="Enginelab, Inc.", item_wildcard="SPK_Dwell", message="The spark dwell submodel. This item is created in the ignition submodel. (/Ignition/IGN.elscr)"] 
+!notebook new_note "Ignition spark timing" [vendor="Enginelab, Inc.", item_wildcard="SPK_T", message="The spark timing submodel. This item is created in the ignition submodel. (/Ignition/IGN.elscr)"] 
+!notebook new_note "Ignition submodel" [vendor="Enginelab, Inc.", item_or_group="Ignition spark dwell", item_or_group="Ignition spark timing", message="The Ignition submodel. (/Ignition/IGN.elscr)"] 
+

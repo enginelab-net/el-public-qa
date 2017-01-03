@@ -1,0 +1,31 @@
+## ***************************************************************
+## Idle control submodel
+## ***************************************************************
+
+!create_item "IDLE_target [RPM]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_100, math_expression="min_input"]
+!notebook new_note "IDLE_target [RPM]" [vendor="Enginelab, Inc.", message=" The final Idle target value."]
+!notebook new_note "IDLE target submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_target [RPM]", message=" The Idle target submodel."]
+
+{if defined (IDLE_TARGET_TABLE_1D)
+{if defined (IDLE_TARGET_TABLE_1D_INPUT)
+!else
+!set IDLE_TARGET_TABLE_1D_INPUT SENSOR_CLT [C]
+}
+!create_item "IDLE_target_table [RPM]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input=IDLE_TARGET_TABLE_1D_INPUT]
+{if defined(IDLE_TARGET_TABLE_1D_CSV)
+!change_item "IDLE_target_table [RPM]" [1Dtable_csv=IDLE_TARGET_TABLE_1D_CSV]
+}
+!change_item "IDLE_target [RPM]" [add_input="IDLE_target_table [RPM]"]
+}
+!notebook add_element "IDLE target submodel" [item_wildcard="IDLE_target"]
+                               
+{if defined(IDLE_AIRFLOW)
+include=.\Airflow\Airflow.elscr
+!notebook new_note "IDLE submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_airflow submodel", message=" The Idle submodel including airflow."]
+}
+{if defined(IDLE_IGNTIMING)
+include=.\IgnTiming\IgnTiming.elscr
+!notebook add_element "IDLE submodel" [item_or_group="IDLE_IgnTiming submodel"]
+}
+!notebook add_element "IDLE submodel" [item_or_group="IDLE target submodel"]
+

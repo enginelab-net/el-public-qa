@@ -1,0 +1,32 @@
+## ***************************************************************
+## Fuel pressure feature
+
+!create_item "FUEL_LAMBDA_target [L]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_100, math_expression="min_input"]
+
+{if defined(FUEL_LAMBDA_TARGET_TABLE_2D)
+!create_item "FUEL_LAMBDA_table [L]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_LAMBDA_TARGET_TABLE_2D_CSV)
+!change_item "FUEL_LAMBDA_table [L]" [2Dtable_csv=FUEL_LAMBDA_TARGET_TABLE_2D_CSV]
+}
+!change_item "FUEL_LAMBDA_target [L]" [add_input="FUEL_LAMBDA_table [L]"]
+}
+{if defined(FUEL_LAMBDA_TARGET_CLT_TABLE_1D)
+!create_item "FUEL_LAMBDA_Clt_table [L]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="SENSOR_CLT [C]"]
+{if defined(FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV)
+!change_item "FUEL_LAMBDA_Clt_table [L]" [1Dtable_csv=FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV]
+}
+!change_item "FUEL_LAMBDA_target [L]" [add_input="FUEL_LAMBDA_Clt_table [L]"]
+}
+{if defined(FUEL_LAMBDA_TARGET_IAT_TABLE_2D)
+!create_item "FUEL_LAMBDA_Iat_table [L]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="SENSOR_IAT [C]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV)
+!change_item "FUEL_LAMBDA_Iat_table [L]" [2Dtable_csv=FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV]
+}
+!change_item "FUEL_LAMBDA_target [L]" [add_input="FUEL_LAMBDA_Iat_table [L]"]
+}
+
+
+!notebook new_note "FUEL Lambda target submodel" [vendor="Enginelab, Inc.", item_wildcard="FUEL_LAMBDA", message="The lambda fuel model (/Fuel/Lambda/Lambda.elscr)."] 
+ 
+
+

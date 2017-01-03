@@ -1,0 +1,92 @@
+#////////
+#Engine Basics
+#////////
+
+{if defined(ENGINE)
+
+.\Engine_Setup.elcfg
+                #Basic setup parameters
+                        
+                #Run_Threshold - user setpoint for rpm above which the engine is considered running
+                
+                #Redline  - user setpoint for redline
+
+                #Rev_Limiter_Fuel_Kill_Enable           User setting to enable fuel kill rev limiter
+                #Rev_Limiter_Fuel_Kill_Enable_Clamp     clamps value to 0-1
+                #Rev_Limiter_Spark_Kill_Enable          User setting to enable spark kill rev limit
+                #Rev_Limiter_Spark_Kill_Enable_Clamp    clamps to 0-1
+                #Rev_Fuel_Kill                          0= fuel on, 1=fuel cut
+                #Rev_Spark_Kill                         0=spark on, 1 = spark cut
+
+                #Number_of_Cylinders
+
+
+                #Engine_Running - 0 = not running
+                #                 1 = running
+
+                        #Timers/counters
+
+                #Cycle_Increment
+                #Cycle_Count
+                #Cycle_Angle_Last 
+                        #Note - may want a way to re-set cycle count
+
+
+                        #Maintains msec and sec clocks counting the time the enigne has been running
+                #Run_Timer_Reset        If/else to reset the count if the rpm drops below the run threshold
+                #Run_Timer_Dummy        place holder in the timer.
+                #Run_Time [msec] 
+                #Run_Time [s]
+
+#////////
+#Engine specific
+#////////
+
+#Digital0_In C1-21 - crank (for VR change to VR0 c1-45+, c1-46-)
+#Digital0_In C1-22 - cam   (for VR change to VR1 c1-48+, c1-47-)
+.\EngineDescription.elcfg
+                
+
+.\EngineTimingGenerator.elcfg
+                #RPM_Generator
+                #CrankToothWidth
+                #Cam0Timing
+                #Cam1Timing - NOT USED
+                #Cam2Timing - NOT USED
+                #Cam3Timing - NOT USED
+                #SignalsPresent
+                #SignalsInvert
+                #EngineGenerator
+
+.\Angle_Generator.elcfg
+                #This Function creates a simulated crank angle (0-720 degree) to go with simulated RPM
+                #Angle_Timer_Reset
+                #Angle_Timer_Dummy
+                #Angle_Timer Activate
+                #Angle_Timer
+                #Angle_Time_Delta
+                #Angle_Increment
+                #Raw_Angle
+                #Angle_Rollover_Test
+                #Temp_Angle_1
+                #Temp_Angle_2
+                #Crank_Angle_Simulated
+                #Angle_Last
+                #Angle_Timer_Last
+
+.\State_Engine.elcfg
+		#State_Engine
+			# 0 = not turning
+			# 1 = cranking
+			# 2 = Idling
+			# 3 = Running
+			# 4 = Over-rev
+
+		#State_Idle
+			# 0 = Not Idling
+			# 1 = Ideling
+		
+
+
+}
+

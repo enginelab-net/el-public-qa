@@ -1,0 +1,125 @@
+<layout version="7">
+  <main_window>
+    <position>341 208 1355 1132</position>
+    <padding>341 227 1355 1132</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="EAL">
+    <control type="Text Grid" settings="">
+      <position>350 306 1016 873</position>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="EAL_EngineCycleTime [s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="EAL_SyncState">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_0_Timing [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_1_Timing [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_0_SyncError0">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_0_SyncError1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_0_SyncError2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_0_SyncError3">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_1_SyncError0">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_1_SyncError1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_1_SyncError2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_1_SyncError3">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CRANK_TimingError0">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CRANK_TimingError1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CRANK_Duration">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_0Duration">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="CAM_1Duration">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <theme version="2">
+    <solid_color name="background_color">0xFFFFFF</solid_color>
+    <solid_color name="text_light_color">0xD5D5D5</solid_color>
+    <solid_color name="text_dark_color">0x000000</solid_color>
+    <solid_color name="grid_lines_color">0xE0E0E0</solid_color>
+    <solid_color name="indicator_color">0x501010</solid_color>
+    <solid_color name="modified_color">0xFF00FF</solid_color>
+    <gradient_color>0xFF0000 0x808080 0x0000FF</gradient_color>
+    <gradient_color>0xFF8000 0xFFFF80 0x00FF80</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFFC080 0x80FF00 0xFF00FF</gradient_color>
+    <gradient_color>0xFF0080 0x808080 0xFFFF00</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0080FF</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0060C0</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x0080FF 0x00FF00 0xFF0080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  </theme>
+</layout>

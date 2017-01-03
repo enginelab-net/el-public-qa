@@ -1,0 +1,34 @@
+# ***************************************************************
+# SystemState feature. Post-build step
+
+## The system state "SS_EngineState" is defined as follows:
+## State                                          Reserved name
+## 0 - Rest state                                 "SS_EngineState_rest [d]"
+## 1 - Starting state                             "SS_EngineState_starting [d]"
+## 2 - Steady state                               "SS_EngineState_running [d]"
+## 3 - Low load state                             "SS_EngineState_lowload [d]"
+## 4 - High load state                            "SS_EngineState_highload [d]"
+## 5 - Stress state                               "SS_EngineState_stress [d]"
+
+## These engine speeds need to be resolved. Either with constants or nops. 
+## SS_EngineSpeed_running [RPM] - This is the threshold RPM where one would consider the engine to be running. ~500 RPM in most cases. 
+
+## These engine states need to be resolved.
+## "SS_EngineState_starting [d]"
+
+{if defined(SS_ENGINESPEED_RUNNING_RPM)
+!else
+!set SS_ENGINESPEED_RUNNING_RPM 500
+}
+
+{if defined(SS)
+!replace_item "SS_EngineSpeed_running [RPM]" [type="Constant", constant_value=SS_ENGINESPEED_RUNNING_RPM, ignore_if_extern_not_found]
+!replace_item "SS_EngineState_rest [d]"      [type="Constant", constant_value="0", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_starting [d]"  [type="Constant", constant_value="1", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_running [d]"   [type="Constant", constant_value="2", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_lowload [d]"   [type="Constant", constant_value="3", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_highload [d]"  [type="Constant", constant_value="4", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_stress [d]"    [type="Constant", constant_value="5", ignore_if_extern_not_found]
+}
+# ***************************************************************
+

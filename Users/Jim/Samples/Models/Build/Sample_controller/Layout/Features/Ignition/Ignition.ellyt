@@ -1,0 +1,213 @@
+<layout version="9">
+  <main_window>
+    <position>146 70 1886 1010</position>
+    <padding>146 89 1886 1010</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="Ignition">
+    <control type="2D Table" settings="">
+      <position>989 141 1619 437</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="SPK_Dwell_2Dtable [ms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_BatteryVoltage [V]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>154 437 989 566</position>
+      <channel name="SPK_Timing_table [degBTDC]">
+        <colors>0 8 20 20 50</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SPK_Dwell_2Dtable [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SPK_DwellX [ms]">
+        <colors>7 1 3 4 5</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>154 141 448 437</position>
+      <string name="range" value="0 40"/>
+      <string name="divisions" value="5 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>448 141 742 437</position>
+      <string name="range" value="0 6"/>
+      <string name="divisions" value="1 6"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_DwellX [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>154 566 872 1002</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SPK_Timing_table [degBTDC]">
+          <colors>0 8 20 20 50</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>872 566 1413 1002</position>
+      <string name="camera" value="4.1042 0.310398 0.5 0.5 0.5 1.96775"/>
+      <channel>
+        <primary name="SPK_Timing_table [degBTDC]">
+          <colors>0 8 20 20 50</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+  </page>
+  <virtual_channels version="1">
+    <virtual type="conversion" name="BoostRampTime [s]">
+      <string name="expression" value="i0/1000"/>
+      <string name="reverse" value="i0*1000"/>
+      <input name="BoostRampTime [ms]"/>
+    </virtual>
+    <virtual type="conversion" name="CoilDwell [ms]">
+      <string name="expression" value="i0*0.0001"/>
+      <string name="reverse" value="i0*10000"/>
+      <input name="CoilDwellMap [us/10]"/>
+    </virtual>
+    <virtual type="conversion" name="FlexCrankingAdder [ms]">
+      <string name="expression" value="i0/1000"/>
+      <string name="reverse" value="i0*1000"/>
+      <input name="FlexCrankingAdder [us/10]"/>
+    </virtual>
+    <virtual type="conversion" name="InjFlowRate [cc/min]">
+      <string name="expression" value="i0*60"/>
+      <string name="reverse" value="i0*0.016667"/>
+      <input name="InjFlowRate [cc/sec]"/>
+    </virtual>
+    <virtual type="conversion" name="InjSecOffset [ms]">
+      <string name="expression" value="i0/1000"/>
+      <string name="reverse" value="i0*1000"/>
+      <input name="InjSecOffset [us/10]"/>
+    </virtual>
+    <virtual type="conversion" name="InjectorOffset [ms]">
+      <string name="expression" value="i0*0.0001"/>
+      <string name="reverse" value="i0*10000"/>
+      <input name="InjOffset [us/10]"/>
+    </virtual>
+    <virtual type="virtual" name="KnockWarn">
+      <string name="expression" value="-1*(i0+i1+i2+i3+i4+i5+i6+i7)"/>
+      <input name="KnockFB_Cyl1"/>
+      <input name="KnockFB_Cyl2"/>
+      <input name="KnockFB_Cyl3"/>
+      <input name="KnockFB_Cyl4"/>
+      <input name="KnockFB_Cyl5"/>
+      <input name="KnockFB_Cyl6"/>
+      <input name="KnockFB_Cyl7"/>
+      <input name="KnockFB_Cyl8"/>
+    </virtual>
+    <virtual type="virtual" name="Lambda1 AFR">
+      <string name="expression" value="(i0 * 14.64)"/>
+      <input name="Lambda1"/>
+    </virtual>
+    <virtual type="virtual" name="LambdaTarget AFR">
+      <string name="expression" value="(i0 * 14.64)"/>
+      <input name="LambdaTarget"/>
+    </virtual>
+    <virtual type="virtual" name="ReqFuel1 [ms]">
+      <string name="expression" value="i0/10000"/>
+      <input name="ReqFuel1 [us/10]"/>
+    </virtual>
+    <virtual type="virtual" name="RevLimitFuelDuty [%]">
+      <string name="expression" value="100-i0"/>
+      <input name="FuelCut [%]"/>
+    </virtual>
+    <virtual type="virtual" name="RevLimitSparkDuty [%]">
+      <string name="expression" value="100-i0"/>
+      <input name="SparkCut [%]"/>
+    </virtual>
+    <virtual type="virtual" name="VECorReq">
+      <string name="expression" value="i1/i0"/>
+      <input name="LambdaTarget"/>
+      <input name="Lambda1"/>
+    </virtual>
+  </virtual_channels>
+  <theme version="2">
+    <solid_color name="background_color">0xFFFFFF</solid_color>
+    <solid_color name="text_light_color">0xD5D5D5</solid_color>
+    <solid_color name="text_dark_color">0x000000</solid_color>
+    <solid_color name="grid_lines_color">0xE0E0E0</solid_color>
+    <solid_color name="indicator_color">0x501010</solid_color>
+    <solid_color name="modified_color">0xFF00FF</solid_color>
+    <gradient_color>0xFF0000 0x808080 0x0000FF</gradient_color>
+    <gradient_color>0xFF8000 0xFFFF80 0x00FF80</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFFC080 0x80FF00 0xFF00FF</gradient_color>
+    <gradient_color>0xFF0080 0x808080 0xFFFF00</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0080FF</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0060C0</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x0080FF 0x00FF00 0xFF0080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  </theme>
+</layout>

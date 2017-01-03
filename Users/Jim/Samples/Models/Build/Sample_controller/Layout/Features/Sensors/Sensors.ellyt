@@ -1,0 +1,309 @@
+<layout version="9">
+  <main_window>
+    <position>69 29 1808 1068</position>
+    <padding>69 48 1808 1068</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="Sensors">
+    <control type="Gauge" settings="">
+      <position>76 100 319 352</position>
+      <string name="range" value="20 120"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>319 100 562 352</position>
+      <string name="range" value="20 120"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>562 100 806 352</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>806 100 1049 352</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="10 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1049 100 1292 352</position>
+      <string name="range" value="0.5 1.5"/>
+      <string name="divisions" value="2 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1292 100 1535 352</position>
+      <string name="range" value="7 17"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_BatteryVoltage [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>76 503 1032 614</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="SENSOR_CLT [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="SENSOR_CLT [ohms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>76 614 1032 725</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="SENSOR_IAT [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="SENSOR_IAT [ohms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>76 725 1032 835</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="SENSOR_Lambda0 [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="AN_UEGO_0_UA_In [V]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>1049 352 1801 1061</position>
+      <channel name="SENSOR_MAP_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_MAP_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_MAP_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_CLT_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_CLT_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_CLT_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_IAT_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_IAT_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_IAT_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_TPS_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_TPS_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_TPS_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error_delay [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_BatteryVoltage_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_BatteryVoltage_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_BatteryVoltage_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="SENSOR_BatteryVoltage_error_delay [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <virtual_channels version="1">
+    <virtual type="conversion" name="BoostRampTime [s]">
+      <string name="expression" value="i0/1000"/>
+      <string name="reverse" value="i0*1000"/>
+      <input name="BoostRampTime [ms]"/>
+    </virtual>
+    <virtual type="conversion" name="CoilDwell [ms]">
+      <string name="expression" value="i0*0.0001"/>
+      <string name="reverse" value="i0*10000"/>
+      <input name="CoilDwellMap [us/10]"/>
+    </virtual>
+    <virtual type="conversion" name="FlexCrankingAdder [ms]">
+      <string name="expression" value="i0/1000"/>
+      <string name="reverse" value="i0*1000"/>
+      <input name="FlexCrankingAdder [us/10]"/>
+    </virtual>
+    <virtual type="conversion" name="InjFlowRate [cc/min]">
+      <string name="expression" value="i0*60"/>
+      <string name="reverse" value="i0*0.016667"/>
+      <input name="InjFlowRate [cc/sec]"/>
+    </virtual>
+    <virtual type="conversion" name="InjSecOffset [ms]">
+      <string name="expression" value="i0/1000"/>
+      <string name="reverse" value="i0*1000"/>
+      <input name="InjSecOffset [us/10]"/>
+    </virtual>
+    <virtual type="conversion" name="InjectorOffset [ms]">
+      <string name="expression" value="i0*0.0001"/>
+      <string name="reverse" value="i0*10000"/>
+      <input name="InjOffset [us/10]"/>
+    </virtual>
+    <virtual type="virtual" name="KnockWarn">
+      <string name="expression" value="-1*(i0+i1+i2+i3+i4+i5+i6+i7)"/>
+      <input name="KnockFB_Cyl1"/>
+      <input name="KnockFB_Cyl2"/>
+      <input name="KnockFB_Cyl3"/>
+      <input name="KnockFB_Cyl4"/>
+      <input name="KnockFB_Cyl5"/>
+      <input name="KnockFB_Cyl6"/>
+      <input name="KnockFB_Cyl7"/>
+      <input name="KnockFB_Cyl8"/>
+    </virtual>
+    <virtual type="virtual" name="Lambda1 AFR">
+      <string name="expression" value="(i0 * 14.64)"/>
+      <input name="Lambda1"/>
+    </virtual>
+    <virtual type="virtual" name="LambdaTarget AFR">
+      <string name="expression" value="(i0 * 14.64)"/>
+      <input name="LambdaTarget"/>
+    </virtual>
+    <virtual type="virtual" name="ReqFuel1 [ms]">
+      <string name="expression" value="i0/10000"/>
+      <input name="ReqFuel1 [us/10]"/>
+    </virtual>
+    <virtual type="virtual" name="RevLimitFuelDuty [%]">
+      <string name="expression" value="100-i0"/>
+      <input name="FuelCut [%]"/>
+    </virtual>
+    <virtual type="virtual" name="RevLimitSparkDuty [%]">
+      <string name="expression" value="100-i0"/>
+      <input name="SparkCut [%]"/>
+    </virtual>
+    <virtual type="virtual" name="VECorReq">
+      <string name="expression" value="i1/i0"/>
+      <input name="LambdaTarget"/>
+      <input name="Lambda1"/>
+    </virtual>
+  </virtual_channels>
+  <theme version="2">
+    <solid_color name="background_color">0x000000</solid_color>
+    <solid_color name="text_light_color">0xD5D5D5</solid_color>
+    <solid_color name="text_dark_color">0x000000</solid_color>
+    <solid_color name="grid_lines_color">0xE0E0E0</solid_color>
+    <solid_color name="indicator_color">0xFFFF00</solid_color>
+    <solid_color name="modified_color">0xFF00FF</solid_color>
+    <gradient_color>0xFF0000 0x808080 0x0000FF</gradient_color>
+    <gradient_color>0xFF8000 0xFFFF80 0x00FF80</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFFC080 0x80FF00 0xFF00FF</gradient_color>
+    <gradient_color>0xFF0080 0x808080 0xFFFF00</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0080FF</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0060C0</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x0080FF 0x00FF00 0xFF0080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  </theme>
+</layout>

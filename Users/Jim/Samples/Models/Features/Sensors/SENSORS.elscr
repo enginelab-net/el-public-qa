@@ -1,0 +1,70 @@
+## ***************************************************************
+## Sensors feature
+## ***************************************************************
+
+## ***************************************************************
+## Manifold pressure sensor
+{if defined(SENSOR_MAP)
+include=.\MAP\MAP.elscr
+!notebook new_note "Sensor submodel MAP" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_MAP_", item_wildcard="SENSOR_MAP ", message="The MAP sensor submodel. (/Sensors/MAP/MAP.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Coolant temperature sensor
+{if defined(SENSOR_CLT)
+include=.\Temperature\Clt.elscr
+!notebook new_note "Sensor submodel CLT" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_CLT_", item_wildcard="SENSOR_CLT ", message="The Coolant sensor submodel. (/Sensors/Temperature\Clt.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Intake air temperature sensor
+{if defined(SENSOR_IAT)
+include=.\Temperature\Iat.elscr
+!notebook new_note "Sensor submodel IAT" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_IAT_", item_wildcard="SENSOR_IAT ", message="The Intake air sensor submodel. (/Sensors/Temperature/Iat.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Throttle position sensor
+{if defined(SENSOR_TPS)
+include=.\TPS\TPS.elscr
+!notebook new_note "Sensor submodel TPS" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_TPS_", item_wildcard="SENSOR_TPS ", message="The throttle position sensor submodel. (/Sensors/TPS/TPS.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Mass Airflow sensor
+{if defined(SENSOR_MAF)
+include=.\MAF\MAF.elscr
+!notebook new_note "Sensor submodel MAF" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_MAF_", item_wildcard="SENSOR_MAF ", message="The MAF sensor submodel. (/Sensors/MAF/MAF.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## FuelPressure sensor
+{if defined(SENSOR_FUELPRESSURE)
+include=.\FuelPressure\FuelPressure.elscr
+!notebook new_note "Sensor submodel FuelPressure" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_FuelPressure_", item_wildcard="SENSOR_FuelPressure ", message="The fuel pressure sensor submodel. (/Sensors/FuelPressure/FuelPressure.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Oxygen sensor
+{if defined(SENSOR_OXYGEN)
+include=.\Oxygen\Oxygen.elscr
+#!notebook new_note "Sensor submodel Oxygen" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_Oxygen", message="The oxygen sensor submodel. (/Sensors/Oxygen/Oxygen.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Battery voltage sensor
+{if defined(SENSOR_BATTERYVOLTAGE)
+include=.\BatteryVoltage\BatteryVoltage.elscr
+!notebook new_note "Sensor submodel BatteryVoltage" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_Battery", message="The battery voltage sensor pressure sensor submodel. (/Sensors/BatteryVoltage/BatteryVoltage.elscr)"] 
+}
+## ***************************************************************
+
+!notebook new_note "Sensors submodel" [vendor="Enginelab, Inc.", group_wildcard="Sensor submodel", message="The sensors submodel./Sensors/SENSORS.elscr)"] 
+

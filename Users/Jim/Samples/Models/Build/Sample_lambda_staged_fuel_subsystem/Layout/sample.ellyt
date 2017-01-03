@@ -1,0 +1,239 @@
+<layout version="9">
+  <main_window>
+    <position>305 61 1586 913</position>
+    <padding>305 80 1586 913</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="Page 1">
+    <control type="Slider" settings="">
+      <position>845 138 1061 211</position>
+      <string name="range" value="0 20"/>
+      <string name="divisions" value="100"/>
+      <channel name="airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>845 211 1061 285</position>
+      <string name="range" value="0 2"/>
+      <string name="divisions" value="100"/>
+      <channel name="lambda_target">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>845 285 1061 357</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="100"/>
+      <channel name="pri_duty_threshold [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>845 357 1061 435</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="100"/>
+      <channel name="staged_split [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>845 435 1061 514</position>
+      <string name="range" value="0 6"/>
+      <string name="divisions" value="100"/>
+      <channel name="trim_pri_adder [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>845 514 1061 593</position>
+      <string name="range" value="0 6"/>
+      <string name="divisions" value="100"/>
+      <channel name="trim_sec_adder [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>1061 138 1277 211</position>
+      <string name="range" value="0 2"/>
+      <string name="divisions" value="100"/>
+      <channel name="trim_multiplier">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>312 593 845 770</position>
+      <channel name="FI_DutyCyc1 [%high]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="FI_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="FI_Trim_1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="FI_CyclTime1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="FI_OpenTime1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="FI_Fuel7 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1277 138 1571 469</position>
+      <string name="range" value="0 10000"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>1277 469 1571 547</position>
+      <string name="range" value="0 10000"/>
+      <string name="divisions" value="100"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>312 138 845 593</position>
+      <channel name="airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="lambda_target">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="pri_duty_threshold [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="staged_split [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="pri_flowrate [cc/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="sec_flowrate [cc/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="trim_multiplier">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="trim_pri_adder [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="trim_sec_adder [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="pri_duty [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="sec_duty [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="flex_stoic_ratio">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>312 770 845 853</position>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="EAL_EngineCycleTime [s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>1061 211 1277 285</position>
+      <string name="range" value="0 6"/>
+      <string name="divisions" value="100"/>
+      <channel name="flex_stoic_ratio">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Page 2">
+  </page>
+  <page name="Page 3">
+  </page>
+  <theme version="2">
+    <solid_color name="background_color">0xFFFFFF</solid_color>
+    <solid_color name="text_light_color">0xD5D5D5</solid_color>
+    <solid_color name="text_dark_color">0x000000</solid_color>
+    <solid_color name="grid_lines_color">0xE0E0E0</solid_color>
+    <solid_color name="indicator_color">0x501010</solid_color>
+    <solid_color name="modified_color">0xFF00FF</solid_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  </theme>
+</layout>

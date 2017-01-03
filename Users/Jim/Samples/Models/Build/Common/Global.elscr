@@ -1,0 +1,18 @@
+## ***************************************************************
+## Misc. global resolution. Post-build step
+{if VERSIONMAJOR == "096"
+{resolve_externs
+EngineSpeed_final [RPM]->EngineSpeed [RPM]
+}
+}
+
+{if VERSIONMAJOR == "097"
+{resolve_externs
+EngineSpeed_final [RPM]->EAL_EngineSpeed [RPM]
+}
+!notebook new_note "Global predefined submodel" [vendor="Enginelab, Inc.", item_or_group="EAL_EngineSpeed [RPM]", message="This submodel holds the global prdefined items. (/Common/Global.elscr)"] 
+}
+
+## ***************************************************************
+
+

@@ -1,0 +1,35 @@
+## ***************************************************************
+## CLTSensor feature
+!create_item "SENSOR_CLT [ohms]" [type="Thermistor", thread_ID=OAL_THREAD_WITH_SLEEP_20]
+!change_item "SENSOR_CLT [ohms]" [add_input="SENSOR_CLT_final [V]"]
+!change_item "SENSOR_CLT [ohms]" [add_input="PLATFORM_TempIn_Resistor"]
+
+!create_item "SENSOR_CLT [C]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_CLT [ohms]"]
+{if defined(SENSOR_CLT_THERMISTOR_TABLE_1D_CSV)
+!change_item "SENSOR_CLT [C]" [1Dtable_csv=SENSOR_CLT_THERMISTOR_TABLE_1D_CSV]
+}
+
+!create_item "SENSOR_CLT [K]" [type="Unit Converter", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_CLT [C]", unit_conversion_type="Celsius To Kelvin"]
+
+!create_item "SENSOR_CLT_final [V]" [type="Analog In conditioner", thread_ID=OAL_THREAD_WITH_SLEEP_20, analog_in_min="0", analog_in_max="5", clamp_lower="0", clamp_upper="5", add_input="SENSOR_CLT_analog [V]"]
+
+{if defined(SENSOR_CLT_ERROR_TIMER)
+!create_item "SENSOR_CLT_error [bool]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_100, timer_mode="Signal Present Increment and Count"]
+!change_item "SENSOR_CLT_error [bool]" [add_input="SENSOR_CLT_error_event"]
+!change_item "SENSOR_CLT_error [bool]" [add_input="SENSOR_CLT_error_delay [ms]"]
+!change_item "SENSOR_CLT_error [bool]" [add_input="SENSOR_CLT_error_reset"]
+!change_item "SENSOR_CLT_error [bool]" [add_input="SENSOR_CLT_error_time [ms]"]
+!change_item "SENSOR_CLT_error [bool]" [add_input="SENSOR_CLT_error_count"]
+
+!create_item "SENSOR_CLT_error_time [ms]" [type="No Operation"]
+!create_item "SENSOR_CLT_error_count" [type="No Operation"]
+
+{if defined (SENSOR_CLT_ERROR_TIMER_DELAY_TIME)
+!replace_item "SENSOR_CLT_error_delay [ms]" [type="Constant", constant_value=SENSOR_CLT_ERROR_TIMER_DELAY_TIME]
+!else
+!create_item "SENSOR_CLT_error_delay [ms]" [type="No Operation", initial_value="3000"]
+}
+}
+## ***************************************************************
+
+

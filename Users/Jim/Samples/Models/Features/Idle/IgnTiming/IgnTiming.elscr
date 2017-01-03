@@ -1,0 +1,67 @@
+## ***************************************************************
+## Idle ignition timing control submodel
+## ***************************************************************
+
+{if defined(IDLE_IGNTIMING_PID_KP)
+!else
+!set IDLE_IGNTIMING_PID_KP 2.5
+}
+{if defined(IDLE_IGNTIMING_PID_KI)
+!else
+!set IDLE_IGNTIMING_PID_KI 0.02
+}
+{if defined(IDLE_IGNTIMING_PID_KD)
+!else
+!set IDLE_IGNTIMING_PID_KD 0.3
+}
+
+{if defined(IDLE_IGNTIMING_PID_CLAMP_L)
+!else
+!set IDLE_IGNTIMING_PID_CLAMP_L 0
+}
+{if defined(IDLE_IGNTIMING_PID_CLAMP_H)
+!else
+!set IDLE_IGNTIMING_PID_CLAMP_H 60
+}
+
+{if defined(IDLE_IGNTIMING_PID_INT_L)
+!else
+!set IDLE_IGNTIMING_PID_INT_L -10
+}
+{if defined(IDLE_IGNTIMING_PID_INT_H)
+!else
+!set IDLE_IGNTIMING_PID_INT_H 10
+}
+
+!create_item "IDLE_IgnTiming_pid [degBTDC]" [type="PID Controller", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [clamp_flag="1", clamp_lower=IDLE_IGNTIMING_PID_CLAMP_L, clamp_upper=IDLE_IGNTIMING_PID_CLAMP_H]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="EngineSpeed_final [RPM]"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_target [RPM]"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_kp"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_ki"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_kd"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_enable"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_int_hold"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_int_l"]
+!change_item "IDLE_IgnTiming_pid [degBTDC]" [add_input="IDLE_IgnTiming_pid_int_h"]
+
+!create_item "IDLE_IgnTiming_pid_kp" [type="No Operation", initial_value=IDLE_IGNTIMING_PID_KP]
+!create_item "IDLE_IgnTiming_pid_ki" [type="No Operation", initial_value=IDLE_IGNTIMING_PID_KI]
+!create_item "IDLE_IgnTiming_pid_kd" [type="No Operation", initial_value=IDLE_IGNTIMING_PID_KD]
+!create_item "IDLE_IgnTiming_pid_int_hold" [type="No Operation"]
+!create_item "IDLE_IgnTiming_pid_int_l" [type="No Operation", initial_value=IDLE_IGNTIMING_PID_INT_L]
+!create_item "IDLE_IgnTiming_pid_int_h" [type="No Operation", initial_value=IDLE_IGNTIMING_PID_INT_H]
+!create_item "IDLE_IgnTiming_pid_error" [type="No Operation"]
+!create_item "IDLE_IgnTiming_pid_pcontrib" [type="No Operation"]
+!create_item "IDLE_IgnTiming_pid_icontrib" [type="No Operation"]
+!create_item "IDLE_IgnTiming_pid_dcontrib" [type="No Operation"]
+
+## Default to disabled.
+!create_item "IDLE_IgnTiming_pid_enable" [type="No Operation", initial_value="0"]
+
+!notebook new_note "IDLE_IgnTiming pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_IgnTiming_pid", message=" The Idle airflow submodel."]
+##**********************************************************************************************************************************************
+
+!notebook new_note "IDLE_IgnTiming submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_IgnTiming pid submodel", item_wildcard="IDLE_IgnTiming", message=" The Idle ignition timing submodel."]
+
+

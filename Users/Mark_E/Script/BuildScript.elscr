@@ -1,0 +1,40 @@
+output_types=true
+model_filters=all
+
+!connect simulator .\simulator.ini
+
+# ***************************************************************
+!define SENSORS
+!define FUEL
+!define ENGINE
+!define SPARK
+!define OPTIONAL_OUTPUTS
+!define VBAT
+# ***************************************************************
+
+{if defined(SENSORS)
+include = .\..\Models\Sensors\Sensors.elscr
+}
+
+{if defined(FUEL)
+include = .\..\Models\Fuel\Fuel.elscr
+}
+
+{if defined(ENGINE)
+include = .\..\Models\Engine\Engine.elscr
+}
+
+{if defined(SPARK)
+include = .\..\Models\Spark\Spark.elscr
+}
+
+{if defined(OPTIONAL_OUTPUTS)
+include = .\..\Models\Optional_Outputs\Optional_Outputs.elscr
+}
+
+
+{if defined(VBAT)
+include = .\..\Models\Plant\Plant.elscr
+}
+
+

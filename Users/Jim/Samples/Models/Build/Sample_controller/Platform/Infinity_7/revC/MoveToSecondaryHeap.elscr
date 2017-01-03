@@ -1,0 +1,44 @@
+{items_to_move_to_secondary_heap
+SPK_Timing_table [degBTDC]
+AF_SD_VE_2Dtable_primary [%]
+SPK_Timing_TRIM_10 [degBTDC]
+SPK_Timing_TRIM_2 [degBTDC]
+SPK_Timing_TRIM_3 [degBTDC]
+SPK_Timing_TRIM_1 [degBTDC]
+SPK_Timing_TRIM_7 [degBTDC]
+SPK_Timing_TRIM_6 [degBTDC]
+SPK_Timing_TRIM_4 [degBTDC]
+SPK_Timing_TRIM_5 [degBTDC]
+SPK_Timing_TRIM_8 [degBTDC]
+SPK_Timing_TRIM_9 [degBTDC]
+SPK_Dwell_2Dtable [ms]
+EAL_EngineDescription
+FUEL_LAMBDA_table [L]
+FUEL_LAMBDA_Iat_table [L]
+AF_SD_VE_2Dtable_secondary [%]
+FUEL_lsfs_trim_multiplier
+FUELFLOW_offset [ms]
+SENSOR_CLT [C]
+SENSOR_IAT [C]
+UEGO_0_cj125v2_error
+SENSOR_Lambda0 [L]
+IDLE_airflow_initial_position [%]
+AF_Airflow [g/s]
+SS_EngineState [d]
+UEGO_0_heater_using_pid [bool]
+FI_Trim_7_table
+FI_Trim_9_table
+FI_Trim_3_table
+FI_Trim_5_table
+FI_Trim_2_table
+FI_Trim_1_table
+FI_Trim_4_table
+FI_Trim_6_table
+FI_Trim_12_table
+FUEL_LAMBDA_Clt_table [L]
+FI_Trim_11_table
+FI_Trim_10_table
+FI_Trim_8_table
+FI_Nonlinear_PriTrim_add
+}
+!move_items_to_secondary_heap

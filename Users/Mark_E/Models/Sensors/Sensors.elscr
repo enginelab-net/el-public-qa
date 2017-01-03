@@ -1,0 +1,470 @@
+#////////
+#sensors - setup the sensors on analog inptus
+#////////
+
+{if defined(SENSORS)
+
+# analog1 Temp1 C1-66
+.\Sensor_CLT.elcfg
+
+                #Test_CLT
+                #PHW_CLT [C]
+                #Raw_CLT [C]
+                #CLT_Smoothing_Coef
+                #CLT_Smoothing_Clamp
+                #CLT_Smooth [C]
+                #CLT [C]
+                #CLT [K] - converts CLT [C] to units of [K]
+
+# analog2 Temp2 c1-67
+.\Sensor_IAT.elcfg
+
+                #Test_IAT
+                #PHW_IAT [C]
+                #Raw_IAT [C]
+                #IAT_Smoothing_Coef
+                #IAT_Smoothing_Clamp
+                #IAT_Smooth [C]
+                #IAT [C]
+                #IAT [K] - converts IAT [C] to units of [K]
+
+#analog 3 Temp3 c1-68 - not used (AEM oil temp)
+#analog 4 Temp4 c2-15- not used
+#analog 5 Temp4 c2-17- not used
+
+#analog 6 Temp6 c2-18
+.\Sensor_Fuel_Temp.elcfg
+
+                #Test_Fuel_Temp
+                #PHW_Fuel_Temp [C]
+                #Raw_Fuel_Temp [C]
+                #Fuel_Temp_Smoothing_Coef
+                #Fuel_Temp_Smoothing_Clamp
+                #Fuel_Temp_Smooth [C]
+                #Fuel_Temp [C]
+
+
+.\Analog_Temp_Resistor.elcfg
+                #Analog_Temp_Resistor [ohm]
+
+# analog7 c1-35
+.\Sensor_TPS.elcfg
+
+                #Test_TPS
+                #PHW_TPS [V]
+                #Raw_TPS [V]
+                #TPS_Smoothing_Coef
+                #TPS_Smoothing_Clamp
+                #TPS_Smooth [V]
+                #TPS_Close [V]
+                #TPS_Open [V]
+                #TPS [%]
+
+
+# analog8 c1-36
+.\Sensor_MAP.elcfg
+
+                #Test_MAP - User input Plant test value
+                #PHW_MAP -  set plant value
+                #Raw_MAP [V] - Read the AN pin
+                #MAP_Smooth_Coef - running average coef, 0= no averaging, 1.000 - no new signal
+                #MAP_Coef_Clamp - limkit input to 0-1
+                #MAP_Smooth [V] - averaged voltage
+                #MAP [kPa] - convert voltage to MAP 
+                #MAP [Pa] - convert kPa to Pa
+
+# analog9 c1-37
+.\Sensor_Fuel_Pres.elcfg
+
+                #Test_Fuel_Pres
+                #PHW_Fuel_Pres [V]
+                #Raw_Fuel_Pres [V]
+                #Fuel_Pres_Smoothing_Coef
+                #Fuel_Pres_Smoothing_Clamp
+                #Fuel_Pres_Smooth [V]
+                #Fuel_Pres [kPa]
+
+
+# analog10 c1-38        
+.\Sensor_Baro.elcfg
+
+                #Test_Baro
+                #PHW_Baro
+                #Raw_Baro [V]
+                #Baro_Smoothing_Coef - amount of last value to use in calculation, user set point
+                #Baro_Smoothing_Clamp - clamps Baro_Smoothing_Coef to 0-1 range
+                #Baro_Smooth [V] - baro voltage with smoothing applied
+                #Baro [kPa] - Baro value in kPa 
+
+
+# analog11 c1-39
+.\Sensor_NBO2_0.elcfg
+                #This funciton reads the NBO2 sensor at user specified crankangles and creates a running average for 3 angle windows.
+                #It converts the sensor voltage to approximate lambda using user defined table values
+                #It shifts the angle window base on RPM to account for flow time using values from a user defined table
+                        #Note - there is anot much precision on the angle..this function is for non-critical items.
+
+                        #Set the sensor value for testing
+                #Test_NBO2_0
+                #PHW_NBO2_0
+
+                        #user inputs
+                #NBO2_0_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+                #NBO2_0_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+                #NBO2_0_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+                #NBO2_0_Signal_1_Open [deg] - crank position to open the Angle Window 
+                #NBO2_0_Signal_2_Open [deg]
+                #NBO2_0_Signal_3_Open [deg]
+                        #Add the latency to the open angle and decide if the value is over 720 and should roll over
+                #NBO2_0_Signal_1_Open_Test_0   - add lateny to open angle
+                #NBO2_0_Signal_2_Open_Test_0
+                #NBO2_0_Signal_3_Open_Test_0
+
+                #NBO2_0_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+                #NBO2_0_Signal_2_Open_Test_1
+                #NBO2_0_Signal_3_Open_Test_1
+
+                #NBO2_0_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+                #NBO2_0_Signal_2_Open_Test
+                #NBO2_0_Signal_3_Open_Test
+
+                #NBO2_0_Signal_1_Open - use correct math based on test result
+                #NBO2_0_Signal_2_Open
+                #NBO2_0_Signal_3_Open
+
+                        #Add the ewindow to the open angle decide if the value is over 720 and should roll over
+                #NBO2_0_Signal_1_Window_Test_0
+                #NBO2_0_Signal_2_Window_Test_0
+                #NBO2_0_Signal_3_Window_Test_0
+
+                #NBO2_0_Signal_1_Window_Test_1
+                #NBO2_0_Signal_2_Window_Test_1
+                #NBO2_0_Signal_3_Window_Test_1
+
+                #NBO2_0_Signal_1_Window_Test
+                #NBO2_0_Signal_2_Window_Test
+                #NBO2_0_Signal_3_Window_Test
+
+                #NBO2_0_Signal_1_Close
+                #NBO2_0_Signal_2_Close
+                #NBO2_0_Signal_3_Close
+
+                        #Updade the value if the crank is within the window
+                #NBO2_0_Signal_1_Test - 0=dump the value, 1= update reading
+                #NBO2_0_Signal_2_Test
+                #NBO2_0_Signal_3_Test
+                #NBO2_0_Signal_1_Test_0
+                #NBO2_0_Signal_2_Test_0
+                #NBO2_0_Signal_3_Test_0
+                #NBO2_0_Signal_Smoothing_Coef
+                #NBO2_0_Signal_Smoothing_Clamp
+                #NBO2_0_Signal_1_Test_1
+                #NBO2_0_Signal_2_Test_1
+                #NBO2_0_Signal_3_Test_1
+                #NBO2_0_Signal_1
+                #NBO2_0_Signal_2
+                #NBO2_0_Signal_3
+
+# analog12 c1-40
+.\Sensor_NBO2_1.elcfg
+                #This funciton reads the NBO2 sensor at user specified crankangles and creates a running average for 3 angle windows.
+                #It converts the sensor voltage to approximate lambda using user defined table values
+                #It shifts the angle window base on RPM to account for flow time using values from a user defined table
+                        #Note - there is anot much precision on the angle..this function is for non-critical items.
+
+                        #Set the sensor value for testing
+                #Test_NBO2_1
+                #PHW_NBO2_1
+
+                        #user inputs
+                #NBO2_1_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+                #NBO2_1_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+                #NBO2_1_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+                #NBO2_1_Signal_1_Open [deg] - crank position to open the Angle Window 
+                #NBO2_1_Signal_2_Open [deg]
+                #NBO2_1_Signal_3_Open [deg]
+                        #Add the latency to the open angle and decide if the value is over 720 and should roll over
+                #NBO2_1_Signal_1_Open_Test_0   - add lateny to open angle
+                #NBO2_1_Signal_2_Open_Test_0
+                #NBO2_1_Signal_3_Open_Test_0
+
+                #NBO2_1_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+                #NBO2_1_Signal_2_Open_Test_1
+                #NBO2_1_Signal_3_Open_Test_1
+
+                #NBO2_1_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+                #NBO2_1_Signal_2_Open_Test
+                #NBO2_1_Signal_3_Open_Test
+
+                #NBO2_1_Signal_1_Open - use correct math based on test result
+                #NBO2_1_Signal_2_Open
+                #NBO2_1_Signal_3_Open
+
+                        #Add the ewindow to the open angle decide if the value is over 720 and should roll over
+                #NBO2_1_Signal_1_Window_Test_0
+                #NBO2_1_Signal_2_Window_Test_0
+                #NBO2_1_Signal_3_Window_Test_0
+
+                #NBO2_0_Signal_1_Window_Test_1
+                #NBO2_0_Signal_2_Window_Test_1
+                #NBO2_0_Signal_3_Window_Test_1
+
+                #NBO2_1_Signal_1_Window_Test
+                #NBO2_1_Signal_2_Window_Test
+                #NBO2_1_Signal_3_Window_Test
+
+                #NBO2_1_Signal_1_Close
+                #NBO2_1_Signal_2_Close
+                #NBO2_1_Signal_3_Close
+
+                        #Updade the value if the crank is within the window
+                #NBO2_1_Signal_1_Test - 0=dump the value, 1= update reading
+                #NBO2_1_Signal_2_Test
+                #NBO2_1_Signal_3_Test
+                #NBO2_1_Signal_1_Test_0
+                #NBO2_1_Signal_2_Test_0
+                #NBO2_1_Signal_3_Test_0
+                #NBO2_1_Signal_Smoothing_Coef
+                #NBO2_1_Signal_Smoothing_Clamp
+                #NBO2_1_Signal_1_Test_1
+                #NBO2_1_Signal_2_Test_1
+                #NBO2_1_Signal_3_Test_1
+                #NBO2_1_Signal_1
+                #NBO2_1_Signal_2
+                #NBO2_1_Signal_3
+
+
+# analog13 c2-18 (AEM oil pres)
+.\Sensor_lambda1.elcfg
+
+                #Test_lambda1
+                #PHW_lambda1 [V]
+                #Raw_lambda1 [V]
+                #lambda1_Smoothing_Coef
+                #lambda1_Smoothing_Clamp
+                #lambda1_Smooth [V]
+                #lambda1
+
+# analog14 c2-19 (AEM traction sensitivity)
+.\Sensor_lambda2.elcfg
+
+                #Test_lambda2
+                #PHW_lambda2 [V]
+                #Raw_lambda2 [V]
+                #lambda2_Smoothing_Coef
+                #lambda2_Smoothing_Clamp
+                #lambda2_Smooth [V]
+                #lambda2
+
+# analog15 c2-20
+.\Sensor_NBO2_2.elcfg
+                #This funciton reads the NBO2 sensor at user specified crankangles and creates a running average for 3 angle windows.
+                #It converts the sensor voltage to approximate lambda using user defined table values
+                #It shifts the angle window base on RPM to account for flow time using values from a user defined table
+                        #Note - there is anot much precision on the angle..this function is for non-critical items.
+
+                        #Set the sensor value for testing
+                #Test_NBO2_2
+                #PHW_NBO2_2
+
+                        #user inputs
+                #NBO2_2_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+                #NBO2_2_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+                #NBO2_2_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+                #NBO2_2_Signal_1_Open [deg] - crank position to open the Angle Window 
+                #NBO2_2_Signal_2_Open [deg]
+                #NBO2_2_Signal_3_Open [deg]
+                        #Add the latency to the open angle and decide if the value is over 720 and should roll over
+                #NBO2_2_Signal_1_Open_Test_0   - add lateny to open angle
+                #NBO2_2_Signal_2_Open_Test_0
+                #NBO2_2_Signal_3_Open_Test_0
+
+                #NBO2_2_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+                #NBO2_2_Signal_2_Open_Test_1
+                #NBO2_2_Signal_3_Open_Test_1
+
+                #NBO2_2_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+                #NBO2_2_Signal_2_Open_Test
+                #NBO2_2_Signal_3_Open_Test
+
+                #NBO2_2_Signal_1_Open - use correct math based on test result
+                #NBO2_2_Signal_2_Open
+                #NBO2_2_Signal_3_Open
+
+                        #Add the ewindow to the open angle decide if the value is over 720 and should roll over
+                #NBO2_2_Signal_1_Window_Test_0
+                #NBO2_2_Signal_2_Window_Test_0
+                #NBO2_2_Signal_3_Window_Test_0
+
+                #NBO2_2_Signal_1_Window_Test_1
+                #NBO2_2_Signal_2_Window_Test_1
+                #NBO2_2_Signal_3_Window_Test_1
+
+                #NBO2_2_Signal_1_Window_Test
+                #NBO2_2_Signal_2_Window_Test
+                #NBO2_2_Signal_3_Window_Test
+
+                #NBO2_2_Signal_1_Close
+                #NBO2_2_Signal_2_Close
+                #NBO2_2_Signal_3_Close
+
+                        #Updade the value if the crank is within the window
+                #NBO2_2_Signal_1_Test - 0=dump the value, 1= update reading
+                #NBO2_2_Signal_2_Test
+                #NBO2_2_Signal_3_Test
+                #NBO2_2_Signal_1_Test_0
+                #NBO2_2_Signal_2_Test_0
+                #NBO2_2_Signal_3_Test_0
+                #NBO2_2_Signal_Smoothing_Coef
+                #NBO2_2_Signal_Smoothing_Clamp
+                #NBO2_2_Signal_1_Test_1
+                #NBO2_2_Signal_2_Test_1
+                #NBO2_2_Signal_3_Test_1
+                #NBO2_2_Signal_1
+                #NBO2_2_Signal_2
+                #NBO2_2_Signal_3
+
+# analog16 c2-21
+.\Sensor_TPS_Track.elcfg
+                #Secondary TPS signal
+
+                #Test_TPS_Track
+                #PHW_TPS_Track [V]
+                #Raw_TPS_Track [V]
+                #TPS_Track_Smoothing_Coef
+                #TPS_Track_Smoothing_Clamp
+                #TPS_Track_Smooth [V]
+                #TPS_Track_Close [V]
+                #TPS_Track_Open [V]
+                #TPS_Track [%]
+
+# analog17 c2-12
+.\Sensor_NBO2_3.elcfg
+                #This funciton reads the NBO2 sensor at user specified crankangles and creates a running average for 3 angle windows.
+                #It converts the sensor voltage to approximate lambda using user defined table values
+                #It shifts the angle window base on RPM to account for flow time using values from a user defined table
+                        #Note - there is anot much precision on the angle..this function is for non-critical items.
+
+                        #Set the sensor value for testing
+                #Test_NBO2_3
+                #PHW_NBO2_3
+
+                        #user inputs
+                #NBO2_3_Signal_Window [deg] - number of degrees the window is open, used to  calulate the window close angle
+                #NBO2_3_Latency [deg] - table used to account for flow time frmm cylinder to sensor
+                #NBO2_3_lambda_Convert - table used to assign a lambda value to the sensor voltage 
+
+                #NBO2_3_Signal_1_Open [deg] - crank position to open the Angle Window 
+                #NBO2_3_Signal_2_Open [deg]
+                #NBO2_3_Signal_3_Open [deg]
+                        #Add the latency to the open angle and decide if the value is over 720 and should roll over
+                #NBO2_3_Signal_1_Open_Test_0   - add lateny to open angle
+                #NBO2_3_Signal_2_Open_Test_0
+                #NBO2_3_Signal_3_Open_Test_0
+
+                #NBO2_3_Signal_1_Open_Test_1 - add lantacy to open angle and subtract 720
+                #NBO2_3_Signal_2_Open_Test_1
+                #NBO2_3_Signal_3_Open_Test_1
+
+                #NBO2_3_Signal_1_Open_Test -  0 = angle under 720, 1= angle over 720
+                #NBO2_3_Signal_2_Open_Test
+                #NBO2_3_Signal_3_Open_Test
+
+                #NBO2_3_Signal_1_Open - use correct math based on test result
+                #NBO2_3_Signal_2_Open
+                #NBO2_3_Signal_3_Open
+
+                        #Add the ewindow to the open angle decide if the value is over 720 and should roll over
+                #NBO2_3_Signal_1_Window_Test_0
+                #NBO2_3_Signal_2_Window_Test_0
+                #NBO2_3_Signal_3_Window_Test_0
+
+                #NBO2_3_Signal_1_Window_Test_1
+                #NBO2_3_Signal_2_Window_Test_1
+                #NBO2_3_Signal_3_Window_Test_1
+
+                #NBO2_3_Signal_1_Window_Test
+                #NBO2_3_Signal_2_Window_Test
+                #NBO2_3_Signal_3_Window_Test
+
+                #NBO2_3_Signal_1_Close
+                #NBO2_3_Signal_2_Close
+                #NBO2_3_Signal_3_Close
+
+                        #Updade the value if the crank is within the window
+                #NBO2_3_Signal_1_Test - 0=dump the value, 1= update reading
+                #NBO2_3_Signal_2_Test
+                #NBO2_3_Signal_3_Test
+                #NBO2_3_Signal_1_Test_0
+                #NBO2_3_Signal_2_Test_0
+                #NBO2_3_Signal_3_Test_0
+                #NBO2_3_Signal_Smoothing_Coef
+                #NBO2_3_Signal_Smoothing_Clamp
+                #NBO2_3_Signal_1_Test_1
+                #NBO2_3_Signal_2_Test_1
+                #NBO2_3_Signal_3_Test_1
+                #NBO2_3_Signal_1
+                #NBO2_3_Signal_2
+                #NBO2_3_Signal_3
+
+
+# analog18 c2-13
+.\Sensor_Throttle_Pedal.elcfg
+
+                #Test_Throttle_Pedal
+                #PHW_Throttle_Pedal [V]
+                #Raw_Throttle_Pedal [V]
+                #Throttle_Pedal_Smoothing_Coef
+                #Throttle_Pedal_Smoothing_Clamp
+                #Throttle_Pedal_Smooth [V]
+                #Throttle_Pedal_Close [V]
+                #Throttle_Pedal_Open [V]
+                #Throttle_Pedal [%]
+
+# analog19 c2-19
+.\Sensor_Throttle_Pedal_Track.elcfg
+                #Secondary Pedal position
+
+                #Test_Throttle_Pedal_Track
+                #PHW_Throttle_Pedal_Track [V]
+                #Raw_Throttle_Pedal_Track [V]
+                #Throttle_Pedal_Track_Smoothing_Coef
+                #Throttle_Pedal_Track_Smoothing_Clamp
+                #Throttle_Pedal_Track_Smooth [V]
+                #Throttle_Pedal_Track_Close [V]
+                #Throttle_Pedal_Track_Open [V]
+                #Throttle_Pedal_Track [%]
+
+
+# analog20 c2-33 - not used
+# analog21 c2-34 - not used
+# analog22 c2-35 - not used
+# analog23 c2-36 - not used
+
+
+        #C:\assembla\trunk\Users\Mark\Models\Sensors\Rear_Axle_Speed.elcfg
+#VR5 C2-25+, C2-26-
+                #Reads VR sensor on trans and calculates axle speed in rpm, MPH
+                
+                #Axle_Gear_Ratio
+                #Rear_Tire_Circumferance [in]
+                #Rear_Pulses_per_Rev
+
+                #1st_Gear_Ratio
+                #2nd_Gear_Ratio
+                #3rd_Gear_Ratio
+                #4th_Gear_Ratio
+                #5th_Gear_Ratio
+                
+                #VR5_Noise_Cancellation
+                #VR5_Frequency
+
+                #Alxe_Speed [rpm]
+                #Rear_Wheel_Speed [MPH]
+                #Gear_Selection
+
+}
+

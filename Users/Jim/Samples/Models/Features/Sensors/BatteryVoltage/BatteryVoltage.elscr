@@ -1,0 +1,23 @@
+## ***************************************************************
+## Battery voltage Sensor feature
+!create_item "SENSOR_BatteryVoltage [V]" [type="Analog In conditioner", thread_ID=OAL_THREAD_WITH_SLEEP_20, analog_in_min="1", analog_in_max="4", clamp_lower="5.99", clamp_upper="23.96", add_input="SENSOR_BatteryVoltage_final [V]"]
+
+{if defined(SENSOR_BATTERYVOLTAGE_ERROR_TIMER)
+!create_item "SENSOR_BatteryVoltage_error [bool]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_100, timer_mode="Signal Present Increment and Count"]
+!change_item "SENSOR_BatteryVoltage_error [bool]" [add_input="SENSOR_BatteryVoltage_error_event"]
+!change_item "SENSOR_BatteryVoltage_error [bool]" [add_input="SENSOR_BatteryVoltage_error_delay [ms]"]
+!change_item "SENSOR_BatteryVoltage_error [bool]" [add_input="SENSOR_BatteryVoltage_error_reset"]
+!change_item "SENSOR_BatteryVoltage_error [bool]" [add_input="SENSOR_BatteryVoltage_error_time [ms]"]
+!change_item "SENSOR_BatteryVoltage_error [bool]" [add_input="SENSOR_BatteryVoltage_error_count"]
+
+!create_item "SENSOR_BatteryVoltage_error_time [ms]" [type="No Operation"]
+!create_item "SENSOR_BatteryVoltage_error_count" [type="No Operation"]
+
+{if defined (SENSOR_BatteryVoltage_ERROR_TIMER_DELAY_TIME)
+!replace_item "SENSOR_BatteryVoltage_error_delay [ms]" [type="Constant", constant_value=SENSOR_BatteryVoltage_ERROR_TIMER_DELAY_TIME]
+!else
+!create_item "SENSOR_BatteryVoltage_error_delay [ms]" [type="No Operation", initial_value="3000"]
+}
+}
+## ***************************************************************
+

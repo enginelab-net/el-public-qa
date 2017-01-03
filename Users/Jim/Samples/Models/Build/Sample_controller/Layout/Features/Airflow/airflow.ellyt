@@ -1,0 +1,166 @@
+<layout version="9">
+  <main_window>
+    <position>55 34 1794 1068</position>
+    <padding>55 54 1794 1068</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="Airflow">
+    <control type="Text Grid" settings="">
+      <position>62 112 707 354</position>
+      <channel name="AF_SD_VE_2Dtable_primary [%]">
+        <colors>0 0 60 60 95</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_SD_VE_2Dtable_secondary [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_SD_VE [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_SD_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_MAF_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_SD_temp_B [n]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_SD_MAF_B [n]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AF_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>854 354 1787 742</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="AF_SD_VE_2Dtable_secondary [%]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>62 354 854 742</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="AF_SD_VE_2Dtable_primary [%]">
+          <colors>0 0 60 60 95</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>62 742 523 1061</position>
+      <string name="camera" value="3.6842 0.355 0.5 0.5 0.5 1.75"/>
+      <channel>
+        <primary name="AF_SD_VE_2Dtable_primary [%]">
+          <colors>0 0 60 60 95</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>854 742 1315 1061</position>
+      <string name="camera" value="-1.2458 0.37 0.5 0.5 0.5 1.75"/>
+      <channel>
+        <primary name="AF_SD_VE_2Dtable_secondary [%]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>707 112 923 175</position>
+      <string name="range" value="0 10000"/>
+      <string name="divisions" value="100"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <theme version="2">
+    <solid_color name="background_color">0x000000</solid_color>
+    <solid_color name="text_light_color">0xD5D5D5</solid_color>
+    <solid_color name="text_dark_color">0x000000</solid_color>
+    <solid_color name="grid_lines_color">0xE0E0E0</solid_color>
+    <solid_color name="indicator_color">0xFFFF00</solid_color>
+    <solid_color name="modified_color">0xFF00FF</solid_color>
+    <gradient_color>0x0000FF 0x808080 0xFF0000</gradient_color>
+    <gradient_color>0xFF8000 0xFFFF80 0x00FF80</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFFC080 0x80FF00 0xFF00FF</gradient_color>
+    <gradient_color>0xFF0080 0x808080 0xFFFF00</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0080FF</gradient_color>
+    <gradient_color>0xFF0000 0xE0E0E0 0x0060C0</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x0080FF 0x00FF00 0xFF0080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  </theme>
+</layout>

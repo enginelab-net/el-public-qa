@@ -1,0 +1,19 @@
+## ***************************************************************
+## Airflow SD feature
+{if defined(AF_MAF_SIMPLE_SENSOR)
+!create_item "AF_MAF_Airflow [g/s]" [type="Passthrough", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_MAF [g/s]"] 
+!notebook new_note "AF_MAF_Airflow [g/s]" [vendor="Enginelab, Inc.", message="This is passthrough item for the MAF sensor. The SENSOR_MAF [g/s] is the sensor value. This item is created in the Airflow-MAF submodel. "] 
+!notebook new_note "Airflow MAF submodel" [vendor="Enginelab, Inc.", item_wildcard="AF_MAF_", message="This is MAF airflow submodel. Not very interesting yet. This item is created in the Airflow-MAF submodel. "] 
+
+!else
+
+## Use the AF_MAF_SIMPLE_SENSOR model by default
+{if PLATFORM == ""
+!connect simulator .\plant\simulator.ini
+}
+
+}
+
+## ***************************************************************
+
+

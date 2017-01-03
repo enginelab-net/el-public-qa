@@ -1,0 +1,65 @@
+## ***************************************************************
+## Oxygen sensor feedback feature
+{if defined(LAMBDA_PID_KP)
+!else
+!set LAMBDA_PID_KP 0
+}
+{if defined(LAMBDA_PID_KI)
+!else
+!set LAMBDA_PID_KI 0
+}
+{if defined(LAMBDA_PID_KD)
+!else
+!set LAMBDA_PID_KD 0
+}
+
+{if defined(LAMBDA_PID_CLAMP_L)
+!else
+!set LAMBDA_PID_CLAMP_L 0
+}
+{if defined(LAMBDA_PID_CLAMP_H)
+!else
+!set LAMBDA_PID_CLAMP_H 0
+}
+
+{if defined(LAMBDA_PID_INT_L)
+!else
+!set LAMBDA_PID_INT_L 0
+}
+{if defined(LAMBDA_PID_INT_H)
+!else
+!set LAMBDA_PID_INT_H 0
+}
+
+!create_item "L_FB_0_PID [%]" [type="PID Controller", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "L_FB_0_PID [%]" [clamp_flag="1", clamp_lower=L_PID_CLAMP_L, clamp_upper=L_PID_CLAMP_H]
+!change_item "L_FB_0_PID [%]" [add_input="SENSOR_Lambda0 [L]"]
+!change_item "L_FB_0_PID [%]" [add_input="FUEL_LAMBDA_target [L]"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_kp"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_ki"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_kd"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_enable"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_int_hold"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_int_l"]
+!change_item "L_FB_0_PID [%]" [add_input="L_FB_0_PID_int_h"]
+
+!create_item "L_FB_0_PID_kp" [type="No Operation", initial_value=L_PID_KP]
+!create_item "L_FB_0_PID_ki" [type="No Operation", initial_value=L_PID_KI]
+!create_item "L_FB_0_PID_kd" [type="No Operation", initial_value=L_PID_KD]
+!create_item "L_FB_0_PID_enable" [type="No Operation", initial_value="1"]
+!create_item "L_FB_0_PID_int_hold" [type="No Operation"]
+!create_item "L_FB_0_PID_int_l" [type="No Operation", initial_value=L_PID_INT_L]
+!create_item "L_FB_0_PID_int_h" [type="No Operation", initial_value=L_PID_INT_H]
+!create_item "L_FB_0_PID_error" [type="No Operation"]
+!create_item "L_FB_0_PID_pcontrib" [type="No Operation"]
+!create_item "L_FB_0_PID_icontrib" [type="No Operation"]
+!create_item "L_FB_0_PID_dcontrib" [type="No Operation"]
+
+!create_item "L_FB_0_Trim" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "L_FB_0_Trim" [clamp_flag="1", clamp_lower=L_PID_CLAMP_L, clamp_upper=L_PID_CLAMP_H]
+!change_item "L_FB_0_Trim" [add_input="L_FB_0_PID [%]"]
+## The lambda feedback would depend on whether the lambda sensor was functional.
+!change_item "L_FB_0_Trim" [add_input="SENSOR_Lambda0_valid [bool]"]
+!change_item "L_FB_0_Trim" [math_expression="?(i1, i0, 0)"]
+
+!notebook new_note "Lambda 0 trim submodel" [vendor="Enginelab, Inc.", item_wildcard="L_FB_0", message=" The Lambda 0 feedback."]

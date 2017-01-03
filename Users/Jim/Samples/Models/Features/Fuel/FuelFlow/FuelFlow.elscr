@@ -1,0 +1,40 @@
+## ***************************************************************
+## Fuel pressure feature
+{if defined(FUELFLOW_FP_MAP_DIFF)
+# This strategy is basically 1Dtable of flow based on the fuel pressure with a 1Dtable trim multiplier based on MAP.
+!create_item "FUELFLOW_primary [cc/s]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="FUELFLOW_EffectivePressure [kPa]"]
+{if defined(FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV)
+!change_item "FUELFLOW_primary [cc/s]" [1Dtable_csv=FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV]
+}
+
+{if defined(FUELFLOW_FP_MAP_DIFF)
+!create_item "FUELFLOW_EffectivePressure [kPa]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_MAP [kPa]", add_input="rail_pressure", math_expression="i0-i1"]
+{if defined(FUELFLOW_FP_SENSOR)
+!change_item "FUELFLOW_EffectivePressure [kPa]" [input1="SENSOR_FuelPressure [kPa]"]
+}
+!else
+!change_item "FUELFLOW_EffectivePressure [kPa]" [input0="SENSOR_MAP [kPa]"]
+}
+
+{if defined(FUELFLOW_OFFSET_TABLE_2D)
+!create_item "FUELFLOW_offset [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_BatteryVoltage [V]", add_input="FUELFLOW_EffectivePressure [kPa]"]
+{if defined(FUELFLOW_OFFSET_TABLE_2D_CSV)
+!change_item "FUELFLOW_offset [ms]" [2Dtable_csv=FUELFLOW_OFFSET_TABLE_2D_CSV]
+}
+{if defined(FUELFLOW_OFFSET_TABLE_2D_INPUT_0)
+!change_item "FUELFLOW_offset [ms]" [input0=FUELFLOW_OFFSET_TABLE_2D_INPUT_0]
+}
+{if defined(FUELFLOW_OFFSET_TABLE_2D_INPUT_1)
+!change_item "FUELFLOW_offset [ms]" [input1=FUELFLOW_OFFSET_TABLE_2D_INPUT_1]
+}
+}
+
+}
+
+!notebook new_note "FUELFLOW_primary [cc/s]" [vendor="Enginelab, Inc.", message="The preliminary fuel flow. This item is created in the Fuelflow submodel."] 
+!notebook new_note "FUELFLOW_EffectivePressure [kPa]" [vendor="Enginelab, Inc.", message="The final fuel flow. This item is created in the Fuelflow submodel."]
+!notebook new_note "FUELFLOW_offset [ms]" [vendor="Enginelab, Inc.", message="This is the offset time for the injector response. This item is created in the Fuelflow submodel."]
+!notebook new_note "Fuelflow submodel" [vendor="Enginelab, Inc.", item_wildcard="FUELFLOW_", message="The calculated fuel flow (/Fuel/Fuelflow/FuelFlow.elscr). This item is created in the Fuelflow submodel."] 
+ 
+
+

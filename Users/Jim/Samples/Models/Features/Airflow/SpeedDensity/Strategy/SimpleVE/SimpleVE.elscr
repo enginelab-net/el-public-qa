@@ -1,0 +1,30 @@
+!create_item "AF_SD_VE_2Dtable_primary [%]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV)
+!change_item "AF_SD_VE_2Dtable_primary [%]" [2Dtable_csv=AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV]
+}
+
+!create_item "AF_SD_VE_2Dtable_secondary [%]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV)
+!change_item "AF_SD_VE_2Dtable_secondary [%]" [2Dtable_csv=AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV]
+}
+
+{if defined(AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0)
+!change_item "AF_SD_VE_2Dtable_primary [%]" [input0=FUELFLOW_OFFSET_TABLE_2D_INPUT_0]
+!change_item "AF_SD_VE_2Dtable_secondary [%]" [input0=FUELFLOW_OFFSET_TABLE_2D_INPUT_0]
+}
+{if defined(AF_SD_VE_SIMPLE_TABLE_2D_INPUT_1)
+!change_item "AF_SD_VE_2Dtable_primary [%]" [input1=FUELFLOW_OFFSET_TABLE_2D_INPUT_1]
+!change_item "AF_SD_VE_2Dtable_secondary [%]" [input0=FUELFLOW_OFFSET_TABLE_2D_INPUT_0]
+}
+
+!create_item "AF_SD_VE [%]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "AF_SD_VE [%]" [add_input="AF_SD_VE_2Dtable_primary [%]"]
+!change_item "AF_SD_VE [%]" [add_input="AF_SD_VE_2Dtable_secondary [%]"]
+!change_item "AF_SD_VE [%]" [add_input="SS_EngineState [d]"]
+!change_item "AF_SD_VE [%]" [add_input="SS_EngineState_starting [d]"]
+!change_item "AF_SD_VE [%]" [math_expression="?((i2 = i3), i1, i0)"]
+
+!notebook new_note "AF_SD_VE_2Dtable_primary [%]" [vendor="Enginelab, Inc.", message="This is the main volumetric efficiency item of the model. This item is created in the SpeedDensity-Strategy-SimpleVE submodel. "] 
+!notebook new_note "AF_SD_VE_2Dtable_secondary [%]" [vendor="Enginelab, Inc.", message="This is the cranking volumetric efficiency item of the model. This item is created in the SpeedDensity-Strategy-SimpleVE submodel. "] 
+!notebook new_note "AF_SD_VE [%]" [vendor="Enginelab, Inc.", message="This item is the VE based on whether the system is cranking or running. See SS_ES states for more info. This item is created in the SpeedDensity-Strategy-SimpleVE submodel. "] 
+

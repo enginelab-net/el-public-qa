@@ -1,0 +1,184 @@
+# required items for fuel injectors.
+
+{if defined(FUEL_EAL_INJECTORS_REQUIRED_SHARED_X)
+!create_item "FI_DutyCycX [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTimeX [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_TimingX [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTimeX [ms]" [type="No Operation", initial_value="90"]
+{if defined(FUEL_LSFS)
+# This option requires separate "FI_FuelX [ms]" channels. 
+!define FUEL_EAL_PW_NOT_SHARED
+!else
+!create_item "FI_FuelX [ms]" [type="No Operation", initial_value="0"]
+}
+}
+
+{if defined(FUEL_EAL_INJECTORS_REQUIRED_NOTSHARED)
+!define FUEL_EAL_PW_NOT_SHARED
+
+{if EAL_NUM_INJECTORS > "00"
+!create_item "FI_DutyCyc1 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime1 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing1 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime1 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "01"
+!create_item "FI_DutyCyc2 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime2 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing2 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime2 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "02"
+!create_item "FI_DutyCyc3 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime3 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing3 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime3 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "03"
+!create_item "FI_DutyCyc4 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime4 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing4 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime4 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "04"
+!create_item "FI_DutyCyc5 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime5 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing5 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime5 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "05"
+!create_item "FI_DutyCyc6 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime6 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing6 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime6 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "06"
+!create_item "FI_DutyCyc7 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime7 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing7 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime7 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "07"
+!create_item "FI_DutyCyc8 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime8 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing8 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime8 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "08"
+!create_item "FI_DutyCyc9 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime9 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing9 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime9 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "09"
+!create_item "FI_DutyCyc10 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime10 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing10 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime10 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "10"
+!create_item "FI_DutyCyc11 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime11 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing11 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime11 [ms]" [type="No Operation", initial_value="90"]
+}
+{if EAL_NUM_INJECTORS > "11"
+!create_item "FI_DutyCyc12 [%high]" [type="No Operation", initial_value="90"]
+!create_item "FI_CyclTime12 [ms]" [type="No Operation", initial_value="0.1"]
+!create_item "FI_Timing12 [degBTDC]" [type="No Operation", initial_value="0"]
+!create_item "FI_OpenTime12 [ms]" [type="No Operation", initial_value="90"]
+}
+
+}
+
+##############################################################################
+{if defined(FUEL_EAL_PW_NOT_SHARED)
+{if EAL_NUM_INJECTORS > "00"
+!create_item "FI_Fuel1 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "01"
+!create_item "FI_Fuel2 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "02"
+!create_item "FI_Fuel3 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "03"
+!create_item "FI_Fuel4 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "04"
+!create_item "FI_Fuel5 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "05"
+!create_item "FI_Fuel6 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "06"
+!create_item "FI_Fuel7 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "07"
+!create_item "FI_Fuel8 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "08"
+!create_item "FI_Fuel9 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "09"
+!create_item "FI_Fuel10 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "10"
+!create_item "FI_Fuel11 [ms]" [type="No Operation", initial_value="0"]
+}
+{if EAL_NUM_INJECTORS > "11"
+!create_item "FI_Fuel12 [ms]" [type="No Operation", initial_value="0"]
+}
+
+}
+
+##########################################################################################################################
+## The trims should be math items.
+{if defined (FUEL_INJECTORS_TRIM)
+{if EAL_NUM_INJECTORS > "00"
+!create_item "FI_Trim_1" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "01"
+!create_item "FI_Trim_2" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "02"
+!create_item "FI_Trim_3" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "03"
+!create_item "FI_Trim_4" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "04"
+!create_item "FI_Trim_5" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "05"
+!create_item "FI_Trim_6" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "06"
+!create_item "FI_Trim_7" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "07"
+!create_item "FI_Trim_8" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "08"
+!create_item "FI_Trim_9" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "09"
+!create_item "FI_Trim_10" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "10"
+!create_item "FI_Trim_11" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+{if EAL_NUM_INJECTORS > "11"
+!create_item "FI_Trim_12" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+}
+
+}
+##########################################################################################################################
+
+!notebook new_note "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Fuel", message="The EAL items required for the backend injector function(/Fuel/EAL_required.elscr). See the Enginelab EAL required items for additional info."] 
+!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Trim"    ]
+!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_DutyCyc" ]
+!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_CyclTime"]
+!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Timing"  ]
+!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_OpenTime"]
+

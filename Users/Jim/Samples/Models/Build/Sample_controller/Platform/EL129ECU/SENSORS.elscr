@@ -1,0 +1,244 @@
+## ***************************************************************
+## Sensors feature. Post-build step
+
+## ***************************************************************
+## MAP sensor input AN_7_In (C1-35)
+{if defined(SENSOR_MAP)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_MAP_final [V]->Analog7 [V]
+}
+!else
+## AN_7_In filter adjust
+!change_item "AN_7 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_MAP_final [V]->AN_7 [V]
+}
+!notebook new_note "AN_7 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"]
+{if defined(SENSOR_MAP_ERROR_TIMER)
+{resolve_externs
+SENSOR_MAP_error_event->AN_7 Error
+SENSOR_MAP_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel MAP" [item_wildcard="AN_7"] 
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## TPS sensor input AN_8_In (C1-36)
+{if defined(SENSOR_TPS)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_TPS_final [V]->Analog8 [V]
+}
+!else
+## AN_8_In filter adjust
+!change_item "AN_8 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_TPS_final [V]->AN_8 [V]
+}
+!notebook new_note "AN_8 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_TPS_ERROR_TIMER)
+{resolve_externs
+SENSOR_TPS_error_event->AN_8 Error
+SENSOR_TPS_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel TPS" [item_wildcard="AN_8"] 
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## FuelPressure sensor input AN_9_In (C1-37)
+{if defined(SENSOR_FUELPRESSURE)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_FuelPressure_final [V]->Analog9 [V]
+}
+!else
+## AN_9_In filter adjust
+!change_item "AN_9 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_FuelPressure_final [V]->AN_9 [V]
+}
+!notebook new_note "AN_9 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_FUELPRESSURE_ERROR_TIMER)
+{resolve_externs
+SENSOR_FuelPressure_error_event->AN_8 Error
+SENSOR_FuelPressure_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel FuelPressure" [item_wildcard="AN_9"] 
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## Oxygen sensor input AN_10_In (C1-38)
+{if defined(SENSOR_OXYGEN)
+{if defined(SENSOR_OXYGEN_ANALOG)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_Oxygen_final [V]->Analog10 [V]
+}
+
+!else
+## AN_10_In filter adjust
+!change_item "AN_10 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_Oxygen_final [V]->AN_10 [V]
+}
+!notebook new_note "AN_10 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+!notebook add_element "Sensors submodel" [item_or_group="AN_10 [V]"] 
+}
+} 
+
+{if defined(SENSOR_OXYGEN_ONBOARD_CJ125)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_UEGO_0_UA [V]->UEGO_0_UA_In [V]
+SENSOR_UEGO_1_UA [V]->UEGO_1_UA_In [V]
+}
+
+!else
+{resolve_externs
+SENSOR_UEGO_0_UA [V]->AN_UEGO_0_UA_In [V]
+SENSOR_UEGO_1_UA [V]->AN_UEGO_1_UA_In [V]
+}
+!notebook new_note "AN_UEGO_0_UA_In [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+!notebook add_element "Sensors submodel" [item_or_group="AN_UEGO_0_UA_In [V]"] 
+!notebook new_note "AN_UEGO_1_UA_In [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+!notebook add_element "Sensors submodel" [item_or_group="AN_UEGO_1_UA_In [V]"] 
+}
+
+}
+
+}
+## ***************************************************************
+
+## ***************************************************************
+{if defined(SENSOR_MAF)
+## MAF sensor input AN_7_In (C1-35)
+{if defined(SENSOR_MAF_ANALOG)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_MAF_final [V]->Analog11 [V]
+}
+!else
+## AN_7_In filter adjust
+!change_item "AN_11 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_MAF_final [V]->AN_11 [V]
+}
+!notebook new_note "AN_11 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_MAF_ERROR_TIMER)
+{resolve_externs
+SENSOR_MAF_error_event->AN_8 Error
+SENSOR_MAF_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel MAF" [item_wildcard="AN_11"] 
+}
+}
+{if defined(SENSOR_MAF_DIGITAL_FREQUENCY)
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## CLT sensor input AN_1_In_Temp (C1-66)
+{if defined(SENSOR_CLT)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_CLT_analog [V]->Analog1 [V]
+}
+!else
+## AN_1_In_Temp filter adjust
+!change_item "AN_1 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_CLT_analog [V]->AN_1 [V]
+}
+!notebook new_note "AN_1 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_CLT_ERROR_TIMER)
+{resolve_externs
+SENSOR_CLT_error_event->AN_8 Error
+SENSOR_CLT_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel CLT" [item_wildcard="AN_1"] 
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## IAT sensor input AN_2_In_Temp (C1-67)
+{if defined(SENSOR_IAT)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_IAT_analog [V]->Analog2 [V]
+}
+!else
+## AN_2_In_Temp filter adjust
+!change_item "AN_2 [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_IAT_analog [V]->AN_2 [V]
+}
+!notebook new_note "AN_2 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_IAT_ERROR_TIMER)
+{resolve_externs
+SENSOR_IAT_error_event->AN_8 Error
+SENSOR_IAT_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel IAT" [item_wildcard="AN_2"] 
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## Battery voltage sensor input AN_BatteryVoltageRef [V]
+{if defined(SENSOR_BATTERYVOLTAGE)
+{if VERSIONMAJOR == "096"
+{resolve_externs
+SENSOR_BatteryVoltage_final [V]->BatteryVoltageRef [V]
+}
+!else
+## AN_BatteryVoltageRef [V] filter adjust
+!change_item "AN_BatteryVoltageRef [V]" [initial_value="0.95"]
+{resolve_externs
+SENSOR_BatteryVoltage_final [V]->AN_BatteryVoltageRef [V]
+}
+!notebook new_note "AN_BatteryVoltageRef [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_BATTERYVOLTAGE_ERROR_TIMER)
+{resolve_externs
+SENSOR_BatteryVoltage_error_event->AN_8 Error
+SENSOR_BatteryVoltage_error_reset->SENSOR_ALL_error_reset
+}
+}
+!notebook add_element "Sensor submodel BatteryVoltage" [item_wildcard="AN_Battery"] 
+}
+} 
+## ***************************************************************
+
+## ***************************************************************
+## Global sensor error reset.
+!create_item "SENSOR_ALL_error_reset" [type="No Operation", initial_value="0"]
+!notebook add_element "Sensors submodel" [item_or_group="SENSOR_ALL_error_reset"] 
+## ***************************************************************
+
+## ***************************************************************
+
+## ***************************************************************
+## EL129 hardware binding.
+{if defined(SENSOR_CLT_THERMISTOR)
+!replace_item "PLATFORM_TempIn_Resistor" [type="Constant", constant_value="2490", ignore_if_extern_not_found]
+}
+{if defined(SENSOR_IAT_THERMISTOR)
+!replace_item "PLATFORM_TempIn_Resistor" [type="Constant", constant_value="2490", ignore_if_extern_not_found]
+}
+## ***************************************************************
+
+

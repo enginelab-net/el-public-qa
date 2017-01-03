@@ -1,0 +1,37 @@
+## ***************************************************************
+## Model targets
+## ***************************************************************
+
+## ***************************************************************
+## Airflow SD feature
+{if defined(AF_SD)
+include=.\SpeedDensity\SD.elscr
+}
+##***************************************************************
+
+## ***************************************************************
+## Airflow MAF feature
+{if defined(AF_MAF)
+include=.\MAF\MAF.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## Airflow sample0 SD/MAF mixed feature
+{if defined(AF_SAMPLE0_MAF_SD)
+!create_item "AF_Airflow [g/s]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_10]
+!change_item "AF_Airflow [g/s]" [add_input="AF_MAF_Airflow [g/s]"]
+!change_item "AF_Airflow [g/s]" [add_input="AF_SD_Airflow [g/s]"]
+!change_item "AF_Airflow [g/s]" [add_input="AF_SD_MAF_B [n]"]
+!change_item "AF_Airflow [g/s]" [math_expression="(i0 * i2) + (i1 * (1 - i2))"]
+
+!create_item "AF_SD_MAF_B [n]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV)
+!change_item "AF_SD_MAF_B [n]" [1Dtable_csv=AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV]
+}
+
+!notebook new_note "AF_SD_MAF_B [n]" [vendor="Enginelab, Inc.", message="This table will control the Speed density and MAF bias. Zero will select SD and 1 will select MAF. "] 
+!notebook new_note "AF_Airflow [g/s]" [vendor="Enginelab, Inc.", message="This is the airflow of the system. This Sample0 submodel uses the speed density and the MAF airflow. This item is created in the Airflow-Sample0 submodel. "] 
+!notebook new_note "Airflow submodel" [vendor="Enginelab, Inc.", item_or_group="Airflow speed density submodel", item_or_group="Airflow MAF submodel", item_or_group="AF_Airflow [g/s]", item_or_group="AF_SD_MAF_B [n]", message="The calculated airflow (/Airflow/AF.elscr). This item is created in the Airflow submodel. "] 
+}
+## ***************************************************************

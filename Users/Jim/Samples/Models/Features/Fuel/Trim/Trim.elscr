@@ -1,0 +1,418 @@
+##########################################################################################################################
+{if defined (FUEL_EAL_INJECTORS_TRIM_TABLES_1D)
+
+{if EAL_NUM_INJECTORS > "00"
+!create_item "FI_Trim_1_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_1_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_1_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_1" [add_input="FI_Trim_1_table"]
+}
+
+{if EAL_NUM_INJECTORS > "01"
+!create_item "FI_Trim_2_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_2_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_2_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_2" [add_input="FI_Trim_2_table"]
+}
+
+{if EAL_NUM_INJECTORS > "02"
+!create_item "FI_Trim_3_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_3_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_3_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_3" [add_input="FI_Trim_3_table"]
+}
+
+{if EAL_NUM_INJECTORS > "03"
+!create_item "FI_Trim_4_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_4_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_4_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_4" [add_input="FI_Trim_4_table"]
+}
+
+{if EAL_NUM_INJECTORS > "04"
+!create_item "FI_Trim_5_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_5_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_5_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_5" [add_input="FI_Trim_5_table"]
+}
+
+{if EAL_NUM_INJECTORS > "05"
+!create_item "FI_Trim_6_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_6_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_6_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_6" [add_input="FI_Trim_6_table"]
+}
+
+{if EAL_NUM_INJECTORS > "06"
+!create_item "FI_Trim_7_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_7_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_7_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_7" [add_input="FI_Trim_7_table"]
+}
+
+{if EAL_NUM_INJECTORS > "07"
+!create_item "FI_Trim_8_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_8_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_8_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_8" [add_input="FI_Trim_8_table"]
+}
+
+{if EAL_NUM_INJECTORS > "08"
+!create_item "FI_Trim_9_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_9_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_9_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_9" [add_input="FI_Trim_9_table"]
+}
+
+{if EAL_NUM_INJECTORS > "09"
+!create_item "FI_Trim_10_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_10_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_10_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_10" [add_input="FI_Trim_10_table"]
+}
+
+{if EAL_NUM_INJECTORS > "10"
+!create_item "FI_Trim_11_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_11_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_11_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_11" [add_input="FI_Trim_11_table"]
+}
+
+{if EAL_NUM_INJECTORS > "11"
+!create_item "FI_Trim_12_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
+!change_item "FI_Trim_12_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+!change_item "FI_Trim_12_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
+}
+!change_item "FI_Trim_12" [add_input="FI_Trim_12_table"]
+}
+
+}
+
+##########################################################################################################################
+{if defined (FUEL_EAL_INJECTORS_TRIM_TABLES_2D)
+{if EAL_NUM_INJECTORS > "00"
+!create_item "FI_Trim_1_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_1_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_1_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_1_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_1" [add_input="FI_Trim_1_table"]
+}
+
+{if EAL_NUM_INJECTORS > "01"
+!create_item "FI_Trim_2_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_2_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_2_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_2_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_2" [add_input="FI_Trim_2_table"]
+}
+
+{if EAL_NUM_INJECTORS > "02"
+!create_item "FI_Trim_3_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_3_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_3_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_3_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_3" [add_input="FI_Trim_3_table"]
+}
+
+{if EAL_NUM_INJECTORS > "03"
+!create_item "FI_Trim_4_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_4_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_4_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_4_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_4" [add_input="FI_Trim_4_table"]
+}
+
+{if EAL_NUM_INJECTORS > "04"
+!create_item "FI_Trim_5_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_5_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_5_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_5_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_5" [add_input="FI_Trim_5_table"]
+}
+
+{if EAL_NUM_INJECTORS > "05"
+!create_item "FI_Trim_6_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_6_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_6_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_6_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_6" [add_input="FI_Trim_6_table"]
+}
+
+{if EAL_NUM_INJECTORS > "06"
+!create_item "FI_Trim_7_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_7_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_7_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_7_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_7" [add_input="FI_Trim_7_table"]
+}
+
+{if EAL_NUM_INJECTORS > "07"
+!create_item "FI_Trim_8_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_8_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_8_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_8_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_8" [add_input="FI_Trim_8_table"]
+}
+
+{if EAL_NUM_INJECTORS > "08"
+!create_item "FI_Trim_9_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_9_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_9_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_9_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_9" [add_input="FI_Trim_9_table"]
+}
+
+{if EAL_NUM_INJECTORS > "09"
+!create_item "FI_Trim_10_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_10_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_10_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_10_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_10" [add_input="FI_Trim_10_table"]
+}
+
+{if EAL_NUM_INJECTORS > "10"
+!create_item "FI_Trim_11_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_11_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_11_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_11_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_11" [add_input="FI_Trim_11_table"]
+}
+
+{if EAL_NUM_INJECTORS > "11"
+!create_item "FI_Trim_12_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
+!change_item "FI_Trim_12_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
+!change_item "FI_Trim_12_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
+}
+{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+!change_item "FI_Trim_12_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
+}
+!change_item "FI_Trim_12" [add_input="FI_Trim_12_table"]
+}
+
+}
+##########################################################################################################################
+!notebook new_note "FUEL Trim submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Trim", message="The Fuel injector trim function (/Fuel/Trim/Trim.elscr)."] 
+##########################################################################################################################
+
+{if defined (FUEL_LAMBDA_TRIM)
+
+include=.\Lambda\Lambda.elscr
+
+{if EAL_NUM_INJECTORS > "00"
+{if defined (INJECTOR1_LAMBDA_MAPPING)
+!else
+!set INJECTOR1_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_1" [add_input="INJECTOR1_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "01"
+{if defined (INJECTOR2_LAMBDA_MAPPING)
+!else
+!set INJECTOR2_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_2" [add_input="INJECTOR2_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "02"
+{if defined (INJECTOR3_LAMBDA_MAPPING)
+!else
+!set INJECTOR3_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_3" [add_input="INJECTOR3_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "03"
+{if defined (INJECTOR4_LAMBDA_MAPPING)
+!else
+!set INJECTOR4_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_4" [add_input="INJECTOR4_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "04"
+{if defined (INJECTOR5_LAMBDA_MAPPING)
+!else
+!set INJECTOR5_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_5" [add_input="INJECTOR5_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "05"
+{if defined (INJECTOR6_LAMBDA_MAPPING)
+!else
+!set INJECTOR6_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_6" [add_input="INJECTOR6_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "06"
+{if defined (INJECTOR7_LAMBDA_MAPPING)
+!else
+!set INJECTOR7_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_7" [add_input="INJECTOR7_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "07"
+{if defined (INJECTOR8_LAMBDA_MAPPING)
+!else
+!set INJECTOR8_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_8" [add_input="INJECTOR8_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "08"
+{if defined (INJECTOR9_LAMBDA_MAPPING)
+!else
+!set INJECTOR9_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_9" [add_input="INJECTOR9_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "09"
+{if defined (INJECTOR10_LAMBDA_MAPPING)
+!else
+!set INJECTOR10_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_10" [add_input="INJECTOR10_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "10"
+{if defined (INJECTOR11_LAMBDA_MAPPING)
+!else
+!set INJECTOR11_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_11" [add_input="INJECTOR11_LAMBDA_MAPPING"]
+}
+
+{if EAL_NUM_INJECTORS > "11"
+{if defined (INJECTOR12_LAMBDA_MAPPING)
+!else
+!set INJECTOR12_LAMBDA_MAPPING L_FB_0_Trim
+}
+!change_item "FI_Trim_12" [add_input="INJECTOR12_LAMBDA_MAPPING"]
+}
+
+!notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 0 trim submodel"]
+}
+
+
+

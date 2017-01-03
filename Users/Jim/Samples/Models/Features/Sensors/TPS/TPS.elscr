@@ -1,0 +1,35 @@
+## ***************************************************************
+## TPS Sensor feature
+!create_item "SENSOR_TPS [%]" [type="Analog In conditioner", thread_ID=OAL_THREAD_WITH_SLEEP_20, analog_in_min="0", analog_in_max="5", clamp_lower="0", clamp_upper="100", add_input="SENSOR_TPS_final [V]"]
+{if defined(SENSOR_TPS_ANALOG_IN_MIN)
+!change_item "SENSOR_TPS [%]" [analog_in_min=SENSOR_TPS_ANALOG_IN_MIN]
+}
+{if defined(SENSOR_TPS_ANALOG_IN_MAX)
+!change_item "SENSOR_TPS [%]" [analog_in_max=SENSOR_TPS_ANALOG_IN_MAX]
+}
+{if defined(SENSOR_TPS_ANALOG_CLAMPL)
+!change_item "SENSOR_TPS [%]" [clamp_lower=SENSOR_TPS_ANALOG_CLAMPL]
+}
+{if defined(SENSOR_TPS_ANALOG_CLAMPU)
+!change_item "SENSOR_TPS [%]" [clamp_upper=SENSOR_TPS_ANALOG_CLAMPU]
+}
+
+{if defined(SENSOR_TPS_ERROR_TIMER)
+!create_item "SENSOR_TPS_error [bool]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_100, timer_mode="Signal Present Increment and Count"]
+!change_item "SENSOR_TPS_error [bool]" [add_input="SENSOR_TPS_error_event"]
+!change_item "SENSOR_TPS_error [bool]" [add_input="SENSOR_TPS_error_delay [ms]"]
+!change_item "SENSOR_TPS_error [bool]" [add_input="SENSOR_TPS_error_reset"]
+!change_item "SENSOR_TPS_error [bool]" [add_input="SENSOR_TPS_error_time [ms]"]
+!change_item "SENSOR_TPS_error [bool]" [add_input="SENSOR_TPS_error_count"]
+
+!create_item "SENSOR_TPS_error_time [ms]" [type="No Operation"]
+!create_item "SENSOR_TPS_error_count" [type="No Operation"]
+
+{if defined (SENSOR_TPS_ERROR_TIMER_DELAY_TIME)
+!replace_item "SENSOR_TPS_error_delay [ms]" [type="Constant", constant_value=SENSOR_TPS_ERROR_TIMER_DELAY_TIME]
+!else
+!create_item "SENSOR_TPS_error_delay [ms]" [type="No Operation", initial_value="3000"]
+}
+}
+## ***************************************************************
+

@@ -1,0 +1,38 @@
+<theme version="2">
+  <solid_color name="background_color">0xF0F0F0</solid_color>
+  <solid_color name="text_light_color">0x191919</solid_color>
+  <solid_color name="text_dark_color">0x000000</solid_color>
+  <solid_color name="grid_lines_color">0x808080</solid_color>
+  <solid_color name="indicator_color">0xFF00FF</solid_color>
+  <solid_color name="modified_color">0xF8F800</solid_color>
+  <gradient_color>0xE0E0E0 0xE0E0E0 0xE0E0E0</gradient_color>
+  <gradient_color>0x7AC030 0xFFEF37 0xC0472E</gradient_color>
+  <gradient_color>0x16E6E6 0x7BC030 0xC0472E</gradient_color>
+  <gradient_color>0xFF0000 0xFF0000 0xFF0000</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+</theme>

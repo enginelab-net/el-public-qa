@@ -1,0 +1,324 @@
+!set PLATFORM_BUILD Infinity_7
+!define PLATFORM_REV_C
+#!set PLATFORM_BUILD EL129ECU
+
+{if PLATFORM_BUILD == "EL129ECU"
+!echo EL129ECU build
+!connect simulator .\PLATFORM\EL129ECU\simulator.ini
+}
+{if PLATFORM_BUILD == "Infinity_7"
+!echo Infinity_7 build
+{if defined(PLATFORM_REV_C)
+!connect simulator .\PLATFORM\Infinity_7\revC\simulator.ini
+!else
+!connect simulator .\PLATFORM\Infinity_7\simulator.ini
+}
+}
+
+# ***************************************************************
+# EAL Engine description support
+# NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
+!define EAL_ENGINE_DESCRIPTION
+!set EAL_NUM_SPARKS 12
+!set EAL_NUM_COILS 12
+!set EAL_NUM_INJECTORS 12
+# ***************************************************************
+
+# ***************************************************************
+# OAL sleep defines
+!set OAL_THREAD_WITH_SLEEP_10    0
+!set OAL_THREAD_WITH_SLEEP_20    1
+!set OAL_THREAD_WITH_SLEEP_50    2
+!set OAL_THREAD_WITH_SLEEP_100   3
+!set OAL_THREAD_WITH_SLEEP_200   4
+!set OAL_THREAD_WITH_SLEEP_500   5
+# ***************************************************************
+
+# ***************************************************************
+# Airflow feature. Pre-build step
+## See \\Features\Airflow\AF.elscr for usage.
+## AF - enables the build of the Airflow submodel.
+!define AF
+## See \\Features\Airflow\SpeedDensity\SD.elscr for usage.
+## AF_SD - enables the build of the Speed density submodel.
+!define AF_SD
+!set_path AF_SD_TEMP_B_TABLE_1D_CSV .\Resource\AF_SD_TEMP_B_TABLE_1D_CSV.csv
+## See \\Features\Airflow\SpeedDensity\Strategy\SimpleVE.elscr for usage.
+## AF_SD_VE_SIMPLE - use the Simple VE approach to the Speed density submodel.
+!define AF_SD_VE_SIMPLE
+!set_path AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV    .\Resource\AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV.csv
+!set_path AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV  .\Resource\AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV.csv
+## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
+## The inputs for the fuel flow can be changed here.
+#!set AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0 new name 0
+#!set AF_SD_VE_SIMPLE_TABLE_2D_INPUT_1 new name 1
+
+## See \\Features\Airflow\MAF\MAF.elscr for usage.
+## AF_MAF - enables the build of the Mass air flow sensor based submodel.
+!define AF_MAF
+## AF_MAF_SIMPLE_SENSOR - enables the build of the Simple VE approach to the Speed density submodel.
+!define AF_MAF_SIMPLE_SENSOR
+
+!define AF_SAMPLE0_MAF_SD
+!set_path AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV    .\Resource\AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV.csv
+# ***************************************************************
+
+# ***************************************************************
+# Fuel feature. Pre-build step
+!define FUEL
+## This will create the EAL required items for the fuel injectors.
+## Each injector can have its own items or items can be shared.
+## If a LambdaStagedFuelSubsystem, the FI_FuelX [ms] channels will be created even if the NOTSHARED option is used. 
+!define FUEL_EAL_INJECTORS_REQUIRED_SHARED_X
+#!define FUEL_EAL_INJECTORS_REQUIRED_NOTSHARED
+
+# ------------------------------------------------------------------------
+!define FUEL_INJECTORS_TRIM
+## Fuel injector trim options.
+##NOTE: Either 1D or 2D tables for trim. These are mutually exclusive.
+!define FUEL_EAL_INJECTORS_TRIM_TABLES_1D
+!set_path FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV    .\Resource\FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV.csv
+## By default the submodel will use these inputs: "EngineSpeed_final [RPM]"
+## The inputs for the trim tables can be changed here.
+#!set FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT new name
+
+#!define FUEL_EAL_INJECTORS_TRIM_TABLES_2D
+#!set_path FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV    .\Resource\FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV.csv
+## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
+## The inputs for the trim tables can be changed here.
+#!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0 new name 0
+#!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1 new name 1
+
+!define FUEL_LAMBDA_TRIM
+
+!define FUEL_LAMBDA_TARGET
+!define FUEL_LAMBDA_TARGET_TABLE_2D
+!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
+!define FUEL_LAMBDA_TARGET_CLT_TABLE_1D
+!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV .\Resource\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
+!define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
+!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
+
+# ------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------
+# A LambdaStagedFuelSubsystem strategy. 
+!define FUEL_LSFS
+# ------------------------------------------------------------------------
+# LSFS Trim multiplier
+#!define FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D
+## By default the submodel will use this input: "SENSOR_CLT [C]"
+#!set FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT new name
+
+!define FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D
+!set_path FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV  .\Resource\FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV.csv
+## By default the submodel will use these inputs: "SS_EngineRunningTime [ms]" and "SENSOR_CLT [C]"
+#!set FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT_0 new name 0
+#!set FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT_1 new name 1
+# ------------------------------------------------------------------------
+# ------------------------------------------------------------------------
+# optional secondary injectors
+#!define FUEL_LSFS_SECONDARY
+# ------------------------------------------------------------------------
+# Fuel strategy options for LSFS.
+# optional non-linearity support
+!define FUEL_LSFS_NONLINEAR_ADD
+!set_path FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV  .\Resource\FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV.csv
+#!define FUEL_LSFS_NONLINEAR_MULTIPLY
+# ------------------------------------------------------------------------
+# optional flex fuel
+#!define FUEL_LSFS_FLEX
+# ------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------
+# Fuel flow options.
+!define FUELFLOW
+## This define will cause the fuelflow model to use the "SENSOR_FuelPressure [kPa]" meaning that a fuel pressure sensor is present.
+!define FUELFLOW_FP_SENSOR
+## This define would cause the primary fuel lookup to use the effective pressure (fuel pressure - MAP) for determining the fuel flow.
+!define FUELFLOW_FP_MAP_DIFF
+!set_path FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV  .\Resource\FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV.csv
+
+## This define would generate the offset table for the fuel injectors. This is used by the LSFS trim adder.
+!define FUELFLOW_OFFSET_TABLE_2D
+!set_path FUELFLOW_OFFSET_TABLE_2D_CSV  .\Resource\FUELFLOW_OFFSET_TABLE_2D_CSV.csv
+## By default the submodel will use these inputs: "SENSOR_BatteryVoltage [V]" and "FUELFLOW_EffectivePressure [kPa]"
+## The inputs for the fuel flow can be changed here.
+#!set FUELFLOW_OFFSET_TABLE_2D_INPUT_0 new name 0
+#!set FUELFLOW_OFFSET_TABLE_2D_INPUT_1 new name 1
+# ------------------------------------------------------------------------
+# ***************************************************************
+
+# ***************************************************************
+# Ignition feature. Pre-build step
+!define IGN
+#!define IGN_SPKDWELL_TABLE_1D
+## By default the submodel will use these inputs: "SENSOR_BatteryVoltage [V]"
+## The inputs for the fuel flow can be changed here.
+#!set IGN_SPKDWELL_TABLE_1D_INPUT new name
+
+!define IGN_SPKDWELL_TABLE_2D
+!set_path IGN_SPKDWELL_TABLE_2D_CSV  .\Resource\IGN_SPKDWELL_TABLE_2D_CSV.csv
+## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_BatteryVoltage [V]"
+## The inputs for the fuel flow can be changed here.
+#!set IGN_SPKDWELL_TABLE_2D_INPUT_0 new name 0
+#!set IGN_SPKDWELL_TABLE_2D_INPUT_1 new name 1
+
+# ------------------------------------------------------------------------
+#!define IGN_SPKTIMING_TABLE_1D
+!define IGN_SPKTIMING_TABLE_2D
+!set_path IGN_SPKTIMING_TABLE_2D_CSV  .\Resource\IGN_SPKTIMING_TABLE_2D_CSV.csv
+## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
+#!set IGN_SPKTIMING_TABLE_1D_INPUT   new name 0
+#!set IGN_SPKTIMING_TABLE_2D_INPUT_0 new name 0
+#!set IGN_SPKTIMING_TABLE_2D_INPUT_1 new name 1
+
+!define IGN_SPKTIMING_TRIM_TABLES
+#!define IGN_SPKTIMING_TRIM_TABLES_1D
+#!set_path IGN_SPKTIMING_TRIM_TABLES_1D_CSV  .\Resource\IGN_SPKTIMING_TRIM_TABLES_1D_CSV.csv
+!define IGN_SPKTIMING_TRIM_TABLES_2D
+!set_path IGN_SPKTIMING_TRIM_TABLES_2D_CSV  .\Resource\IGN_SPKTIMING_TRIM_TABLES_2D_CSV.csv
+## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
+#!set IGN_SPKTIMING_TRIM_TABLES_1D_INPUT   new name 0
+#!set IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0 new name 0
+#!set IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_1 new name 1
+!define IGN_SPKTIMING_TRIM_TYPE_ADD_TABLE
+
+!define IGN_SPKTIMING_TRIM_IDLE
+# ***************************************************************
+
+# ***************************************************************
+# Idle feature. Pre-build step
+!define IDLE
+!define IDLE_TARGET_TABLE_1D
+!set_path IDLE_TARGET_TABLE_1D_CSV  .\Resource\IDLE_TARGET_TABLE_1D_CSV.csv
+## By default the submodel will use these inputs: "SENSOR_CLT [C]"
+#!set IDLE_TARGET_TABLE_1D_INPUT   new name 0
+!define IDLE_AIRFLOW
+!set_path IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV  .\Resource\IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV.csv
+!define IDLE_AIRFLOW_STEPPER_HARDWARE
+!define IDLE_IGNTIMING
+# ***************************************************************
+
+# ***************************************************************
+# SystemState feature. Pre-build step
+!define SS
+# ***************************************************************
+
+# ***************************************************************
+# Sensors feature. Pre-build step
+!define SENSORS
+!define SENSOR_MAP
+!set SENSOR_MAP_ANALOG_IN_MIN 0.18
+!set SENSOR_MAP_ANALOG_IN_MAX 4.85
+!set SENSOR_MAP_ANALOG_CLAMPL 20
+!set SENSOR_MAP_ANALOG_CLAMPU 105
+!define SENSOR_MAP_ERROR_TIMER
+!set SENSOR_MAP_ERROR_TIMER_DELAY_TIME 3000
+# ------------------------------------------------------------------------
+!define SENSOR_TPS
+!set SENSOR_TPS_ANALOG_IN_MIN 0.18
+!set SENSOR_TPS_ANALOG_IN_MAX 4.85
+!set SENSOR_TPS_ANALOG_CLAMPL 0
+!set SENSOR_TPS_ANALOG_CLAMPU 100
+!define SENSOR_TPS_ERROR_TIMER
+!set SENSOR_TPS_ERROR_TIMER_DELAY_TIME 3000
+# ------------------------------------------------------------------------
+!define SENSOR_CLT
+!define SENSOR_CLT_THERMISTOR
+!set_path SENSOR_CLT_THERMISTOR_TABLE_1D_CSV .\Resource\SENSOR_CLT_THERMISTOR_TABLE_1D_CSV.csv
+!define SENSOR_CLT_ERROR_TIMER
+!set SENSOR_CLT_ERROR_TIMER_DELAY_TIME 3000
+# ------------------------------------------------------------------------
+!define SENSOR_IAT
+!define SENSOR_IAT_THERMISTOR
+!set_path SENSOR_IAT_THERMISTOR_TABLE_1D_CSV .\Resource\SENSOR_IAT_THERMISTOR_TABLE_1D_CSV.csv
+!define SENSOR_IAT_ERROR_TIMER
+!set SENSOR_IAT_ERROR_TIMER_DELAY_TIME 3000
+# ------------------------------------------------------------------------
+!define SENSOR_MAF
+!define SENSOR_MAF_ANALOG
+##!define SENSOR_MAF_DIGITAL_FREQUENCY
+# ------------------------------------------------------------------------
+!define SENSOR_FUELPRESSURE
+!set SENSOR_FUELPRESSURE_ANALOG_IN_MIN 0.5
+!set SENSOR_FUELPRESSURE_ANALOG_IN_MAX 4.5
+!set SENSOR_FUELPRESSURE_ANALOG_CLAMPL 0
+!set SENSOR_FUELPRESSURE_ANALOG_CLAMPU 100
+!define SENSOR_FUELPRESSURE_ERROR_TIMER
+!set SENSOR_FUELPRESSURE_ERROR_TIMER_DELAY_TIME 3000
+# ------------------------------------------------------------------------
+!define SENSOR_OXYGEN
+##!define SENSOR_OXYGEN_ANALOG
+!define SENSOR_OXYGEN_ONBOARD_CJ125
+# ------------------------------------------------------------------------
+!define SENSOR_BATTERYVOLTAGE
+!define SENSOR_BATTERYVOLTAGE_ERROR_TIMER
+!set SENSOR_BATTERYVOLTAGE_ERROR_TIMER_DELAY_TIME 3000
+# ***************************************************************
+
+include=..\..\Features\Features.elscr
+
+# ***************************************************************
+# Sensors feature. Post-build step
+# Use the common sensor mapping ... or some global sensor mapping defined somewhere.
+# Many applications may share these mappings but this is not mandatory.
+{if defined(SENSORS)
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\SENSORS.elscr
+}
+{if PLATFORM_BUILD == "Infinity_7"
+include=.\Platform\Infinity_7\SENSORS.elscr
+}
+}
+#***************************************************************
+
+#***************************************************************
+# Hardware IO platform resolution.
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\Hardware.elscr
+}
+{if PLATFORM_BUILD == "Infinity_7"
+include=.\Platform\Infinity_7\Hardware.elscr
+{if defined(PLATFORM_REV_C)
+include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
+}
+}
+#***************************************************************
+
+# ***************************************************************
+# Thread sleep values.
+{if VERSIONMAJOR == "096"
+!change_item "Thread0_sleep [ms]" [initial_value="10"]
+!change_item "Thread1_Sleep [ms]" [initial_value="20"]
+!change_item "Thread2_Sleep [ms]" [initial_value="50"]
+!change_item "Thread3_Sleep [ms]" [initial_value="100"]
+!change_item "Thread4_Sleep [ms]" [initial_value="500"]
+!else
+!change_item "OAL_Thread0_Sleep [ms]" [initial_value="10"]
+!change_item "OAL_Thread1_Sleep [ms]" [initial_value="20"]
+!change_item "OAL_Thread2_Sleep [ms]" [initial_value="50"]
+!change_item "OAL_Thread3_Sleep [ms]" [initial_value="100"]
+!change_item "OAL_Thread4_Sleep [ms]" [initial_value="500"]
+}
+# ***************************************************************
+
+# ***************************************************************
+# SystemState feature. Post-build step
+include=..\Common\SystemState\SS.elscr
+# ***************************************************************
+
+# ***************************************************************
+# Misc. global resolution. Post-build step
+include=..\Common\Global.elscr
+# ***************************************************************
+
+include=.\EAL_required.elscr
+
+##JJV - temp # ***************************************************************
+##JJV - temp # Calibration data applied
+##JJV - temp !import modify ".\Calibration\Features\Airflow\airflow.elcfg" [version_major]
+##JJV - temp !import modify ".\Calibration\Features\Fuel\fuel.elcfg" [version_major]
+##JJV - temp !import modify ".\Calibration\Features\Ignition\ignition.elcfg" [version_major]
+##JJV - temp !import modify ".\Calibration\Features\Sensors\sensors.elcfg" [version_major]
+##JJV - temp # ***************************************************************

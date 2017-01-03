@@ -1,0 +1,42 @@
+#////////
+#Spark Control
+#////////
+
+{if defined(SPARK)
+
+.\Spark.elcfg
+                #all things spark control
+
+                #Coil_Enable            User setting to enable coil 0= off, 1=on
+                #Coil_Enable_Clamp      clamps value to 0-1
+
+                #Timing Lock_Enable     User setting to enable timing lock, the use of a fixed value    
+                #Timing_Lock_Enable_Clamp clamps value to 0-1
+                #Timing_Lock [degBTDC]  User setting for fixed timing position
+
+                #Timing Lock_Test_1     passthrough lock timing value
+                #Timing Lock_Test       0= use normal timing, 1= use lock value
+
+
+        
+                #Coil_Enable_Test - 1 if coil enable set and engine is turning
+                #Coil_Enable_Test_0 - fixed 0 value for dwell
+
+                        #Sets the correct coil dwell for current conditions
+                #Dwell_table [msec] - userlookup table for dwell [msec] vs Battery voltage [V]
+                #Coil_Enable_Test_1 - coverts to coil charge time in [us/10]
+                #CoilDwellX [us/10] - EAL required variable to set dwell in [us/10] units
+                                      #multiplexor to set dwell to 0 when coils are disabled
+
+                #Timing Lock_Enable_Test - is timing lock on?
+
+                #Spark_Timing [degBTDC] user lookup table for ignition timing [degBTDC] vs rpm and MAP
+
+                        #Sets the correct ignition timing for current conditions
+                #SpkTimingX [degBTDC] - EAL required variable to set spark timing in [degBTDC]
+
+                #Coil_Enable_Invert - invert the coil enable input
+                #CoilDriverEnable - EAL required to turn on the coil drivers - 0= on, 1=off
+
+
+

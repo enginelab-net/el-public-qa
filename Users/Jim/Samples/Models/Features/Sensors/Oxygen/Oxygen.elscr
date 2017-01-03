@@ -1,0 +1,26 @@
+## ***************************************************************
+## Oxygen sensor feature
+{if defined(SENSOR_OXYGEN_ANALOG)
+!create_item "SENSOR_Lambda0 [L]" [type="Analog In conditioner", thread_ID=OAL_THREAD_WITH_SLEEP_20, analog_in_min="0", analog_in_max="5", clamp_lower="0", clamp_upper="18", add_input="SENSOR_Oxygen_final [V]"]
+}
+
+{if defined(SENSOR_OXYGEN_ONBOARD_CJ125)
+include=.\Strategy\OnboardCJ125\Heater.elscr
+!notebook new_note "Sensor submodel Onboard UEGO Lambda" [vendor="Enginelab, Inc.", item_or_group="UEGO heater submodel", message=" The UEGO heater control submodel."]
+include=.\Strategy\OnboardCJ125\Cj125.elscr
+!notebook add_element "Sensor submodel Onboard UEGO Lambda" [item_or_group="UEGO_0_cj125v2 submodel"]
+
+{if defined(SENSOR_OXYGEN_LAMBDA_1DTABLE_CSV_FILE)
+!else
+!set_path SENSOR_OXYGEN_LAMBDA_1DTABLE_CSV_FILE .\Strategy\OnboardCJ125\lambda_1Dtable.csv 
+}
+!create_item "SENSOR_Lambda0 [L]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, 1Dtable_csv=SENSOR_OXYGEN_LAMBDA_1DTABLE_CSV_FILE, add_input="SENSOR_UEGO_0_UA [V]"]
+!create_item "SENSOR_Lambda0_valid [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="UEGO_0_heater_using_pid [bool]", add_input="UEGO_0_cj125v2_diag"]
+!change_item "SENSOR_Lambda0_valid [bool]" [math_expression="1"]
+##****************************************************************************************************************************
+!notebook new_note "SENSOR_Lambda0 [L]" [vendor="Enginelab, Inc.", message=" The Lambda value of the UEGO 0 sensor."]
+!notebook new_note "SENSOR_Lambda0_valid [bool]" [vendor="Enginelab, Inc.", message=" This channel will reflect whether the Lambda0 [L] value is valid or whether an error is present in the sensor."]
+!notebook add_element "Sensor submodel Onboard UEGO Lambda" [item_wildcard="SENSOR_Lambda0"]
+}
+
+

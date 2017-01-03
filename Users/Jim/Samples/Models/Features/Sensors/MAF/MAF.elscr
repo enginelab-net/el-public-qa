@@ -1,0 +1,12 @@
+## ***************************************************************
+## Mass Airflow sensor feature
+{if defined(SENSORS)
+{if defined(SENSOR_MAF_ANALOG)
+!create_item "SENSOR_MAF [g/s]" [type="Analog In conditioner", thread_ID=OAL_THREAD_WITH_SLEEP_20, analog_in_min="0", analog_in_max="5", clamp_lower="0", clamp_upper="100", add_input="SENSOR_MAF_final [V]"]
+}
+{if defined(SENSOR_MAF_DIGITAL_FREQUENCY)
+!create_item "SENSOR_MAF [g/s]" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+}
+}
+## ***************************************************************
+

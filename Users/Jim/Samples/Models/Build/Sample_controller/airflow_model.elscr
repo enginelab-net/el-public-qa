@@ -1,0 +1,122 @@
+output_types=true
+model_filters=all
+
+!set PLATFORM_BUILD Infinity_7
+!set PLATFORM_BUILD EL129ECU
+
+{if PLATFORM_BUILD == "EL129ECU"
+!echo EL129ECU build
+!connect simulator .\PLATFORM\EL129ECU\simulator.ini
+}
+
+# ***************************************************************
+# Airflow feature. Pre-build step
+!define AF
+!define AF_SD
+!define AF_SD_VE_SIMPLE
+!define AF_MAF
+!define AF_MAF_SIMPLE_SENSOR
+!define AF_SAMPLE0_MAF_SD
+# ***************************************************************
+
+# ***************************************************************
+# EAL Engine description support
+!define EAL_ENGINE_DESCRIPTION
+!set EAL_NUM_SPARKS 0
+!set EAL_NUM_COILS 0
+!set EAL_NUM_INJECTORS 0
+# ***************************************************************
+
+# ***************************************************************
+# SystemState feature. Pre-build step
+!define SS
+# ***************************************************************
+
+# ***************************************************************
+# Sensors feature. Pre-build step
+!define SENSORS
+!define SENSOR_MAP
+!define SENSOR_TPS
+!define SENSOR_CLT
+!define SENSOR_CLT_THERMISTOR
+!define SENSOR_IAT
+!define SENSOR_IAT_THERMISTOR
+!define SENSOR_MAF
+##!define SENSOR_MAF_ANALOG
+!define SENSOR_MAF_DIGITAL_FREQUENCY
+!define SENSOR_FUELPRESSURE
+!define SENSOR_OXYGEN
+!define SENSOR_OXYGEN_ANALOG
+#!define SENSOR_OXYGEN_ONBOARD_CJ125
+# ***************************************************************
+
+include=..\..\Features\Features.elscr
+
+# ***************************************************************
+# Airflow feature. Post-build step
+# AF_SD dependencies. "AF_SD_P [Pa]", "AF_SD_C [K]", "AF_SD_I [K]"
+{resolve_externs
+AF_SD_P [Pa]->SENSOR_MAP [Pa]
+AF_SD_C [K]->SENSOR_CLT [K]
+AF_SD_I [K]->SENSOR_IAT [K]
+}
+ 
+# AF_SD_VE_SIMPLE dependencies. "AF_SD_VE_axis_0", "AF_SD_VE_axis_1"
+{resolve_externs
+AF_SD_VE_axis_0->EngineSpeed_final [RPM]
+AF_SD_VE_axis_1->SENSOR_MAP [Pa]
+}
+
+# AF_SAMPLE0_MAF_SD (stub this with a constant placeholder)
+!replace_item AF_SD_MAF_bias [type="Constant", constant_value="1"]
+# ***************************************************************
+
+# ***************************************************************
+# Sensors feature. Post-build step
+# Use the common sensor mapping ... or some global sensor mapping defined somewhere.
+# Many applications may share these mappings but this is not mandatory.
+
+{if defined(SENSORS)
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\SENSORS.elscr
+}
+}
+# ***************************************************************
+
+# ***************************************************************
+{if defined(EAL_ENGINE_DESCRIPTION)
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\engine.elscr
+}
+}
+# ***************************************************************
+
+# ***************************************************************
+# Thread sleep values.
+{if VERSIONMAJOR == "096"
+!change_item "Thread0_sleep [ms]" [initial_value="10"]
+!change_item "Thread1_Sleep [ms]" [initial_value="10"]
+!change_item "Thread2_Sleep [ms]" [initial_value="10"]
+!change_item "Thread3_Sleep [ms]" [initial_value="100"]
+!else
+!change_item "OAL_Thread0_Sleep [ms]" [initial_value="10"]
+!change_item "OAL_Thread1_Sleep [ms]" [initial_value="10"]
+!change_item "OAL_Thread2_Sleep [ms]" [initial_value="10"]
+!change_item "OAL_Thread3_Sleep [ms]" [initial_value="100"]
+}
+# ***************************************************************
+
+# ***************************************************************
+# SystemState feature. Post-build step
+include=..\Common\SystemState\SS.elscr
+# ***************************************************************
+
+# ***************************************************************
+# Misc. global resolution. Post-build step
+include=..\Common\Global.elscr
+# ***************************************************************
+
+# ***************************************************************
+# Calibration data applied
+#!import modify ".\..\..\Calibration\Features\Airflow\airflow.elcfg" [version_major]
+# ***************************************************************

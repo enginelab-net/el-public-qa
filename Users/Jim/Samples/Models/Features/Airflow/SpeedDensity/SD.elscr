@@ -1,0 +1,44 @@
+## ***************************************************************
+## Airflow SD feature
+{if defined(AF_SD)
+
+{if defined(AF_SD_VE_SIMPLE)
+include=.\Strategy\SimpleVE\SimpleVE.elscr
+}
+
+!create_item "AF_SD_Airflow [g/s]" [type="Speed Density", thread_ID=OAL_THREAD_WITH_SLEEP_20]
+!change_item "AF_SD_Airflow [g/s]" [add_input="AF_SD_VE [%]"]
+!change_item "AF_SD_Airflow [g/s]" [add_input="SENSOR_MAP [Pa]"]
+!change_item "AF_SD_Airflow [g/s]" [add_input="SENSOR_CLT [K]" ]
+!change_item "AF_SD_Airflow [g/s]" [add_input="SENSOR_IAT [K]" ]
+!change_item "AF_SD_Airflow [g/s]" [add_input="AF_SD_temp_B [n]" ]
+
+{if defined(AF_SD_P_INPUT)
+!change_item "AF_SD_Airflow [g/s]" [input1=AF_SD_P_INPUT]
+}
+{if defined(AF_SD_C_INPUT)
+!change_item "AF_SD_Airflow [g/s]" [input2=AF_SD_C_INPUT]
+}
+{if defined(AF_SD_I_INPUT)
+!change_item "AF_SD_Airflow [g/s]" [input3=AF_SD_I_INPUT]
+}
+
+!create_item "AF_SD_temp_B [n]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_50, add_input="EngineSpeed_final [RPM]"]
+{if defined(AF_SD_TEMP_B_TABLE_1D_CSV)
+!change_item "AF_SD_temp_B [n]" [1Dtable_csv=AF_SD_TEMP_B_TABLE_1D_CSV]
+}
+
+!notebook new_note "Airflow speed density submodel" [vendor="Enginelab, Inc.", item_wildcard="AF_SD_", message="The calculated airflow based on the speed density calculation (Airflow/SpeedDensity/SD.elscr). This item is created in the SpeedDensity submodel. "] 
+
+!else
+
+## Use the AF_SD_VE_SIMPLE model by default
+{if PLATFORM == ""
+!connect simulator .\plant\simulator.ini
+}
+
+}
+
+## ***************************************************************
+
+

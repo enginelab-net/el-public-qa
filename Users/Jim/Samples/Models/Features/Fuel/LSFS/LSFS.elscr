@@ -1,0 +1,125 @@
+## ***************************************************************
+## Fuel system using the Lambda Staged Fuel Subsystem
+{if defined(FUEL_LSFS)
+
+!create_item "FUEL_lsfs" [type="Lambda Staged Fuel Subsystem", thread_ID=OAL_THREAD_WITH_SLEEP_20] 
+!change_item "FUEL_lsfs" [add_input="airflow [g/s]"         ]
+!change_item "FUEL_lsfs" [add_input="lambda_target [L]"     ]
+!change_item "FUEL_lsfs" [add_input="pri_duty_threshold [%]"]
+!change_item "FUEL_lsfs" [add_input="staged_split [%]"      ]
+!change_item "FUEL_lsfs" [add_input="pri_flowrate [cc/s]"   ]
+!change_item "FUEL_lsfs" [add_input="sec_flowrate [cc/s]"   ]
+!change_item "FUEL_lsfs" [add_input="trim_multiplier"       ]
+!change_item "FUEL_lsfs" [add_input="trim_pri_adder [ms]"   ]
+!change_item "FUEL_lsfs" [add_input="trim_sec_adder [ms]"   ]
+!change_item "FUEL_lsfs" [add_input="pri_duty [%]"          ]
+!change_item "FUEL_lsfs" [add_input="sec_duty [%]"          ]
+!change_item "FUEL_lsfs" [add_input="flex_stoic_ratio"      ]
+
+{resolve_externs
+airflow [g/s]->AF_Airflow [g/s]
+pri_flowrate [cc/s]->FUELFLOW_primary [cc/s]
+lambda_target [L]->FUEL_LAMBDA_target [L]
+pri_duty_threshold [%]->FUEL_lsfs_pri_duty_threshold [%]
+trim_pri_adder [ms]->FUELFLOW_offset [ms]
+trim_multiplier->FUEL_lsfs_trim_multiplier
+pri_duty [%]->FUEL_lsfs_pri_duty [%]
+}
+
+{if defined(FUEL_LSFS_SECONDARY)
+{resolve_externs
+sec_flowrate [cc/s]->FUEL_lsfs_sec_flowrate [cc/s]
+trim_sec_adder [ms]->FUELFLOW_offset [ms]
+staged_split [%]->FUEL_lsfs_staged_split [%]
+sec_duty [%]->FUEL_lsfs_sec_duty [%]
+trim_pri_adder [ms]->FUEL_lsfs_trim_pri_adder [ms]
+}
+!else
+!replace_item "sec_flowrate [cc/s]" [type="Constant", constant_value="0"]
+!replace_item "trim_sec_adder [ms]" [type="Constant", constant_value="0"]
+!replace_item "staged_split [%]" [type="Constant", constant_value="100"]
+!replace_item "sec_duty [%]" [type="Constant", constant_value="0"]
+}
+
+!create_item "FUEL_lsfs_pri_duty_threshold [%]" [type="No Operation", initial_value="100"]
+!create_item "FUEL_lsfs_pri_duty [%]" [type="No Operation"]
+
+{if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D)
+!create_item "FUEL_lsfs_trim_multiplier" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_CLT [C]"]
+{if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT)
+!change_item "FUEL_lsfs_trim_multiplier" [input0=FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT]
+}
+}
+{if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D)
+!create_item "FUEL_lsfs_trim_multiplier" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SS_EngineRunningTime [ms]", add_input="SENSOR_CLT [C]"]
+{if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV)
+!change_item "FUEL_lsfs_trim_multiplier" [2Dtable_csv=FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV]
+}
+{if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_0)
+!change_item "FUEL_lsfs_trim_multiplier" [input0=FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_0]
+}
+{if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_1)
+!change_item "FUEL_lsfs_trim_multiplier" [input0=FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_1]
+}
+}
+
+{if defined(FUEL_LSFS_NONLINEAR_MULTIPLY)
+!create_item "FI_Nonlinear_PriPulsewidth [ms]" [type="No Operation", initial_value="0"]
+!create_item "FI_Nonlinear_PriTrim_mult" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_500, add_input="FI_Nonlinear_PriPulsewidth [ms]"]
+{if defined(FUEL_LSFS_NONLINEAR_MULT_TABLE_1D_CSV)
+!change_item ""FI_Nonlinear_PriTrim_mult"" [1Dtable_csv=FUEL_LSFS_NONLINEAR_MULT_TABLE_1D_CSV]
+}
+{if defined(FUEL_LSFS_SECONDARY)
+!create_item "FI_Nonlinear_SecPulsewidth [ms]" [type="No Operation", initial_value="0"]
+!create_item "FI_Nonlinear_SecTrim_mult" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_500, add_input="FI_Nonlinear_SecPulsewidth [ms]"]
+{if defined(FUEL_LSFS_NONLINEAR_MULT_TABLE_1D_CSV)
+!change_item ""FI_Nonlinear_SecTrim_mult"" [1Dtable_csv=FUEL_LSFS_NONLINEAR_MULT_TABLE_1D_CSV]
+}
+}
+!notebook new_note "Lsfs nonlinear support" [vendor="Enginelab, Inc.", item_wildcard="FI_Nonlinear", message="The lambda staged fuel subsystem non-linear fuel flow support. This item is created in the Fuel lsfs submodel (/Fuel/LSFS/LSFS.elscr)."] 
+!else
+{if defined(FUEL_LSFS_NONLINEAR_ADD)
+!create_item "FI_Nonlinear_PriPulsewidth [ms]" [type="No Operation", initial_value="0"]
+!create_item "FI_Nonlinear_PriTrim_add" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_500, add_input="FI_Nonlinear_PriPulsewidth [ms]"]
+{if defined(FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV)
+!change_item "FI_Nonlinear_PriTrim_add" [1Dtable_csv=FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV]
+}
+{if defined(FUEL_LSFS_SECONDARY)
+!create_item "FI_Nonlinear_SecPulsewidth [ms]" [type="No Operation", initial_value="0"]
+!create_item "FI_Nonlinear_SecTrim_add" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_500, add_input="FI_Nonlinear_SecPulsewidth [ms]"]
+{if defined(FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV)
+!change_item "FI_Nonlinear_SecTrim_add" [1Dtable_csv=FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV]
+}
+}
+!notebook new_note "Lsfs nonlinear support" [vendor="Enginelab, Inc.", item_wildcard="FI_Nonlinear", message="The lambda staged fuel subsystem non-linear fuel flow support. This item is created in the Fuel lsfs submodel (/Fuel/LSFS/LSFS.elscr)."] 
+}
+}
+
+
+{if defined(FUEL_LSFS_FLEX)
+{resolve_externs
+flex_stoic_ratio->FUEL_lsfs_flex_stoic_ratio
+}
+!else
+!replace_item "flex_stoic_ratio" [type="Constant", constant_value="0"]
+}
+
+!notebook new_note "FUEL_lsfs" [vendor="Enginelab, Inc.", message="The lambda staged fuel subsystem at the core of the fuel model. This item is created in the Fuel lsfs submodel. "] 
+!notebook new_note "Lsfs submodel" [vendor="Enginelab, Inc.", item_wildcard="FUEL_lsfs", message="The lambda staged fuel subsystem (/Fuel/LSFS/LSFS.elscr). This item is created in the Fuel lsfs submodel. "] 
+
+## This will add the non-linear note to the LSFS submodel note. 
+{if defined(FUEL_LSFS_NONLINEAR_ADD)
+!notebook add_element "Lsfs submodel" [item_or_group="Lsfs nonlinear support"]
+}
+{if defined(FUEL_LSFS_NONLINEAR_MULTIPLY)
+{if defined(FUEL_LSFS_NONLINEAR_ADD)
+!else
+!notebook add_element "Lsfs submodel" [item_or_group="Lsfs nonlinear support"]
+}
+}
+
+}
+
+## ***************************************************************
+
+

@@ -1,0 +1,1847 @@
+<layout version="9">
+  <main_window>
+    <position>227 323 1089 869</position>
+    <padding>227 342 1089 869</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="Main Setup">
+    <control type="Text Grid" settings="">
+      <position>235 392 641 518</position>
+      <channel name="Number_of_Cylinders">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+      <channel name="Redline">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+      <channel name="Run_Threshold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 518 435 583</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Rev_Limiter_Fuel_Kill_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>435 518 641 583</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Enable_Injectors">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 583 435 648</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Rev_Limiter_Spark_Kill_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>435 583 641 648</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Coil_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 648 435 713</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Cylinder_Fuel_Trim Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>641 392 1272 518</position>
+      <channel name="AN_9 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="Fuel_Pres [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>641 518 1272 648</position>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="EAL_SyncState">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Sensors">
+    <control type="Gauge" settings="">
+      <position>1266 392 1472 606</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_2_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1266 606 1472 820</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_2_Cylinder_7">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1266 820 1472 1034</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_2_Cylinder_8">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1266 1034 1472 1248</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_2_Cylinder_9">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1472 392 1678 606</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_3_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1472 606 1678 820</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_3_Cylinder_10">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1472 820 1678 1034</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_3_Cylinder_11">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1472 1034 1678 1248</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_3_Cylinder_12">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>652 392 858 606</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_0_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>652 606 858 820</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_0_Cylinder_1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>652 820 858 1034</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_0_Cylinder_2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>652 1034 858 1248</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_0_Cylinder_3">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>858 392 1064 606</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_1_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>858 606 1064 820</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_1_Cylinder_4">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>858 820 1064 1034</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_1_Cylinder_5">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>858 1034 1064 1248</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="NBO2_1_Cylinder_6">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1064 392 1266 606</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="0"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1064 606 1266 820</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="0"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>235 392 446 606</position>
+      <string name="range" value="60 110"/>
+      <string name="divisions" value="10 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="MAP [kPa]">
+        <colors>1 0 0 0 0</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>446 392 652 606</position>
+      <string name="range" value="60 110"/>
+      <string name="divisions" value="10 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="Baro [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>446 606 652 820</position>
+      <string name="range" value="0 120"/>
+      <string name="divisions" value="10 12"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>235 606 446 820</position>
+      <string name="range" value="0 120"/>
+      <string name="divisions" value="10 12"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>235 820 446 1034</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="10 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>446 820 652 1034</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="10 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="Throttle_Pedal [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Throttle Setup">
+    <control type="2D Table" settings="">
+      <position>1126 392 1490 575</position>
+      <channel name="Idle_Set_Point [rpm]">
+        <colors>2 1000 1125 1175 1400</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>625 514 787 575</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="ETC_1_Control_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>625 453 787 514</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="ETC_Stall_Saver_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>625 392 787 453</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="ETC_Idle_Control_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>625 575 928 727</position>
+      <channel name="ETC_Proportional_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Derivative_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Hold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Lower_Clamp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Upper_Clamp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>625 727 928 880</position>
+      <channel name="ETC_Idle_Proportional_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Idle_Integral_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Idle_Derivative_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Idle_Integral_Hold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Idle_Integral_Lower_Clamp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Idle_Integral_Upper_Clamp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>928 575 1490 697</position>
+      <channel name="Throttle_Position_Translation [%]">
+        <colors>2 15 50 70 95</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Graph" settings="">
+      <position>928 697 1490 1014</position>
+      <channel name="Throttle_Position_Translation [%]">
+        <colors>3 15 50 70 95</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 514 625 640</position>
+      <channel name="AN_7 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="TPS_Track_Close [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="TPS_Track_Open [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="TPS_Track [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 640 625 793</position>
+      <channel name="AN_18 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal_Close [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal_Open [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 793 625 880</position>
+      <channel name="AN_19 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal_Track_Close [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal_Track_Open [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal_Track [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>787 392 1126 575</position>
+      <channel name="Idle _Enable_Pedal _Position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Idle _Disable_Pedal _Position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Idle_Ramp_Down_Enable [rpm]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Idle_Ramp_Down_Rate [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Stall_Saver_Position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Stall_Saver_Engage [rpm]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Cranking_Position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 392 625 514</position>
+      <channel name="AN_16 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="TPS_Close [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="TPS_Open [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Spark corrections">
+    <control type="Text" settings="">
+      <position>235 522 426 613</position>
+      <string name="initial_value" value="false"/>
+      <channel name="Timing Lock [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>426 392 1008 513</position>
+      <channel name="Dwell_table [msec]">
+        <colors>2 3.5 4.5 4.5 7</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 392 426 457</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Coil_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 457 426 522</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Timing Lock_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Graph" settings="">
+      <position>426 513 1008 847</position>
+      <channel name="Dwell_table [msec]">
+        <colors>3 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Spark">
+    <control type="3D Graph" settings="">
+      <position>1084 392 1601 830</position>
+      <string name="camera" value="2.6092 0.155 0.5 0.5 0.5 1.75"/>
+      <channel name="Spark_Timing [degBTDC]">
+        <colors>2 12 20 25 35</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>235 392 1084 830</position>
+      <channel name="Spark_Timing [degBTDC]">
+        <colors>2 12 20 25 35</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Injector">
+    <control type="2D Table" settings="">
+      <position>235 690 1601 1059</position>
+      <channel name="Offset [msec]">
+        <colors>2 0.5 1.2 2 4</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>235 392 1601 512</position>
+      <channel name="Flow_Rate [g/s]">
+        <colors>2 9 12 14 18</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>235 512 1601 661</position>
+      <channel name="Short_Pulse_Adder [msec]">
+        <colors>2 0.03 0.06 0.08 0.15</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="injEnd Angle">
+    <control type="2D Table" settings="">
+      <position>235 392 1105 893</position>
+      <channel name="FI_TimingX [degBTDC]">
+        <colors>2 370 390 410 430</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>1105 392 1601 893</position>
+      <string name="camera" value="2.26739 0.535 0.5 0.5 0.5 1.75"/>
+      <channel name="FI_TimingX [degBTDC]">
+        <colors>2 370 390 410 430</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="VE table">
+    <control type="2D Table" settings="">
+      <position>235 392 995 903</position>
+      <channel name="VE [%]">
+        <colors>2 75 90 95 110</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>995 392 1601 903</position>
+      <string name="camera" value="4.03739 0.665 0.5 0.5 0.5 1.75"/>
+      <channel name="VE [%]">
+        <colors>2 80 90 100 105</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>235 903 475 1161</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="0"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="Lambda_Target">
+        <colors>2 0.8 0.99 1.1 1.2</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>475 903 715 1161</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="0"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>715 903 955 1161</position>
+      <string name="range" value="0.8 1.2"/>
+      <string name="divisions" value="10 4"/>
+      <string name="font_size" value="0"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Plot (Simple)" settings="">
+      <position>955 903 1601 1161</position>
+      <string name="show_legend" value="true"/>
+      <string name="diEngineSpeed [RPM]" value="0 9000 0x0080FF true"/>
+      <string name="diLambda_Target" value="0.8 1.2 0x0000FF true"/>
+      <string name="diMAP [kPa]" value="60 100 0xFF00FF true"/>
+      <string name="dilambda1" value="0.8 1.2 0x00FF00 true"/>
+      <string name="dilambda2" value="0.8 1.2 0xFFFF00 true"/>
+      <string name="show_horizontal_grid" value="false"/>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Lambda_Target">
+        <colors>2 0.8 0.99 1.1 1.2</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="EngineSpeed [RPM]">
+        <colors>0 0 0 0 0</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="lambda Target">
+    <control type="2D Table" settings="">
+      <position>235 392 1089 891</position>
+      <channel name="Lambda_Target">
+        <colors>2 0.8 0.99 1.1 1.2</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>1089 392 1601 891</position>
+      <string name="camera" value="-1.20831 0.785398 0.5 0.5 0.5 1.75"/>
+      <channel name="Lambda_Target">
+        <colors>2 0.8 0.99 1.1 1.2</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Plot (Simple)" settings="">
+      <position>235 891 1601 1178</position>
+      <string name="show_legend" value="true"/>
+      <string name="diLambda_Target" value="0.8 1.2 0x0000FF true"/>
+      <string name="dilambda1" value="0.8 1.2 0x00FF00 true"/>
+      <string name="dilambda2" value="0.8 1.2 0xFFFF00 true"/>
+      <string name="show_horizontal_grid" value="false"/>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Lambda_Target">
+        <colors>2 0.8 0.99 1.1 1.2</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Fuel -Staring">
+    <control type="Text" settings="">
+      <position>235 392 462 455</position>
+      <string name="initial_value" value="false"/>
+      <channel name="Run_Threshold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 455 462 520</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Start_Adder_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 520 462 585</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Flood_Clear_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Bar" settings="">
+      <position>462 392 643 759</position>
+      <string name="range" value="0 100"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="0"/>
+      <channel name="Fuel_Subtotal [mg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>643 392 1300 673</position>
+      <channel name="Start_Enrich [mg]">
+        <colors>2 1 5 6 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Fuel -CLT_Corr">
+    <control type="Slider" settings="">
+      <position>235 392 446 457</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="CLT_Fuel_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Bar" settings="">
+      <position>446 392 628 824</position>
+      <string name="range" value="0 120"/>
+      <string name="divisions" value="5 12"/>
+      <string name="font_size" value="2"/>
+      <channel name="IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Bar" settings="">
+      <position>628 392 816 824</position>
+      <string name="range" value="0.7 1.2"/>
+      <string name="divisions" value="10 5"/>
+      <string name="font_size" value="2"/>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Bar" settings="">
+      <position>816 392 990 824</position>
+      <string name="range" value="0.7 1.2"/>
+      <string name="divisions" value="10 5"/>
+      <string name="font_size" value="2"/>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>990 392 1600 541</position>
+      <channel name="CLT_Fuel_Corrrection [%]">
+        <colors>2 2 10 15 40</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Plot (Simple)" settings="">
+      <position>235 824 1600 1133</position>
+      <string name="show_legend" value="true"/>
+      <string name="diCLT [C]" value="0 100 0x0080FF true"/>
+      <string name="diIAT [C]" value="0 100 0x0000FF true"/>
+      <string name="dilambda1" value="0.8 1.2 0x00FF00 true"/>
+      <string name="dilambda2" value="0.8 1.2 0xFFFF00 true"/>
+      <string name="show_horizontal_grid" value="false"/>
+      <channel name="IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>235 457 446 545</position>
+      <string name="initial_value" value="false"/>
+      <channel name="CLT_Fuel_Corrrection [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>235 545 446 623</position>
+      <string name="initial_value" value="false"/>
+      <channel name="IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>235 623 446 704</position>
+      <string name="initial_value" value="false"/>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>235 704 446 791</position>
+      <string name="initial_value" value="false"/>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Fuel-Wall Wetting">
+    <control type="1D Table" settings="">
+      <position>575 392 974 508</position>
+      <channel name="Fuel_Stored_CLT_Corr [%]">
+        <colors>2 -6 15 20 40</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>974 392 1469 705</position>
+      <channel name="Fuel_Stored_Correction [%]">
+        <colors>2 2 8 10 18</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 392 575 450</position>
+      <channel name="Fuel_Wetting_Enable_Time [s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Graph" settings="">
+      <position>575 508 974 677</position>
+      <channel name="Fuel_Stored_CLT_Corr [%]">
+        <colors>3 2 8 12 20</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Graph" settings="">
+      <position>575 784 974 952</position>
+      <channel name="Fuel_Stored_IAT_Corr [%]">
+        <colors>3 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>575 677 974 784</position>
+      <channel name="Fuel_Stored_IAT_Corr [%]">
+        <colors>2 -6 15 20 40</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>974 705 1469 952</position>
+      <channel name="Fuel_Stored_Base [mg]">
+        <colors>2 10 50 60 90</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 450 404 508</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Fuel_Film_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>404 450 575 508</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Fuel_Stored_IAT_Corr_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>404 508 575 573</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Fuel_Stored_CLT_Corr_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 508 404 573</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Fuel_Stored_Angle_Corr_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>235 573 575 701</position>
+      <channel name="Fuel_Stored_Angle_Corr [%]">
+        <colors>2 2 5 7 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Graph" settings="">
+      <position>235 701 575 952</position>
+      <channel name="Fuel_Stored_Angle_Corr [%]">
+        <colors>3 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Outputs">
+    <control type="Slider" settings="">
+      <position>730 392 882 457</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="CLT_Fan_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>730 457 882 522</position>
+      <string name="initial_value" value="false"/>
+      <channel name="CLT_Fan_On">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>730 522 882 587</position>
+      <string name="initial_value" value="false"/>
+      <channel name="CLT_Fan_Off">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>882 392 1034 457</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Tach_Output_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>882 457 1034 522</position>
+      <string name="initial_value" value="false"/>
+      <channel name="Tach_Pulses_per_Rev">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>235 457 730 717</position>
+      <channel name="Fuel_Pump_Duty_Cycle [%]">
+        <colors>2 25 50 60 95</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>235 392 371 457</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="Fuel_Pump_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>371 392 545 457</position>
+      <string name="initial_value" value="false"/>
+      <channel name="Fuel_Pump_Prime_Time [s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>545 392 730 457</position>
+      <string name="initial_value" value="false"/>
+      <channel name="Fuel_PWM_Frequency [hz]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Plant">
+    <control type="Slider" settings="">
+      <position>637 392 1011 457</position>
+      <string name="range" value="0 15000"/>
+      <string name="divisions" value="100"/>
+      <channel name="RPM_Generator">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>1011 392 1582 881</position>
+      <channel name="Fuel_Req [g]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 8 false</numbers>
+      </channel>
+      <channel name="Base_Injector_Time [msec]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="MAP [kPa]">
+        <colors>0 0 0 0 0</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Fuel_Req [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 6 false</numbers>
+      </channel>
+      <channel name="Fuel_Req_Subtotal [g]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 6 false</numbers>
+      </channel>
+      <channel name="Cylinder_Base_Fuel [g]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 8 false</numbers>
+      </channel>
+      <channel name="MAF [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 6 false</numbers>
+      </channel>
+      <channel name="CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="CLT [K]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="IAT [K]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="MAP [Pa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Enable_Injectors">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Rev_Limiter_Fuel_Kill_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Rev_Limiter_Spark_Kill_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Cylinder_1_Fuel_Trim [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Cylinder_Fuel_Trim Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="SPK_DwellX [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="FI_Fuel2 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="FI_Fuel12 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 392 637 685</position>
+      <channel name="Test_Batt_V">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_MAP">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_Baro">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_IAT">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_CLT">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_Fuel_Pres">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_Fuel_Temp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_TPS">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_TPS_Track">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+      <channel name="Test_Throttle_Pedal_Track">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Test_lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Baro [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Run_Threshold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 685 806 1059</position>
+      <channel name="ETC_Proportional_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Derivative_Coefficient">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Hold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Lower_Clamp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_Integral_Upper_Clamp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_1_PID">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="Throttle_Pedal [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 1 false</numbers>
+      </channel>
+      <channel name="Throttle_Position_Translation [%]">
+        <colors>0 15 50 70 95</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_1_Control_Enable">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>806 680 1011 745</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="100"/>
+      <channel name="Test_Throttle_Pedal">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Plot (Simple)" settings="">
+      <position>806 881 1642 1110</position>
+      <string name="show_legend" value="true"/>
+      <string name="diETC_1_PID" value="-20 20 0x808080 true"/>
+      <string name="diETC_Polarity_Test" value="0 1 0x0000FF true"/>
+      <string name="diHBridge0_Input1" value="0 1 0xFFFF00 true"/>
+      <string name="diHBridge0_Input2" value="0 1 0x0080FF true"/>
+      <string name="show_horizontal_grid" value="false"/>
+      <channel name="ETC_Polarity_Test">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="ETC_1_PID">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="HBridge0_Input1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="HBridge0_Input2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>806 745 1011 810</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="100"/>
+      <channel name="Test_TPS">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>637 605 806 680</position>
+      <string name="range" value="0 5"/>
+      <string name="divisions" value="100"/>
+      <channel name="Test_MAP">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>806 605 1011 680</position>
+      <string name="range" value="0 1"/>
+      <string name="divisions" value="100"/>
+      <channel name="Test_NBO2_1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>637 457 893 522</position>
+      <string name="initial_value" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>637 522 893 587</position>
+      <string name="initial_value" value="false"/>
+      <channel name="MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>806 810 1011 881</position>
+      <string name="range" value="0 10000"/>
+      <string name="divisions" value="100"/>
+      <channel name="RPM_Generator">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="NB O2">
+    <control type="1D Table" settings="">
+      <position>618 638 1095 757</position>
+      <channel name="NBO2_2_Latency [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>618 757 1095 876</position>
+      <channel name="NBO2_2_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1095 638 1601 757</position>
+      <channel name="NBO2_3_Latency [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1095 757 1601 876</position>
+      <channel name="NBO2_3_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 876 517 1059</position>
+      <channel name="NBO2_0_Cylinder_1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Cylinder_2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Cylinder_3">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_4">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_5">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_6">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>517 876 803 1059</position>
+      <channel name="NBO2_2_Cylinder_7">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_8">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_9">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_10">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_11">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_12">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="Plot (Simple)" settings="">
+      <position>803 876 1601 1059</position>
+      <string name="show_legend" value="true"/>
+      <string name="diNBO2_0_Cylinder_1" value="0.8 1.2 0x0000FF true"/>
+      <string name="diNBO2_0_Cylinder_2" value="0.8 1.2 0x0080FF true"/>
+      <string name="diNBO2_0_Cylinder_3" value="0.8 1.2 0x00FFFF true"/>
+      <string name="diNBO2_1_Cylinder_4" value="0.8 1.2 0x808080 true"/>
+      <string name="diNBO2_1_Cylinder_5" value="0.8 1.2 0x0060C0 true"/>
+      <string name="diNBO2_1_Cylinder_6" value="0.8 1.2 0x00C0C0 true"/>
+      <string name="diNBO2_2_Cylinder_7" value="0.8 1.2 0xFF8000 true"/>
+      <string name="diNBO2_2_Cylinder_8" value="0.8 1.2 0xFF0000 true"/>
+      <string name="diNBO2_2_Cylinder_9" value="0.8 1.2 0xFF0080 true"/>
+      <string name="diNBO2_3_Cylinder_10" value="0.8 1.2 0xFF00FF true"/>
+      <string name="diNBO2_3_Cylinder_11" value="0.8 1.2 0x8000FF true"/>
+      <string name="diNBO2_3_Cylinder_12" value="0.8 1.2 0x808080 true"/>
+      <string name="dilambda1" value="0.8 1.2 0x00FF00 true"/>
+      <string name="dilambda2" value="0.8 1.2 0xFFFF00 true"/>
+      <string name="show_horizontal_grid" value="false"/>
+      <channel name="NBO2_0_Cylinder_1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Cylinder_2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Cylinder_3">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_4">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_5">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_6">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_7">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_8">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_9">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_10">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_11">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_12">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="lambda1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+      <channel name="lambda2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 2 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>618 392 1095 517</position>
+      <channel name="NBO2_0_Latency [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>618 517 1095 638</position>
+      <channel name="NBO2_0_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1095 392 1601 517</position>
+      <channel name="NBO2_1_Latency [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 0 false</numbers>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1095 517 1601 638</position>
+      <channel name="NBO2_1_lambda_Convert">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>235 392 618 876</position>
+      <channel name="NBO2_0_Cylinder_1-3_Window [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Signal_1_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Signal_2_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Signal_3_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_0_Signal_Smoothing_Coef">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_4-6_Window [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_4_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_5_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Cylinder_6_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_1_Signal_Smoothing_Coef">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_7-9_Window [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_7_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_8_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Cylinder_9_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_2_Signal_Smoothing_Coef">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_10-12_Window [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_10_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_11_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Cylinder_12_Open [deg]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+      <channel name="NBO2_3_Signal_Smoothing_Coef">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Cyl Trim 1-6">
+    <control type="2D Table" settings="">
+      <position>235 392 634 668</position>
+      <channel name="Cylinder_1_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>235 668 634 944</position>
+      <channel name="Cylinder_2_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>634 392 1033 668</position>
+      <channel name="Cylinder_3_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>634 668 1033 944</position>
+      <channel name="Cylinder_4_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>1033 392 1432 668</position>
+      <channel name="Cylinder_5_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>1033 668 1432 944</position>
+      <channel name="Cylinder_6_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Cyl Trim 7-12">
+    <control type="2D Table" settings="">
+      <position>235 392 634 668</position>
+      <channel name="Cylinder_7_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>634 392 1033 668</position>
+      <channel name="Cylinder_9_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>1033 392 1432 668</position>
+      <channel name="Cylinder_11_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>235 668 634 944</position>
+      <channel name="Cylinder_8_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>634 668 1033 944</position>
+      <channel name="Cylinder_10_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>1033 668 1432 944</position>
+      <channel name="Cylinder_12_Fuel_Trim [%]">
+        <colors>2 -10 -1 1 10</colors>
+        <numbers>fixed 3 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <page name="Page 5">
+    <control type="Text Grid" settings="">
+      <position>235 392 806 568</position>
+      <channel name="AN_8 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AN_10 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="AN_9 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+      <channel name="Fuel_Pres [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+  </page>
+  <virtual_channels version="1">
+    <virtual type="virtual" name="Fuel_Subtotal [mg]">
+      <string name="expression" value="i0/1000"/>
+      <input name="Fuel_Req_Subtotal [g]"/>
+    </virtual>
+  </virtual_channels>
+  <theme version="2">
+    <solid_color name="background_color">0xF0F0F0</solid_color>
+    <solid_color name="text_light_color">0x191919</solid_color>
+    <solid_color name="text_dark_color">0x000000</solid_color>
+    <solid_color name="grid_lines_color">0x808080</solid_color>
+    <solid_color name="indicator_color">0xFF00FF</solid_color>
+    <solid_color name="modified_color">0xF8F800</solid_color>
+    <gradient_color>0xE0E0E0 0xE0E0E0 0xE0E0E0</gradient_color>
+    <gradient_color>0x7AC030 0xFFEF37 0xC0472E</gradient_color>
+    <gradient_color>0x16E6E6 0x7BC030 0xC0472E</gradient_color>
+    <gradient_color>0xFF0000 0xFF0000 0xFF0000</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+    <gradient_color>0x808080 0x808080 0x808080</gradient_color>
+  </theme>
+</layout>
