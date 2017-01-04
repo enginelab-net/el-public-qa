@@ -90,7 +90,6 @@
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1 new name 1
 
 !define FUEL_LAMBDA_TRIM
-
 !define FUEL_LAMBDA_TARGET
 !define FUEL_LAMBDA_TARGET_TABLE_2D
 !set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
@@ -99,6 +98,15 @@
 !define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
 !set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
 
+## Small block chevy. 1,3,5 and 7 to one exhaust tube. 2,4,6 and 8 to other tube.
+!set INJECTOR1_LAMBDA_MAPPING L_FB_0_Trim
+!set INJECTOR3_LAMBDA_MAPPING L_FB_0_Trim
+!set INJECTOR5_LAMBDA_MAPPING L_FB_0_Trim
+!set INJECTOR7_LAMBDA_MAPPING L_FB_0_Trim
+!set INJECTOR2_LAMBDA_MAPPING L_FB_1_Trim
+!set INJECTOR4_LAMBDA_MAPPING L_FB_1_Trim
+!set INJECTOR6_LAMBDA_MAPPING L_FB_1_Trim
+!set INJECTOR8_LAMBDA_MAPPING L_FB_1_Trim
 # ------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------
@@ -173,6 +181,7 @@
 #!set IGN_SPKTIMING_TABLE_2D_INPUT_0 new name 0
 #!set IGN_SPKTIMING_TABLE_2D_INPUT_1 new name 1
 
+!define IGN_SPKTIMING_TRIM
 !define IGN_SPKTIMING_TRIM_TABLES
 #!define IGN_SPKTIMING_TRIM_TABLES_1D
 #!set_path IGN_SPKTIMING_TRIM_TABLES_1D_CSV  .\Resource\IGN_SPKTIMING_TRIM_TABLES_1D_CSV.csv
