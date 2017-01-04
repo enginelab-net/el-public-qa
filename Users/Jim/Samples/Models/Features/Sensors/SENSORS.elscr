@@ -3,14 +3,6 @@
 ## ***************************************************************
 
 ## ***************************************************************
-## Manifold pressure sensor
-{if defined(SENSOR_MAP)
-include=.\MAP\MAP.elscr
-!notebook new_note "Sensor submodel MAP" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_MAP_", item_wildcard="SENSOR_MAP ", message="The MAP sensor submodel. (/Sensors/MAP/MAP.elscr)"] 
-}
-## ***************************************************************
-
-## ***************************************************************
 ## Coolant temperature sensor
 {if defined(SENSOR_CLT)
 include=.\Temperature\Clt.elscr
@@ -23,6 +15,22 @@ include=.\Temperature\Clt.elscr
 {if defined(SENSOR_IAT)
 include=.\Temperature\Iat.elscr
 !notebook new_note "Sensor submodel IAT" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_IAT_", item_wildcard="SENSOR_IAT ", message="The Intake air sensor submodel. (/Sensors/Temperature/Iat.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Oil temperature sensor
+{if defined(SENSOR_OILTEMP)
+include=.\Temperature\Oil.elscr
+!notebook new_note "Sensor submodel OILTEMP" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_OILTEMP_", item_wildcard="SENSOR_OILTEMP ", message="The Oil temperature sensor submodel. (/Sensors/Temperature/Oil.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## Airbox temperature sensor
+{if defined(SENSOR_AIRBOXTEMP)
+include=.\Temperature\Airbox.elscr
+!notebook new_note "Sensor submodel AIRBOXTEMP" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_AIRBOXTEMP_", item_wildcard="SENSOR_AIRBOXTEMP ", message="The Airbox temperature sensor submodel. (/Sensors/Temperature/Airbox.elscr)"] 
 }
 ## ***************************************************************
 
@@ -43,10 +51,26 @@ include=.\MAF\MAF.elscr
 ## ***************************************************************
 
 ## ***************************************************************
+## Manifold pressure sensor
+{if defined(SENSOR_MAP)
+include=.\Pressure\MAP.elscr
+!notebook new_note "Sensor submodel MAP" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_MAP_", item_wildcard="SENSOR_MAP ", message="The MAP sensor submodel. (/Sensors/Pressure/MAP.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
 ## FuelPressure sensor
 {if defined(SENSOR_FUELPRESSURE)
-include=.\FuelPressure\FuelPressure.elscr
-!notebook new_note "Sensor submodel FuelPressure" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_FuelPressure_", item_wildcard="SENSOR_FuelPressure ", message="The fuel pressure sensor submodel. (/Sensors/FuelPressure/FuelPressure.elscr)"] 
+include=.\Pressure\Fuel.elscr
+!notebook new_note "Sensor submodel FuelPressure" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_FuelPressure_", item_wildcard="SENSOR_FuelPressure ", message="The fuel pressure sensor submodel. (/Sensors/Pressure/Fuel.elscr)"] 
+}
+## ***************************************************************
+
+## ***************************************************************
+## FuelPressure sensor
+{if defined(SENSOR_OILPRESSURE)
+include=.\Pressure\Oil.elscr
+!notebook new_note "Sensor submodel OilPressure" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_OilPressure_", item_wildcard="SENSOR_OilPressure ", message="The oil pressure sensor submodel. (/Sensors/Pressure/Oil.elscr)"] 
 }
 ## ***************************************************************
 

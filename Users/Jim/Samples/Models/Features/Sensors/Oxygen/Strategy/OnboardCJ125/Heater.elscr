@@ -43,6 +43,12 @@
 !change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_int_hold"]
 !change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_int_l"]
 !change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_int_h"]
+!change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_error_output"]
+!change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_dt_output"]
+!change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_p_output"]
+!change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_i_output"]
+!change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_d_output"]
+!change_item "UEGO_0_heater_pid [%]" [add_input="UEGO_0_heater_pid_deadband [%]"]
 
 !create_item "UEGO_0_heater_pid_kp" [type="No Operation", initial_value=SENSOR_OXYGEN_UEGO_HEATER_PID_KP]
 !create_item "UEGO_0_heater_pid_ki" [type="No Operation", initial_value=SENSOR_OXYGEN_UEGO_HEATER_PID_KI]
@@ -54,6 +60,12 @@
 !create_item "UEGO_0_heater_pid_pcontrib" [type="No Operation"]
 !create_item "UEGO_0_heater_pid_icontrib" [type="No Operation"]
 !create_item "UEGO_0_heater_pid_dcontrib" [type="No Operation"]
+!replace_item "UEGO_0_heater_pid_error_output" [type="Constant", constant_value="0"]
+!replace_item "UEGO_0_heater_pid_dt_output" [type="Constant", constant_value="0"]
+!replace_item "UEGO_0_heater_pid_p_output" [type="Constant", constant_value="0"]
+!replace_item "UEGO_0_heater_pid_i_output" [type="Constant", constant_value="0"]
+!replace_item "UEGO_0_heater_pid_d_output" [type="Constant", constant_value="0"]
+!create_item "UEGO_0_heater_pid_deadband [%]" [type="No Operation"]
 
 !notebook new_note "UEGO heater pid" [vendor="Enginelab, Inc.", item_wildcard="UEGO_0_heater_pid", message=" The UEGO heater control submodel."]
 #****************************************************************************************************************************
