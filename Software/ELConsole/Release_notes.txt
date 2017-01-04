@@ -1,0 +1,158 @@
+EngineLab El Console release notes:
+
+*******************************************************************************************************************
+Version 1.96.8175
+*******************************************************************************************************************
+- Fixed issues where configuration files would not be saved/loaded correctly if an external name existed.
+-- Was only broken for those channels that have internal inputs eg: Can Packet item.
+- Fixed issue with plot/scatter plot control causing a crash on page switch.
+
+*******************************************************************************************************************
+Version 1.96.8169
+*******************************************************************************************************************
+- Fixed issues where changing names of channels would occasionally cause a crash.
+- Fixed issues where Set Channels would display an empty selected list (or an empty Error Message) if a/the channel on the control is invalid.
+- Fixed issue with MultiText Control where duplicating the window would cause a crash.
+- Fixed issue with Scatter Plot and Text control where the title bar would be invalid upon creation.
+- Fixed an issue where UNKNOWN would appear as input for certain channels.
+- Fixed an issue where the cache would not revalidate after a Resolve Externs With String was done.
+- Fixed an issue where the background would not redraw after Clearing the layout.
+- Fixed an issue where modifying a channel name would cause a crash if a control did not exist that held same name...
+- Fixed an issue where the last line of an append script was ignored/not processed.
+- Fixed an issue where the simulator would attempt to add/touch the flash for channels set to No Commit
+-- Fixes an issue with the append script in multiple paths.
+- Fixed an issue where changing the name of a channel while that channel is displayed on a control would cause a crash
+- Fixed an issue where the unit preference window would not properly set a group to be No Conversion.
+-- Adjusted how notifications are handled with regards to the unit preference window.
+- Fixed an issue where the name of a channel would be changed to match an external (or other required name).
+- Fixed an issue where move_to_primary_heap would cause externs to be UNKNOWN rather than their real names.
+-- When the host is closed or the window is closed.
+- Fixed an issue where ELConsole would crash after finishing the append_script.
+-- Fixed many other related crashes.
+- Fixed an issue where changing the units would cause a crash.
+- Fixed an issue where certain application options would not be used correctly.
+- Fixed an issue where importing CSV for table data would not import the correct number of values.
+- Fixed an issue where attempting to paste data to a table would not work as expected.
+- Added in Self for the Channel Select window.
+-- This allows for quick self referencing when creating/modifying channels in the model.
+- Added in support for usb time.
+- Made ini options in USB Window: display_file_version and display_file_date.  Setting these results in the column being visible.
+- Added ini option set_target_time_on_connect. Will adjust the targets time to match current time when connected.
+- Added ini option follow_ecu_selection. Determines the 'number' of cells selected when in Follow ECU mode.
+- Adjusted the channel select window to pass on the display hidden channels option to child select windows when viewing parents/inputs of a channel.
+-- Also fixed an issue where a crash would occur when trying to change the visible columns after already having viewed the selection list...
+- Adjusted the sort by channel name to be case insensitive.
+- Issues with export sub model have been adjusted.
+- Adjusted refresh frequency for target state.  Should limit the times a menu option is invalid when it should be valid.
+- Adjusted the firmware window with regards to R8C updates.
+
+*******************************************************************************************************************
+Version 1.96.8131
+*******************************************************************************************************************
+- When changing the name of a channel, all controls now update correctly.
+-- Includes changes of virtual channels.
+- ChannelSelect
+-- Can now copy selected list to clip board.
+-- Can choose to also include parents.
+- Many similar fixes as done to IT2.96.8122
+- Holds front side elements for some firmware optimizations.
+- Ram and Flash optimizations:
+-- No commit feature added. Items with this flag will not be committed to the flash. Nop items with this flag will be optimized in RAM at the top of the primary heap.
+-- Primary/Secondary heaps differentiated based on SH device and SRAM.
+-- RomHook and MovedCallback turned on for RAM optimization. Channel names and tokens will be fetched from ROM for ROM based items.
+- Script additions for setting NoCommit and moving items to the secondary heap.
+- Channel select dialog updates for viewing the new flags.
+- Release to match API version of sibling InfinityTuner;  Version 5 API
+- Holds optimizations for Windows resource management.
+-- HWNDs for Controls only created/exist if visible.
+-- GDI objects (eg Bitmaps/Brushes) treated same as HWNDs in majority of cases.
+-- Adjusted Text/Text Grid controls to only use a single Bitmap.
+- Holds newer style ChannelList.  Allows resizing the channel list.
+- Holds access to export sub-models based off currently selected channels in the channel list.
+- Multiple select handled correctly in the Channel List.  Can now delete/convert/export multiple channels at a time.
+- ChannelProperties is now a part of the system menu for most controls.
+- For selecting channels for the target to log:
+-- The window was updated to allow for loading/saving csv multiple select and add.
+- New API for plugins:
+-- API allows for docking windows, full layout control.
+-- API allows for multiple targets (when multiple targets are supported)
+
+
+*******************************************************************************************************************
+Version 1.96.7094
+*******************************************************************************************************************
+- Updated append script support
+-- Added application option script_model_id_string
+--- String used for the noop generated file at the end of the script (if any).  Defaults to using string 1.
+-- Added application option script_noop_file_extension
+--- The extension to use for the generated file at the end of the script (if any).
+- Added support for changing display formatting directly for 1DTables and 2DTables.
+- Fixed crash when clearing configuration while a layout exists.
+- Added confirmation when wanting to clear the configuration.
+- Added confirmation when wanting to delete a channel.  (Changeable via option prompt_on_channel_delete)
+- Added right-click menu to add controls.
+- Adjusted slider control to also be used as a spring-back.
+
+
+*******************************************************************************************************************
+Version 1.96.7079
+*******************************************************************************************************************
+- Updated version support.
+- Updated CAN item for future optimization.
+- Timing support for GM LFX, Lamborghini V10 and Toyota 2GR-FE.
+- Math rand support.
+- GDI pump drive support. 
+
+*******************************************************************************************************************
+Version 1.95.7053
+*******************************************************************************************************************
+usb_bus_delay setting obsolete.
+USB interface updates and fixes for USB3.0 ports.
+CAN interface bug fixes for periodic latency and data integrity.
+
+*******************************************************************************************************************
+Version 1.95.6983
+*******************************************************************************************************************
+1) Updated USB support. The USB interface supports some additional "EL Console.ini" options for resolving some connection issues with faster systems.
+usb_bus_delay_us_0, usb_bus_delay_us_1 and usb_bus_delay_us_2.
+
+Most USB 2.0 systems do not require these options and can be resolved with the USB host controller soft retry fix found here: \\SVN_elqa\Software\USBHC_SoftRetryFix\...
+
+USB 3.0 systems will probably need the options.
+Start with:
+usb_bus_delay_us_0 = 100
+usb_bus_delay_us_1 = 0
+usb_bus_delay_us_2 = 0
+
+If problems persist, try:
+usb_bus_delay_us_0 = 100
+usb_bus_delay_us_1 = 100
+usb_bus_delay_us_2 = 100
+
+or move to:
+usb_bus_delay_us_0 = 300
+usb_bus_delay_us_1 = 300
+usb_bus_delay_us_2 = 300
+
+You can also adjust the:
+captureloop_sleep = 10
+You can increase this value and things may get better.
+
+2) CAN updates. Bug fix for high bandwidth CAN.
+New optional channels:
+"CAN_A TEC"      - CAN transmit error count on bus A
+"CAN_A REC"      - CAN receive error count on bus A
+"CAN_A Flags"    - CAN errors. Contact EL if you see issues here, otherwise ignore. 
+"CAN_A Overrun"  - CAN receive overrun count. High bandwidth CAN could cause dropped packets.
+"CAN_B TEC"      - CAN transmit error count on bus A
+"CAN_B REC"      - CAN receive error count on bus A
+"CAN_B Flags"    - CAN errors. Contact EL if you see issues here, otherwise ignore.
+"CAN_B Overrun"  - CAN receive overrun count. High bandwidth CAN could cause dropped packets.
+
+3) Host logging updated.
+Data is saved to disk along with captures. This is an optimization that should make logging (stop) more pleasant. 
+*******************************************************************************************************************
+
+
+
+
