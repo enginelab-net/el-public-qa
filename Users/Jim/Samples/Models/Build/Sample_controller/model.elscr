@@ -286,6 +286,26 @@
 !set SENSOR_BATTERYVOLTAGE_ERROR_TIMER_DELAY_TIME 3000
 # ***************************************************************
 
+# ***************************************************************
+## Output feature
+!define OUTPUT
+!define OUTPUT_COILS
+!define OUTPUT_COILS_EXTERNAL_ENABLE_HW
+# ------------------------------------------------------------------------
+!define OUTPUT_INJECTORS
+!define OUTPUT_INJ_EXTERNAL_ENABLE_HW
+# ------------------------------------------------------------------------
+!define OUTPUT_CLTFAN
+!define OUTPUT_CLTFAN_EXTERNAL_ENABLE_HW
+!define OUTPUT_OILFAN
+!define OUTPUT_OILFAN_EXTERNAL_ENABLE_HW
+# ------------------------------------------------------------------------
+!define OUTPUT_FUELPUMP
+!define OUTPUT_FUELPUMP_EXTERNAL_ENABLE_HW
+!define OUTPUT_AUXPUMP
+!define OUTPUT_AUXPUMP_EXTERNAL_ENABLE_HW
+# ***************************************************************
+
 include=..\..\Features\Features.elscr
 
 # ***************************************************************

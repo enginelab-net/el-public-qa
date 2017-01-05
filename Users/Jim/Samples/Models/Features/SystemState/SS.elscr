@@ -35,9 +35,16 @@
 !replace_item "time" [type="Constant", constant_value="0"]
 ##******************************************************************************************************************************************************************
 
-!notebook new_note "SS_EngineState [d]" [vendor="Enginelab, Inc.", message="This is the main system state variable. Defined in /SystemState/SS.elscr)"] 
-!notebook new_note "SS_EngineRunning [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently running. Defined in /SystemState/SS.elscr)"] 
-!notebook new_note "SS_EngineAtRest [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently at rest. Defined in /SystemState/SS.elscr)"] 
+!notebook new_note    "SS_EngineState [d]" [vendor="Enginelab, Inc.", message="This is the main system state variable. Defined in /SystemState/SS.elscr)\n"] 
+!notebook add_message "SS_EngineState [d]" [message="The engine states are defined as follows:\n"] 
+!notebook add_message "SS_EngineState [d]" [message="0 - Rest state      \"SS_EngineState_rest [d]\"    \n"] 
+!notebook add_message "SS_EngineState [d]" [message="1 - Starting state  \"SS_EngineState_starting [d]\"\n"] 
+!notebook add_message "SS_EngineState [d]" [message="2 - Steady state    \"SS_EngineState_running [d]\" \n"] 
+!notebook add_message "SS_EngineState [d]" [message="3 - Low load state  \"SS_EngineState_lowload [d]\" \n"] 
+!notebook add_message "SS_EngineState [d]" [message="4 - High load state \"SS_EngineState_highload [d]\"\n"] 
+!notebook add_message "SS_EngineState [d]" [message="5 - Stress state    \"SS_EngineState_stress [d]\"  \n"] 
+!notebook new_note "SS_EngineRunning [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently running. Defined in /SystemState/SS.elscr).\n See the note for \"SS_EngineState [d]\" for engine state details."] 
+!notebook new_note "SS_EngineAtRest [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently at rest. Defined in /SystemState/SS.elscr).\n See the note for \"SS_EngineState [d]\" for engine state details."] 
 !notebook new_note "SS_EngineRunningTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been running since last being at rest. Defined in /SystemState/SS.elscr)"] 
 !notebook new_note "SS_EngineRestTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been at rest since last running. Defined in /SystemState/SS.elscr)"] 
 

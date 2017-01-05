@@ -278,22 +278,22 @@ SENSOR_MAF_error_reset->SENSOR_ALL_error_reset
 {if defined(SENSOR_BATTERYVOLTAGE)
 {if VERSIONMAJOR == "096"
 {resolve_externs
-SENSOR_BatteryVoltage_final [V]->BatteryVoltageRef [V]
+SENSOR_Battery_final [V]->BatteryVoltageRef [V]
 }
 !else
 ## AN_BatteryVoltageRef [V] filter adjust
 !change_item "AN_BatteryVoltageRef [V]" [initial_value="0.95"]
 {resolve_externs
-SENSOR_BatteryVoltage_final [V]->AN_BatteryVoltageRef [V]
+SENSOR_Battery_final [V]->AN_BatteryVoltageRef [V]
 }
 !notebook new_note "AN_BatteryVoltageRef [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
 {if defined(SENSOR_BATTERYVOLTAGE_ERROR_TIMER)
 {resolve_externs
-SENSOR_BatteryVoltage_error_event->AN_8 Error
-SENSOR_BatteryVoltage_error_reset->SENSOR_ALL_error_reset
+SENSOR_Battery_error_event->AN_8 Error
+SENSOR_Battery_error_reset->SENSOR_ALL_error_reset
 }
 }
-!notebook add_element "Sensor submodel BatteryVoltage" [item_wildcard="AN_Battery"] 
+!notebook add_element "Sensor submodel Battery" [item_wildcard="AN_Battery"] 
 }
 } 
 ## ***************************************************************

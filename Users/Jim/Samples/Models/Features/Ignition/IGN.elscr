@@ -9,16 +9,16 @@
 ## ***************************************************************
 ## IGN use a 1D or a 2D table for a dwell lookup.
 {if defined(IGN_SPKDWELL_TABLE_1D)
-!create_item "SPK_Dwell_1Dtable [ms]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="SENSOR_BatteryVoltage [V]"]
+!create_item "SPK_Dwell_1Dtable [ms]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="SENSOR_Battery [V]"]
 {if defined(IGN_SPKDWELL_TABLE_1D_INPUT)
-!change_item "SPK_Dwell_1Dtable [ms]" [delete_inputs, add_input=IGN_SPKDWELL_TABLE_1D_INPUT]
+!change_item "SPK_Dwell_1Dtable [ms]" [add_input=IGN_SPKDWELL_TABLE_1D_INPUT]
 }
 
 !create_item "SPK_DwellX [ms]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="SPK_Dwell_1Dtable [ms]", math_expression="i0"]
 }
 
 {if defined(IGN_SPKDWELL_TABLE_2D)
-!create_item "SPK_Dwell_2Dtable [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_BatteryVoltage [V]"]
+!create_item "SPK_Dwell_2Dtable [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_Battery [V]"]
 {if defined(IGN_SPKDWELL_TABLE_2D_INPUT_0)
 !change_item "SPK_Dwell_2Dtable [ms]" [input0=IGN_SPKDWELL_TABLE_2D_INPUT_0]
 }

@@ -113,7 +113,6 @@
 !set SENSOR_OXYGEN_UEGO_RAMP_TIME 30000
 }
 !create_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_200]
-!change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [delete_inputs]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="uego_ramp_timer_low"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="uego_ramp_timer_time"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_using_pid [bool]"]

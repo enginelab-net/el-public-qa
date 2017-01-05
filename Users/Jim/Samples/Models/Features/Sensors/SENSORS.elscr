@@ -86,7 +86,7 @@ include=.\Oxygen\Oxygen.elscr
 ## Battery voltage sensor
 {if defined(SENSOR_BATTERYVOLTAGE)
 include=.\BatteryVoltage\BatteryVoltage.elscr
-!notebook new_note "Sensor submodel BatteryVoltage" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_Battery", message="The battery voltage sensor pressure sensor submodel. (/Sensors/BatteryVoltage/BatteryVoltage.elscr)"] 
+!notebook new_note "Sensor submodel Battery" [vendor="Enginelab, Inc.", item_wildcard="SENSOR_Battery", message="The battery voltage sensor pressure sensor submodel. (/Sensors/BatteryVoltage/BatteryVoltage.elscr)"] 
 }
 ## ***************************************************************
 

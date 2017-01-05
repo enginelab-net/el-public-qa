@@ -1,0 +1,30 @@
+## ***************************************************************
+## Oil cooler fan relay control.
+## ***************************************************************
+{if defined(OUTPUT_OILFAN_EXTERNAL_ENABLE_HW)
+!create_item "OUTPUT_OILFAN_ext_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+!change_item "OUTPUT_OILFAN_ext_HW" [add_input="OUTPUT_OILFAN_enable [bool]"]
+}
+
+## Use temperature by default.
+{if defined(OUTPUT_OILFAN_INPUT)
+!else
+!set OUTPUT_OILFAN_INPUT SENSOR_OILTEMP [C]
+}
+{if defined(OUTPUT_OILFAN_THRESHOLD_VALUE_INPUT)
+!else
+!set OUTPUT_OILFAN_THRESHOLD_VALUE_INPUT OUTPUT_OILFAN_threshold [C]
+}
+{if defined(OUTPUT_OILFAN_THRESHOLD_VALUE)
+!else
+!set OUTPUT_OILFAN_THRESHOLD_VALUE 90
+}
+
+!create_item "OUTPUT_OILFAN_THRESHOLD_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_OILFAN_THRESHOLD_VALUE]
+
+!create_item "OUTPUT_OILFAN_enable [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="1"]
+!change_item "OUTPUT_OILFAN_enable [bool]" [add_input=OUTPUT_OILFAN_INPUT]
+!change_item "OUTPUT_OILFAN_enable [bool]" [add_input=OUTPUT_OILFAN_THRESHOLD_VALUE_INPUT]
+!change_item "OUTPUT_OILFAN_enable [bool]" [if_else_add_expression="i0 > i1"]
+
+

@@ -17,7 +17,7 @@
 }
 
 {if defined(FUELFLOW_OFFSET_TABLE_2D)
-!create_item "FUELFLOW_offset [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_BatteryVoltage [V]", add_input="FUELFLOW_EffectivePressure [kPa]"]
+!create_item "FUELFLOW_offset [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_Battery [V]", add_input="FUELFLOW_EffectivePressure [kPa]"]
 {if defined(FUELFLOW_OFFSET_TABLE_2D_CSV)
 !change_item "FUELFLOW_offset [ms]" [2Dtable_csv=FUELFLOW_OFFSET_TABLE_2D_CSV]
 }
