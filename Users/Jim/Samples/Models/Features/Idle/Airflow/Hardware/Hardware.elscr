@@ -4,11 +4,11 @@
 
 {if defined(IDLE_AIRFLOW_STEPPER_HARDWARE)
 
-!create_item "IDLE_airflow_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_100]
-!change_item "IDLE_airflow_HW" [add_input="IDLE_airflow_position [%]"]
-!change_item "IDLE_airflow_HW" [add_input="step_range"]
-!change_item "IDLE_airflow_HW" [add_input="pulse_per_step"]
-!change_item "IDLE_airflow_HW" [add_input="pulse_delay"]
+!create_item "IDLE_AF_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_100]
+!change_item "IDLE_AF_HW" [add_input="IDLE_AF_position [%]"]
+!change_item "IDLE_AF_HW" [add_input="step_range"]
+!change_item "IDLE_AF_HW" [add_input="pulse_per_step"]
+!change_item "IDLE_AF_HW" [add_input="pulse_delay"]
 
 {if defined(IDLE_AIRFLOW_STEPPER_HARDWARE_STEPRANGE)
 !else

@@ -1,5 +1,5 @@
 {if defined(IDLE_AIRFLOW_STEPPER_HARDWARE)
-!replace_item "IDLE_airflow_HW" [type="Hardware IO", pin="StepperController, On board", board_conditioning="Stepper Motor Controller", cpu_mode="Stepper Motor Control %"]
+!replace_item "IDLE_AF_HW" [type="Hardware IO", pin="StepperController, On board", board_conditioning="Stepper Motor Controller", cpu_mode="Stepper Motor Control %"]
 }
 
 {if defined(SENSOR_OXYGEN_ONBOARD_CJ125)
@@ -19,25 +19,26 @@
 }
 
 {if defined(OUTPUT_INJ_EXTERNAL_ENABLE_HW)
-!replace_item "OUTPUT_INJ_ext_HW" [type="Hardware IO", pin="LowsideSwitch4_Out, C1-1", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
+!replace_item "OUTPUT_INJ_HW" [type="Hardware IO", pin="LowsideSwitch4_Out, C1-1", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
 }
 
 {if defined(OUTPUT_CLTFAN_EXTERNAL_ENABLE_HW)
-!replace_item "OUTPUT_CLTFAN_ext_HW" [type="Hardware IO", pin="LowsideSwitch0_Out, C1-34", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
+!replace_item "OUTPUT_CLTFAN_HW" [type="Hardware IO", pin="LowsideSwitch0_Out, C1-34", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
 
 }
 
 {if defined(OUTPUT_OILFAN_EXTERNAL_ENABLE_HW)
-!replace_item "OUTPUT_OILFAN_ext_HW" [type="Hardware IO", pin="LowsideSwitch2_Out, C1-17", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
+!replace_item "OUTPUT_OILFAN_HW" [type="Hardware IO", pin="LowsideSwitch2_Out, C1-17", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
 }
 
 {if defined(OUTPUT_FUELPUMP_EXTERNAL_ENABLE_HW)
-!replace_item "OUTPUT_FUELPUMP_ext_HW" [type="Hardware IO", pin="LowsideSwitch1_Out, C1-33", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
+!replace_item "OUTPUT_FUELPUMP_HW" [type="Hardware IO", pin="LowsideSwitch1_Out, C1-33", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
 }
 
 {if defined(OUTPUT_AUXPUMP_EXTERNAL_ENABLE_HW)
-!replace_item "OUTPUT_AUXPUMP_ext_HW" [type="Hardware IO", pin="LowsideSwitch3_Out, C1-18", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
+!replace_item "OUTPUT_AUXPUMP_HW" [type="Hardware IO", pin="LowsideSwitch3_Out, C1-18", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
 }
 
-
-
+{if defined(OUTPUT_TACHOMETER)
+!replace_item "OUTPUT_TACH_HW" [type="Hardware IO", pin="LowsideSwitch6_Out, C1-3", board_conditioning="Low-side driver, 6 Amp", cpu_mode="Tach Output"]
+}

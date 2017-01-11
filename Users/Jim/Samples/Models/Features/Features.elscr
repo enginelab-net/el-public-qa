@@ -38,14 +38,12 @@ include=.\SystemState\SS.elscr
 ## ***************************************************************
 
 ## ***************************************************************
+{if defined(INPUT)
 ## Sensors feature
 {if defined(SENSORS)
 !echo Sensors feature
-include=.\Sensors\SENSORS.elscr
+include=.\Input\Sensors\SENSORS.elscr
 }
-{if defined(SENSORS_PLANT)
-!echo Sensors feature
-include=.\Sensors\SENSORS.elscr
 }
 ## ***************************************************************
 
@@ -53,6 +51,13 @@ include=.\Sensors\SENSORS.elscr
 ## Output feature
 {if defined(OUTPUT)
 include=.\Output\Output.elscr
+}
+## ***************************************************************
+
+## ***************************************************************
+## Engine speed limiter
+{if defined(ENGINESPEED_LIMITER)
+include=.\EngineSpeedLimiter\ES_Limiter.elscr
 }
 ## ***************************************************************
 

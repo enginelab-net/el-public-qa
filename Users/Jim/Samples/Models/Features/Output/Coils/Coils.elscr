@@ -1,5 +1,5 @@
 ## ***************************************************************
-## Idle airflow control hardware submodel
+## Coil signal output control.
 ## ***************************************************************
 !create_item "OUTPUT_COILS_onboard_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
 !change_item "OUTPUT_COILS_onboard_HW" [add_input="OUTPUT_COILS_onboard_enable [bool]"]

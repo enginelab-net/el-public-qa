@@ -24,7 +24,7 @@ include=.\Airflow\Airflow.elscr
 !notebook new_note "IDLE submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_airflow submodel", message=" The Idle submodel including airflow."]
 }
 {if defined(IDLE_IGNTIMING)
-include=.\IgnTiming\IgnTiming.elscr
+include=.\Ignition\Ignition.elscr
 !notebook add_element "IDLE submodel" [item_or_group="IDLE_IgnTiming submodel"]
 }
 !notebook add_element "IDLE submodel" [item_or_group="IDLE target submodel"]

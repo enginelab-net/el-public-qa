@@ -215,6 +215,8 @@
 # ***************************************************************
 
 # ***************************************************************
+## Input feature
+!define INPUT
 # Sensors feature. Pre-build step
 !define SENSORS
 !define SENSOR_MAP
@@ -296,14 +298,35 @@
 !define OUTPUT_INJ_EXTERNAL_ENABLE_HW
 # ------------------------------------------------------------------------
 !define OUTPUT_CLTFAN
+!define OUTPUT_CLTFAN_CLT
+#!define OUTPUT_CLTFAN_VS
 !define OUTPUT_CLTFAN_EXTERNAL_ENABLE_HW
 !define OUTPUT_OILFAN
+!define OUTPUT_OILFAN_OILTEMP
 !define OUTPUT_OILFAN_EXTERNAL_ENABLE_HW
 # ------------------------------------------------------------------------
 !define OUTPUT_FUELPUMP
 !define OUTPUT_FUELPUMP_EXTERNAL_ENABLE_HW
 !define OUTPUT_AUXPUMP
 !define OUTPUT_AUXPUMP_EXTERNAL_ENABLE_HW
+# ------------------------------------------------------------------------
+!define OUTPUT_TACHOMETER
+## This sample would work for a 36-1 8 cylinder pattern. 
+## The signal toggles every 9 teeth.
+!set OUTPUT_TACHOMETER_INPUT_0_VALUE 9
+## The signal stays high for 3 teeth for each assertion.
+!set OUTPUT_TACHOMETER_INPUT_1_VALUE 3
+# ***************************************************************
+
+# ***************************************************************
+# Engine speed limiter feature.
+!define ENGINESPEED_LIMITER
+!define ENGINESPEED_LIMITER_SPARKPROBABILITY
+!set_path ES_LIMIT_SPARKPROBABILITY_1D_CSV .\Resource\ES_LIMIT_SPARKPROBABILITY_1D_CSV.csv
+!define ENGINESPEED_LIMITER_SPARKTIMING
+!set_path ES_LIMIT_SPARKTIMING_1D_CSV      .\Resource\ES_LIMIT_SPARKTIMING_1D_CSV.csv
+!define ENGINESPEED_LIMITER_FI_PROBABILITY
+!set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   .\Resource\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
 # ***************************************************************
 
 include=..\..\Features\Features.elscr

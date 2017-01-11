@@ -1,9 +1,9 @@
 ## ***************************************************************
-## Oil cooler fan relay control.
+## Fuel pump relay control.
 ## ***************************************************************
 {if defined(OUTPUT_FUELPUMP_EXTERNAL_ENABLE_HW)
-!create_item "OUTPUT_FUELPUMP_ext_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_FUELPUMP_ext_HW" [add_input="OUTPUT_FUELPUMP_enable [bool]"]
+!create_item "OUTPUT_FUELPUMP_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+!change_item "OUTPUT_FUELPUMP_HW" [add_input="OUTPUT_FUELPUMP_enable [bool]"]
 }
 
 {if defined(OUTPUT_FUELPUMP_PRIME_TIME_MS)
