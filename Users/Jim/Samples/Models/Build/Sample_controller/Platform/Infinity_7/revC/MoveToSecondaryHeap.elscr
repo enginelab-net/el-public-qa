@@ -40,5 +40,59 @@ FI_Trim_11_table
 FI_Trim_10_table
 FI_Trim_8_table
 FI_Nonlinear_PriTrim_add
+ES_Limit_FI_Probability [%]
+IDLE_target_table [RPM]
+AF_SD_MAF_B [n]
+FUELFLOW_primary [cc/s]
+ES_Limit_SpkTiming [degBTDC]
+SENSOR_Lambda1 [L]
+AF_SD_temp_B [n]
+ES_Limit_SpkProbability [%]
+SENSOR_OILTEMP [C]
+IDLE_AF_initial_position [%]
+SENSOR_AIRBOXTEMP [C]
+OUTPUT_COILS_ext_HW
+OUTPUT_CLTFAN_HW
+OUTPUT_INJ_HW
+OUTPUT_CLTFAN_CLT_enable [bool]
+OUTPUT_COILS_onboard_HW
+OUTPUT_TACH_HW
+OUTPUT_FUELPUMP_HW
+OUTPUT_OILFAN_OILTEMP_enable [bool]
+OUTPUT_OILFAN_enable [bool]
+SS_EngineRestTime [ms]
+OUTPUT_OILFAN_HW
+OUTPUT_FUELPUMP_prime
+SS_EngineRunningTime [ms]
+OUTPUT_FUELPUMP_enable [bool]
+OUTPUT_AUXPUMP_HW
+OUTPUT_CLTFAN_enable [bool]
+OUTPUT_AUXPUMP_enable [bool]
+UEGO_1_cj125v2_error
+UEGO_0_heater_pid_duty [%]
+SENSOR_Lambda1_valid [bool]
+SENSOR_Lambda0_valid [bool]
+UEGO_1_heater_pid_duty [%]
+UEGO_1_heater_ramp_duty [%]
+UEGO_0_heater_ramp_duty [%]
+UEGO_1_heater_using_pid [bool]
+UEGO_0_heater_HW
+SENSOR_CLT_error [bool]
+SENSOR_FuelPressure_error [bool]
+SENSOR_IAT_error [bool]
+SENSOR_OilPressure_error [bool]
+IDLE_AF_HW
+SENSOR_TPS_error [bool]
+SENSOR_AIRBOXTEMP_error [bool]
+UEGO_1_heater_HW
+SENSOR_Battery_error [bool]
+UEGO_1_heater_duty_final [%]
+IDLE_target [RPM]
+SENSOR_MAP_error [bool]
+SENSOR_OILTEMP_error [bool]
+UEGO_0_heater_duty_final [%]
+SPK_DwellX [ms]
+FUEL_LAMBDA_target [L]
+
 }
 !move_items_to_secondary_heap

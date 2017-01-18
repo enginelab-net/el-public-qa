@@ -102,51 +102,51 @@ SENSOR_AIRBOXTEMP_error_reset->SENSOR_ALL_error_reset
 ## ***************************************************************
 
 ## ***************************************************************
-## MAP sensor input AN_7_In (C1-35)
-{if defined(SENSOR_MAP)
+## TPS sensor input AN_7_In (C1-35)
+{if defined(SENSOR_TPS)
 {if VERSIONMAJOR == "096"
 {resolve_externs
-SENSOR_MAP_final [V]->Analog7 [V]
+SENSOR_TPS_final [V]->Analog7 [V]
 }
 !else
-## AN_7_In filter adjust
+## AN_8_In filter adjust
 !change_item "AN_7 [V]" [initial_value="0.95"]
 {resolve_externs
-SENSOR_MAP_final [V]->AN_7 [V]
+SENSOR_TPS_final [V]->AN_7 [V]
 }
-!notebook new_note "AN_7 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"]
-{if defined(SENSOR_MAP_ERROR_TIMER)
+!notebook new_note "AN_7 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
+{if defined(SENSOR_TPS_ERROR_TIMER)
 {resolve_externs
-SENSOR_MAP_error_event->AN_7 Error
-SENSOR_MAP_error_reset->SENSOR_ALL_error_reset
+SENSOR_TPS_error_event->AN_7 Error
+SENSOR_TPS_error_reset->SENSOR_ALL_error_reset
 }
 }
-!notebook add_element "Sensor submodel MAP" [item_wildcard="AN_7"] 
+!notebook add_element "Sensor submodel TPS" [item_wildcard="AN_7"] 
 }
 } 
 ## ***************************************************************
 
 ## ***************************************************************
-## TPS sensor input AN_8_In (C1-36)
-{if defined(SENSOR_TPS)
+## MAP sensor input AN_8_In (C1-36)
+{if defined(SENSOR_MAP)
 {if VERSIONMAJOR == "096"
 {resolve_externs
-SENSOR_TPS_final [V]->Analog8 [V]
+SENSOR_MAP_final [V]->Analog8 [V]
 }
 !else
 ## AN_8_In filter adjust
 !change_item "AN_8 [V]" [initial_value="0.95"]
 {resolve_externs
-SENSOR_TPS_final [V]->AN_8 [V]
+SENSOR_MAP_final [V]->AN_8 [V]
 }
-!notebook new_note "AN_8 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"] 
-{if defined(SENSOR_TPS_ERROR_TIMER)
+!notebook new_note "AN_8 [V]" [vendor="Enginelab, Inc.", message="Analog input usage on platform. /Platform/EL129ECU/SENSORS.elscr)"]
+{if defined(SENSOR_MAP_ERROR_TIMER)
 {resolve_externs
-SENSOR_TPS_error_event->AN_8 Error
-SENSOR_TPS_error_reset->SENSOR_ALL_error_reset
+SENSOR_MAP_error_event->AN_8 Error
+SENSOR_MAP_error_reset->SENSOR_ALL_error_reset
 }
 }
-!notebook add_element "Sensor submodel TPS" [item_wildcard="AN_8"] 
+!notebook add_element "Sensor submodel MAP" [item_wildcard="AN_8"] 
 }
 } 
 ## ***************************************************************

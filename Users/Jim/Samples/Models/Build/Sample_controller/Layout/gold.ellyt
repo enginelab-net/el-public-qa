@@ -1,9 +1,17 @@
 <layout version="9">
   <main_window>
     <position>162 38 1906 1076</position>
-    <padding>162 57 1906 1076</padding>
+    <padding>162 58 1906 1076</padding>
   </main_window>
   <page name=":undocked">
+    <control type="Text" settings="">
+      <position>1507 410 1894 480</position>
+      <string name="initial_value" value="true"/>
+      <channel name="AN_UEGO_0_UA_In [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
   </page>
   <page name=":pinned">
   </page>
@@ -1335,13 +1343,13 @@
           <string name="color" value="0x00FF80FF"/>
         </options>
       </channel>
-      <channel name="AN_UEGO_0_UA_In [n]">
+      <channel name="AN_UEGO_0_UA_In [V]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
         <options>
           <string name="lane" value="2"/>
           <string name="range_min" value="0"/>
-          <string name="range_max" value="1"/>
+          <string name="range_max" value="5"/>
           <string name="color" value="0x000000FF"/>
         </options>
       </channel>
