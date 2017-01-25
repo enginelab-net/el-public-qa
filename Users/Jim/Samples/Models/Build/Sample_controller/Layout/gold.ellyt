@@ -1,23 +1,15 @@
 <layout version="9">
   <main_window>
-    <position>162 38 1906 1076</position>
-    <padding>162 58 1906 1076</padding>
+    <position>171 41 1915 1078</position>
+    <padding>171 60 1915 1078</padding>
   </main_window>
   <page name=":undocked">
-    <control type="Text" settings="">
-      <position>1507 410 1894 480</position>
-      <string name="initial_value" value="true"/>
-      <channel name="AN_UEGO_0_UA_In [V]">
-        <colors>0 0.1 0.2 0.8 0.9</colors>
-        <numbers>normal 6 false</numbers>
-      </channel>
-    </control>
   </page>
   <page name=":pinned">
   </page>
   <page name="Starting">
     <control type="2D Table" settings="">
-      <position>1064 108 1480 416</position>
+      <position>1073 110 1489 418</position>
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="AF_SD_VE_2Dtable_primary [%]">
@@ -35,7 +27,7 @@
       </channel>
     </control>
     <control type="2D Table" settings="">
-      <position>1064 416 1480 638</position>
+      <position>1073 418 1489 641</position>
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="AF_SD_VE_2Dtable_secondary [%]">
@@ -53,7 +45,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>450 108 1064 416</position>
+      <position>459 110 1073 418</position>
       <channel name="FI_Fuel1 [ms]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -88,7 +80,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>770 416 1064 740</position>
+      <position>779 418 1073 742</position>
       <string name="range" value="0 6"/>
       <string name="divisions" value="1 6"/>
       <string name="font_size" value="2"/>
@@ -99,7 +91,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>450 416 770 740</position>
+      <position>459 418 779 742</position>
       <string name="range" value="0 40"/>
       <string name="divisions" value="5 4"/>
       <string name="font_size" value="2"/>
@@ -110,7 +102,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>170 416 450 740</position>
+      <position>179 418 459 742</position>
       <string name="range" value="0 10"/>
       <string name="divisions" value="5 5"/>
       <string name="font_size" value="2"/>
@@ -121,7 +113,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>170 108 450 416</position>
+      <position>179 110 459 418</position>
       <string name="range" value="0 4000"/>
       <string name="divisions" value="5 5"/>
       <string name="font_size" value="1"/>
@@ -134,7 +126,7 @@
   </page>
   <page name="Airflow">
     <control type="Text Grid" settings="">
-      <position>170 114 814 358</position>
+      <position>179 117 823 361</position>
       <channel name="AF_SD_VE_2Dtable_primary [%]">
         <colors>0 0 60 60 95</colors>
         <numbers>normal 6 false</numbers>
@@ -169,7 +161,7 @@
       </channel>
     </control>
     <control type="2D Table" settings="">
-      <position>962 358 1894 746</position>
+      <position>971 361 1903 749</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="AF_SD_VE_2Dtable_secondary [%]">
@@ -186,9 +178,9 @@
         </y_axis>
       </channel>
     </control>
-    <control type="2D Table" settings="">
-      <position>170 358 962 746</position>
-      <string name="hide_scroll_bars" value="false"/>
+    <control type="3D Graph" settings="">
+      <position>179 749 639 1066</position>
+      <string name="camera" value="3.9292 0.2 0.5 0.5 0.5 1.75"/>
       <channel>
         <primary name="AF_SD_VE_2Dtable_primary [%]">
           <colors>0 0 60 60 95</colors>
@@ -205,25 +197,7 @@
       </channel>
     </control>
     <control type="3D Graph" settings="">
-      <position>170 746 630 1064</position>
-      <string name="camera" value="3.2692 0.65 0.5 0.5 0.5 1.75"/>
-      <channel>
-        <primary name="AF_SD_VE_2Dtable_primary [%]">
-          <colors>0 0 60 60 95</colors>
-          <numbers>normal 6 false</numbers>
-        </primary>
-        <x_axis name="EAL_EngineSpeed [RPM]">
-          <colors>0 0.1 0.2 0.8 0.9</colors>
-          <numbers>normal 6 false</numbers>
-        </x_axis>
-        <y_axis name="SENSOR_MAP [kPa]">
-          <colors>0 0.1 0.2 0.8 0.9</colors>
-          <numbers>normal 6 false</numbers>
-        </y_axis>
-      </channel>
-    </control>
-    <control type="3D Graph" settings="">
-      <position>962 746 1422 1064</position>
+      <position>971 749 1431 1066</position>
       <string name="camera" value="-0.900797 0.56 0.5 0.5 0.5 2.10466"/>
       <channel>
         <primary name="AF_SD_VE_2Dtable_secondary [%]">
@@ -241,7 +215,7 @@
       </channel>
     </control>
     <control type="Slider" settings="">
-      <position>814 114 1030 178</position>
+      <position>823 117 1039 181</position>
       <string name="range" value="0 10000"/>
       <string name="divisions" value="100"/>
       <channel name="EAL_EngineSpeed [RPM]">
@@ -250,7 +224,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1030 108 1214 302</position>
+      <position>1039 110 1223 305</position>
       <string name="range" value="20 120"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -261,7 +235,7 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>1030 302 1214 358</position>
+      <position>1039 305 1223 361</position>
       <string name="initial_value" value="false"/>
       <channel name="SENSOR_CLT [C]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -269,7 +243,7 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>1214 302 1384 358</position>
+      <position>1223 305 1393 361</position>
       <string name="initial_value" value="false"/>
       <channel name="SENSOR_IAT [C]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -277,7 +251,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1214 108 1384 302</position>
+      <position>1223 110 1393 305</position>
       <string name="range" value="20 120"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -288,7 +262,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1384 108 1548 302</position>
+      <position>1393 110 1557 305</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="10 10"/>
       <string name="font_size" value="2"/>
@@ -299,7 +273,7 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>1548 302 1762 358</position>
+      <position>1557 305 1771 361</position>
       <string name="initial_value" value="false"/>
       <channel name="SENSOR_FuelPressure [kPa]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -307,7 +281,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1548 108 1762 302</position>
+      <position>1557 110 1771 305</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -318,17 +292,35 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>1384 302 1548 358</position>
+      <position>1393 305 1557 361</position>
       <string name="initial_value" value="false"/>
       <channel name="SENSOR_TPS [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
       </channel>
     </control>
+    <control type="2D Table" settings="">
+      <position>179 361 971 749</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="AF_SD_VE_2Dtable_primary [%]">
+          <colors>0 0 60 60 95</colors>
+          <numbers>normal 6 false</numbers>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+        </y_axis>
+      </channel>
+    </control>
   </page>
   <page name="Fuel">
     <control type="1D Table" settings="">
-      <position>168 392 820 520</position>
+      <position>177 394 829 522</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="FUELFLOW_primary [cc/s]">
@@ -342,7 +334,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>168 520 820 648</position>
+      <position>177 522 829 650</position>
       <channel name="FUELFLOW_primary [cc/s]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -357,7 +349,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>168 648 906 1064</position>
+      <position>177 650 915 1066</position>
       <channel name="FUEL_lsfs_pri_duty_threshold [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -396,7 +388,7 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>168 304 442 392</position>
+      <position>177 306 451 394</position>
       <string name="initial_value" value="false"/>
       <channel name="EAL_EngineSpeed [RPM]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -404,7 +396,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>168 108 442 304</position>
+      <position>177 110 451 306</position>
       <string name="range" value="0 6000"/>
       <string name="divisions" value="2 3"/>
       <string name="font_size" value="1"/>
@@ -415,7 +407,7 @@
       </channel>
     </control>
     <control type="2D Table" settings="">
-      <position>906 838 1506 1064</position>
+      <position>915 841 1515 1066</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="FUEL_LAMBDA_Iat_table [L]">
@@ -433,7 +425,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>906 712 1506 838</position>
+      <position>915 714 1515 841</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="FUEL_LAMBDA_Clt_table [L]">
@@ -447,7 +439,7 @@
       </channel>
     </control>
     <control type="2D Table" settings="">
-      <position>906 470 1506 712</position>
+      <position>915 473 1515 714</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="FUEL_LAMBDA_table [L]">
@@ -465,7 +457,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>442 108 736 392</position>
+      <position>451 110 745 394</position>
       <string name="range" value="0 6000"/>
       <string name="divisions" value="5 6"/>
       <string name="font_size" value="2"/>
@@ -476,7 +468,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>736 108 1030 392</position>
+      <position>745 110 1039 394</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="5 5"/>
       <string name="font_size" value="2"/>
@@ -487,7 +479,7 @@
       </channel>
     </control>
     <control type="2D Table" settings="">
-      <position>1030 108 1482 392</position>
+      <position>1039 110 1491 394</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="FUELFLOW_offset [ms]">
@@ -507,7 +499,7 @@
   </page>
   <page name="Idle">
     <control type="Gauge" settings="">
-      <position>170 110 442 304</position>
+      <position>179 113 451 306</position>
       <string name="range" value="0 6000"/>
       <string name="divisions" value="2 3"/>
       <string name="font_size" value="1"/>
@@ -518,7 +510,7 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>170 304 442 392</position>
+      <position>179 306 451 394</position>
       <string name="initial_value" value="false"/>
       <channel name="EAL_EngineSpeed [RPM]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -526,21 +518,21 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>1022 254 1896 392</position>
+      <position>1031 257 1905 394</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="IDLE_AF_initial_position [%]">
           <colors>0 0.1 0.2 0.8 0.9</colors>
           <numbers>normal 6 false</numbers>
         </primary>
-        <x_axis name="SENSOR_CLT [C]">
+        <x_axis name="IDLE_target [RPM]">
           <colors>0 0.1 0.2 0.8 0.9</colors>
           <numbers>normal 6 false</numbers>
         </x_axis>
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>1022 110 1896 254</position>
+      <position>1031 113 1905 257</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="IDLE_target_table [RPM]">
@@ -554,7 +546,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>442 110 752 392</position>
+      <position>451 113 761 394</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="5 5"/>
       <string name="font_size" value="2"/>
@@ -565,7 +557,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>442 392 880 526</position>
+      <position>451 394 889 529</position>
       <channel name="IDLE_target [RPM]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -588,7 +580,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>708 638 1240 1030</position>
+      <position>717 641 1249 1033</position>
       <channel name="IDLE_SpkTiming_pid [degBTDC]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -635,7 +627,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>170 638 708 1030</position>
+      <position>179 641 717 1033</position>
       <channel name="IDLE_AF_pid [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -682,7 +674,7 @@
       </channel>
     </control>
     <control type="Slider" settings="">
-      <position>170 574 386 638</position>
+      <position>179 577 395 641</position>
       <string name="range" value="0 1"/>
       <string name="divisions" value="1"/>
       <channel name="IDLE_AF_pid_enable">
@@ -691,7 +683,7 @@
       </channel>
     </control>
     <control type="Slider" settings="">
-      <position>708 574 924 638</position>
+      <position>717 577 933 641</position>
       <string name="range" value="0 1"/>
       <string name="divisions" value="1"/>
       <channel name="IDLE_SpkTiming_pid_enable">
@@ -699,8 +691,16 @@
         <numbers>normal 6 false</numbers>
       </channel>
     </control>
+    <control type="Text" settings="">
+      <position>1456 838 1908 961</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
     <control type="Gauge" settings="">
-      <position>1446 447 1898 730</position>
+      <position>1456 555 1908 838</position>
       <string name="range" value="0 50"/>
       <string name="divisions" value="5 5"/>
       <string name="font_size" value="2"/>
@@ -711,9 +711,9 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>1446 730 1898 852</position>
-      <string name="initial_value" value="false"/>
-      <channel name="SPK_Timing1 [degBTDC]">
+      <position>1518 394 1905 470</position>
+      <string name="initial_value" value="true"/>
+      <channel name="AN_UEGO_0_UA_In [V]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
       </channel>
@@ -721,7 +721,7 @@
   </page>
   <page name="Ignition">
     <control type="2D Table" settings="">
-      <position>1004 108 1636 404</position>
+      <position>1013 110 1645 406</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SPK_Dwell_2Dtable [ms]">
@@ -739,7 +739,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>170 404 1004 534</position>
+      <position>179 406 1013 537</position>
       <channel name="SPK_Timing_table [degBTDC]">
         <colors>0 8 20 20 50</colors>
         <numbers>normal 6 false</numbers>
@@ -758,7 +758,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>170 108 464 404</position>
+      <position>179 110 473 406</position>
       <string name="range" value="0 40"/>
       <string name="divisions" value="5 4"/>
       <string name="font_size" value="2"/>
@@ -769,7 +769,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>464 108 758 404</position>
+      <position>473 110 767 406</position>
       <string name="range" value="0 6"/>
       <string name="divisions" value="1 6"/>
       <string name="font_size" value="2"/>
@@ -780,7 +780,7 @@
       </channel>
     </control>
     <control type="3D Graph" settings="">
-      <position>888 534 1428 970</position>
+      <position>897 537 1437 973</position>
       <string name="camera" value="4.1442 0.550398 0.5 0.5 0.5 1.96775"/>
       <channel>
         <primary name="SPK_Timing_table [degBTDC]">
@@ -798,7 +798,7 @@
       </channel>
     </control>
     <control type="2D Table" settings="">
-      <position>170 534 888 970</position>
+      <position>179 537 897 973</position>
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="SPK_Timing_table [degBTDC]">
@@ -818,7 +818,7 @@
   </page>
   <page name="Sensors">
     <control type="Gauge" settings="">
-      <position>170 108 354 314</position>
+      <position>179 110 363 317</position>
       <string name="range" value="20 120"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -829,7 +829,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>354 108 530 314</position>
+      <position>363 110 539 317</position>
       <string name="range" value="20 120"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -840,7 +840,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>530 108 706 314</position>
+      <position>539 110 715 317</position>
       <string name="range" value="20 120"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -851,7 +851,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>706 108 882 314</position>
+      <position>715 110 891 317</position>
       <string name="range" value="20 120"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -862,7 +862,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>882 108 1063 314</position>
+      <position>891 110 1072 317</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -873,7 +873,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1063 108 1244 314</position>
+      <position>1072 110 1253 317</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -884,7 +884,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1244 108 1424 314</position>
+      <position>1253 110 1433 317</position>
       <string name="range" value="0 100"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -895,7 +895,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1424 108 1606 314</position>
+      <position>1433 110 1615 317</position>
       <string name="range" value="-0.5 0.5"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -906,7 +906,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1606 108 1787 314</position>
+      <position>1615 110 1796 317</position>
       <string name="range" value="-0.5 0.5"/>
       <string name="divisions" value="5 10"/>
       <string name="font_size" value="2"/>
@@ -917,7 +917,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>170 314 584 444</position>
+      <position>179 317 593 446</position>
       <channel name="SENSOR_CLT [C]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -936,7 +936,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>584 314 992 444</position>
+      <position>593 317 1001 446</position>
       <channel name="SENSOR_IAT [C]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -955,7 +955,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>992 314 1424 444</position>
+      <position>1001 317 1433 446</position>
       <channel name="SENSOR_OILTEMP [C]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -974,7 +974,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>1424 314 1894 444</position>
+      <position>1433 317 1903 446</position>
       <channel name="SENSOR_AIRBOXTEMP [C]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -993,7 +993,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>170 444 656 574</position>
+      <position>179 446 665 577</position>
       <channel name="SENSOR_FuelPressure [kPa]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1016,7 +1016,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>656 444 1142 574</position>
+      <position>665 446 1151 577</position>
       <channel name="SENSOR_OilPressure [kPa]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1039,7 +1039,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>1142 444 1628 528</position>
+      <position>1151 446 1637 530</position>
       <channel name="SENSOR_Lambda0 [L]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1050,7 +1050,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>1408 598 1894 710</position>
+      <position>1417 601 1903 713</position>
       <channel name="SENSOR_TPS [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1069,7 +1069,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>1408 710 1894 848</position>
+      <position>1417 713 1903 850</position>
       <channel name="SENSOR_Battery [V]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1092,7 +1092,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>170 980 1142 1070</position>
+      <position>179 982 1151 1073</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SENSOR_AIRBOXTEMP [C]">
@@ -1106,7 +1106,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>170 876 1142 980</position>
+      <position>179 878 1151 982</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SENSOR_OILTEMP [C]">
@@ -1120,7 +1120,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>170 784 1142 876</position>
+      <position>179 786 1151 878</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SENSOR_Lambda0 [L]">
@@ -1134,7 +1134,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>170 686 1142 784</position>
+      <position>179 689 1151 786</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SENSOR_IAT [C]">
@@ -1148,7 +1148,7 @@
       </channel>
     </control>
     <control type="Gauge" settings="">
-      <position>1142 848 1408 1070</position>
+      <position>1151 850 1417 1073</position>
       <string name="range" value="7 17"/>
       <string name="divisions" value="5 5"/>
       <string name="font_size" value="2"/>
@@ -1159,7 +1159,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>170 574 1142 686</position>
+      <position>179 577 1151 689</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SENSOR_CLT [C]">
@@ -1175,7 +1175,7 @@
   </page>
   <page name="UEGO">
     <control type="Gauge" settings="">
-      <position>170 108 412 360</position>
+      <position>179 110 421 362</position>
       <string name="range" value="0.5 1.5"/>
       <string name="divisions" value="2 10"/>
       <string name="font_size" value="2"/>
@@ -1186,7 +1186,7 @@
       </channel>
     </control>
     <control type="Text" settings="">
-      <position>170 360 412 424</position>
+      <position>179 362 421 426</position>
       <string name="initial_value" value="false"/>
       <channel name="SENSOR_Lambda0 [L]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -1194,7 +1194,7 @@
       </channel>
     </control>
     <control type="1D Table" settings="">
-      <position>170 424 1142 534</position>
+      <position>179 426 1151 537</position>
       <string name="hide_scroll_bars" value="false"/>
       <channel>
         <primary name="SENSOR_Lambda0 [L]">
@@ -1208,7 +1208,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>170 702 712 1070</position>
+      <position>179 705 721 1073</position>
       <channel name="UEGO_0_heater_pid [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1259,7 +1259,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>170 534 712 702</position>
+      <position>179 537 721 705</position>
       <channel name="UEGO_0_heater_using_pid [bool]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
@@ -1282,7 +1282,7 @@
       </channel>
     </control>
     <control type="Slider" settings="">
-      <position>712 534 1026 598</position>
+      <position>721 537 1035 601</position>
       <string name="range" value="0 1"/>
       <string name="divisions" value="1"/>
       <channel name="UEGO_0_heater_pid_enable_noop [bool]">
@@ -1291,7 +1291,7 @@
       </channel>
     </control>
     <control type="Slider" settings="">
-      <position>712 598 1026 702</position>
+      <position>721 601 1035 705</position>
       <string name="range" value="0 1"/>
       <string name="divisions" value="1"/>
       <channel name="UEGO_0_heater_enable_noop [bool]">
@@ -1300,7 +1300,7 @@
       </channel>
     </control>
     <control type="Slider" settings="">
-      <position>712 988 1026 1070</position>
+      <position>721 990 1035 1073</position>
       <string name="range" value="0 3"/>
       <string name="divisions" value="100"/>
       <channel name="UEGO_0_heater_pid_deadband [%]">
@@ -1309,7 +1309,7 @@
       </channel>
     </control>
     <control type="Plot (Advanced)" settings="">
-      <position>1026 534 1894 1070</position>
+      <position>1035 537 1903 1073</position>
       <string name="lane_heights" value="4 77 184 145 123"/>
       <string name="marker_colors" value="2 0x00000000 0x00000000"/>
       <string name="legend_label_width" value="256"/>
@@ -1365,7 +1365,7 @@
       </channel>
     </control>
     <control type="Text Grid" settings="">
-      <position>1308 108 1894 410</position>
+      <position>1317 110 1903 413</position>
       <channel name="UEGO_0_cj125v2">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>

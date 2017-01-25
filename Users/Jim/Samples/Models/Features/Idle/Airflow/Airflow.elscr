@@ -61,7 +61,7 @@
 
 !notebook new_note "IDLE_airflow pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_AF_pid", message=" The Idle airflow pid submodel."]
 
-!create_item "IDLE_AF_initial_position [%]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="SENSOR_CLT [C]"]
+!create_item "IDLE_AF_initial_position [%]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_200, add_input="IDLE_target [RPM]"]
 {if defined(IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV)
 !change_item "IDLE_AF_initial_position [%]" [1Dtable_csv=IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV]
 }
