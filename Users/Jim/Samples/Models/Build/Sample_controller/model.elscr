@@ -19,9 +19,9 @@
 # EAL Engine description support
 # NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
 !define EAL_ENGINE_DESCRIPTION
-!set EAL_NUM_SPARKS 12
-!set EAL_NUM_COILS 12
-!set EAL_NUM_INJECTORS 12
+!set EAL_NUM_SPARKS 8
+!set EAL_NUM_COILS 8
+!set EAL_NUM_INJECTORS 8
 # ***************************************************************
 
 # ***************************************************************
@@ -349,9 +349,11 @@ include=.\Platform\Infinity_7\SENSORS.elscr
 # Hardware IO platform resolution.
 {if PLATFORM_BUILD == "EL129ECU"
 include=.\Platform\EL129ECU\Hardware.elscr
+include=.\Platform\EL129ECU\EAL.elscr
 }
 {if PLATFORM_BUILD == "Infinity_7"
 include=.\Platform\Infinity_7\Hardware.elscr
+include=.\Platform\Infinity_7\EAL.elscr
 {if defined(PLATFORM_REV_C)
 include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
 }
@@ -365,13 +367,15 @@ include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
 !change_item "Thread1_Sleep [ms]" [initial_value="20"]
 !change_item "Thread2_Sleep [ms]" [initial_value="50"]
 !change_item "Thread3_Sleep [ms]" [initial_value="100"]
-!change_item "Thread4_Sleep [ms]" [initial_value="500"]
+!change_item "Thread4_Sleep [ms]" [initial_value="200"]
+!change_item "Thread5_Sleep [ms]" [initial_value="500"]
 !else
 !change_item "OAL_Thread0_Sleep [ms]" [initial_value="10"]
 !change_item "OAL_Thread1_Sleep [ms]" [initial_value="20"]
 !change_item "OAL_Thread2_Sleep [ms]" [initial_value="50"]
 !change_item "OAL_Thread3_Sleep [ms]" [initial_value="100"]
-!change_item "OAL_Thread4_Sleep [ms]" [initial_value="500"]
+!change_item "OAL_Thread4_Sleep [ms]" [initial_value="200"]
+!change_item "OAL_Thread5_Sleep [ms]" [initial_value="500"]
 }
 # ***************************************************************
 

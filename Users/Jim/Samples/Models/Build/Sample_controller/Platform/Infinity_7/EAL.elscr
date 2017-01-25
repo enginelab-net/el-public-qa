@@ -1,0 +1,42 @@
+{if defined(EAL_ENGINE_DESCRIPTION)
+!create_item "EAL_EngineDescription" [type="Engine Description", thread_ID=OAL_THREAD_WITH_SLEEP_200]
+!change_item "EAL_EngineDescription" [ed_num_sparks=EAL_NUM_SPARKS, ed_num_coils=EAL_NUM_COILS, ed_num_injectors=EAL_NUM_INJECTORS]
+!change_item "EAL_EngineDescription" [ed_ign_type="Coil On Plug"                           ]
+!change_item "EAL_EngineDescription" [ed_ign_invert                                        ]
+!change_item "EAL_EngineDescription" [ed_displacement="5.7"                                ]
+!change_item "EAL_EngineDescription" [ed_num_cylinders="8"                                 ]
+!change_item "EAL_EngineDescription" [ed_cycles="4 stroke"                                 ]
+!change_item "EAL_EngineDescription" [ed_timing="Cam with crank missing 1 tooth single VVT"]
+!change_item "EAL_EngineDescription" [ed_crank_pin="Digital2_In, C1-23"                    ]
+!change_item "EAL_EngineDescription" [ed_crank_teeth="36"                                  ]
+!change_item "EAL_EngineDescription" [ed_crank_edge_trigger="Rising edge"                  ]
+!change_item "EAL_EngineDescription" [ed_crank_nc="10"                                     ]
+!change_item "EAL_EngineDescription" [ed_cam0_pin="Digital1_In, C1-22"                     ]
+!change_item "EAL_EngineDescription" [ed_cam0_edge_trigger="Rising edge"                   ]
+!change_item "EAL_EngineDescription" [ed_cam0_nc="10"                                      ]
+
+!change_item "EAL_EngineDescription" [ed_spark0_timing="0"   ]
+!change_item "EAL_EngineDescription" [ed_spark1_timing="630" ]
+!change_item "EAL_EngineDescription" [ed_spark2_timing="270" ]
+!change_item "EAL_EngineDescription" [ed_spark3_timing="180" ]
+!change_item "EAL_EngineDescription" [ed_spark4_timing="450" ]
+!change_item "EAL_EngineDescription" [ed_spark5_timing="360" ]
+!change_item "EAL_EngineDescription" [ed_spark6_timing="540" ]
+!change_item "EAL_EngineDescription" [ed_spark7_timing="90"  ]
+
+!change_item "EAL_EngineDescription" [ed_injector0_timing="0"   ]
+!change_item "EAL_EngineDescription" [ed_injector1_timing="630" ]
+!change_item "EAL_EngineDescription" [ed_injector2_timing="270" ]
+!change_item "EAL_EngineDescription" [ed_injector3_timing="180" ]
+!change_item "EAL_EngineDescription" [ed_injector4_timing="450" ]
+!change_item "EAL_EngineDescription" [ed_injector5_timing="360" ]
+!change_item "EAL_EngineDescription" [ed_injector6_timing="540" ]
+!change_item "EAL_EngineDescription" [ed_injector7_timing="90"  ]
+
+!change_item "SPK_DwellRef [degBTDC]" [initial_value="360"  ]
+!change_item "SPK_IgnRef [degBTDC]"   [initial_value="90"   ]
+!change_item "FI_TimRef [degBTDC]"    [initial_value="360"  ]
+!change_item "CAM_SyncAdjustment"     [initial_value="47"  ]
+
+}
+

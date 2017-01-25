@@ -7,10 +7,6 @@
 !replace_item "UEGO_1_heater_HW" [type="Hardware IO", pin="UEGO1_Heater_LowsideOut, On board", board_conditioning="Low-side driver, 6 Amp", cpu_mode="Frequency and Duty Output (PWM)"]
 }
 
-{if defined(EAL_ENGINE_DESCRIPTION)
-!create_item "EAL_EngineDescription" [type="Engine Description", thread_ID=OAL_THREAD_WITH_SLEEP_200]
-}
-
 {if defined(OUTPUT_COILS)
 !replace_item "OUTPUT_COILS_onboard_HW" [type="Hardware IO", pin="CoilDriverEnable, On board", board_conditioning="No direct drive connection", cpu_mode="GPIO Output"]
 {if defined(OUTPUT_COILS_EXTERNAL_ENABLE_HW)
