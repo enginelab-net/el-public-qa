@@ -16,6 +16,8 @@
 !change_item "FUEL_lsfs" [add_input="sec_duty [%]"          ]
 !change_item "FUEL_lsfs" [add_input="flex_stoic_ratio"      ]
 
+include=.\LSFS_injectors.elscr
+
 {resolve_externs
 airflow [g/s]->AF_Airflow [g/s]
 pri_flowrate [cc/s]->FUELFLOW_primary [cc/s]

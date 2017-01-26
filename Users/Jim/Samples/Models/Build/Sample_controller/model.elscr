@@ -1,5 +1,6 @@
-!set PLATFORM_BUILD Infinity_7
-!define PLATFORM_REV_C
+#!set PLATFORM_BUILD Infinity_7
+#!define PLATFORM_REV_C
+!set PLATFORM_BUILD EL1_140
 #!set PLATFORM_BUILD EL129ECU
 
 {if PLATFORM_BUILD == "EL129ECU"
@@ -14,14 +15,18 @@
 !connect simulator .\PLATFORM\Infinity_7\simulator.ini
 }
 }
+{if PLATFORM_BUILD == "EL1_140"
+!echo EL1_140 build
+!connect simulator .\PLATFORM\EL1_140\simulator.ini
+}
 
 # ***************************************************************
 # EAL Engine description support
 # NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
 !define EAL_ENGINE_DESCRIPTION
-!set EAL_NUM_SPARKS 8
-!set EAL_NUM_COILS 8
-!set EAL_NUM_INJECTORS 8
+!set EAL_NUM_SPARKS    08
+!set EAL_NUM_COILS     08
+!set EAL_NUM_INJECTORS 08
 # ***************************************************************
 
 # ***************************************************************
@@ -89,14 +94,14 @@
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0 new name 0
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1 new name 1
 
-!define FUEL_LAMBDA_TRIM
-!define FUEL_LAMBDA_TARGET
-!define FUEL_LAMBDA_TARGET_TABLE_2D
-!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
-!define FUEL_LAMBDA_TARGET_CLT_TABLE_1D
-!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV .\Resource\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
-!define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
-!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
+##!define FUEL_LAMBDA_TRIM
+##!define FUEL_LAMBDA_TARGET
+##!define FUEL_LAMBDA_TARGET_TABLE_2D
+##!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
+##!define FUEL_LAMBDA_TARGET_CLT_TABLE_1D
+##!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV .\Resource\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
+##!define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
+##!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
 
 ## Small block chevy. 1,3,5 and 7 to one exhaust tube. 2,4,6 and 8 to other tube.
 !set INJECTOR1_LAMBDA_MAPPING L_FB_0_Trim
@@ -112,6 +117,9 @@
 # ------------------------------------------------------------------------
 # A LambdaStagedFuelSubsystem strategy. 
 !define FUEL_LSFS
+!set FUEL_LSFS_NUM_INJ_PRIMARY   08
+!set FUEL_LSFS_NUM_INJ_SECONDARY 00
+
 # ------------------------------------------------------------------------
 # LSFS Trim multiplier
 #!define FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D
@@ -267,7 +275,7 @@
 !set SENSOR_FUELPRESSURE_ANALOG_IN_MIN 0.5
 !set SENSOR_FUELPRESSURE_ANALOG_IN_MAX 4.5
 !set SENSOR_FUELPRESSURE_ANALOG_CLAMPL 0
-!set SENSOR_FUELPRESSURE_ANALOG_CLAMPU 100
+!set SENSOR_FUELPRESSURE_ANALOG_CLAMPU 689.5
 !define SENSOR_FUELPRESSURE_ERROR_TIMER
 !set SENSOR_FUELPRESSURE_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
@@ -275,13 +283,13 @@
 !set SENSOR_OILPRESSURE_ANALOG_IN_MIN 0.5
 !set SENSOR_OILPRESSURE_ANALOG_IN_MAX 4.5
 !set SENSOR_OILPRESSURE_ANALOG_CLAMPL 0
-!set SENSOR_OILPRESSURE_ANALOG_CLAMPU 100
+!set SENSOR_OILPRESSURE_ANALOG_CLAMPU 689.5
 !define SENSOR_OILPRESSURE_ERROR_TIMER
 !set SENSOR_OILPRESSURE_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
-!define SENSOR_OXYGEN
+##!define SENSOR_OXYGEN
 ##!define SENSOR_OXYGEN_ANALOG
-!define SENSOR_OXYGEN_ONBOARD_CJ125
+##!define SENSOR_OXYGEN_ONBOARD_CJ125
 # ------------------------------------------------------------------------
 !define SENSOR_BATTERYVOLTAGE
 !define SENSOR_BATTERYVOLTAGE_ERROR_TIMER
@@ -339,6 +347,9 @@ include=..\..\Features\Features.elscr
 {if PLATFORM_BUILD == "EL129ECU"
 include=.\Platform\EL129ECU\SENSORS.elscr
 }
+{if PLATFORM_BUILD == "EL1_140"
+include=.\Platform\EL1_140\SENSORS.elscr
+}
 {if PLATFORM_BUILD == "Infinity_7"
 include=.\Platform\Infinity_7\SENSORS.elscr
 }
@@ -350,6 +361,10 @@ include=.\Platform\Infinity_7\SENSORS.elscr
 {if PLATFORM_BUILD == "EL129ECU"
 include=.\Platform\EL129ECU\Hardware.elscr
 include=.\Platform\EL129ECU\EAL.elscr
+}
+{if PLATFORM_BUILD == "EL1_140"
+include=.\Platform\EL1_140\Hardware.elscr
+include=.\Platform\EL1_140\EAL.elscr
 }
 {if PLATFORM_BUILD == "Infinity_7"
 include=.\Platform\Infinity_7\Hardware.elscr
@@ -391,6 +406,9 @@ include=..\Common\Global.elscr
 
 include=.\EAL_required.elscr
 
+{if PLATFORM_BUILD == "EL1_140"
+include=.\Platform\EL1_140\PostBuild.elscr
+}
 ##JJV - temp # ***************************************************************
 ##JJV - temp # Calibration data applied
 ##JJV - temp !import modify ".\Calibration\Features\Airflow\airflow.elcfg" [version_major]
@@ -398,3 +416,4 @@ include=.\EAL_required.elscr
 ##JJV - temp !import modify ".\Calibration\Features\Ignition\ignition.elcfg" [version_major]
 ##JJV - temp !import modify ".\Calibration\Features\Sensors\sensors.elcfg" [version_major]
 ##JJV - temp # ***************************************************************
+
