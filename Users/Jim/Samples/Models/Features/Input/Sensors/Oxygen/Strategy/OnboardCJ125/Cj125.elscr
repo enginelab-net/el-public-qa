@@ -23,6 +23,10 @@
 !else
 !set SENSOR_OXYGEN_UEGO_CJ125V2_UR_CAL_FILTER 0.8
 }
+{if defined(SENSOR_OXYGEN_UEGO_CJ125V2_OVERRIDE)
+!else
+!set SENSOR_OXYGEN_UEGO_CJ125V2_OVERRIDE 4
+}
 
 !create_item "UEGO_##UEGO_NUMBER##_cj125v2" [type="CJ125 Interface v2"]
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [thread_ID=OAL_THREAD_WITH_SLEEP_50]
@@ -38,12 +42,14 @@
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [add_input="UEGO_##UEGO_NUMBER##_cj125v2_diag"]
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [add_input="UR_measured_filter"]
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [add_input="UR_cal_filter"]
+!change_item "UEGO_##UEGO_NUMBER##_cj125v2" [add_input="cj125_override"]
 
 !replace_item measure_count        [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_MEASURE_COUNT]
 !replace_item cal_count            [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_CAL_COUNT]
 !replace_item read_count           [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_READ_COUNT]
 !replace_item UR_measured_filter   [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_UR_MEASURED_FILTER]
 !replace_item UR_cal_filter        [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_UR_CAL_FILTER]
+!replace_item cj125_override       [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_CJ125V2_OVERRIDE]
 
 !create_item "UEGO_##UEGO_NUMBER##_cj125v2_init1" [type="No Operation"]
 !create_item "UEGO_##UEGO_NUMBER##_cj125v2_init2" [type="No Operation"]

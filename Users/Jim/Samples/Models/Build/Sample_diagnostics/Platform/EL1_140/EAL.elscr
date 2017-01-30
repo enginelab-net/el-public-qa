@@ -1,0 +1,14 @@
+{if defined(EAL_ENGINE_DESCRIPTION)
+!change_item "EAL_Engine" [ed_crank_pin="Digital0_In_Opto, C1-32"               ]
+!change_item "EAL_Engine" [ed_cam0_pin="Digital1_In_Opto, C1-31"                ]
+
+!change_item "SPK_DwellRef [degBTDC]" [initial_value="360"  ]
+!change_item "SPK_IgnRef [degBTDC]"   [initial_value="90"   ]
+!change_item "FI_TimRef [degBTDC]"    [initial_value="360"  ]
+}
+
+{if defined(ETG_ENGINE_TIMING_GENERATOR)
+!change_item "ETG_EngineGenerator" [etg_crank_pin="LowsideSwitchH0_Out, C3-34"              ]
+!change_item "ETG_EngineGenerator" [etg_cam0_pin="LowsideSwitchH1_Out, C3-35"               ]
+}
+

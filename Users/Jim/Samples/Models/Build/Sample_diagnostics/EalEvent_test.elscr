@@ -1,0 +1,67 @@
+## This is a simple model that will allow testing of the crank and cam timing of a system.
+
+## Use this definition to control the hardware resolution layer.
+!define DIAGNOSTIC_EALEVENT_TEST
+
+#!set PLATFORM_BUILD Infinity_7
+#!define PLATFORM_REV_C
+!set PLATFORM_BUILD EL1_140
+#!set PLATFORM_BUILD EL129ECU
+
+## Connect to the simulator
+include=.\Common\Simulator.elscr
+
+# ***************************************************************
+# EAL Engine description support
+# NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
+!define EAL_ENGINE
+!define EAL_ENGINE_DESCRIPTION
+!set EAL_NUM_SPARKS                08
+!set EAL_NUM_COILS                 08
+!set EAL_NUM_INJECTORS             08
+!set EAL_COIL_TYPE                 Coil On Plug
+!define EAL_COIL_INVERT
+!set EAL_ENGINE_DISPLACEMENT       5.7
+!set EAL_ENGINE_CYCLES             4 stroke
+!set EAL_ENGINE_TIMING             Cam with crank missing 1 tooth single VVT
+!set EAL_ENGINE_TIMING_CRANK_TEETH 36
+# ***************************************************************
+
+# ***************************************************************
+## Output feature
+!define OUTPUT
+!define OUTPUT_COILS
+!define OUTPUT_COILS_EXTERNAL_ENABLE_HW
+# ------------------------------------------------------------------------
+
+## Create the EAL event for testing the coil and injector signals.
+!create_item "EalEvent" [type="EAL Event", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "EalEvent" [ealevent_type="Injector", ealevent_type="Spark", ealevent_edge="Rising"]  
+!change_item "EalEvent" [add_input="EalEvent trigger"]
+!change_item "EalEvent" [add_input="EalEvent index"]
+!create_item "EalEvent trigger" [type="No Operation"]
+!create_item "EalEvent index"   [type="No Operation"]
+
+include=..\..\Features\Features.elscr
+
+#***************************************************************
+# Hardware IO platform resolution.
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\Hardware.elscr
+include=.\Platform\EL129ECU\EAL.elscr
+}
+{if PLATFORM_BUILD == "EL1_140"
+include=.\Platform\EL1_140\Hardware.elscr
+include=.\Platform\EL1_140\EAL.elscr
+}
+{if PLATFORM_BUILD == "Infinity_7"
+include=.\Platform\Infinity_7\Hardware.elscr
+#include=.\Platform\Infinity_7\EAL.elscr
+{if defined(PLATFORM_REV_C)
+include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
+}
+}
+#***************************************************************
+
+include=.\Common\EAL_required.elscr
+

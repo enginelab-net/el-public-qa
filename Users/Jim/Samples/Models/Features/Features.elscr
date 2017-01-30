@@ -56,8 +56,8 @@ include=.\Output\Output.elscr
 
 ## ***************************************************************
 ## Engine speed limiter
-{if defined(ENGINESPEED_LIMITER)
-include=.\EngineSpeedLimiter\ES_Limiter.elscr
+{if defined(EAL_ENGINE)
+include=.\Engine\Engine.elscr
 }
 ## ***************************************************************
 

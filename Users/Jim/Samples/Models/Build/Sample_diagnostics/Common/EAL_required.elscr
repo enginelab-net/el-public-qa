@@ -1,0 +1,29 @@
+{if defined(DIAGNOSTIC_ED_TIMING_TEST)
+{if VERSIONMAJOR == "096"
+!create_item "SpkTimingX [degBTDC]" [type="No Operation"]
+!create_item "CoilDwellX [us/10]"   [type="No Operation", initial_value="50000"]                             
+}                                                                                                                  
+                                                                                                                   
+{if VERSIONMAJOR == "097"            
+!create_item "SPK_TimingX [degBTDC]" [type="No Operation"]
+!create_item "SPK_DwellX [ms]"       [type="No Operation", initial_value="5"]                             
+}
+}
+
+{if defined(DIAGNOSTIC_EALEVENT_TEST)
+{if VERSIONMAJOR == "096"
+!create_item "SpkTimingX [degBTDC]" [type="No Operation"]
+!create_item "CoilDwellX [us/10]"   [type="No Operation", initial_value="50000"]                             
+}                                                                                                                  
+                                                                                                                   
+{if VERSIONMAJOR == "097"            
+!create_item "SPK_TimingX [degBTDC]" [type="No Operation"]
+!create_item "SPK_DwellX [ms]"       [type="No Operation", initial_value="5"]
+!create_item "FI_DutyCycX [%high]"   [type="No Operation", initial_value="50"]
+!create_item "FI_CyclTimeX [ms]"     [type="No Operation", initial_value=".1"]
+!create_item "FI_FuelX [ms]"         [type="No Operation", initial_value="5"]
+!create_item "FI_OpenTimeX [ms]"     [type="No Operation", initial_value="1"]
+!create_item "FI_TimingX [degBTDC]"  [type="No Operation", initial_value="0"]
+}
+}
+

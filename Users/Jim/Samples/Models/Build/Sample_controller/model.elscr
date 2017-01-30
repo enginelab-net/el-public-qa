@@ -1,7 +1,7 @@
 #!set PLATFORM_BUILD Infinity_7
 #!define PLATFORM_REV_C
-!set PLATFORM_BUILD EL1_140
-#!set PLATFORM_BUILD EL129ECU
+#!set PLATFORM_BUILD EL1_140
+!set PLATFORM_BUILD EL129ECU
 
 {if PLATFORM_BUILD == "EL129ECU"
 !echo EL129ECU build
@@ -23,10 +23,17 @@
 # ***************************************************************
 # EAL Engine description support
 # NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
+!define EAL_ENGINE
 !define EAL_ENGINE_DESCRIPTION
-!set EAL_NUM_SPARKS    08
-!set EAL_NUM_COILS     08
-!set EAL_NUM_INJECTORS 08
+!set EAL_NUM_SPARKS                08
+!set EAL_NUM_COILS                 08
+!set EAL_NUM_INJECTORS             08
+!set EAL_COIL_TYPE                 Coil On Plug
+!define EAL_COIL_INVERT
+!set EAL_ENGINE_DISPLACEMENT       5.7
+!set EAL_ENGINE_CYCLES             4 stroke
+!set EAL_ENGINE_TIMING             Cam with crank missing 1 tooth single VVT
+!set EAL_ENGINE_TIMING_CRANK_TEETH 36
 # ***************************************************************
 
 # ***************************************************************
@@ -94,15 +101,19 @@
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0 new name 0
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1 new name 1
 
-##!define FUEL_LAMBDA_TRIM
-##!define FUEL_LAMBDA_TARGET
-##!define FUEL_LAMBDA_TARGET_TABLE_2D
-##!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
-##!define FUEL_LAMBDA_TARGET_CLT_TABLE_1D
-##!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV .\Resource\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
-##!define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
-##!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
+## These defines will create the lambda target submodel.
+!define FUEL_LAMBDA_TARGET
+!define FUEL_LAMBDA_TARGET_TABLE_2D
+!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
+!define FUEL_LAMBDA_TARGET_CLT_TABLE_1D
+!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV .\Resource\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
+!define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
+!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
 
+## These defines will create the lambda trim submodel. The trim submodel requires the target submodel
+## and the lambda sensor submodel.
+!define FUEL_LAMBDA_TRIM
+## The lambda trim will require the mapping of the sensor to injectors. This will vary from engine to engine.
 ## Small block chevy. 1,3,5 and 7 to one exhaust tube. 2,4,6 and 8 to other tube.
 !set INJECTOR1_LAMBDA_MAPPING L_FB_0_Trim
 !set INJECTOR3_LAMBDA_MAPPING L_FB_0_Trim
@@ -287,9 +298,9 @@
 !define SENSOR_OILPRESSURE_ERROR_TIMER
 !set SENSOR_OILPRESSURE_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
-##!define SENSOR_OXYGEN
+!define SENSOR_OXYGEN
 ##!define SENSOR_OXYGEN_ANALOG
-##!define SENSOR_OXYGEN_ONBOARD_CJ125
+!define SENSOR_OXYGEN_ONBOARD_CJ125
 # ------------------------------------------------------------------------
 !define SENSOR_BATTERYVOLTAGE
 !define SENSOR_BATTERYVOLTAGE_ERROR_TIMER
