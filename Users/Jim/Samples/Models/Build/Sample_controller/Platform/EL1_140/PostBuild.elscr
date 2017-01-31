@@ -1,0 +1,26 @@
+!resolve_all_externs_to_noops
+!change_item "FUEL_LAMBDA_target [L]" [plant_item_flag="0", initial_value="1"]
+
+!change_item "SENSOR_CLT_final [V]"        [use_test_output_flag="1", test_value="0.5"]
+!change_item "SENSOR_IAT_final [V]"        [use_test_output_flag="1", test_value="0.5"]
+!change_item "SENSOR_OILTEMP_final [V]"    [use_test_output_flag="1", test_value="0.5"]
+!change_item "SENSOR_AIRBOXTEMP_final [V]" [use_test_output_flag="1", test_value="0.5"]
+!change_item "SENSOR_TPS [%]"              [use_test_output_flag="1", test_value="0.5"]
+!change_item "SENSOR_MAF [g/s]"            [use_test_output_flag="1", test_value="0"]
+!change_item "SENSOR_MAP [kPa]"            [use_test_output_flag="1", test_value="60"]
+!change_item "SENSOR_FuelPressure [kPa]"   [use_test_output_flag="1", test_value="300"]
+!change_item "SENSOR_OilPressure [kPa]"    [use_test_output_flag="1", test_value="300"]
+!change_item "SENSOR_Battery [V]"          [use_test_output_flag="1", test_value="12.5"]
+
+#!change_item "AN_8_plant [V]"         [plant_item_flag="0"]
+#!change_item "AN_1_plant [V]"         [plant_item_flag="0"]
+#!change_item "AN_2_plant [V]"         [plant_item_flag="0"]
+#!change_item "AN_9_plant [V]"         [plant_item_flag="0"]
+#!change_item "FUEL_LAMBDA_target [L]" [plant_item_flag="0"]
+#!change_item "AN_3_plant [V]"         [plant_item_flag="0"]
+#!change_item "AN_4_plant [V]"         [plant_item_flag="0"]
+#!change_item "AN_7_plant [V]"         [plant_item_flag="0"]
+#!change_item "AN_11_plant [V]"        [plant_item_flag="0"]
+#!change_item "AN_13_plant [V]"        [plant_item_flag="0"]
+
+
