@@ -30,5 +30,5 @@
 !notebook new_note "ES_Limit_FI_Probability [%]" [vendor="Enginelab, Inc.", message=" The engine speed limiter spark probablity control."]
 }
 
-!notebook new_note "Engine speed submodel" [vendor="Enginelab, Inc.", item_wildcard="ES_Limit", message="The engine speed limiter submodel. (/EngineSpeedLimiter/ES_Limiter.elscr)"]
+!notebook new_note "Engine speed submodel" [vendor="Enginelab, Inc.", item_wildcard="ES_Limit", message="The engine speed limiter submodel. (/Engine/Speed/ES_Limiter.elscr)"]
 

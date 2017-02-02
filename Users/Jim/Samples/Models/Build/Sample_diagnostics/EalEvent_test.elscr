@@ -42,6 +42,7 @@ include=.\Common\Simulator.elscr
 !create_item "EalEvent trigger" [type="No Operation"]
 !create_item "EalEvent index"   [type="No Operation"]
 
+!set BUILD_PHASE MAIN_BUILD_PHASE
 include=..\..\Features\Features.elscr
 
 #***************************************************************

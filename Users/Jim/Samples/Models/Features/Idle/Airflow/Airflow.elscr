@@ -40,7 +40,7 @@
 !change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_kp"]
 !change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_ki"]
 !change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_kd"]
-!change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_enable"]
+!change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_enable [bool]"]
 !change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_int_hold"]
 !change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_int_l"]
 !change_item "IDLE_AF_pid [%]" [add_input="IDLE_AF_pid_int_h"]
@@ -57,7 +57,8 @@
 !create_item "IDLE_AF_pid_dcontrib" [type="No Operation"]
 
 ## Default to disabled.
-!create_item "IDLE_AF_pid_enable" [type="No Operation", initial_value="0"]
+!create_item "IDLE_AF_pid_enable_noop" [type="No Operation", initial_value="0"]
+!create_item "IDLE_AF_pid_enable [bool]" [type="Math Calculation", add_input="IDLE_AF_pid_enable_noop", add_input="IDLE_enable [bool]", math_expression="and_inputs"]
 
 !notebook new_note "IDLE_airflow pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_AF_pid", message=" The Idle airflow pid submodel."]
 
@@ -72,7 +73,7 @@
 ## Include the airflow hardware layer.
 include=.\Hardware\Hardware.elscr
 
-!notebook new_note "IDLE_airflow submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_AF_", item_or_group="IDLE_airflow pid submodel", message=" The Idle airflow submodel."]
+!notebook new_note "IDLE airflow submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_airflow pid submodel", item_wildcard="IDLE_AF_", message=" The Idle airflow submodel."]
 
 
 

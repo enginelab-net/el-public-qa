@@ -3,29 +3,37 @@
 ## ***************************************************************
 ## Airflow feature
 {if defined(AF)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 !echo Airflow feature
 include=.\Airflow\AF.elscr
+}
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Fuel feature
 {if defined(FUEL)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 include=.\Fuel\Fuel.elscr
+}
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## IGNition feature
 {if defined(IGN)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 include=.\Ignition\IGN.elscr
+}
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Idle feature
 {if defined(IDLE)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 include=.\Idle\Idle.elscr
+}
 }
 ## ***************************************************************
 
@@ -41,8 +49,10 @@ include=.\SystemState\SS.elscr
 {if defined(INPUT)
 ## Sensors feature
 {if defined(SENSORS)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 !echo Sensors feature
 include=.\Input\Sensors\SENSORS.elscr
+}
 }
 }
 ## ***************************************************************
@@ -50,14 +60,18 @@ include=.\Input\Sensors\SENSORS.elscr
 ## ***************************************************************
 ## Output feature
 {if defined(OUTPUT)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 include=.\Output\Output.elscr
+}
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Engine speed limiter
 {if defined(EAL_ENGINE)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 include=.\Engine\Engine.elscr
+}
 }
 ## ***************************************************************
 

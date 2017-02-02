@@ -40,7 +40,7 @@
 !change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_kp"]
 !change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_ki"]
 !change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_kd"]
-!change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_enable"]
+!change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_enable [bool]"]
 !change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_int_hold"]
 !change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_int_l"]
 !change_item "IDLE_SpkTiming_pid [degBTDC]" [add_input="IDLE_SpkTiming_pid_int_h"]
@@ -57,11 +57,12 @@
 !create_item "IDLE_SpkTiming_pid_dcontrib" [type="No Operation"]
 
 ## Default to disabled.
-!create_item "IDLE_SpkTiming_pid_enable" [type="No Operation", initial_value="0"]
+!create_item "IDLE_SpkTiming_pid_enable_noop" [type="No Operation", initial_value="0"]
+!create_item "IDLE_SpkTiming_pid_enable [bool]" [type="Math Calculation", add_input="IDLE_SpkTiming_pid_enable_noop", add_input="IDLE_enable [bool]", math_expression="and_inputs"]
 
-!notebook new_note "IDLE_IgnTiming pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_SpkTiming_pid", message=" The Idle airflow submodel."]
+!notebook new_note "IDLE IgnTiming pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_SpkTiming_pid", message=" The Idle ignition timing pid submodel."]
 ##**********************************************************************************************************************************************
 
-!notebook new_note "IDLE_IgnTiming submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_IgnTiming pid submodel", item_wildcard="IDLE_IgnTiming", message=" The Idle ignition timing submodel."]
+!notebook new_note "IDLE IgnTiming submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE IgnTiming pid submodel", message=" The Idle ignition timing submodel."]
 
 

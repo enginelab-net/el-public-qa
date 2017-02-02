@@ -1543,6 +1543,16 @@
           <string name="color" value="0x0000FF80"/>
         </options>
       </channel>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <options>
+          <string name="lane" value="2"/>
+          <string name="range_min" value="0.5"/>
+          <string name="range_max" value="1.5"/>
+          <string name="color" value="0x00FF80FF"/>
+        </options>
+      </channel>
     </control>
     <control type="Text Grid" settings="">
       <position>1137 62 1724 364</position>
@@ -1579,6 +1589,17 @@
         <numbers>normal 6 false</numbers>
       </channel>
       <channel name="UEGO_0_cj125v2_error">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>469 64 749 378</position>
+      <string name="range" value="0 4000"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
       </channel>
@@ -1915,7 +1936,7 @@
   <page name="Plots">
     <control type="Plot (Advanced)" settings="">
       <position>0 61 1334 1040</position>
-      <string name="lane_heights" value="9 71 82 90 118 93 97 100 54 78"/>
+      <string name="lane_heights" value="10 71 82 90 118 93 97 100 54 78 73"/>
       <string name="marker_colors" value="2 0x00000000 0x00000000"/>
       <string name="legend_label_width" value="280"/>
       <channel name="FI_Fuel1 [ms]">
@@ -2002,7 +2023,7 @@
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
         <options>
-          <string name="lane" value="8"/>
+          <string name="lane" value="9"/>
           <string name="range_min" value="37.7778"/>
           <string name="range_max" value="93.3333"/>
           <string name="color" value="0x00FFC0FF"/>
@@ -2012,7 +2033,7 @@
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
         <options>
-          <string name="lane" value="7"/>
+          <string name="lane" value="8"/>
           <string name="range_min" value="0"/>
           <string name="range_max" value="2"/>
           <string name="color" value="0x00C0FF80"/>

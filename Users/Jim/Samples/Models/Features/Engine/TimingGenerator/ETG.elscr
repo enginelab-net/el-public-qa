@@ -42,4 +42,7 @@
 !create_item "ETG_signals_present" [type="No Operation", initial_value="255"]
 !create_item "ETG_signals_inverted" [type="No Operation"]
 
+!notebook new_note "Engine timing generator submodel" [vendor="Enginelab, Inc.", item_wildcard="ETG_", message="The engine submodel. (/Engine/TimingGenerator/ETG.elscr)"]
+
+
 

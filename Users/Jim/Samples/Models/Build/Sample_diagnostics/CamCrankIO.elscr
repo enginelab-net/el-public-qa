@@ -25,6 +25,7 @@ include=.\Common\Simulator.elscr
 #!set ETG_ENGINE_TIMING_GENERATOR_NUM_CAM0_TEETH    1
 # ***************************************************************
 
+!set BUILD_PHASE MAIN_BUILD_PHASE
 include=..\..\Features\Features.elscr
 
 #***************************************************************

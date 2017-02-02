@@ -14,6 +14,7 @@
 ## "SS_EngineState_starting [d]"
 
 {if defined(SS)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
 !create_item "SS_EngineState [d]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20]
 !change_item "SS_EngineState [d]" [add_input="EngineSpeed_final [RPM]"]
 !change_item "SS_EngineState [d]" [add_input="SS_EngineSpeed_running [RPM]"]
@@ -49,5 +50,20 @@
 !notebook new_note "SS_EngineRestTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been at rest since last running. Defined in /SystemState/SS.elscr)"] 
 
 !notebook new_note "System state submodel" [vendor="Enginelab, Inc.", item_wildcard="SS_Engine", message="System state submodel. Defined in /SystemState/SS.elscr)"] 
+}
 
+{if BUILD_PHASE == "POSTBUILD_PHASE"
+## The post build phase will allow replacing global externs as needed.
+{if defined(SS_ENGINESPEED_RUNNING_RPM)
+!else
+!set SS_ENGINESPEED_RUNNING_RPM 500
+}
+!replace_item "SS_EngineSpeed_running [RPM]" [type="Constant", constant_value=SS_ENGINESPEED_RUNNING_RPM, ignore_if_extern_not_found]
+!replace_item "SS_EngineState_rest [d]"      [type="Constant", constant_value="0", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_starting [d]"  [type="Constant", constant_value="1", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_running [d]"   [type="Constant", constant_value="2", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_lowload [d]"   [type="Constant", constant_value="3", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_highload [d]"  [type="Constant", constant_value="4", ignore_if_extern_not_found]
+!replace_item "SS_EngineState_stress [d]"    [type="Constant", constant_value="5", ignore_if_extern_not_found]
+}
 }

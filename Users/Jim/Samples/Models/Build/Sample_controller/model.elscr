@@ -101,6 +101,7 @@
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0 new name 0
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1 new name 1
 
+# ------------------------------------------------------------------------
 ## These defines will create the lambda target submodel.
 !define FUEL_LAMBDA_TARGET
 !define FUEL_LAMBDA_TARGET_TABLE_2D
@@ -199,7 +200,7 @@
 #!set IGN_SPKTIMING_TABLE_1D_INPUT   new name 0
 #!set IGN_SPKTIMING_TABLE_2D_INPUT_0 new name 0
 #!set IGN_SPKTIMING_TABLE_2D_INPUT_1 new name 1
-
+# ------------------------------------------------------------------------
 !define IGN_SPKTIMING_TRIM
 !define IGN_SPKTIMING_TRIM_TABLES
 #!define IGN_SPKTIMING_TRIM_TABLES_1D
@@ -222,9 +223,18 @@
 !set_path IDLE_TARGET_TABLE_1D_CSV  .\Resource\IDLE_TARGET_TABLE_1D_CSV.csv
 ## By default the submodel will use these inputs: "SENSOR_CLT [C]"
 #!set IDLE_TARGET_TABLE_1D_INPUT   new name 0
+
+!define IDLE_TARGET_COMPENSATIONS
+!define IDLE_TARGET_COMPENSATION_RAMP_DOWN
+!define IDLE_TARGET_COMPENSATION_ENGINE_RUN_TIME
+!set_path IDLE_TARGET_COMP_RUNTIME_1D_CSV  .\Resource\IDLE_TARGET_COMP_RUNTIME_1D_CSV.csv
+!define IDLE_TARGET_COMPENSATION_AIR_CONDITIONER
+!define IDLE_TARGET_COMPENSATION_POWER_STEERING
+# ------------------------------------------------------------------------
 !define IDLE_AIRFLOW
 !set_path IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV  .\Resource\IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV.csv
 !define IDLE_AIRFLOW_STEPPER_HARDWARE
+# ------------------------------------------------------------------------
 !define IDLE_IGNTIMING
 # ***************************************************************
 
@@ -348,7 +358,11 @@
 !set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   .\Resource\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
 # ***************************************************************
 
+# ***************************************************************
+# Main build phase declared here.
+!set BUILD_PHASE MAIN_BUILD_PHASE
 include=..\..\Features\Features.elscr
+# ***************************************************************
 
 # ***************************************************************
 # Sensors feature. Post-build step
@@ -406,11 +420,6 @@ include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
 # ***************************************************************
 
 # ***************************************************************
-# SystemState feature. Post-build step
-include=..\Common\SystemState\SS.elscr
-# ***************************************************************
-
-# ***************************************************************
 # Misc. global resolution. Post-build step
 include=..\Common\Global.elscr
 # ***************************************************************
@@ -420,11 +429,10 @@ include=.\EAL_required.elscr
 {if PLATFORM_BUILD == "EL1_140"
 include=.\Platform\EL1_140\PostBuild.elscr
 }
-##JJV - temp # ***************************************************************
-##JJV - temp # Calibration data applied
-##JJV - temp !import modify ".\Calibration\Features\Airflow\airflow.elcfg" [version_major]
-##JJV - temp !import modify ".\Calibration\Features\Fuel\fuel.elcfg" [version_major]
-##JJV - temp !import modify ".\Calibration\Features\Ignition\ignition.elcfg" [version_major]
-##JJV - temp !import modify ".\Calibration\Features\Sensors\sensors.elcfg" [version_major]
-##JJV - temp # ***************************************************************
+
+# ***************************************************************
+# Post build phase declared here.
+!set BUILD_PHASE POSTBUILD_PHASE
+include=..\..\Features\Features.elscr
+# ***************************************************************
 

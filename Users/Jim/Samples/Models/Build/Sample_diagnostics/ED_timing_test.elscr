@@ -43,6 +43,7 @@ include=.\Common\Simulator.elscr
 !define OUTPUT_COILS_EXTERNAL_ENABLE_HW
 # ------------------------------------------------------------------------
 
+!set BUILD_PHASE MAIN_BUILD_PHASE
 include=..\..\Features\Features.elscr
 
 #***************************************************************

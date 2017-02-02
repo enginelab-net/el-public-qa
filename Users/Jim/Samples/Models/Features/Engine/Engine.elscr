@@ -43,12 +43,14 @@
 }
 }
 
+!notebook new_note "Engine submodel" [vendor="Enginelab, Inc.", item_or_group="EAL_Engine", message="The engine submodel. (/Engine/Engine.elscr)"]
 }
 
 ## ***************************************************************
 ## Engine speed limiter
 {if defined(ENGINESPEED_LIMITER)
 include=.\Speed\ES_Limiter.elscr
+!notebook add_element "Engine submodel" [item_or_group="Engine speed submodel"]
 }
 ## ***************************************************************
 
@@ -56,6 +58,7 @@ include=.\Speed\ES_Limiter.elscr
 ## Engine timing generator
 {if defined(ETG_ENGINE_TIMING_GENERATOR)
 include=.\TimingGenerator\ETG.elscr
+!notebook add_element "Engine submodel" [item_or_group="Engine timing generator submodel"]
 }
 ## ***************************************************************
 
