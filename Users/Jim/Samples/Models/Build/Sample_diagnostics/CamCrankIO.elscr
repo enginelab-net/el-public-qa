@@ -31,15 +31,15 @@ include=..\..\Features\Features.elscr
 #***************************************************************
 # Hardware IO platform resolution.
 {if PLATFORM_BUILD == "EL129ECU"
-include=.\Platform\EL129ECU\Hardware.elscr
+include=.\Platform\EL129ECU\Output.elscr
 include=.\Platform\EL129ECU\EAL.elscr
 }
 {if PLATFORM_BUILD == "EL1_140"
-include=.\Platform\EL1_140\Hardware.elscr
+include=.\Platform\EL1_140\Output.elscr
 include=.\Platform\EL1_140\EAL.elscr
 }
 {if PLATFORM_BUILD == "Infinity_7"
-include=.\Platform\Infinity_7\Hardware.elscr
+include=.\Platform\Infinity_7\Output.elscr
 #include=.\Platform\Infinity_7\EAL.elscr
 {if defined(PLATFORM_REV_C)
 include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
