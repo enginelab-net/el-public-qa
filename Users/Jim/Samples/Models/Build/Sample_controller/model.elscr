@@ -356,6 +356,7 @@
 !set_path ES_LIMIT_SPARKTIMING_1D_CSV      .\Resource\ES_LIMIT_SPARKTIMING_1D_CSV.csv
 !define ENGINESPEED_LIMITER_FI_PROBABILITY
 !set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   .\Resource\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
+!set_path ES_LIMIT_CUTLIMIT_1D_CSV .\Resource\ES_LIMIT_CUTLIMIT_1D_CSV.csv
 # ***************************************************************
 
 # ***************************************************************
@@ -425,6 +426,7 @@ include=..\Common\Global.elscr
 # ***************************************************************
 
 include=.\EAL_required.elscr
+include=.\EAL_optional.elscr
 
 {if PLATFORM_BUILD == "EL1_140"
 include=.\Platform\EL1_140\PostBuild.elscr

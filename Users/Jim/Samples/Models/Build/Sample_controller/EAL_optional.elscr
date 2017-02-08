@@ -1,0 +1,28 @@
+{if VERSIONMAJOR == "096"
+}                                                                                                                  
+                                                                                                                   
+{if VERSIONMAJOR == "097"
+{if defined(ENGINESPEED_LIMITER)
+{if defined(ENGINESPEED_LIMITER_SPARKPROBABILITY)
+!create_item "SPK_Probability [%]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_10, add_input="ES_Limit_SpkProbability [%]"]
+!change_item "SPK_Probability [%]" [math_expression="min_input"]
+!create_item "SPK_CutLimit"        [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_10, add_input="ES_Limit_CutLimit"]
+!change_item "SPK_CutLimit"        [math_expression="max_input"]
+!notebook new_note "Engine speed EAL optional" [vendor="Enginelab, Inc.", item_or_group="SPK_Probability [%]", item_or_group="SPK_CutLimit", message="The engine speed limiter EAL submodel."]
+!notebook add_element "Engine speed submodel" [item_or_group="Engine speed EAL optional"]
+}            
+{if defined(ENGINESPEED_LIMITER_FI_PROBABILITY)
+!create_item "FI_Probability [%]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_10, add_input="ES_Limit_FI_Probability [%]"] 
+!change_item "FI_Probability [%]" [math_expression="min_input"]
+!create_item "FI_CutLimit"        [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_10, add_input="ES_Limit_CutLimit"]
+!change_item "FI_CutLimit"        [math_expression="max_input"]
+{if defined(ENGINESPEED_LIMITER_SPARKPROBABILITY)
+!notebook add_element "Engine speed EAL optional" [item_or_group="FI_Probability [%]", item_or_group="FI_CutLimit"]
+!else
+!notebook new_note "Engine speed EAL optional" [vendor="Enginelab, Inc.", item_or_group="FI_Probability [%]", item_or_group="FI_CutLimit", message="The engine speed limiter EAL submodel."]
+!notebook add_element "Engine speed submodel" [item_or_group="Engine speed EAL optional"]
+}
+}            
+}            
+}
+

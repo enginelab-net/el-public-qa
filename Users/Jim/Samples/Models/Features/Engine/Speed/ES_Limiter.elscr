@@ -12,6 +12,12 @@
 !change_item "ES_Limit_SpkProbability [%]" [1Dtable_csv=ES_LIMIT_SPARKPROBABILITY_1D_CSV]
 }
 !notebook new_note "ES_Limit_SpkProbability [%]" [vendor="Enginelab, Inc.", message=" The engine speed limiter spark probablity control."]
+
+!create_item "ES_Limit_CutLimit" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_10, add_input="EngineSpeed_final [RPM]"]
+{if defined(ES_LIMIT_CUTLIMIT_1D_CSV)
+!change_item "ES_Limit_CutLimit" [1Dtable_csv=ES_LIMIT_CUTLIMIT_1D_CSV]
+}
+!notebook new_note "ES_Limit_CutLimit" [vendor="Enginelab, Inc.", message=" The engine speed limiter cut limit."]
 }
 
 {if defined(ENGINESPEED_LIMITER_SPARKTIMING)
@@ -28,6 +34,15 @@
 !change_item "ES_Limit_FI_Probability [%]" [1Dtable_csv=ES_LIMIT_FI_PROBABILITY_1D_CSV]
 }
 !notebook new_note "ES_Limit_FI_Probability [%]" [vendor="Enginelab, Inc.", message=" The engine speed limiter spark probablity control."]
+
+{if defined(ENGINESPEED_LIMITER_SPARKPROBABILITY)
+!else
+!create_item "ES_Limit_CutLimit" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_10, add_input="EngineSpeed_final [RPM]"]
+{if defined(ES_LIMIT_CUTLIMIT_1D_CSV)
+!change_item "ES_Limit_CutLimit" [1Dtable_csv=ES_LIMIT_CUTLIMIT_1D_CSV]
+}
+!notebook new_note "ES_Limit_CutLimit" [vendor="Enginelab, Inc.", message=" The engine speed limiter cut limit."]
+}
 }
 
 !notebook new_note "Engine speed submodel" [vendor="Enginelab, Inc.", item_wildcard="ES_Limit", message="The engine speed limiter submodel. (/Engine/Speed/ES_Limiter.elscr)"]

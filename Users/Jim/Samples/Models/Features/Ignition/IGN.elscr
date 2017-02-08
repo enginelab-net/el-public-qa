@@ -64,7 +64,11 @@
 include=.\Trim\Trim.elscr
 !else
 !create_item "SPK_TimingX [degBTDC]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SPK_Timing_table [degBTDC]", math_expression="sum_inputs"]
+{if defined (ENGINESPEED_LIMITER_SPARKTIMING)
+!change_item "SPK_TimingX [degBTDC]" [add_input="ES_Limit_SpkTiming [degBTDC]"]
 }
+}
+
 ## ***************************************************************
 
 !notebook new_note "Ignition spark dwell" [vendor="Enginelab, Inc.", item_wildcard="SPK_Dwell", message="The spark dwell submodel. This item is created in the ignition submodel. (/Ignition/IGN.elscr)"] 
