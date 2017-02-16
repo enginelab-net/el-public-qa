@@ -38,12 +38,14 @@
 
 # ***************************************************************
 # OAL sleep defines
-!set OAL_THREAD_WITH_SLEEP_10    0
-!set OAL_THREAD_WITH_SLEEP_20    1
-!set OAL_THREAD_WITH_SLEEP_50    2
-!set OAL_THREAD_WITH_SLEEP_100   3
-!set OAL_THREAD_WITH_SLEEP_200   4
-!set OAL_THREAD_WITH_SLEEP_500   5
+!set OAL_THREAD_WITH_SLEEP_10          0
+!set OAL_THREAD_WITH_SLEEP_20          1
+!set OAL_THREAD_WITH_SLEEP_50          2
+!set OAL_THREAD_WITH_SLEEP_100         3
+!set OAL_THREAD_WITH_SLEEP_200         4
+!set OAL_THREAD_WITH_SLEEP_500         5
+!set OAL_THREAD_WITH_SLEEP_1000        6
+!set OAL_THREAD_WITH_SLEEP_100_DELAYED 7
 # ***************************************************************
 
 # ***************************************************************
@@ -59,7 +61,9 @@
 ## AF_SD_VE_SIMPLE - use the Simple VE approach to the Speed density submodel.
 !define AF_SD_VE_SIMPLE
 !set_path AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV    .\Resource\AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV.csv
-!set_path AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV  .\Resource\AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV.csv
+## A secondary VE table is optional and probably not needed.
+##!define AF_SD_VE_SIMPLE_USE_SECONDARY_TABLE
+##!set_path AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV  .\Resource\AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
 ## The inputs for the fuel flow can be changed here.
 #!set AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0 new name 0
@@ -157,7 +161,13 @@
 # optional flex fuel
 #!define FUEL_LSFS_FLEX
 # ------------------------------------------------------------------------
-
+## optional accelerator pump based on the Throttle position sensor. This requires SENSOR_TPS_DX_DT (slope of the TPS)
+!define FUEL_TRIM_TPS_RATE_OF_CHANGE
+!set_path FI_TRIM_ACCELPUMP_MULT_1D_CSV  .\Resource\FI_TRIM_ACCELPUMP_MULT_1D_CSV.csv
+!set_path FI_TRIM_ACCELPUMP_DECAY_1D_CSV .\Resource\FI_TRIM_ACCELPUMP_DECAY_1D_CSV.csv
+!set_path FI_TRIM_DECELPUMP_MULT_1D_CSV  .\Resource\FI_TRIM_DECELPUMP_MULT_1D_CSV.csv
+!set_path FI_TRIM_DECELPUMP_DECAY_1D_CSV .\Resource\FI_TRIM_DECELPUMP_DECAY_1D_CSV.csv
+# ------------------------------------------------------------------------
 # ------------------------------------------------------------------------
 # Fuel flow options.
 !define FUELFLOW
@@ -239,6 +249,18 @@
 # ***************************************************************
 
 # ***************************************************************
+# Engine speed limiter feature.
+!define ENGINESPEED_LIMITER
+!define ENGINESPEED_LIMITER_SPARKPROBABILITY
+!set_path ES_LIMIT_SPARKPROBABILITY_1D_CSV .\Resource\ES_LIMIT_SPARKPROBABILITY_1D_CSV.csv
+!define ENGINESPEED_LIMITER_SPARKTIMING
+!set_path ES_LIMIT_SPARKTIMING_1D_CSV      .\Resource\ES_LIMIT_SPARKTIMING_1D_CSV.csv
+!define ENGINESPEED_LIMITER_FI_PROBABILITY
+!set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   .\Resource\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
+!set_path ES_LIMIT_CUTLIMIT_1D_CSV .\Resource\ES_LIMIT_CUTLIMIT_1D_CSV.csv
+# ***************************************************************
+
+# ***************************************************************
 # SystemState feature. Pre-build step
 !define SS
 # ***************************************************************
@@ -263,6 +285,7 @@
 !set SENSOR_TPS_ANALOG_CLAMPU 100
 !define SENSOR_TPS_ERROR_TIMER
 !set SENSOR_TPS_ERROR_TIMER_DELAY_TIME 3000
+!define SENSOR_TPS_DX_DT
 # ------------------------------------------------------------------------
 !define SENSOR_CLT
 !define SENSOR_CLT_THERMISTOR
@@ -348,18 +371,6 @@
 # ***************************************************************
 
 # ***************************************************************
-# Engine speed limiter feature.
-!define ENGINESPEED_LIMITER
-!define ENGINESPEED_LIMITER_SPARKPROBABILITY
-!set_path ES_LIMIT_SPARKPROBABILITY_1D_CSV .\Resource\ES_LIMIT_SPARKPROBABILITY_1D_CSV.csv
-!define ENGINESPEED_LIMITER_SPARKTIMING
-!set_path ES_LIMIT_SPARKTIMING_1D_CSV      .\Resource\ES_LIMIT_SPARKTIMING_1D_CSV.csv
-!define ENGINESPEED_LIMITER_FI_PROBABILITY
-!set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   .\Resource\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
-!set_path ES_LIMIT_CUTLIMIT_1D_CSV .\Resource\ES_LIMIT_CUTLIMIT_1D_CSV.csv
-# ***************************************************************
-
-# ***************************************************************
 # Main build phase declared here.
 !set BUILD_PHASE MAIN_BUILD_PHASE
 include=..\..\Features\Features.elscr
@@ -410,6 +421,8 @@ include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
 !change_item "Thread3_Sleep [ms]" [initial_value="100"]
 !change_item "Thread4_Sleep [ms]" [initial_value="200"]
 !change_item "Thread5_Sleep [ms]" [initial_value="500"]
+!change_item "Thread6_Sleep [ms]" [initial_value="1000"]
+!change_item "Thread7_Sleep [ms]" [initial_value="100"]
 !else
 !change_item "OAL_Thread0_Sleep [ms]" [initial_value="10"]
 !change_item "OAL_Thread1_Sleep [ms]" [initial_value="20"]
@@ -417,6 +430,8 @@ include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
 !change_item "OAL_Thread3_Sleep [ms]" [initial_value="100"]
 !change_item "OAL_Thread4_Sleep [ms]" [initial_value="200"]
 !change_item "OAL_Thread5_Sleep [ms]" [initial_value="500"]
+!change_item "OAL_Thread6_Sleep [ms]" [initial_value="1000"]
+!change_item "OAL_Thread7_Sleep [ms]" [initial_value="100"]
 }
 # ***************************************************************
 

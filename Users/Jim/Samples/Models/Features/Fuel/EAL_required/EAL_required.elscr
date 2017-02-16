@@ -135,41 +135,63 @@
 ##########################################################################################################################
 ## The trims should be math items.
 {if defined (FUEL_INJECTORS_TRIM)
+
+{if defined(FI_TRIM_CLAMP_L)
+!else
+!set FI_TRIM_CLAMP_L 0
+}
+{if defined(FI_TRIM_CLAMP_H)
+!else
+!set FI_TRIM_CLAMP_H 2 
+}
+
 {if EAL_NUM_INJECTORS > "00"
 !create_item "FI_Trim_1" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_1" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "01"
 !create_item "FI_Trim_2" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_2" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "02"
 !create_item "FI_Trim_3" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_3" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "03"
 !create_item "FI_Trim_4" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_4" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "04"
 !create_item "FI_Trim_5" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_5" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "05"
 !create_item "FI_Trim_6" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_6" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "06"
 !create_item "FI_Trim_7" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_7" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "07"
 !create_item "FI_Trim_8" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_8" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "08"
 !create_item "FI_Trim_9" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_9" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "09"
 !create_item "FI_Trim_10" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_10" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "10"
 !create_item "FI_Trim_11" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_11" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 {if EAL_NUM_INJECTORS > "11"
 !create_item "FI_Trim_12" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, initial_value="1", math_expression="1+sum_inputs"]
+!change_item "FI_Trim_12" [clamp_flag="1", clamp_lower=FI_TRIM_CLAMP_L, clamp_upper=FI_TRIM_CLAMP_H]
 }
 
 }

@@ -25,10 +25,11 @@
 }
 {if defined(SENSOR_OXYGEN_UEGO_CJ125V2_OVERRIDE)
 !else
-!set SENSOR_OXYGEN_UEGO_CJ125V2_OVERRIDE 4
+!set SENSOR_OXYGEN_UEGO_CJ125V2_OVERRIDE 5
 }
 
 !create_item "UEGO_##UEGO_NUMBER##_cj125v2" [type="CJ125 Interface v2"]
+!change_item "UEGO_##UEGO_NUMBER##_cj125v2" [cj125_device=UEGO_NUMBER]
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [thread_ID=OAL_THREAD_WITH_SLEEP_50]
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [add_input="measure_count"]
 !change_item "UEGO_##UEGO_NUMBER##_cj125v2" [add_input="cal_count"]

@@ -78,5 +78,10 @@ include=.\Lambda\LambdaFB_mapping.elscr
 !notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 1 trim submodel"]
 }
 
-
+##########################################################################################################################
+{if defined (FUEL_TRIM_TPS_RATE_OF_CHANGE)
+include=.\TPS_RateOfChange\TPS_RateOfChange.elscr
+!notebook add_element "FUEL Trim submodel" [item_or_group="TPS rate of change trim submodel"]
+}
+##########################################################################################################################
 

@@ -65,7 +65,7 @@
 !replace_item "UEGO_##UEGO_NUMBER##_heater_pid_p_output" [type="Constant", constant_value="0"]
 !replace_item "UEGO_##UEGO_NUMBER##_heater_pid_i_output" [type="Constant", constant_value="0"]
 !replace_item "UEGO_##UEGO_NUMBER##_heater_pid_d_output" [type="Constant", constant_value="0"]
-!create_item "UEGO_##UEGO_NUMBER##_heater_pid_deadband [%]" [type="No Operation"]
+!create_item "UEGO_##UEGO_NUMBER##_heater_pid_deadband [%]" [type="No Operation", initial_value="1"]
 
 !notebook new_note "UEGO heater ##UEGO_NUMBER## pid" [vendor="Enginelab, Inc.", item_wildcard="UEGO_##UEGO_NUMBER##_heater_pid", message=" The UEGO heater control submodel."]
 #****************************************************************************************************************************
@@ -76,7 +76,8 @@
 !change_item "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [add_input="UEGO_##UEGO_NUMBER##_cj125v2_UR_measured [V]"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [add_input="UEGO_##UEGO_NUMBER##_cj125v2_UR_cal [V]"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [add_input="UEGO_##UEGO_NUMBER##_heater_pid_enable_noop [bool]"]
-!change_item "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [if_else_clear_expressions, if_else_add_expression="(i0-i1<1.0)&&i2"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [add_input="UEGO_##UEGO_NUMBER##_cj125v2_reset"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [if_else_clear_expressions, if_else_add_expression="(i0-i1<1.0)&&i2&&!i3"]
 
 !notebook new_note "UEGO_##UEGO_NUMBER##_heater_using_pid [bool]" [vendor="Enginelab, Inc.", message=" This will be the enable for the item \"UEGO_0_heater_pid [%]\" \n."]
 #****************************************************************************************************************************
@@ -115,13 +116,19 @@
 !create_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_200]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="uego_ramp_timer_low"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="uego_ramp_timer_time"]
-!change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_using_pid [bool]"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_ramp_reset [bool]"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [add_input="uego_ramp_timer_high"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [timer_mode="Linear Transition Over Time reset=start"]
 !replace_item uego_ramp_timer_low [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_RAMP_LOW]
 !replace_item uego_ramp_timer_high [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_RAMP_HIGH]
 !replace_item uego_ramp_timer_time [type="Constant", constant_value=SENSOR_OXYGEN_UEGO_RAMP_TIME]
 !notebook new_note "UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]" [vendor="Enginelab, Inc.", message=" The contribution to the heater duty cycle based on the Ramp timer."]
+
+!create_item "UEGO_##UEGO_NUMBER##_heater_ramp_reset [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_200]
+!change_item "UEGO_##UEGO_NUMBER##_heater_ramp_reset [bool]" [add_input="UEGO_##UEGO_NUMBER##_heater_using_pid [bool]"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_ramp_reset [bool]" [add_input="UEGO_##UEGO_NUMBER##_cj125v2_reset"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_ramp_reset [bool]" [if_else_add_expression="i0||i1"]
+!notebook new_note "UEGO_##UEGO_NUMBER##_heater_ramp_reset [bool]" [vendor="Enginelab, Inc.", message=" The reset for the heater Ramp timer."]
 #****************************************************************************************************************************
 
 #****************************************************************************************************************************
@@ -132,7 +139,8 @@
 !change_item "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_ramp_duty [%]"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_using_pid [bool]"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_enable_noop [bool]"]
-!change_item "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [math_expression="?(i2,i0,i1)*i3"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [add_input="UEGO_##UEGO_NUMBER##_cj125v2_reset"]
+!change_item "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [math_expression="?(i2,i0,i1)*i3*!i4"]
 !notebook new_note "UEGO_##UEGO_NUMBER##_heater_duty_final [%]" [vendor="Enginelab, Inc.", message=" This item will choose the duty based on using the PID or the Ramping time."]
 ##****************************************************************************************************************************
 

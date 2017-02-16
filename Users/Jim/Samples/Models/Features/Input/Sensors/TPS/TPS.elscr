@@ -31,5 +31,10 @@
 !create_item "SENSOR_TPS_error_delay [ms]" [type="No Operation", initial_value="3000"]
 }
 }
+
+{if defined(SENSOR_TPS_DX_DT)
+!change_item "SENSOR_TPS [%]" [thread_ID=OAL_THREAD_WITH_SLEEP_20, priority="131"]
+!create_item "SENSOR_TPS_rate [%/s]" [type="Rate-Of-Change Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_TPS [%]"]
+}
 ## ***************************************************************
 

@@ -12,6 +12,12 @@
 !else
 !set IDLE_TARGET_COMPENSATION_RAMP_DOWN_TIME 5000
 }
+
+{if defined (IDLE_ENABLE_ENGINESPEED)
+!else
+!set IDLE_ENABLE_ENGINESPEED 2000
+}
+
 !create_item "IDLE_comp_rampdown [RPM]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_100, timer_mode="Linear Transition Over Time reset=end"]
 !change_item "IDLE_comp_rampdown [RPM]" [add_input="IDLE_comp_rampdown_start"]
 !change_item "IDLE_comp_rampdown [RPM]" [add_input="IDLE_comp_rampdown_time"]
