@@ -3,7 +3,7 @@
 
 {if defined(SENSOR_OXYGEN_UEGO_HEATER_PID_KP)
 !else
-!set SENSOR_OXYGEN_UEGO_HEATER_PID_KP 2.5
+!set SENSOR_OXYGEN_UEGO_HEATER_PID_KP 1.5
 }
 {if defined(SENSOR_OXYGEN_UEGO_HEATER_PID_KI)
 !else
@@ -65,7 +65,7 @@
 !replace_item "UEGO_##UEGO_NUMBER##_heater_pid_p_output" [type="Constant", constant_value="0"]
 !replace_item "UEGO_##UEGO_NUMBER##_heater_pid_i_output" [type="Constant", constant_value="0"]
 !replace_item "UEGO_##UEGO_NUMBER##_heater_pid_d_output" [type="Constant", constant_value="0"]
-!create_item "UEGO_##UEGO_NUMBER##_heater_pid_deadband [%]" [type="No Operation", initial_value="1"]
+!create_item "UEGO_##UEGO_NUMBER##_heater_pid_deadband [%]" [type="No Operation", initial_value="0.1"]
 
 !notebook new_note "UEGO heater ##UEGO_NUMBER## pid" [vendor="Enginelab, Inc.", item_wildcard="UEGO_##UEGO_NUMBER##_heater_pid", message=" The UEGO heater control submodel."]
 #****************************************************************************************************************************
@@ -92,7 +92,7 @@
 !set SENSOR_OXYGEN_UEGO_HEATER_PID_DUTY_CLAMP_H 60
 }
 
-!create_item "UEGO_##UEGO_NUMBER##_heater_pid_duty [%]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_50, initial_value="30"]
+!create_item "UEGO_##UEGO_NUMBER##_heater_pid_duty [%]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_50, initial_value="50"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_pid_duty [%]" [add_input="UEGO_##UEGO_NUMBER##_heater_pid [%]"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_pid_duty [%]" [math_expression="self-i0"]
 !change_item "UEGO_##UEGO_NUMBER##_heater_pid_duty [%]" [clamp_flag="1", clamp_lower=SENSOR_OXYGEN_UEGO_HEATER_PID_DUTY_CLAMP_L, clamp_upper=SENSOR_OXYGEN_UEGO_HEATER_PID_DUTY_CLAMP_H]
