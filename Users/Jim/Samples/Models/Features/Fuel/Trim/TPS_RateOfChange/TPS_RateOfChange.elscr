@@ -48,13 +48,13 @@
 !create_item "FI_Trim_DecelPump" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20]
 !change_item "FI_Trim_DecelPump" [clamp_flag="1", clamp_lower=FI_TRIM_DECELPUMP_CLAMP_L, clamp_upper=FI_TRIM_DECELPUMP_CLAMP_H]
 !change_item "FI_Trim_DecelPump" [add_input="SENSOR_TPS_rate [%/s]"]
-!change_item "FI_Trim_DecelPump" [add_input="FI_Trim_AccelPumpMult"]
-!change_item "FI_Trim_DecelPump" [add_input="FI_Trim_AccelPumpDecay"]
+!change_item "FI_Trim_DecelPump" [add_input="FI_Trim_DecelPumpMult"]
+!change_item "FI_Trim_DecelPump" [add_input="FI_Trim_DecelPumpDecay"]
 ## This math function will integrate the rate of change and add this to current decel pump. The decel pump will then decay as a function of the value of decel pump relative to the lower clamp.
 !change_item "FI_Trim_DecelPump" [math_expression="((i0<0)*i0*dt*i1)+self-(((clampl-0.1)-self)*i2)"]
 
 !create_item "FI_Trim_TPS_RateOfChange" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "FI_Trim_DecelPump" [clamp_flag="1", clamp_lower=FI_TRIM_DECELPUMP_CLAMP_L, clamp_upper=FI_TRIM_ACCELPUMP_CLAMP_H]
+!change_item "FI_Trim_TPS_RateOfChange" [clamp_flag="1", clamp_lower=FI_TRIM_DECELPUMP_CLAMP_L, clamp_upper=FI_TRIM_ACCELPUMP_CLAMP_H]
 !change_item "FI_Trim_TPS_RateOfChange" [add_input="FI_Trim_AccelPump"]
 !change_item "FI_Trim_TPS_RateOfChange" [add_input="FI_Trim_DecelPump"]
 !change_item "FI_Trim_TPS_RateOfChange" [math_expression="i0+i1"]
