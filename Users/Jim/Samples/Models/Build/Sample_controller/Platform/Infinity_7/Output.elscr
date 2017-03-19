@@ -17,7 +17,7 @@
 }
 
 {if defined(OUTPUT_TACHOMETER)
-!replace_item "OUTPUT_TACH_HW" [type="Hardware IO", pin="LowsideSwitch5_Out, C1-2", board_conditioning="Low-side driver, 6 Amp", cpu_mode="Tach Output"]
+!replace_item "OUTPUT_TACH_HW" [type="Hardware IO", pin="LowsideSwitch8_Out, C2-43", board_conditioning="Low-side driver, 6 Amp", cpu_mode="Tach Output"]
 }
 
 {if defined(OUTPUT_INJ_EXTERNAL_ENABLE_HW)

@@ -229,6 +229,7 @@
 # ***************************************************************
 # Idle feature. Pre-build step
 !define IDLE
+!define IDLE_DELAY_START
 !define IDLE_TARGET_TABLE_1D
 !set_path IDLE_TARGET_TABLE_1D_CSV  .\Resource\IDLE_TARGET_TABLE_1D_CSV.csv
 ## By default the submodel will use these inputs: "SENSOR_CLT [C]"

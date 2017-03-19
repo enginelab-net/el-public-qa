@@ -45,5 +45,19 @@
 }
 }
 
+!create_item "ES_Limit_Active [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_10"]
+!set NEXT_INPUT_INDEX i0
+{if defined(ENGINESPEED_LIMITER_SPARKPROBABILITY)
+!change_item "ES_Limit_Active [bool]" [add_input="ES_Limit_SpkProbability [%]", math_expression_append="(##NEXT_INPUT_INDEX##<99)"]
+!set NEXT_INPUT_INDEX i1
+}
+{if defined(ENGINESPEED_LIMITER_FI_PROBABILITY)
+{if NEXT_INPUT_INDEX == "i0"
+!change_item "ES_Limit_Active [bool]" [add_input="ES_Limit_FI_Probability [%]", math_expression_append="(##NEXT_INPUT_INDEX##<99)"]
+!else
+!change_item "ES_Limit_Active [bool]" [add_input="ES_Limit_FI_Probability [%]", math_expression_append="&&(##NEXT_INPUT_INDEX##<99)"]
+} 
+}
+
 !notebook new_note "Engine speed submodel" [vendor="Enginelab, Inc.", item_wildcard="ES_Limit", message="The engine speed limiter submodel. (/Engine/Speed/ES_Limiter.elscr)"]
 

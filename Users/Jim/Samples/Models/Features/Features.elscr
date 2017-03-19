@@ -67,7 +67,7 @@ include=.\Output\Output.elscr
 ## ***************************************************************
 
 ## ***************************************************************
-## Engine speed limiter
+## Engine related features
 {if defined(EAL_ENGINE)
 {if BUILD_PHASE == "MAIN_BUILD_PHASE"
 include=.\Engine\Engine.elscr

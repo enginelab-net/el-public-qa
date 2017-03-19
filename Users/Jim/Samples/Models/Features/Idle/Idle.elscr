@@ -55,7 +55,16 @@ include=.\Compensations\Compensations.elscr
 !change_item "IDLE_enable [bool]" [add_input="EngineSpeed_final [RPM]"]
 !change_item "IDLE_enable [bool]" [add_input="IDLE_enable_TPS [bool]"]
 !change_item "IDLE_enable [bool]" [add_input="SS_EngineRunning [bool]"]
+{if defined (IDLE_DELAY_START)
+{if defined (IDLE_DELAY_START_TIME_MS)
+!else
+!set IDLE_DELAY_START_TIME_MS 3000
+}
+!change_item "IDLE_enable [bool]" [add_input="SS_EngineRunningTime [ms]"]
+!change_item "IDLE_enable [bool]" [math_expression="(i0<##IDLE_ENABLE_ENGINESPEED##)&&i1&&i2&&(i3>##IDLE_DELAY_START_TIME_MS##)"]
+!else
 !change_item "IDLE_enable [bool]" [math_expression="(i0<##IDLE_ENABLE_ENGINESPEED##)&&i1&&i2"]
+}
 
 !notebook new_note "IDLE enable submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_enable", message=" The Idle enable submodel."]
 ## ***************************************************************
