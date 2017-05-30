@@ -75,4 +75,11 @@ include=.\Engine\Engine.elscr
 }
 ## ***************************************************************
 
-
+## ***************************************************************
+## Power sequencing related features
+{if defined(POWER_SEQUENCE)
+{if BUILD_PHASE == "MAIN_BUILD_PHASE"
+include=.\PowerSequencing\PowerSequencing.elscr
+}
+}
+## ***************************************************************

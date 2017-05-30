@@ -20,6 +20,9 @@
 !connect simulator .\PLATFORM\EL1_140\simulator.ini
 }
 
+!set RESOURCE_BASEPATH .\Calibration\Sample
+#!set RESOURCE_BASEPATH .\Calibration\JimsUltima
+
 # ***************************************************************
 # EAL Engine description support
 # NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
@@ -56,14 +59,14 @@
 ## See \\Features\Airflow\SpeedDensity\SD.elscr for usage.
 ## AF_SD - enables the build of the Speed density submodel.
 !define AF_SD
-!set_path AF_SD_TEMP_B_TABLE_1D_CSV .\Resource\AF_SD_TEMP_B_TABLE_1D_CSV.csv
+!set_path AF_SD_TEMP_B_TABLE_1D_CSV ##RESOURCE_BASEPATH##\AF_SD_TEMP_B_TABLE_1D_CSV.csv
 ## See \\Features\Airflow\SpeedDensity\Strategy\SimpleVE.elscr for usage.
 ## AF_SD_VE_SIMPLE - use the Simple VE approach to the Speed density submodel.
 !define AF_SD_VE_SIMPLE
-!set_path AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV    .\Resource\AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV.csv
+!set_path AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\AF_SD_VE_SIMPLE_PRIMARY_TABLE_2D_CSV.csv
 ## A secondary VE table is optional and probably not needed.
 ##!define AF_SD_VE_SIMPLE_USE_SECONDARY_TABLE
-##!set_path AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV  .\Resource\AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV.csv
+##!set_path AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\AF_SD_VE_SIMPLE_SECONDARY_TABLE_2D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
 ## The inputs for the fuel flow can be changed here.
 #!set AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0 new name 0
@@ -76,7 +79,7 @@
 !define AF_MAF_SIMPLE_SENSOR
 
 !define AF_SAMPLE0_MAF_SD
-!set_path AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV    .\Resource\AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV.csv
+!set_path AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV    ##RESOURCE_BASEPATH##\AF_SAMPLE0_MAF_SD_B_TABLE_1D_CSV.csv
 # ***************************************************************
 
 # ***************************************************************
@@ -93,13 +96,13 @@
 ## Fuel injector trim options.
 ##NOTE: Either 1D or 2D tables for trim. These are mutually exclusive.
 !define FUEL_EAL_INJECTORS_TRIM_TABLES_1D
-!set_path FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV    .\Resource\FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV.csv
+!set_path FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV    ##RESOURCE_BASEPATH##\FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]"
 ## The inputs for the trim tables can be changed here.
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT new name
 
 #!define FUEL_EAL_INJECTORS_TRIM_TABLES_2D
-#!set_path FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV    .\Resource\FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV.csv
+#!set_path FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV    ##RESOURCE_BASEPATH##\FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
 ## The inputs for the trim tables can be changed here.
 #!set FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0 new name 0
@@ -109,11 +112,11 @@
 ## These defines will create the lambda target submodel.
 !define FUEL_LAMBDA_TARGET
 !define FUEL_LAMBDA_TARGET_TABLE_2D
-!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     .\Resource\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
+!set_path FUEL_LAMBDA_TARGET_TABLE_2D_CSV     ##RESOURCE_BASEPATH##\FUEL_LAMBDA_TARGET_TABLE_2D_CSV.csv
 !define FUEL_LAMBDA_TARGET_CLT_TABLE_1D
-!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV .\Resource\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
+!set_path FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV ##RESOURCE_BASEPATH##\FUEL_LAMBDA_TARGET_CLT_TABLE_1D_CSV.csv
 !define FUEL_LAMBDA_TARGET_IAT_TABLE_2D
-!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV .\Resource\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
+!set_path FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV ##RESOURCE_BASEPATH##\FUEL_LAMBDA_TARGET_IAT_TABLE_2D_CSV.csv
 
 ## These defines will create the lambda trim submodel. The trim submodel requires the target submodel
 ## and the lambda sensor submodel.
@@ -143,7 +146,7 @@
 #!set FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT new name
 
 !define FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D
-!set_path FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV  .\Resource\FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV.csv
+!set_path FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV.csv
 ## By default the submodel will use these inputs: "SS_EngineRunningTime [ms]" and "SENSOR_CLT [C]"
 #!set FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT_0 new name 0
 #!set FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT_1 new name 1
@@ -155,7 +158,7 @@
 # Fuel strategy options for LSFS.
 # optional non-linearity support
 !define FUEL_LSFS_NONLINEAR_ADD
-!set_path FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV  .\Resource\FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV.csv
+!set_path FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV  ##RESOURCE_BASEPATH##\FUEL_LSFS_NONLINEAR_ADD_TABLE_1D_CSV.csv
 #!define FUEL_LSFS_NONLINEAR_MULTIPLY
 # ------------------------------------------------------------------------
 # optional flex fuel
@@ -163,11 +166,16 @@
 # ------------------------------------------------------------------------
 ## optional accelerator pump based on the Throttle position sensor. This requires SENSOR_TPS_DX_DT (slope of the TPS)
 !define FUEL_TRIM_TPS_RATE_OF_CHANGE
-!set_path FI_TRIM_ACCELPUMP_MULT_1D_CSV  .\Resource\FI_TRIM_ACCELPUMP_MULT_1D_CSV.csv
-!set_path FI_TRIM_ACCELPUMP_DECAY_1D_CSV .\Resource\FI_TRIM_ACCELPUMP_DECAY_1D_CSV.csv
-!set_path FI_TRIM_DECELPUMP_MULT_1D_CSV  .\Resource\FI_TRIM_DECELPUMP_MULT_1D_CSV.csv
-!set_path FI_TRIM_DECELPUMP_DECAY_1D_CSV .\Resource\FI_TRIM_DECELPUMP_DECAY_1D_CSV.csv
+!set_path FI_TRIM_ACCELPUMP_MULT_1D_CSV  ##RESOURCE_BASEPATH##\FI_TRIM_ACCELPUMP_MULT_1D_CSV.csv
+!set_path FI_TRIM_ACCELPUMP_DECAY_1D_CSV ##RESOURCE_BASEPATH##\FI_TRIM_ACCELPUMP_DECAY_1D_CSV.csv
+!set_path FI_TRIM_DECELPUMP_MULT_1D_CSV  ##RESOURCE_BASEPATH##\FI_TRIM_DECELPUMP_MULT_1D_CSV.csv
+!set_path FI_TRIM_DECELPUMP_DECAY_1D_CSV ##RESOURCE_BASEPATH##\FI_TRIM_DECELPUMP_DECAY_1D_CSV.csv
 # ------------------------------------------------------------------------
+# EAL Fuel pulse (optional). This is the initial fuel pulse for quick starting.
+!define EAL_FI_FUELPULSE
+# EAL Fuel pulse can be defined as a 2D table. If this is omitted, the item will be created as a No Operation.
+!define EAL_FI_FUELPULSE_TABLE_2D
+!set_path EAL_FI_FUELPULSE_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\EAL_FI_FUELPULSE_TABLE_2D_CSV.csv
 # ------------------------------------------------------------------------
 # Fuel flow options.
 !define FUELFLOW
@@ -175,11 +183,11 @@
 !define FUELFLOW_FP_SENSOR
 ## This define would cause the primary fuel lookup to use the effective pressure (fuel pressure - MAP) for determining the fuel flow.
 !define FUELFLOW_FP_MAP_DIFF
-!set_path FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV  .\Resource\FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV.csv
+!set_path FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV  ##RESOURCE_BASEPATH##\FUELFLOW_FP_MAP_DIFF_TABLE_1D_CSV.csv
 
 ## This define would generate the offset table for the fuel injectors. This is used by the LSFS trim adder.
 !define FUELFLOW_OFFSET_TABLE_2D
-!set_path FUELFLOW_OFFSET_TABLE_2D_CSV  .\Resource\FUELFLOW_OFFSET_TABLE_2D_CSV.csv
+!set_path FUELFLOW_OFFSET_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\FUELFLOW_OFFSET_TABLE_2D_CSV.csv
 ## By default the submodel will use these inputs: "SENSOR_BatteryVoltage [V]" and "FUELFLOW_EffectivePressure [kPa]"
 ## The inputs for the fuel flow can be changed here.
 #!set FUELFLOW_OFFSET_TABLE_2D_INPUT_0 new name 0
@@ -196,7 +204,7 @@
 #!set IGN_SPKDWELL_TABLE_1D_INPUT new name
 
 !define IGN_SPKDWELL_TABLE_2D
-!set_path IGN_SPKDWELL_TABLE_2D_CSV  .\Resource\IGN_SPKDWELL_TABLE_2D_CSV.csv
+!set_path IGN_SPKDWELL_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\IGN_SPKDWELL_TABLE_2D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_BatteryVoltage [V]"
 ## The inputs for the fuel flow can be changed here.
 #!set IGN_SPKDWELL_TABLE_2D_INPUT_0 new name 0
@@ -205,7 +213,7 @@
 # ------------------------------------------------------------------------
 #!define IGN_SPKTIMING_TABLE_1D
 !define IGN_SPKTIMING_TABLE_2D
-!set_path IGN_SPKTIMING_TABLE_2D_CSV  .\Resource\IGN_SPKTIMING_TABLE_2D_CSV.csv
+!set_path IGN_SPKTIMING_TABLE_2D_CSV  ##RESOURCE_BASEPATH##\IGN_SPKTIMING_TABLE_2D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
 #!set IGN_SPKTIMING_TABLE_1D_INPUT   new name 0
 #!set IGN_SPKTIMING_TABLE_2D_INPUT_0 new name 0
@@ -214,9 +222,9 @@
 !define IGN_SPKTIMING_TRIM
 !define IGN_SPKTIMING_TRIM_TABLES
 #!define IGN_SPKTIMING_TRIM_TABLES_1D
-#!set_path IGN_SPKTIMING_TRIM_TABLES_1D_CSV  .\Resource\IGN_SPKTIMING_TRIM_TABLES_1D_CSV.csv
+#!set_path IGN_SPKTIMING_TRIM_TABLES_1D_CSV  ##RESOURCE_BASEPATH##\IGN_SPKTIMING_TRIM_TABLES_1D_CSV.csv
 !define IGN_SPKTIMING_TRIM_TABLES_2D
-!set_path IGN_SPKTIMING_TRIM_TABLES_2D_CSV  .\Resource\IGN_SPKTIMING_TRIM_TABLES_2D_CSV.csv
+!set_path IGN_SPKTIMING_TRIM_TABLES_2D_CSV  ##RESOURCE_BASEPATH##\IGN_SPKTIMING_TRIM_TABLES_2D_CSV.csv
 ## By default the submodel will use these inputs: "EngineSpeed_final [RPM]" and "SENSOR_MAP [kPa]"
 #!set IGN_SPKTIMING_TRIM_TABLES_1D_INPUT   new name 0
 #!set IGN_SPKTIMING_TRIM_TABLES_2D_INPUT_0 new name 0
@@ -231,19 +239,19 @@
 !define IDLE
 !define IDLE_DELAY_START
 !define IDLE_TARGET_TABLE_1D
-!set_path IDLE_TARGET_TABLE_1D_CSV  .\Resource\IDLE_TARGET_TABLE_1D_CSV.csv
+!set_path IDLE_TARGET_TABLE_1D_CSV  ##RESOURCE_BASEPATH##\IDLE_TARGET_TABLE_1D_CSV.csv
 ## By default the submodel will use these inputs: "SENSOR_CLT [C]"
 #!set IDLE_TARGET_TABLE_1D_INPUT   new name 0
 
 !define IDLE_TARGET_COMPENSATIONS
 !define IDLE_TARGET_COMPENSATION_RAMP_DOWN
 !define IDLE_TARGET_COMPENSATION_ENGINE_RUN_TIME
-!set_path IDLE_TARGET_COMP_RUNTIME_1D_CSV  .\Resource\IDLE_TARGET_COMP_RUNTIME_1D_CSV.csv
+!set_path IDLE_TARGET_COMP_RUNTIME_1D_CSV  ##RESOURCE_BASEPATH##\IDLE_TARGET_COMP_RUNTIME_1D_CSV.csv
 !define IDLE_TARGET_COMPENSATION_AIR_CONDITIONER
 !define IDLE_TARGET_COMPENSATION_POWER_STEERING
 # ------------------------------------------------------------------------
 !define IDLE_AIRFLOW
-!set_path IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV  .\Resource\IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV.csv
+!set_path IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV  ##RESOURCE_BASEPATH##\IDLE_AIRFLOW_INITIAL_POSITION_TABLE_1D_CSV.csv
 !define IDLE_AIRFLOW_STEPPER_HARDWARE
 # ------------------------------------------------------------------------
 !define IDLE_IGNTIMING
@@ -253,12 +261,12 @@
 # Engine speed limiter feature.
 !define ENGINESPEED_LIMITER
 !define ENGINESPEED_LIMITER_SPARKPROBABILITY
-!set_path ES_LIMIT_SPARKPROBABILITY_1D_CSV .\Resource\ES_LIMIT_SPARKPROBABILITY_1D_CSV.csv
+!set_path ES_LIMIT_SPARKPROBABILITY_1D_CSV ##RESOURCE_BASEPATH##\ES_LIMIT_SPARKPROBABILITY_1D_CSV.csv
 !define ENGINESPEED_LIMITER_SPARKTIMING
-!set_path ES_LIMIT_SPARKTIMING_1D_CSV      .\Resource\ES_LIMIT_SPARKTIMING_1D_CSV.csv
+!set_path ES_LIMIT_SPARKTIMING_1D_CSV      ##RESOURCE_BASEPATH##\ES_LIMIT_SPARKTIMING_1D_CSV.csv
 !define ENGINESPEED_LIMITER_FI_PROBABILITY
-!set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   .\Resource\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
-!set_path ES_LIMIT_CUTLIMIT_1D_CSV .\Resource\ES_LIMIT_CUTLIMIT_1D_CSV.csv
+!set_path ES_LIMIT_FI_PROBABILITY_1D_CSV   ##RESOURCE_BASEPATH##\ES_LIMIT_FI_PROBABILITY_1D_CSV.csv
+!set_path ES_LIMIT_CUTLIMIT_1D_CSV ##RESOURCE_BASEPATH##\ES_LIMIT_CUTLIMIT_1D_CSV.csv
 # ***************************************************************
 
 # ***************************************************************
@@ -290,25 +298,25 @@
 # ------------------------------------------------------------------------
 !define SENSOR_CLT
 !define SENSOR_CLT_THERMISTOR
-!set_path SENSOR_CLT_THERMISTOR_TABLE_1D_CSV .\Resource\SENSOR_CLT_THERMISTOR_TABLE_1D_CSV.csv
+!set_path SENSOR_CLT_THERMISTOR_TABLE_1D_CSV ##RESOURCE_BASEPATH##\SENSOR_CLT_THERMISTOR_TABLE_1D_CSV.csv
 !define SENSOR_CLT_ERROR_TIMER
 !set SENSOR_CLT_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
 !define SENSOR_IAT
 !define SENSOR_IAT_THERMISTOR
-!set_path SENSOR_IAT_THERMISTOR_TABLE_1D_CSV .\Resource\SENSOR_IAT_THERMISTOR_TABLE_1D_CSV.csv
+!set_path SENSOR_IAT_THERMISTOR_TABLE_1D_CSV ##RESOURCE_BASEPATH##\SENSOR_IAT_THERMISTOR_TABLE_1D_CSV.csv
 !define SENSOR_IAT_ERROR_TIMER
 !set SENSOR_IAT_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
 !define SENSOR_OILTEMP
 !define SENSOR_OILTEMP_THERMISTOR
-!set_path SENSOR_OILTEMP_THERMISTOR_TABLE_1D_CSV .\Resource\SENSOR_OILTEMP_THERMISTOR_TABLE_1D_CSV.csv
+!set_path SENSOR_OILTEMP_THERMISTOR_TABLE_1D_CSV ##RESOURCE_BASEPATH##\SENSOR_OILTEMP_THERMISTOR_TABLE_1D_CSV.csv
 !define SENSOR_OILTEMP_ERROR_TIMER
 !set SENSOR_OILTEMP_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
 !define SENSOR_AIRBOXTEMP
 !define SENSOR_AIRBOXTEMP_THERMISTOR
-!set_path SENSOR_AIRBOXTEMP_THERMISTOR_TABLE_1D_CSV .\Resource\SENSOR_AIRBOXTEMP_THERMISTOR_TABLE_1D_CSV.csv
+!set_path SENSOR_AIRBOXTEMP_THERMISTOR_TABLE_1D_CSV ##RESOURCE_BASEPATH##\SENSOR_AIRBOXTEMP_THERMISTOR_TABLE_1D_CSV.csv
 !define SENSOR_AIRBOXTEMP_ERROR_TIMER
 !set SENSOR_AIRBOXTEMP_ERROR_TIMER_DELAY_TIME 3000
 # ------------------------------------------------------------------------
@@ -369,6 +377,11 @@
 !set OUTPUT_TACHOMETER_INPUT_0_VALUE 9
 ## The signal stays high for 3 teeth for each assertion.
 !set OUTPUT_TACHOMETER_INPUT_1_VALUE 3
+# ***************************************************************
+
+# ***************************************************************
+!define POWER_SEQUENCE
+!define POWER_SEQUENCE_SHUTDOWN
 # ***************************************************************
 
 # ***************************************************************

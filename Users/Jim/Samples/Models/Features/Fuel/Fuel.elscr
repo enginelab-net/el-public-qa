@@ -20,8 +20,11 @@ include=.\LSFS\LSFS.elscr
 }
 ## ***************************************************************
 
-include=.\EAL_required\EAL_required.elscr
+include=.\EAL\EAL_required.elscr
 !notebook add_element "Fuel submodel" [item_or_group="FUEL EAL required submodel"] 
+
+include=.\EAL\EAL_optional.elscr
+!notebook add_element "Fuel submodel" [item_or_group="FUEL EAL optional submodel"] 
 
 ## ***************************************************************
 ## Fuel LambdaStagedFuelSubsystem feature
