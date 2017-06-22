@@ -1,5 +1,15 @@
 EngineLab El Console release notes:
 
+Version 1.97.8611
+- This version has been running vehicles and should be stable.
+- requires firmware v97.8611. ELPUBLICQA8611.
+- Fixed various v97 porting problems.
+- Additions to various item types for inverting reset and enables in order to optimize models.
+- Many script additions.
+- Many additions to varioud controls.
+- Logging support added for display on the 3DGraph. Very nice feature.
+- Logging at different rates for different channels. Up to 200 channels supported.
+
 *******************************************************************************************************************
 Version 1.96.8175
 *******************************************************************************************************************
