@@ -1,4 +1,7 @@
 EngineLab El Console release notes:
+Version 1.97.8613
+- A minor fix for the ability to create several items. Stricter item validation was added that filtered the ability to create certain items and this has been resolved.
+ 
 
 Version 1.97.8611
 - This version has been running vehicles and should be stable.
