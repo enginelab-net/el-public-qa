@@ -1,5 +1,8 @@
 EngineLab El Console release notes:
 
+Version 1.97.8617
+- Fix for the Engine description item corruption that occurred in version 1.97.8616. 1.97.8616 has been deleted. Models built with 1.97.8616 should delete the engine description item and re-create this item with 1.97.8617.
+
 Version 1.97.8616
 - A fix for renaming items in the item properties diaog. In the previous version, a name change would have created an extern for the previous namer and the existing model would lose connectivity to the changed item. This fix will restore the connectivity when the item is changed in the item properties dialog.
 
