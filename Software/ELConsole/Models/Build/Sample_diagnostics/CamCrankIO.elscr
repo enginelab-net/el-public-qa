@@ -1,0 +1,48 @@
+## This is a simple model that will allow testing of the crank and cam inputs to a system.
+
+## Use this definition to control the hardware resolution layer.
+!define DIAGNOSTIC_CRANK_CAM_EDGECOUNTER
+
+#!set PLATFORM_BUILD Infinity_7
+#!define PLATFORM_REV_C
+!set PLATFORM_BUILD EL1_140
+#!set PLATFORM_BUILD EL129ECU
+
+## Connect to the simulator
+include=.\Common\Simulator.elscr
+
+## Create a simple model for counting crank and cam edges.
+!create_item "INPUT_CRANK_edge_counter_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+!create_item "INPUT_CAM_edge_counter_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+
+## For bench testing, one can add a timing waveform generator.
+# ***************************************************************
+#!define EAL_ENGINE
+#!define ETG_ENGINE_TIMING_GENERATOR
+#!set ETG_ENGINE_TIMING_GENERATOR_TIMING            Cam with crank missing 1 tooth single VVT
+#!set ETG_ENGINE_TIMING_GENERATOR_NUM_CRANK_TEETH   36
+#!set ETG_ENGINE_TIMING_GENERATOR_CRANK_TOOTH_WIDTH 4
+#!set ETG_ENGINE_TIMING_GENERATOR_NUM_CAM0_TEETH    1
+# ***************************************************************
+
+!set BUILD_PHASE MAIN_BUILD_PHASE
+include=..\..\Features\Features.elscr
+
+#***************************************************************
+# Hardware IO platform resolution.
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\Output.elscr
+include=.\Platform\EL129ECU\EAL.elscr
+}
+{if PLATFORM_BUILD == "EL1_140"
+include=.\Platform\EL1_140\Output.elscr
+include=.\Platform\EL1_140\EAL.elscr
+}
+{if PLATFORM_BUILD == "Infinity_7"
+include=.\Platform\Infinity_7\Output.elscr
+#include=.\Platform\Infinity_7\EAL.elscr
+{if defined(PLATFORM_REV_C)
+include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
+}
+}
+#***************************************************************

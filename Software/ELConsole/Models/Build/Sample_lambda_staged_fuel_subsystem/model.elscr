@@ -1,0 +1,75 @@
+output_types=true
+model_filters=all
+
+output_types=true
+model_filters=all
+
+!set PLATFORM_BUILD Infinity_7
+!set PLATFORM_BUILD EL129ECU
+
+{if PLATFORM_BUILD == "EL129ECU"
+!echo EL129ECU build
+!connect simulator .\PLATFORM\EL129ECU\simulator.ini
+}
+
+# ***************************************************************
+# EAL Engine description support
+!define EAL_ENGINE_DESCRIPTION
+!set EAL_NUM_SPARKS 0
+!set EAL_NUM_COILS 0
+!set EAL_NUM_INJECTORS 12
+# ***************************************************************
+
+!create_item "lsfs" [type="Lambda Staged Fuel Subsystem", thread_ID=OAL_THREAD_WITH_SLEEP_50] 
+!change_item "lsfs" [add_input="airflow [g/s]"         ]
+!change_item "lsfs" [add_input="lambda_target [L]"     ]
+!change_item "lsfs" [add_input="pri_duty_threshold [%]"]
+!change_item "lsfs" [add_input="staged_split [%]"      ]
+!change_item "lsfs" [add_input="pri_flowrate [cc/s]"   ]
+!change_item "lsfs" [add_input="sec_flowrate [cc/s]"   ]
+!change_item "lsfs" [add_input="trim_multiplier"       ]
+!change_item "lsfs" [add_input="trim_pri_adder [ms]"   ]
+!change_item "lsfs" [add_input="trim_sec_adder [ms]"   ]
+!change_item "lsfs" [add_input="pri_duty [%]"          ]
+!change_item "lsfs" [add_input="sec_duty [%]"          ]
+!change_item "lsfs" [add_input="flex_stoic_ratio"      ]
+
+!change_item "lsfs" [lsfs_num_primary_injectors="6", lsfs_num_secondary_injectors="6"]
+!change_item "lsfs" [primary_injector0="5",primary_injector1="4",primary_injector2="3",primary_injector3="0",primary_injector4="1",primary_injector5="2"]
+!change_item "lsfs" [secondary_injector0="10",secondary_injector1="11",secondary_injector2="8",secondary_injector3="9",secondary_injector4="7",secondary_injector5="6"]
+!change_item "lsfs" [lsfs_primary_stoich="13.8", lsfs_secondary_stoich="14.4"]
+!change_item "lsfs" [lsfs_primary_fuel_density="0.648", lsfs_secondary_fuel_density="0.639"]
+
+!create_item "airflow [g/s]" [type="No Operation", initial_value="200"]
+!create_item "lambda_target [L]" [type="No Operation", initial_value="1"]
+!create_item "pri_duty_threshold [%]" [type="No Operation", initial_value="80"]
+!create_item "staged_split [%]" [type="No Operation", initial_value="100"]
+!create_item "pri_flowrate [cc/s]" [type="No Operation", initial_value="4"]
+!create_item "sec_flowrate [cc/s]" [type="No Operation", initial_value="4"]
+!create_item "trim_multiplier" [type="No Operation", initial_value="1"]
+!create_item "trim_pri_adder [ms]" [type="No Operation", initial_value="0.987"]
+!create_item "trim_sec_adder [ms]" [type="No Operation", initial_value="1.065"]
+!create_item "pri_duty [%]" [type="No Operation", initial_value="0"]
+!create_item "sec_duty [%]" [type="No Operation", initial_value="0"]
+!create_item "flex_stoic_ratio" [type="No Operation", initial_value="0"]
+
+# non linearity injector additions.
+!create_item "FI_Nonlinear_PriPulsewidth [ms]" [type="No Operation", initial_value="0"]
+!create_item "FI_Nonlinear_SecPulsewidth [ms]" [type="No Operation", initial_value="0"]
+!create_item "FI_Nonlinear_PriTrim_add" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
+!change_item "FI_Nonlinear_PriTrim_add" [add_input="FI_Nonlinear_PriPulsewidth [ms]"]
+
+!create_item "FI_Nonlinear_SecTrim_add" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
+!change_item "FI_Nonlinear_SecTrim_add" [add_input="FI_Nonlinear_SecPulsewidth [ms]"]
+
+# ***************************************************************
+{if defined(EAL_ENGINE_DESCRIPTION)
+!create_item "EAL_engine" [type="Engine Description", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+!change_item "EAL_engine" [eal_num_sparks=EAL_NUM_SPARKS, eal_num_coils=EAL_NUM_COILS, eal_num_injectors=EAL_NUM_INJECTORS]
+}
+# ***************************************************************
+
+include=.\Common\EAL_required.elscr
+
+#!import modify ".\calibration.elcfg" [version_major]
+

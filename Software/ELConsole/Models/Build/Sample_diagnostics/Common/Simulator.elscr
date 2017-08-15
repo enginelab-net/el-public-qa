@@ -1,0 +1,17 @@
+{if PLATFORM_BUILD == "EL129ECU"
+!echo EL129ECU build
+!connect simulator .\..\Platform\EL129ECU\simulator.ini
+}
+{if PLATFORM_BUILD == "Infinity_7"
+!echo Infinity_7 build
+{if defined(PLATFORM_REV_C)
+!connect simulator .\..\Platform\Infinity_7\revC\simulator.ini
+!else
+!connect simulator .\..\Platform\Infinity_7\simulator.ini
+}
+}
+{if PLATFORM_BUILD == "EL1_140"
+!echo EL1_140 build
+!connect simulator .\..\Platform\EL1_140\simulator.ini
+}
+

@@ -1,0 +1,65 @@
+{if defined(EAL_ENGINE_DESCRIPTION)
+!create_item "EAL_Engine" [type="Engine Description", thread_ID=OAL_THREAD_WITH_SLEEP_200]
+!change_item "EAL_Engine" [ed_num_sparks=EAL_NUM_SPARKS, ed_num_coils=EAL_NUM_COILS, ed_num_injectors=EAL_NUM_INJECTORS]
+{if defined(EAL_COIL_TYPE)
+!change_item "EAL_Engine" [ed_ign_type=EAL_COIL_TYPE                            ]
+!else
+!change_item "EAL_Engine" [ed_ign_type="Coil On Plug"                           ]
+}
+{if defined(EAL_COIL_INVERT)
+!change_item "EAL_Engine" [ed_ign_invert                                        ]
+}
+{if defined(EAL_ENGINE_DISPLACEMENT)
+!change_item "EAL_Engine" [ed_displacement=EAL_ENGINE_DISPLACEMENT              ]
+!else
+!change_item "EAL_Engine" [ed_displacement="1"                                  ]
+}
+{if defined(EAL_ENGINE_NUM_CYLINDERS)
+!change_item "EAL_Engine" [ed_num_cylinders=EAL_ENGINE_NUM_CYLINDERS            ]
+!else
+!change_item "EAL_Engine" [ed_num_cylinders=EAL_NUM_INJECTORS                   ]
+}
+{if defined(EAL_ENGINE_CYCLES)
+!change_item "EAL_Engine" [ed_cycles=EAL_ENGINE_CYCLES                          ]
+!else
+!change_item "EAL_Engine" [ed_cycles="4 stroke"                                 ]
+}
+
+{if defined(EAL_ENGINE_TIMING)
+
+## Special code for each timing type can be handled here.
+## Each timing type may have different requirements ... these requirements can be documented here.
+!change_item "EAL_Engine" [ed_timing=EAL_ENGINE_TIMING                          ]
+{if EAL_ENGINE_TIMING == "Cam with crank missing 1 tooth single VVT"
+{if defined(EAL_ENGINE_TIMING_CRANK_TEETH)
+!change_item "EAL_Engine" [ed_crank_teeth=EAL_ENGINE_TIMING_CRANK_TEETH         ]
+!else
+!change_item "EAL_Engine" [ed_crank_teeth="2"                                   ]
+}
+!change_item "EAL_Engine" [ed_crank_edge_trigger="Rising edge"                  ]
+!change_item "EAL_Engine" [ed_crank_nc="10"                                     ]
+!change_item "EAL_Engine" [ed_cam0_edge_trigger="Rising edge"                   ]
+!change_item "EAL_Engine" [ed_cam0_nc="10"                                      ]
+}
+}
+
+!notebook new_note "Engine submodel" [vendor="Enginelab, Inc.", item_or_group="EAL_Engine", message="The engine submodel. (/Engine/Engine.elscr)"]
+}
+
+## ***************************************************************
+## Engine speed limiter
+{if defined(ENGINESPEED_LIMITER)
+include=.\Speed\ES_Limiter.elscr
+!notebook add_element "Engine submodel" [item_or_group="Engine speed submodel"]
+}
+## ***************************************************************
+
+## ***************************************************************
+## Engine timing generator
+{if defined(ETG_ENGINE_TIMING_GENERATOR)
+include=.\TimingGenerator\ETG.elscr
+!notebook add_element "Engine submodel" [item_or_group="Engine timing generator submodel"]
+}
+## ***************************************************************
+
+

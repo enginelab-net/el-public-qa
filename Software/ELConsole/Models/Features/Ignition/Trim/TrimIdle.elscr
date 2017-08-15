@@ -1,0 +1,4 @@
+{if defined(IGN_SPKTIMING_TRIM_IDLE)
+!change_item "SPK_Timing##SPK_NUMBER## [degBTDC]" [add_input="IDLE_SpkTiming_pid [degBTDC]"]
+}
+

@@ -1,0 +1,33 @@
+## ***************************************************************
+## Idle airflow control hardware submodel
+## ***************************************************************
+
+{if defined(IDLE_AIRFLOW_STEPPER_HARDWARE)
+
+!create_item "IDLE_AF_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_100]
+!change_item "IDLE_AF_HW" [add_input="IDLE_AF_position [%]"]
+!change_item "IDLE_AF_HW" [add_input="step_range"]
+!change_item "IDLE_AF_HW" [add_input="pulse_per_step"]
+!change_item "IDLE_AF_HW" [add_input="pulse_delay"]
+
+{if defined(IDLE_AIRFLOW_STEPPER_HARDWARE_STEPRANGE)
+!else
+!set IDLE_AIRFLOW_STEPPER_HARDWARE_STEPRANGE 220
+}
+
+{if defined(IDLE_AIRFLOW_STEPPER_HARDWARE_PULSES_PER_STEP)
+!else
+!set IDLE_AIRFLOW_STEPPER_HARDWARE_PULSES_PER_STEP 1
+}
+
+{if defined(IDLE_AIRFLOW_STEPPER_HARDWARE_DELAYTIME)
+!else
+!set IDLE_AIRFLOW_STEPPER_HARDWARE_DELAYTIME 6
+}
+
+!replace_item "step_range" [type="Constant", constant_value=IDLE_AIRFLOW_STEPPER_HARDWARE_STEPRANGE]
+!replace_item "pulse_per_step" [type="Constant", constant_value=IDLE_AIRFLOW_STEPPER_HARDWARE_PULSES_PER_STEP]
+!replace_item "pulse_delay" [type="Constant", constant_value=IDLE_AIRFLOW_STEPPER_HARDWARE_DELAYTIME]
+
+}
+

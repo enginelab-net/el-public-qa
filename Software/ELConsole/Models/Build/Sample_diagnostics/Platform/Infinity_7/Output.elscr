@@ -1,0 +1,14 @@
+{if defined(DIAGNOSTIC_CRANK_CAM_EDGECOUNTER)
+!replace_item "INPUT_CRANK_edge_counter_HW" [type="Hardware IO", pin="Digital0_In, C1-21", board_conditioning="Input Transistor Switch", cpu_mode="Rising Edge Increment"]
+!replace_item "INPUT_CAM_edge_counter_HW" [type="Hardware IO", pin="Digital1_In, C1-22", board_conditioning="Input Transistor Switch", cpu_mode="Rising Edge Increment"]
+}
+
+{if defined(DIAGNOSTIC_ED_TIMING_TEST)
+{if defined(OUTPUT_COILS)
+!replace_item "OUTPUT_COILS_onboard_HW" [type="Hardware IO", pin="CoilDriverEnable, On board", board_conditioning="No direct drive connection", cpu_mode="GPIO Output"]
+{if defined(OUTPUT_COILS_EXTERNAL_ENABLE_HW)
+!replace_item "OUTPUT_COILS_ext_HW" [type="Hardware IO", pin="LowsideSwitch5_Out, C1-2", board_conditioning="Low-side driver, 6 Amp", cpu_mode="GPIO Output"]
+}
+}
+}
+

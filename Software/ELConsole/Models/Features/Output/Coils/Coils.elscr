@@ -1,0 +1,15 @@
+## ***************************************************************
+## Coil signal output control.
+## ***************************************************************
+!create_item "OUTPUT_COILS_onboard_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+!change_item "OUTPUT_COILS_onboard_HW" [add_input="OUTPUT_COILS_onboard_enable [bool]"]
+
+## The coil output enable may be inverted.
+!replace_item "OUTPUT_COILS_onboard_enable [bool]" [type="Constant", constant_value="0"]
+
+{if defined(OUTPUT_COILS_EXTERNAL_ENABLE_HW)
+!create_item "OUTPUT_COILS_ext_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
+!change_item "OUTPUT_COILS_ext_HW" [add_input="OUTPUT_COILS_enable [bool]"]
+}
+
+!create_item "OUTPUT_COILS_enable [bool]" [type="No Operation", initial_value="0"]

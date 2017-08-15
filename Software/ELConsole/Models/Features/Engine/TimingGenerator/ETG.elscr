@@ -1,0 +1,48 @@
+!create_item "ETG_EngineGenerator" [type="Engine Generator", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+
+{if defined(ETG_ENGINE_TIMING_GENERATOR_TIMING)
+!change_item "ETG_EngineGenerator" [etg_timing=ETG_ENGINE_TIMING_GENERATOR_TIMING                   ]
+}
+
+{if defined(ETG_ENGINE_TIMING_GENERATOR_NUM_CRANK_TEETH)
+!change_item "ETG_EngineGenerator" [etg_crank_teeth=ETG_ENGINE_TIMING_GENERATOR_NUM_CRANK_TEETH         ]
+}
+{if defined(ETG_ENGINE_TIMING_GENERATOR_NUM_CAM0_TEETH)
+!change_item "ETG_EngineGenerator" [etg_cam0_teeth=ETG_ENGINE_TIMING_GENERATOR_NUM_CAM0_TEETH           ]
+}
+{if defined(ETG_ENGINE_TIMING_GENERATOR_NUM_CAM1_TEETH)
+!change_item "ETG_EngineGenerator" [etg_cam1_teeth=ETG_ENGINE_TIMING_GENERATOR_NUM_CAM1_TEETH           ]
+}
+{if defined(ETG_ENGINE_TIMING_GENERATOR_NUM_CAM2_TEETH)
+!change_item "ETG_EngineGenerator" [etg_cam2_teeth=ETG_ENGINE_TIMING_GENERATOR_NUM_CAM2_TEETH           ]
+}
+{if defined(ETG_ENGINE_TIMING_GENERATOR_NUM_CAM3_TEETH)
+!change_item "ETG_EngineGenerator" [etg_cam3_teeth=ETG_ENGINE_TIMING_GENERATOR_NUM_CAM3_TEETH           ]
+}
+
+!change_item "ETG_EngineGenerator" [add_input="ETG_RPM_desired"     ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_CrankToothWidth" ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_Cam0_Timing"     ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_Cam1_Timing"     ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_Cam2_Timing"     ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_Cam3_Timing"     ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_signals_present" ]
+!change_item "ETG_EngineGenerator" [add_input="ETG_signals_inverted"]
+
+!create_item "ETG_RPM_desired" [type="No Operation"]
+{if defined(ETG_ENGINE_TIMING_GENERATOR_CRANK_TOOTH_WIDTH)
+!create_item "ETG_CrankToothWidth" [type="No Operation", initial_value=ETG_ENGINE_TIMING_GENERATOR_CRANK_TOOTH_WIDTH]
+!else
+!create_item "ETG_CrankToothWidth" [type="No Operation", initial_value="5"]
+}
+!create_item "ETG_Cam0_Timing" [type="No Operation"]
+!create_item "ETG_Cam1_Timing" [type="No Operation"]
+!create_item "ETG_Cam2_Timing" [type="No Operation"]
+!create_item "ETG_Cam3_Timing" [type="No Operation"]
+!create_item "ETG_signals_present" [type="No Operation", initial_value="255"]
+!create_item "ETG_signals_inverted" [type="No Operation"]
+
+!notebook new_note "Engine timing generator submodel" [vendor="Enginelab, Inc.", item_wildcard="ETG_", message="The engine submodel. (/Engine/TimingGenerator/ETG.elscr)"]
+
+
+

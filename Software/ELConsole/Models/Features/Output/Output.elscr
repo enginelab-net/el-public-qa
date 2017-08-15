@@ -1,0 +1,42 @@
+{if defined(OUTPUT_COILS)
+include=.\Coils\Coils.elscr
+!notebook new_note "Output submodel Coils" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_COILS_", message="The coil enable output submodel. (/Output/Coils/Coils.elscr)"] 
+}
+
+{if defined(OUTPUT_INJECTORS)
+include=.\Injectors\Injectors.elscr
+!notebook new_note "Output submodel Injectors" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_INJ_", message="The fuel injectors enable output submodel. (/Output/Injectors/Injectors.elscr)"] 
+}
+
+{if defined(OUTPUT_CLTFAN)
+include=.\Fans\CLT_Fan.elscr
+!notebook new_note    "Output submodel Coolant fan" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_CLTFAN_", message="The coolant fan enable output submodel. (/Output/Fans/CLT_Fan.elscr)\n"] 
+!notebook add_message "Output submodel Coolant fan" [message="This submodel currently allows the user to control the coolant fans with the coolant temperature and the vehicle speed."]
+}
+
+{if defined(OUTPUT_OILFAN)
+include=.\Fans\Oil_Fan.elscr
+!notebook new_note    "Output submodel Oil cooler fan" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_OILFAN_", message="The oil cooler fan enable output submodel. (/Output/Fans/OIL_Fan.elscr)\n"] 
+!notebook add_message "Output submodel Oil cooler fan" [message="This submodel currently allows the user to control the oil cooler fan based on the oil temperature."]
+}
+
+{if defined(OUTPUT_FUELPUMP)
+include=.\Pumps\Fuel.elscr
+!notebook new_note    "Output submodel Fuel pump" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_FUELPUMP_", message="The fuel pump enable output submodel. (/Output/Pumps/Fuel.elscr)\n"] 
+!notebook add_message "Output submodel Fuel pump" [message="The fuel pump is controlled to prime when the model starts and run when the engine is not at rest."] 
+}
+
+{if defined(OUTPUT_AUXPUMP)
+include=.\Pumps\Auxiliary.elscr
+!notebook new_note "Output submodel Auxiliary pump" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_AUXPUMP_", message="The auxiliary pump enable output submodel. (/Output/Pumps/Auxiliary.elscr)"] 
+}
+
+{if defined(OUTPUT_TACHOMETER)
+include=.\Tachometer\Tachometer.elscr
+!notebook new_note "Output submodel Tachometer" [vendor="Enginelab, Inc.", item_wildcard="OUTPUT_TACH_", message="The tachometer output submodel. (/Output/Tachometer/Tachometer.elscr)"] 
+}
+
+!notebook new_note "Outputs submodel" [vendor="Enginelab, Inc.", group_wildcard="Output submodel", message="The Outputs submodel./Output/Output.elscr)"] 
+
+
+

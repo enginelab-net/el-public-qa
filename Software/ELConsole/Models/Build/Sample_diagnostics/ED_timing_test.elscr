@@ -1,0 +1,69 @@
+## This is a simple model that will allow testing of the crank and cam timing of a system.
+
+## Use this definition to control the hardware resolution layer.
+!define DIAGNOSTIC_ED_TIMING_TEST
+
+#!set PLATFORM_BUILD Infinity_7
+#!define PLATFORM_REV_C
+!set PLATFORM_BUILD EL1_140
+#!set PLATFORM_BUILD EL129ECU
+
+## Connect to the simulator
+include=.\Common\Simulator.elscr
+
+# ***************************************************************
+# EAL Engine description support
+# NOTE: Use a 2 digit value here as the scripts will do text compares so 2 characters are needed for proper compares.
+!define EAL_ENGINE
+!define EAL_ENGINE_DESCRIPTION
+!set EAL_NUM_SPARKS                01
+!set EAL_NUM_COILS                 01
+!set EAL_NUM_INJECTORS             00
+!set EAL_COIL_TYPE                 Coil On Plug
+!define EAL_COIL_INVERT
+!set EAL_ENGINE_DISPLACEMENT       5.7
+!set EAL_ENGINE_CYCLES             4 stroke
+!set EAL_ENGINE_TIMING             Cam with crank missing 1 tooth single VVT
+!set EAL_ENGINE_TIMING_CRANK_TEETH 36
+# ***************************************************************
+
+## For bench testing, one can add a timing waveform generator.
+# ***************************************************************
+#!define ETG_ENGINE_TIMING_GENERATOR
+#!set ETG_ENGINE_TIMING_GENERATOR_TIMING            Cam with crank missing 1 tooth single VVT
+#!set ETG_ENGINE_TIMING_GENERATOR_NUM_CRANK_TEETH   36
+#!set ETG_ENGINE_TIMING_GENERATOR_CRANK_TOOTH_WIDTH 4
+#!set ETG_ENGINE_TIMING_GENERATOR_NUM_CAM0_TEETH    1
+# ***************************************************************
+
+# ***************************************************************
+## Output feature
+!define OUTPUT
+!define OUTPUT_COILS
+!define OUTPUT_COILS_EXTERNAL_ENABLE_HW
+# ------------------------------------------------------------------------
+
+!set BUILD_PHASE MAIN_BUILD_PHASE
+include=..\..\Features\Features.elscr
+
+#***************************************************************
+# Hardware IO platform resolution.
+{if PLATFORM_BUILD == "EL129ECU"
+include=.\Platform\EL129ECU\Output.elscr
+include=.\Platform\EL129ECU\EAL.elscr
+}
+{if PLATFORM_BUILD == "EL1_140"
+include=.\Platform\EL1_140\Output.elscr
+include=.\Platform\EL1_140\EAL.elscr
+}
+{if PLATFORM_BUILD == "Infinity_7"
+include=.\Platform\Infinity_7\Output.elscr
+#include=.\Platform\Infinity_7\EAL.elscr
+{if defined(PLATFORM_REV_C)
+include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
+}
+}
+#***************************************************************
+
+include=.\Common\EAL_required.elscr
+

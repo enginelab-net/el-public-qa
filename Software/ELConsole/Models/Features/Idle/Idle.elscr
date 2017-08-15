@@ -1,0 +1,85 @@
+## ***************************************************************
+## Idle control submodel
+## ***************************************************************
+
+## ***************************************************************
+!create_item "IDLE_target [RPM]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_100, math_expression="sum_inputs"]
+!notebook new_note "IDLE_target [RPM]" [vendor="Enginelab, Inc.", message=" The final Idle target value."]
+!notebook new_note "IDLE target submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE_target [RPM]", message=" The Idle target submodel."]
+
+{if defined (IDLE_TARGET_TABLE_1D)
+{if defined (IDLE_TARGET_TABLE_1D_INPUT)
+!else
+!set IDLE_TARGET_TABLE_1D_INPUT SENSOR_CLT [C]
+}
+!create_item "IDLE_target_table [RPM]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, add_input=IDLE_TARGET_TABLE_1D_INPUT]
+{if defined(IDLE_TARGET_TABLE_1D_CSV)
+!change_item "IDLE_target_table [RPM]" [1Dtable_csv=IDLE_TARGET_TABLE_1D_CSV]
+}
+!change_item "IDLE_target [RPM]" [add_input="IDLE_target_table [RPM]"]
+}
+!notebook add_element "IDLE target submodel" [item_wildcard="IDLE_target"]
+
+##-------------------------------------------------------------------------------------------
+{if defined (IDLE_TARGET_COMPENSATIONS)
+include=.\Compensations\Compensations.elscr
+!notebook add_element "IDLE target submodel" [item_or_group="IDLE compensations submodel"]
+}
+##-------------------------------------------------------------------------------------------
+## ***************************************************************
+
+## ***************************************************************
+!create_item "IDLE_enable [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+{if defined (IDLE_ENABLE_ENGINESPEED)
+!else
+!set IDLE_ENABLE_ENGINESPEED 2000
+}
+{if defined (IDLE_DISABLE_THROTTLE_POSITION)
+!else
+!set IDLE_DISABLE_THROTTLE_POSITION 5
+}
+{if defined (IDLE_ENABLE_THROTTLE_POSITION)
+!else
+!set IDLE_ENABLE_THROTTLE_POSITION 7
+}
+
+!create_item "IDLE_enable_TPS [bool]" [type="Limiter", thread_ID=OAL_THREAD_WITH_SLEEP_50]
+!change_item "IDLE_enable_TPS [bool]" [add_input="SENSOR_TPS [%]"]
+!change_item "IDLE_enable_TPS [bool]" [add_input="IDLE_disable_tps_channel"]
+!change_item "IDLE_enable_TPS [bool]" [add_input="SENSOR_TPS [%]"]
+!change_item "IDLE_enable_TPS [bool]" [add_input="IDLE_enable_tps_channel"]
+!change_item "IDLE_enable_TPS [bool]" [limiter_compare_inversion="1"]
+!replace_item "IDLE_disable_tps_channel" [type="Constant", constant_value=IDLE_DISABLE_THROTTLE_POSITION]
+!replace_item "IDLE_enable_tps_channel" [type="Constant", constant_value=IDLE_ENABLE_THROTTLE_POSITION]
+
+!change_item "IDLE_enable [bool]" [add_input="EngineSpeed_final [RPM]"]
+!change_item "IDLE_enable [bool]" [add_input="IDLE_enable_TPS [bool]"]
+!change_item "IDLE_enable [bool]" [add_input="SS_EngineRunning [bool]"]
+{if defined (IDLE_DELAY_START)
+{if defined (IDLE_DELAY_START_TIME_MS)
+!else
+!set IDLE_DELAY_START_TIME_MS 3000
+}
+!change_item "IDLE_enable [bool]" [add_input="SS_EngineRunningTime [ms]"]
+!change_item "IDLE_enable [bool]" [math_expression="(i0<##IDLE_ENABLE_ENGINESPEED##)&&i1&&i2&&(i3>##IDLE_DELAY_START_TIME_MS##)"]
+!else
+!change_item "IDLE_enable [bool]" [math_expression="(i0<##IDLE_ENABLE_ENGINESPEED##)&&i1&&i2"]
+}
+
+!notebook new_note "IDLE enable submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_enable", message=" The Idle enable submodel."]
+## ***************************************************************
+
+## ***************************************************************
+{if defined(IDLE_AIRFLOW)
+include=.\Airflow\Airflow.elscr
+!notebook new_note "IDLE submodel" [vendor="Enginelab, Inc.", item_or_group="IDLE airflow submodel", message=" The Idle submodel including airflow."]
+}
+## ***************************************************************
+{if defined(IDLE_IGNTIMING)
+include=.\Ignition\Ignition.elscr
+!notebook add_element "IDLE submodel" [item_or_group="IDLE IgnTiming submodel"]
+}
+## ***************************************************************
+
+!notebook add_element "IDLE submodel" [item_or_group="IDLE target submodel", item_or_group="IDLE enable submodel"]
+

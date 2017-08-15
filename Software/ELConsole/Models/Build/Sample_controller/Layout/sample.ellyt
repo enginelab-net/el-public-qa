@@ -1,0 +1,3042 @@
+<layout version="10">
+  <main_window>
+    <position>-1 -1 -1 -1</position>
+    <padding>35966464 129699485 35967693 35967194</padding>
+  </main_window>
+  <page name=":undocked">
+  </page>
+  <page name=":pinned">
+  </page>
+  <page name="Starting">
+    <control type="Text Grid" settings="">
+      <position>0 694 600 919</position>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="EAL_SyncState">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="CAM_SyncAdjustment">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="CRANK_TimingError0">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="CRANK_TimingError1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="CAM_0_SyncError0">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="CAM_0_SyncError1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>280 62 893 370</position>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SS_EngineState [d]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>893 694 1464 861</position>
+      <channel name="OUTPUT_COILS_onboard_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_COILS_ext_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_COILS_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_INJ_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_INJ_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1806 64 2048 316</position>
+      <string name="base_range" value="0.5 1.5"/>
+      <string name="divisions" value="2 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>893 64 1806 531</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="AF_SD_VE [%]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>1464 694 1696 759</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="OUTPUT_COILS_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>1464 759 1696 825</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="OUTPUT_INJ_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>600 370 893 694</position>
+      <string name="base_range" value="0 6"/>
+      <string name="divisions" value="1 6"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_DwellX [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>280 370 600 694</position>
+      <string name="base_range" value="0 40"/>
+      <string name="divisions" value="5 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>0 370 280 694</position>
+      <string name="base_range" value="0 10"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>0 62 280 370</position>
+      <string name="base_range" value="0 4000"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+  </page>
+  <page name="Airflow">
+    <control type="Text Grid" settings="">
+      <position>0 68 644 312</position>
+      <channel name="AF_SD_VE [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="AF_SD_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="AF_MAF_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="AF_SD_temp_B [n]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="AF_SD_MAF_B [n]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="AF_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="3D Graph" settings="">
+      <position>0 700 460 1018</position>
+      <string name="camera" value="4.1592 0 0.5 0.5 0.5 1.68996"/>
+      <string name="display_indicator_lines" value="true"/>
+      <string name="display_indicator_arrow" value="true"/>
+      <string name="show_legend" value="false"/>
+      <string name="display_global_log_data" value="true"/>
+      <string name="display_selection_log_data" value="true"/>
+      <channel>
+        <primary name="AF_SD_VE [%]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>644 68 860 132</position>
+      <string name="base_range" value="0 10000"/>
+      <string name="divisions" value="100"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>860 62 1044 256</position>
+      <string name="base_range" value="-6.66667 48.8889"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>860 256 1044 312</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>1044 256 1213 312</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SENSOR_IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1044 62 1213 256</position>
+      <string name="base_range" value="-6.66667 48.8889"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1213 62 1377 256</position>
+      <string name="base_range" value="0 100"/>
+      <string name="divisions" value="10 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>1377 256 1592 312</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1377 62 1592 256</position>
+      <string name="base_range" value="0 100"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>1213 256 1377 312</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>0 312 792 700</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="AF_SD_VE [%]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="Plot" settings="">
+      <position>792 565 1920 1051</position>
+      <string name="lane_heights" value="4 110 114 85 145"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="legend_label_width" value="280"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF0000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 5000</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFFF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 100</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="AF_SD_VE_2Dtable_primary [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFC080</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 1 100</use_range>
+        <options>
+          <string name="lane" value="1"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0000FF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 100</use_range>
+        <options>
+          <string name="lane" value="2"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF8000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0.5 1.5</use_range>
+        <options>
+          <string name="lane" value="3"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_Lambda1 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0000FF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0.5 1.5</use_range>
+        <options>
+          <string name="lane" value="3"/>
+        </options>
+      </channel>
+    </control>
+  </page>
+  <page name="Fuel">
+    <control type="1D Table" settings="">
+      <position>-3 346 649 474</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="FUELFLOW_primary [cc/s]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 3 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="FUELFLOW_EffectivePressure [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>-3 474 649 602</position>
+      <channel name="FUELFLOW_primary [cc/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUELFLOW_EffectivePressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUELFLOW_offset [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>-3 602 736 1018</position>
+      <channel name="FUEL_lsfs_pri_duty_threshold [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUEL_lsfs_pri_duty [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUEL_lsfs_trim_multiplier">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUEL_LAMBDA_target [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUEL_LAMBDA_table [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUEL_LAMBDA_Clt_table [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FUEL_LAMBDA_Iat_table [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>-3 258 272 346</position>
+      <string name="initial_value" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>-3 62 272 258</position>
+      <string name="base_range" value="0 6000"/>
+      <string name="divisions" value="2 3"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>272 62 565 346</position>
+      <string name="base_range" value="0 6000"/>
+      <string name="divisions" value="5 6"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>565 62 860 346</position>
+      <string name="base_range" value="0 500"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>860 64 1395 346</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FUELFLOW_offset [ms]">
+          <colors>29 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_Battery [V]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="FUELFLOW_EffectivePressure [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>1395 64 1918 346</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FUEL_lsfs_trim_multiplier">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SS_EngineRunningTime [ms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_CLT [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>736 792 1474 1018</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FUEL_LAMBDA_Iat_table [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_IAT [C]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>736 666 1474 792</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="FUEL_LAMBDA_Clt_table [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_CLT [C]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>736 346 1474 666</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FUEL_LAMBDA_table [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+  </page>
+  <page name="Idle">
+    <control type="Text Grid" settings="">
+      <position>0 592 537 984</position>
+      <channel name="IDLE_AF_pid [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_kp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_ki">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_kd">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_int_hold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_int_l">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_int_h">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_error">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_pcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_icontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_dcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_pid_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>0 528 216 592</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="IDLE_AF_pid_enable_noop">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>537 528 753 592</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="IDLE_SpkTiming_pid_enable_noop">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>581 61 852 346</position>
+      <string name="base_range" value="0 50"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>581 346 852 430</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>852 346 1069 592</position>
+      <string name="base_range" value="0.5 1.5"/>
+      <string name="divisions" value="2 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>0 346 537 528</position>
+      <channel name="IDLE_target [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_target_table [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_initial_position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_AF_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Plot" settings="">
+      <position>1069 346 1920 984</position>
+      <string name="lane_heights" value="7 85 70 73 93 95 99 113"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="legend_label_width" value="218"/>
+      <channel name="IDLE_AF_pid [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF8000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true -10 10</use_range>
+        <options>
+          <string name="lane" value="1"/>
+        </options>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFFF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true -10 10</use_range>
+        <options>
+          <string name="lane" value="2"/>
+        </options>
+      </channel>
+      <channel name="IDLE_target [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0000C0C0</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 1 1200</use_range>
+        <options>
+          <string name="lane" value="3"/>
+        </options>
+      </channel>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF0000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 3000</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_pcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00C080FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true -10 10</use_range>
+        <options>
+          <string name="lane" value="4"/>
+        </options>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_icontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF80FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true -10 10</use_range>
+        <options>
+          <string name="lane" value="5"/>
+        </options>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_dcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF80C0</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true -10 10</use_range>
+        <options>
+          <string name="lane" value="6"/>
+        </options>
+      </channel>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF80FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 50</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>852 208 1920 346</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="IDLE_AF_initial_position [%]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="IDLE_target [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>852 64 1920 208</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="IDLE_target_table [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_CLT [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>0 64 272 258</position>
+      <string name="base_range" value="0 6000"/>
+      <string name="divisions" value="2 3"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>0 258 272 346</position>
+      <string name="initial_value" value="false"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>272 64 581 346</position>
+      <string name="base_range" value="0 100"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="IDLE_AF_position [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>537 592 1069 984</position>
+      <channel name="IDLE_SpkTiming_pid [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_kp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_ki">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_kd">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_int_hold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_int_l">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_int_h">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_error">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_pcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_icontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_dcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="IDLE_SpkTiming_pid_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+  </page>
+  <page name="Ignition">
+    <control type="Text Grid" settings="">
+      <position>0 358 833 488</position>
+      <channel name="SPK_Timing_table [degBTDC]">
+        <colors>0 8 20 20 50</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SPK_Dwell_2Dtable [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SPK_DwellX [ms]">
+        <colors>7 1 3 4 5</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>0 62 293 358</position>
+      <string name="base_range" value="0 40"/>
+      <string name="divisions" value="5 4"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>293 62 588 358</position>
+      <string name="base_range" value="0 6"/>
+      <string name="divisions" value="1 6"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SPK_DwellX [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>588 62 1141 358</position>
+      <string name="hide_scroll_bars" value="false"/>
+      <channel>
+        <primary name="SPK_Dwell_2Dtable [ms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_Battery [V]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>0 488 833 1040</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SPK_Timing_table [degBTDC]">
+          <colors>0 8 20 20 50</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="Plot" settings="">
+      <position>833 358 1920 1040</position>
+      <string name="lane_heights" value="3 187 220 260"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="legend_label_width" value="280"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF0000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 5000</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFFF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 100</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0000FF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 100</use_range>
+        <options>
+          <string name="lane" value="2"/>
+        </options>
+      </channel>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x000080FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 50</use_range>
+        <options>
+          <string name="lane" value="1"/>
+        </options>
+      </channel>
+    </control>
+  </page>
+  <page name="Sensors">
+    <control type="Text Grid" settings="">
+      <position>1237 664 1724 802</position>
+      <channel name="SENSOR_Battery [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_Battery_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_Battery_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_Battery_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_Battery_error_delay [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 528 1120 640</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SENSOR_CLT [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_CLT [ohms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1237 802 1502 1040</position>
+      <string name="base_range" value="7 17"/>
+      <string name="divisions" value="5 5"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Battery [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 640 1120 740</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SENSOR_IAT [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_IAT [ohms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 740 1120 844</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SENSOR_OILTEMP [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_OILTEMP [ohms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 844 1120 950</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SENSOR_AIRBOXTEMP [C]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="SENSOR_AIRBOXTEMP [ohms]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 950 1120 1040</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SENSOR_Lambda0 [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="AN_UEGO_0_UA_In [V]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>0 62 184 268</position>
+      <string name="base_range" value="-6.66667 48.8889"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>184 62 360 268</position>
+      <string name="base_range" value="-6.66667 48.8889"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>360 62 536 268</position>
+      <string name="base_range" value="-6.66667 48.8889"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_OILTEMP [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>536 62 712 268</position>
+      <string name="base_range" value="-6.66667 48.8889"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_OILTEMP [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>712 62 893 268</position>
+      <string name="base_range" value="0 500"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>893 62 1073 268</position>
+      <string name="base_range" value="0 100"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1073 62 1253 268</position>
+      <string name="base_range" value="0 100"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1253 62 1436 268</position>
+      <string name="base_range" value="-0.5 0.5"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Gauge" settings="">
+      <position>1436 62 1617 268</position>
+      <string name="base_range" value="-0.5 0.5"/>
+      <string name="divisions" value="5 10"/>
+      <string name="font_size" value="1"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Lambda1 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>0 268 413 398</position>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_CLT_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_CLT_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_CLT_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>413 268 821 398</position>
+      <channel name="SENSOR_IAT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_IAT_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_IAT_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_IAT_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>821 268 1253 398</position>
+      <channel name="SENSOR_OILTEMP [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>1253 268 1724 398</position>
+      <channel name="SENSOR_AIRBOXTEMP [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_AIRBOXTEMP_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_AIRBOXTEMP_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_AIRBOXTEMP_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>0 398 485 528</position>
+      <channel name="SENSOR_FuelPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_FuelPressure_error_delay [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>485 398 972 528</position>
+      <channel name="SENSOR_OilPressure [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OilPressure_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OilPressure_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OilPressure_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OilPressure_error_delay [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>972 398 1457 482</position>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_Lambda0_valid [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>1237 552 1724 664</position>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_TPS_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_TPS_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_TPS_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+  </page>
+  <page name="UEGO">
+    <control type="Gauge" settings="">
+      <position>0 62 241 314</position>
+      <string name="base_range" value="0.5 1.5"/>
+      <string name="divisions" value="2 10"/>
+      <string name="font_size" value="2"/>
+      <string name="follow_needle" value="false"/>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text" settings="">
+      <position>0 314 241 378</position>
+      <string name="initial_value" value="false"/>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 378 972 488</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SENSOR_Lambda0 [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="AN_UEGO_0_UA_In [V]">
+          <colors>0 0 0 0 0</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>0 656 541 1024</position>
+      <channel name="UEGO_0_heater_pid [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_kp">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_ki">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_kd">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_int_hold">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_int_l">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_int_h">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_error">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_pcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_icontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_dcontrib">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_deadband [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>0 488 541 656</position>
+      <channel name="UEGO_0_heater_using_pid [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_pid_duty [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_ramp_duty [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_heater_duty_final [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>541 488 856 552</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="UEGO_0_heater_pid_enable_noop [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>541 552 856 656</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="1"/>
+      <channel name="UEGO_0_heater_enable_noop [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>541 942 856 1024</position>
+      <string name="base_range" value="0 3"/>
+      <string name="divisions" value="100"/>
+      <channel name="UEGO_0_heater_pid_deadband [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Plot" settings="">
+      <position>856 488 1724 1024</position>
+      <string name="lane_heights" value="5 77 98 91 109 141"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="legend_label_width" value="256"/>
+      <channel name="UEGO_0_cj125v2_UR_measured [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFFF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 5</use_range>
+        <options>
+          <string name="lane" value="1"/>
+        </options>
+      </channel>
+      <channel name="UEGO_0_cj125v2_UR_cal [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0080C0FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 5</use_range>
+        <options>
+          <string name="lane" value="1"/>
+        </options>
+      </channel>
+      <channel name="AN_UEGO_0_UR_In [n]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF80FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 1</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="AN_UEGO_0_UA_In [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF0000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 5</use_range>
+        <options>
+          <string name="lane" value="2"/>
+        </options>
+      </channel>
+      <channel name="UEGO_0_heater_duty_final [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0080FF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 1 60</use_range>
+        <options>
+          <string name="lane" value="3"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0080FFFF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0.5 1.5</use_range>
+        <options>
+          <string name="lane" value="4"/>
+        </options>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>1137 62 1724 364</position>
+      <channel name="UEGO_0_cj125v2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_init1">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_init2">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_ident">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_diag">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_reset">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_UR_measured [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_UR_cal [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="UEGO_0_cj125v2_error">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="2D Graph" settings="">
+      <position>241 62 972 378</position>
+      <channel>
+        <primary name="SENSOR_Lambda0 [L]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="AN_UEGO_0_UA_In [V]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>972 364 1543 488</position>
+      <channel name="AN_16 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="AN_15 [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+  </page>
+  <page name="Output">
+    <control type="Text Grid" settings="">
+      <position>0 61 571 638</position>
+      <channel name="OUTPUT_COILS_onboard_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_COILS_ext_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_COILS_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_INJ_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_INJ_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_CLTFAN_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_CLTFAN_CLT_On [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_CLTFAN_CLT_Off [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_CLTFAN_CLT_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_CLTFAN_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_OILFAN_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_OILFAN_OILTEMP_On [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_OILFAN_OILTEMP_Off [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_OILFAN_OILTEMP_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_OILFAN_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_FUELPUMP_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_FUELPUMP_prime [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_FUELPUMP_prime">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_FUELPUMP_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_AUXPUMP_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_AUXPUMP_On [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_AUXPUMP_Off [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_AUXPUMP_enable [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="OUTPUT_TACH_HW">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Text Grid" settings="">
+      <position>571 61 1142 241</position>
+      <channel name="SENSOR_OILTEMP [ohms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_final [V]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_error [bool]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_error_time [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_OILTEMP_error_count">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="Slider" settings="">
+      <position>571 241 803 306</position>
+      <string name="base_range" value="0 1"/>
+      <string name="divisions" value="100"/>
+      <channel name="AN_3_In_Temp [n]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+  </page>
+  <page name="IgnitionTrim">
+    <control type="2D Table" settings="">
+      <position>0 64 1208 638</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SPK_Timing_table [degBTDC]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+    <control type="2D Table" settings="">
+      <position>0 638 1208 997</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="SPK_Timing_TRIM_1 [degBTDC]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
+  </page>
+  <page name="Fuel trims">
+    <control type="Text Grid" settings="">
+      <position>0 629 624 1040</position>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel2 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel3 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel4 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel5 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel6 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel7 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+      <channel name="FI_Fuel8 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 64 1021 203</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_1_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1021 64 2048 203</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_5_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1021 203 2048 345</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_6_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1021 345 2048 487</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_7_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>1021 487 2048 629</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_8_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 203 1021 345</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_2_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 345 1021 487</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_3_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+    <control type="1D Table" settings="">
+      <position>0 487 1021 629</position>
+      <string name="hide_scroll_bars" value="true"/>
+      <channel>
+        <primary name="FI_Trim_4_table">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+      </channel>
+    </control>
+  </page>
+  <page name="Plots">
+    <control type="Plot" settings="">
+      <position>0 61 1334 1040</position>
+      <string name="lane_heights" value="9 71 82 90 118 93 97 100 54 78"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="legend_label_width" value="280"/>
+      <channel name="FI_Fuel1 [ms]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF0000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 10</use_range>
+        <options>
+          <string name="lane" value="1"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_TPS [%]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF8000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 50</use_range>
+        <options>
+          <string name="lane" value="5"/>
+        </options>
+      </channel>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFFF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 3000</use_range>
+        <options>
+          <string name="lane" value="0"/>
+        </options>
+      </channel>
+      <channel name="AF_Airflow [g/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0080FF00</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 40</use_range>
+        <options>
+          <string name="lane" value="3"/>
+        </options>
+      </channel>
+      <channel name="FUELFLOW_primary [cc/s]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0000FF80</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 1 7</use_range>
+        <options>
+          <string name="lane" value="4"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_Lambda0 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x000080FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 2</use_range>
+        <options>
+          <string name="lane" value="7"/>
+        </options>
+      </channel>
+      <channel name="SPK_Timing1 [degBTDC]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF0080</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 50</use_range>
+        <options>
+          <string name="lane" value="2"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_MAP [kPa]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FF00FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 100</use_range>
+        <options>
+          <string name="lane" value="6"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_CLT [C]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x00FFC0FF</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 1 93.3333</use_range>
+        <options>
+          <string name="lane" value="8"/>
+        </options>
+      </channel>
+      <channel name="SENSOR_Lambda1 [L]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>true 0x0080FFC0</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>true 0 2</use_range>
+        <options>
+          <string name="lane" value="7"/>
+        </options>
+      </channel>
+    </control>
+  </page>
+  <theme version="2">
+    <solid_color name="background">0x00404040</solid_color>
+    <solid_color name="text_light">0x00D5D5D5</solid_color>
+    <solid_color name="text_dark">0x00000000</solid_color>
+    <solid_color name="text_primary">0x00D5D5D5</solid_color>
+    <solid_color name="grid_lines">0x00E0E0E0</solid_color>
+    <solid_color name="indicator">0x00FFFF00</solid_color>
+    <solid_color name="modified">0x00FF00FF</solid_color>
+    <solid_color name="log_indicator">0x00501010</solid_color>
+    <gradient_color>0x00FF0000 0x00808080 0x000000FF</gradient_color>
+    <gradient_color>0x00FF8000 0x00FFFF80 0x0000FF80</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00FFC080 0x0080FF00 0x00FF00FF</gradient_color>
+    <gradient_color>0x00FF0080 0x00808080 0x00FFFF00</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00FF0000 0x00E0E0E0 0x000080FF</gradient_color>
+    <gradient_color>0x00FF0000 0x00E0E0E0 0x000060C0</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x000080FF 0x0000FF00 0x00FF0080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+  </theme>
+</layout>

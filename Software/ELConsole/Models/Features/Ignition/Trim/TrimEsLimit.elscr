@@ -1,0 +1,4 @@
+{if defined(ENGINESPEED_LIMITER_SPARKTIMING)
+!change_item "SPK_Timing##SPK_NUMBER## [degBTDC]" [add_input="ES_Limit_SpkTiming [degBTDC]"]
+}
+

@@ -1,0 +1,286 @@
+{items_to_move_to_secondary_heap
+AF_SD_VE_2Dtable_primary [%]
+AF_SD_VE_2Dtable_secondary [%]
+AF_SD_VE [%]
+AF_SD_Airflow [g/s]
+AF_SD_temp_B [n]
+AF_MAF_Airflow [g/s]
+AF_Airflow [g/s]
+AF_SD_MAF_B [n]
+FUELFLOW_primary [cc/s]
+FUELFLOW_EffectivePressure [kPa]
+FUELFLOW_offset [ms]
+FUEL_lsfs
+FUEL_lsfs_pri_duty_threshold [%]
+FUEL_lsfs_pri_duty [%]
+FUEL_lsfs_trim_multiplier
+FI_Nonlinear_PriPulsewidth [ms]
+FI_Nonlinear_PriTrim_add
+FI_DutyCycX [%high]
+FI_CyclTimeX [ms]
+FI_TimingX [degBTDC]
+FI_OpenTimeX [ms]
+FI_Fuel1 [ms]
+FI_Fuel2 [ms]
+FI_Fuel3 [ms]
+FI_Fuel4 [ms]
+FI_Fuel5 [ms]
+FI_Fuel6 [ms]
+FI_Fuel7 [ms]
+FI_Fuel8 [ms]
+FI_Trim_1
+FI_Trim_2
+FI_Trim_3
+FI_Trim_4
+FI_Trim_5
+FI_Trim_6
+FI_Trim_7
+FI_Trim_8
+FI_Trim_1_table
+FI_Trim_2_table
+FI_Trim_3_table
+FI_Trim_4_table
+FI_Trim_5_table
+FI_Trim_6_table
+FI_Trim_7_table
+FI_Trim_8_table
+L_FB_0_PID [%]
+L_FB_0_PID_kp
+L_FB_0_PID_ki
+L_FB_0_PID_kd
+L_FB_0_PID_enable
+L_FB_0_PID_int_hold
+L_FB_0_PID_int_l
+L_FB_0_PID_int_h
+L_FB_0_PID_error
+L_FB_0_PID_pcontrib
+L_FB_0_PID_icontrib
+L_FB_0_PID_dcontrib
+L_FB_0_Trim
+L_FB_1_PID [%]
+L_FB_1_PID_kp
+L_FB_1_PID_ki
+L_FB_1_PID_kd
+L_FB_1_PID_enable
+L_FB_1_PID_int_hold
+L_FB_1_PID_int_l
+L_FB_1_PID_int_h
+L_FB_1_PID_error
+L_FB_1_PID_pcontrib
+L_FB_1_PID_icontrib
+L_FB_1_PID_dcontrib
+L_FB_1_Trim
+FI_Trim_AccelPumpDecay
+FI_Trim_AccelPumpMult
+FI_Trim_AccelPump
+FUEL_LAMBDA_target [L]
+FUEL_LAMBDA_table [L]
+FUEL_LAMBDA_Clt_table [L]
+FUEL_LAMBDA_Iat_table [L]
+SPK_Dwell_2Dtable [ms]
+SPK_DwellX [ms]
+SPK_Timing_table [degBTDC]
+SPK_Timing_TRIM_1 [degBTDC]
+SPK_Timing1 [degBTDC]
+SPK_Timing_TRIM_2 [degBTDC]
+SPK_Timing2 [degBTDC]
+SPK_Timing_TRIM_3 [degBTDC]
+SPK_Timing3 [degBTDC]
+SPK_Timing_TRIM_4 [degBTDC]
+SPK_Timing4 [degBTDC]
+SPK_Timing_TRIM_5 [degBTDC]
+SPK_Timing5 [degBTDC]
+SPK_Timing_TRIM_6 [degBTDC]
+SPK_Timing6 [degBTDC]
+SPK_Timing_TRIM_7 [degBTDC]
+SPK_Timing7 [degBTDC]
+SPK_Timing_TRIM_8 [degBTDC]
+SPK_Timing8 [degBTDC]
+IDLE_target [RPM]
+IDLE_target_table [RPM]
+IDLE_comp_rampdown [RPM]
+IDLE_comp_runtime [RPM]
+IDLE_enable [bool]
+IDLE_enable_TPS [bool]
+IDLE_AF_pid [%]
+IDLE_AF_pid_kp
+IDLE_AF_pid_ki
+IDLE_AF_pid_kd
+IDLE_AF_pid_int_hold
+IDLE_AF_pid_int_l
+IDLE_AF_pid_int_h
+IDLE_AF_pid_error
+IDLE_AF_pid_pcontrib
+IDLE_AF_pid_icontrib
+IDLE_AF_pid_dcontrib
+IDLE_AF_pid_enable_noop
+IDLE_AF_pid_enable [bool]
+IDLE_AF_initial_position [%]
+IDLE_AF_position [%]
+IDLE_AF_HW
+IDLE_SpkTiming_pid [degBTDC]
+IDLE_SpkTiming_pid_kp
+IDLE_SpkTiming_pid_ki
+IDLE_SpkTiming_pid_kd
+IDLE_SpkTiming_pid_int_hold
+IDLE_SpkTiming_pid_int_l
+IDLE_SpkTiming_pid_int_h
+IDLE_SpkTiming_pid_error
+IDLE_SpkTiming_pid_pcontrib
+IDLE_SpkTiming_pid_icontrib
+IDLE_SpkTiming_pid_dcontrib
+IDLE_SpkTiming_pid_enable_noop
+IDLE_SpkTiming_pid_enable [bool]
+SS_EngineState [d]
+SS_EngineRunning [bool]
+SS_EngineAtRest [bool]
+SS_EngineRunningTime [ms]
+SS_EngineRestTime [ms]
+SENSOR_CLT [ohms]
+SENSOR_CLT [C]
+SENSOR_CLT [K]
+SENSOR_CLT_final [V]
+SENSOR_CLT_error [bool]
+SENSOR_CLT_error_time [ms]
+SENSOR_CLT_error_count
+SENSOR_IAT [ohms]
+SENSOR_IAT [C]
+SENSOR_IAT [K]
+SENSOR_IAT_final [V]
+SENSOR_IAT_error [bool]
+SENSOR_IAT_error_time [ms]
+SENSOR_IAT_error_count
+SENSOR_OILTEMP [ohms]
+SENSOR_OILTEMP [C]
+SENSOR_OILTEMP_final [V]
+SENSOR_OILTEMP_error [bool]
+SENSOR_OILTEMP_error_time [ms]
+SENSOR_OILTEMP_error_count
+SENSOR_AIRBOXTEMP [ohms]
+SENSOR_AIRBOXTEMP [C]
+SENSOR_AIRBOXTEMP_final [V]
+SENSOR_AIRBOXTEMP_error [bool]
+SENSOR_AIRBOXTEMP_error_time [ms]
+SENSOR_AIRBOXTEMP_error_count
+SENSOR_TPS [%]
+SENSOR_TPS_error [bool]
+SENSOR_TPS_error_time [ms]
+SENSOR_TPS_error_count
+SENSOR_TPS_rate [%/s]
+SENSOR_MAF [g/s]
+SENSOR_MAP [kPa]
+SENSOR_MAP [Pa]
+SENSOR_MAP_error [bool]
+SENSOR_MAP_error_time [ms]
+SENSOR_MAP_error_count
+SENSOR_FuelPressure [kPa]
+SENSOR_FuelPressure_error [bool]
+SENSOR_FuelPressure_error_time [ms]
+SENSOR_FuelPressure_error_count
+SENSOR_FuelPressure_error_delay [ms]
+SENSOR_OilPressure [kPa]
+SENSOR_OilPressure_error [bool]
+SENSOR_OilPressure_error_time [ms]
+SENSOR_OilPressure_error_count
+SENSOR_OilPressure_error_delay [ms]
+UEGO_0_heater_pid [%]
+UEGO_0_heater_pid_kp
+UEGO_0_heater_pid_ki
+UEGO_0_heater_pid_kd
+UEGO_0_heater_pid_int_hold
+UEGO_0_heater_pid_int_l
+UEGO_0_heater_pid_int_h
+UEGO_0_heater_pid_error
+UEGO_0_heater_pid_pcontrib
+UEGO_0_heater_pid_icontrib
+UEGO_0_heater_pid_dcontrib
+UEGO_0_heater_pid_deadband [%]
+UEGO_0_heater_pid_enable_noop [bool]
+UEGO_0_heater_using_pid [bool]
+UEGO_0_heater_pid_duty [%]
+UEGO_0_heater_ramp_duty [%]
+UEGO_0_heater_enable_noop [bool]
+UEGO_0_heater_duty_final [%]
+UEGO_0_heater_HW
+UEGO_0_cj125v2
+UEGO_0_cj125v2_init1
+UEGO_0_cj125v2_init2
+UEGO_0_cj125v2_ident
+UEGO_0_cj125v2_diag
+UEGO_0_cj125v2_reset
+UEGO_0_cj125v2_UR_measured [V]
+UEGO_0_cj125v2_UR_cal [V]
+UEGO_0_cj125v2_error
+SENSOR_Lambda0 [L]
+SENSOR_Lambda0_valid [bool]
+UEGO_1_heater_pid [%]
+UEGO_1_heater_pid_kp
+UEGO_1_heater_pid_ki
+UEGO_1_heater_pid_kd
+UEGO_1_heater_pid_int_hold
+UEGO_1_heater_pid_int_l
+UEGO_1_heater_pid_int_h
+UEGO_1_heater_pid_error
+UEGO_1_heater_pid_pcontrib
+UEGO_1_heater_pid_icontrib
+UEGO_1_heater_pid_dcontrib
+UEGO_1_heater_pid_deadband [%]
+UEGO_1_heater_pid_enable_noop [bool]
+UEGO_1_heater_using_pid [bool]
+UEGO_1_heater_pid_duty [%]
+UEGO_1_heater_ramp_duty [%]
+UEGO_1_heater_enable_noop [bool]
+UEGO_1_heater_duty_final [%]
+UEGO_1_heater_HW
+UEGO_1_cj125v2
+UEGO_1_cj125v2_init1
+UEGO_1_cj125v2_init2
+UEGO_1_cj125v2_ident
+UEGO_1_cj125v2_diag
+UEGO_1_cj125v2_reset
+UEGO_1_cj125v2_UR_measured [V]
+UEGO_1_cj125v2_UR_cal [V]
+UEGO_1_cj125v2_error
+SENSOR_Lambda1 [L]
+SENSOR_Lambda1_valid [bool]
+SENSOR_Battery [V]
+SENSOR_Battery_error [bool]
+SENSOR_Battery_error_time [ms]
+SENSOR_Battery_error_count
+SENSOR_Battery_error_delay [ms]
+OUTPUT_COILS_onboard_HW
+OUTPUT_COILS_ext_HW
+OUTPUT_COILS_enable [bool]
+OUTPUT_INJ_HW
+OUTPUT_INJ_enable [bool]
+OUTPUT_CLTFAN_HW
+OUTPUT_CLTFAN_CLT_On [C]
+OUTPUT_CLTFAN_CLT_Off [C]
+OUTPUT_CLTFAN_CLT_enable [bool]
+OUTPUT_CLTFAN_enable [bool]
+OUTPUT_OILFAN_HW
+OUTPUT_OILFAN_OILTEMP_On [C]
+OUTPUT_OILFAN_OILTEMP_Off [C]
+OUTPUT_OILFAN_OILTEMP_enable [bool]
+OUTPUT_OILFAN_enable [bool]
+OUTPUT_FUELPUMP_HW
+OUTPUT_FUELPUMP_prime [ms]
+OUTPUT_FUELPUMP_prime
+OUTPUT_FUELPUMP_enable [bool]
+OUTPUT_AUXPUMP_HW
+OUTPUT_AUXPUMP_On [C]
+OUTPUT_AUXPUMP_Off [C]
+OUTPUT_AUXPUMP_enable [bool]
+OUTPUT_TACH_HW
+EAL_Engine
+ES_Limit_SpkProbability [%]
+ES_Limit_CutLimit
+ES_Limit_SpkTiming [degBTDC]
+ES_Limit_FI_Probability [%]
+SENSOR_ALL_error_reset
+SPK_Probability [%]
+SPK_CutLimit
+FI_Probability [%]
+FI_CutLimit
+}
+!move_items_to_secondary_heap

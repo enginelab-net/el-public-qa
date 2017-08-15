@@ -1,0 +1,201 @@
+## ***************************************************************
+!change_item "FUEL_lsfs" [lsfs_num_primary_injectors=FUEL_LSFS_NUM_INJ_PRIMARY]
+!change_item "FUEL_lsfs" [lsfs_num_secondary_injectors=FUEL_LSFS_NUM_INJ_SECONDARY]
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "00"
+{if defined(FUEL_LSFS_INJ_PRI_0)
+!else
+!set FUEL_LSFS_INJ_PRI_0 0
+}
+!change_item "FUEL_lsfs" [primary_injector0=FUEL_LSFS_INJ_PRI_0]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "01"
+{if defined(FUEL_LSFS_INJ_PRI_1)
+!else
+!set FUEL_LSFS_INJ_PRI_1 1
+}
+!change_item "FUEL_lsfs" [primary_injector1=FUEL_LSFS_INJ_PRI_1]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "02"
+{if defined(FUEL_LSFS_INJ_PRI_2)
+!else
+!set FUEL_LSFS_INJ_PRI_2 2
+}
+!change_item "FUEL_lsfs" [primary_injector2=FUEL_LSFS_INJ_PRI_2]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "03"
+{if defined(FUEL_LSFS_INJ_PRI_3)
+!else
+!set FUEL_LSFS_INJ_PRI_3 3
+}
+!change_item "FUEL_lsfs" [primary_injector3=FUEL_LSFS_INJ_PRI_3]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "04"
+{if defined(FUEL_LSFS_INJ_PRI_4)
+!else
+!set FUEL_LSFS_INJ_PRI_4 4
+}
+!change_item "FUEL_lsfs" [primary_injector4=FUEL_LSFS_INJ_PRI_4]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "05"
+{if defined(FUEL_LSFS_INJ_PRI_5)
+!else
+!set FUEL_LSFS_INJ_PRI_5 5
+}
+!change_item "FUEL_lsfs" [primary_injector5=FUEL_LSFS_INJ_PRI_5]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "06"
+{if defined(FUEL_LSFS_INJ_PRI_6)
+!else
+!set FUEL_LSFS_INJ_PRI_6 6
+}
+!change_item "FUEL_lsfs" [primary_injector6=FUEL_LSFS_INJ_PRI_6]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "07"
+{if defined(FUEL_LSFS_INJ_PRI_7)
+!else
+!set FUEL_LSFS_INJ_PRI_7 7
+}
+!change_item "FUEL_lsfs" [primary_injector7=FUEL_LSFS_INJ_PRI_7]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "08"
+!echo FUEL_LSFS_NUM_INJ_PRIMARY
+!echo holy crap!!
+{if defined(FUEL_LSFS_INJ_PRI_8)
+!else
+!set FUEL_LSFS_INJ_PRI_8 8
+}
+!change_item "FUEL_lsfs" [primary_injector8=FUEL_LSFS_INJ_PRI_8]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "09"
+{if defined(FUEL_LSFS_INJ_PRI_9)
+!else
+!set FUEL_LSFS_INJ_PRI_9 9
+}
+!change_item "FUEL_lsfs" [primary_injector9=FUEL_LSFS_INJ_PRI_9]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "10"
+{if defined(FUEL_LSFS_INJ_PRI_10)
+!else
+!set FUEL_LSFS_INJ_PRI_10 10
+}
+!change_item "FUEL_lsfs" [primary_injector10=FUEL_LSFS_INJ_PRI_10]
+}
+
+{if FUEL_LSFS_NUM_INJ_PRIMARY > "11"
+{if defined(FUEL_LSFS_INJ_PRI_11)
+!else
+!set FUEL_LSFS_INJ_PRI_11 11
+}
+!change_item "FUEL_lsfs" [primary_injector11=FUEL_LSFS_INJ_PRI_11]
+}
+## ***************************************************************
+
+## ***************************************************************
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "00"
+{if defined(FUEL_LSFS_INJ_SEC_0)
+!else
+!set FUEL_LSFS_INJ_SEC_0 0
+}
+!change_item "FUEL_lsfs" [secondary_injector0=FUEL_LSFS_INJ_SEC_0]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "01"
+{if defined(FUEL_LSFS_INJ_SEC_1)
+!else
+!set FUEL_LSFS_INJ_SEC_1 1
+}
+!change_item "FUEL_lsfs" [secondary_injector1=FUEL_LSFS_INJ_SEC_1]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "02"
+{if defined(FUEL_LSFS_INJ_SEC_2)
+!else
+!set FUEL_LSFS_INJ_SEC_2 2
+}
+!change_item "FUEL_lsfs" [secondary_injector2=FUEL_LSFS_INJ_SEC_2]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "03"
+{if defined(FUEL_LSFS_INJ_SEC_3)
+!else
+!set FUEL_LSFS_INJ_SEC_3 3
+}
+!change_item "FUEL_lsfs" [secondary_injector3=FUEL_LSFS_INJ_SEC_3]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "04"
+{if defined(FUEL_LSFS_INJ_SEC_4)
+!else
+!set FUEL_LSFS_INJ_SEC_4 4
+}
+!change_item "FUEL_lsfs" [secondary_injector4=FUEL_LSFS_INJ_SEC_4]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "05"
+{if defined(FUEL_LSFS_INJ_SEC_5)
+!else
+!set FUEL_LSFS_INJ_SEC_5 5
+}
+!change_item "FUEL_lsfs" [secondary_injector5=FUEL_LSFS_INJ_SEC_5]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "06"
+{if defined(FUEL_LSFS_INJ_SEC_6)
+!else
+!set FUEL_LSFS_INJ_SEC_6 6
+}
+!change_item "FUEL_lsfs" [secondary_injector6=FUEL_LSFS_INJ_SEC_6]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "07"
+{if defined(FUEL_LSFS_INJ_SEC_7)
+!else
+!set FUEL_LSFS_INJ_SEC_7 7
+}
+!change_item "FUEL_lsfs" [secondary_injector7=FUEL_LSFS_INJ_SEC_7]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "08"
+{if defined(FUEL_LSFS_INJ_SEC_8)
+!else
+!set FUEL_LSFS_INJ_SEC_8 8
+}
+!change_item "FUEL_lsfs" [secondary_injector8=FUEL_LSFS_INJ_SEC_8]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "09"
+{if defined(FUEL_LSFS_INJ_SEC_9)
+!else
+!set FUEL_LSFS_INJ_SEC_9 9
+}
+!change_item "FUEL_lsfs" [secondary_injector9=FUEL_LSFS_INJ_SEC_9]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "10"
+{if defined(FUEL_LSFS_INJ_SEC_10)
+!else
+!set FUEL_LSFS_INJ_SEC_10 10
+}
+!change_item "FUEL_lsfs" [secondary_injector10=FUEL_LSFS_INJ_SEC_10]
+}
+
+{if FUEL_LSFS_NUM_INJ_SECONDARY > "11"
+{if defined(FUEL_LSFS_INJ_SEC_11)
+!else
+!set FUEL_LSFS_INJ_SEC_11 11
+}
+!change_item "FUEL_lsfs" [secondary_injector11=FUEL_LSFS_INJ_SEC_11]
+}
+## ***************************************************************
+
