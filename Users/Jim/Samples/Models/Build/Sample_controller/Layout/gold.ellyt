@@ -1,7 +1,7 @@
 <layout version="10">
   <main_window>
     <position>-1 -1 -1 -1</position>
-    <padding>36595610 43855907 36596838 36596339</padding>
+    <padding>35966464 129699485 35967693 35967194</padding>
   </main_window>
   <page name=":undocked">
   </page>
@@ -282,20 +282,6 @@
   <page name="Airflow">
     <control type="Text Grid" settings="">
       <position>0 68 644 312</position>
-      <channel name="AF_SD_VE_2Dtable_primary [%]">
-        <colors>0 0 60 60 95</colors>
-        <numbers>normal 6 false</numbers>
-        <use_solid_color>false 0xFF000000</use_solid_color>
-        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>false 0 1</use_range>
-      </channel>
-      <channel name="AF_SD_VE_2Dtable_secondary [%]">
-        <colors>0 0.1 0.2 0.8 0.9</colors>
-        <numbers>normal 6 false</numbers>
-        <use_solid_color>false 0xFF000000</use_solid_color>
-        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>false 0 1</use_range>
-      </channel>
       <channel name="AF_SD_VE [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
