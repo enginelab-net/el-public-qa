@@ -1,7 +1,7 @@
 <layout version="10">
   <main_window>
     <position>-1 -1 -1 -1</position>
-    <padding>35966464 129699485 35967693 35967194</padding>
+    <padding>-687194768 -687194746 -687194768 -687194768</padding>
   </main_window>
   <page name=":undocked">
   </page>
@@ -176,8 +176,8 @@
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="AF_SD_VE [%]">
-          <colors>0 0.1 0.2 0.8 0.9</colors>
-          <numbers>normal 6 false</numbers>
+          <colors>2 50 80 90 100</colors>
+          <numbers>normal 4 false</numbers>
           <use_solid_color>false 0xFF000000</use_solid_color>
           <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
           <use_range>false 0 1</use_range>
@@ -280,11 +280,23 @@
     </control>
   </page>
   <page name="Airflow">
+    <control type="Slider" settings="">
+      <position>644 68 860 132</position>
+      <string name="base_range" value="0 10000"/>
+      <string name="divisions" value="100"/>
+      <channel name="EAL_EngineSpeed [RPM]">
+        <colors>0 0.1 0.2 0.8 0.9</colors>
+        <numbers>normal 6 false</numbers>
+        <use_solid_color>false 0xFF000000</use_solid_color>
+        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
+        <use_range>false 0 1</use_range>
+      </channel>
+    </control>
     <control type="Text Grid" settings="">
       <position>0 68 644 312</position>
       <channel name="AF_SD_VE [%]">
-        <colors>0 0.1 0.2 0.8 0.9</colors>
-        <numbers>normal 6 false</numbers>
+        <colors>2 50 80 90 100</colors>
+        <numbers>normal 4 false</numbers>
         <use_solid_color>false 0xFF000000</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
         <use_range>false 0 1</use_range>
@@ -327,7 +339,7 @@
     </control>
     <control type="3D Graph" settings="">
       <position>0 700 460 1018</position>
-      <string name="camera" value="4.1592 0 0.5 0.5 0.5 1.68996"/>
+      <string name="camera" value="4.44239 0.560798 0.258164 0.499413 0.382578 1.85794"/>
       <string name="display_indicator_lines" value="true"/>
       <string name="display_indicator_arrow" value="true"/>
       <string name="show_legend" value="false"/>
@@ -335,8 +347,8 @@
       <string name="display_selection_log_data" value="true"/>
       <channel>
         <primary name="AF_SD_VE [%]">
-          <colors>0 0.1 0.2 0.8 0.9</colors>
-          <numbers>normal 6 false</numbers>
+          <colors>2 50 80 90 100</colors>
+          <numbers>normal 4 false</numbers>
           <use_solid_color>false 0xFF000000</use_solid_color>
           <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
           <use_range>false 0 1</use_range>
@@ -355,18 +367,6 @@
           <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
           <use_range>false 0 1</use_range>
         </y_axis>
-      </channel>
-    </control>
-    <control type="Slider" settings="">
-      <position>644 68 860 132</position>
-      <string name="base_range" value="0 10000"/>
-      <string name="divisions" value="100"/>
-      <channel name="EAL_EngineSpeed [RPM]">
-        <colors>0 0.1 0.2 0.8 0.9</colors>
-        <numbers>normal 6 false</numbers>
-        <use_solid_color>false 0xFF000000</use_solid_color>
-        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>false 0 1</use_range>
       </channel>
     </control>
     <control type="Gauge" settings="">
@@ -474,8 +474,8 @@
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="AF_SD_VE [%]">
-          <colors>0 0.1 0.2 0.8 0.9</colors>
-          <numbers>normal 6 false</numbers>
+          <colors>2 50 80 90 100</colors>
+          <numbers>normal 4 false</numbers>
           <use_solid_color>false 0xFF000000</use_solid_color>
           <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
           <use_range>false 0 1</use_range>
@@ -499,14 +499,14 @@
     <control type="Plot" settings="">
       <position>792 565 1920 1051</position>
       <string name="lane_heights" value="4 110 114 85 145"/>
-      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x0066FF00"/>
       <string name="legend_label_width" value="280"/>
       <channel name="EAL_EngineSpeed [RPM]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x00FF0000</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0 5000</use_range>
+        <use_range>true 1 4740.16</use_range>
         <options>
           <string name="lane" value="0"/>
         </options>
@@ -516,19 +516,9 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x00FFFF00</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0 100</use_range>
+        <use_range>true -0.450781 90.607</use_range>
         <options>
           <string name="lane" value="0"/>
-        </options>
-      </channel>
-      <channel name="AF_SD_VE_2Dtable_primary [%]">
-        <colors>0 0.1 0.2 0.8 0.9</colors>
-        <numbers>normal 6 false</numbers>
-        <use_solid_color>true 0x00FFC080</use_solid_color>
-        <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 1 100</use_range>
-        <options>
-          <string name="lane" value="1"/>
         </options>
       </channel>
       <channel name="SENSOR_MAP [kPa]">
@@ -536,7 +526,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x0000FF00</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0 100</use_range>
+        <use_range>true 1 87.3255</use_range>
         <options>
           <string name="lane" value="2"/>
         </options>
@@ -546,7 +536,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x00FF8000</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0.5 1.5</use_range>
+        <use_range>true 0.606902 1.56474</use_range>
         <options>
           <string name="lane" value="3"/>
         </options>
@@ -556,7 +546,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x0000FF00</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0.5 1.5</use_range>
+        <use_range>true 0.58835 1.56483</use_range>
         <options>
           <string name="lane" value="3"/>
         </options>
@@ -1062,14 +1052,14 @@
     <control type="Plot" settings="">
       <position>1069 346 1920 984</position>
       <string name="lane_heights" value="7 85 70 73 93 95 99 113"/>
-      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x0066FF00"/>
       <string name="legend_label_width" value="218"/>
       <channel name="IDLE_AF_pid [%]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x00FF8000</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true -10 10</use_range>
+        <use_range>true -50.25 0.25</use_range>
         <options>
           <string name="lane" value="1"/>
         </options>
@@ -1089,7 +1079,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x0000C0C0</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 1 1200</use_range>
+        <use_range>true 1 900</use_range>
         <options>
           <string name="lane" value="3"/>
         </options>
@@ -1099,7 +1089,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x00FF0000</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0 3000</use_range>
+        <use_range>true 1 4740.16</use_range>
         <options>
           <string name="lane" value="0"/>
         </options>
@@ -1139,7 +1129,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x00FF80FF</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0 50</use_range>
+        <use_range>true 1 41.9072</use_range>
         <options>
           <string name="lane" value="0"/>
         </options>
@@ -1313,10 +1303,42 @@
     </control>
   </page>
   <page name="Ignition">
+    <control type="3D Graph" settings="">
+      <position>1141 64 1920 432</position>
+      <string name="camera" value="4.05421 0.755398 0.5 0.5 0.5 1.75"/>
+      <string name="display_indicator_lines" value="true"/>
+      <string name="display_indicator_arrow" value="true"/>
+      <string name="show_legend" value="false"/>
+      <string name="display_global_log_data" value="true"/>
+      <string name="display_selection_log_data" value="true"/>
+      <channel>
+        <primary name="SPK_Timing_table [degBTDC]">
+          <colors>0 0 20 25 40</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </primary>
+        <x_axis name="EAL_EngineSpeed [RPM]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </x_axis>
+        <y_axis name="SENSOR_MAP [kPa]">
+          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <numbers>normal 6 false</numbers>
+          <use_solid_color>false 0xFF000000</use_solid_color>
+          <use_triple_color>false 0xFF000000 0xFF000000 0xFF000000</use_triple_color>
+          <use_range>false 0 1</use_range>
+        </y_axis>
+      </channel>
+    </control>
     <control type="Text Grid" settings="">
       <position>0 358 833 488</position>
       <channel name="SPK_Timing_table [degBTDC]">
-        <colors>0 8 20 20 50</colors>
+        <colors>0 0 20 25 40</colors>
         <numbers>normal 6 false</numbers>
         <use_solid_color>false 0xFF000000</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
@@ -1404,7 +1426,7 @@
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="SPK_Timing_table [degBTDC]">
-          <colors>0 8 20 20 50</colors>
+          <colors>0 0 20 25 40</colors>
           <numbers>normal 6 false</numbers>
           <use_solid_color>false 0xFF000000</use_solid_color>
           <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
@@ -1427,9 +1449,9 @@
       </channel>
     </control>
     <control type="Plot" settings="">
-      <position>833 358 1920 1040</position>
+      <position>833 432 1920 1114</position>
       <string name="lane_heights" value="3 187 220 260"/>
-      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x0066FF00"/>
       <string name="legend_label_width" value="280"/>
       <channel name="EAL_EngineSpeed [RPM]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -1466,7 +1488,7 @@
         <numbers>normal 6 false</numbers>
         <use_solid_color>true 0x000080FF</use_solid_color>
         <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
-        <use_range>true 0 50</use_range>
+        <use_range>true 1 41.9809</use_range>
         <options>
           <string name="lane" value="1"/>
         </options>
@@ -2209,9 +2231,9 @@
       </channel>
     </control>
     <control type="Plot" settings="">
-      <position>856 488 1724 1024</position>
+      <position>856 488 1543 1024</position>
       <string name="lane_heights" value="5 77 98 91 109 141"/>
-      <string name="marker_colors" value="3 0x00000000 0x00000000 0x00FFFF00"/>
+      <string name="marker_colors" value="3 0x00000000 0x00000000 0x0066FF00"/>
       <string name="legend_label_width" value="256"/>
       <channel name="UEGO_0_cj125v2_UR_measured [V]">
         <colors>0 0.1 0.2 0.8 0.9</colors>
@@ -2620,7 +2642,7 @@
       <string name="hide_scroll_bars" value="true"/>
       <channel>
         <primary name="SPK_Timing_table [degBTDC]">
-          <colors>0 0.1 0.2 0.8 0.9</colors>
+          <colors>0 0 20 25 40</colors>
           <numbers>normal 6 false</numbers>
           <use_solid_color>false 0xFF000000</use_solid_color>
           <use_triple_color>false 0x000000 0x000000 0x000000</use_triple_color>
@@ -2999,44 +3021,50 @@
       </channel>
     </control>
   </page>
+  <virtual_channels version="1">
+    <virtual type="virtual" name="xtra_0">
+      <string name="expression" value="i0"/>
+      <input name="EAL_EngineSpeed [RPM]"/>
+    </virtual>
+  </virtual_channels>
   <theme version="2">
     <solid_color name="background">0x00404040</solid_color>
-    <solid_color name="text_light">0x00D5D5D5</solid_color>
+    <solid_color name="text_light">0x00DDDDDD</solid_color>
     <solid_color name="text_dark">0x00000000</solid_color>
-    <solid_color name="text_primary">0x00D5D5D5</solid_color>
-    <solid_color name="grid_lines">0x00E0E0E0</solid_color>
-    <solid_color name="indicator">0x00FFFF00</solid_color>
-    <solid_color name="modified">0x00FF00FF</solid_color>
-    <solid_color name="log_indicator">0x00501010</solid_color>
-    <gradient_color>0x00FF0000 0x00808080 0x000000FF</gradient_color>
-    <gradient_color>0x00FF8000 0x00FFFF80 0x0000FF80</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00FFC080 0x0080FF00 0x00FF00FF</gradient_color>
-    <gradient_color>0x00FF0080 0x00808080 0x00FFFF00</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00FF0000 0x00E0E0E0 0x000080FF</gradient_color>
-    <gradient_color>0x00FF0000 0x00E0E0E0 0x000060C0</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x000080FF 0x0000FF00 0x00FF0080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
-    <gradient_color>0x00808080 0x00808080 0x00808080</gradient_color>
+    <solid_color name="text_primary">0x00DDDDDD</solid_color>
+    <solid_color name="grid_lines">0x00000000</solid_color>
+    <solid_color name="indicator">0x0066FF00</solid_color>
+    <solid_color name="modified">0x006DFF00</solid_color>
+    <solid_color name="log_indicator">0x0066FF00</solid_color>
+    <gradient_color>0x00FF3333 0x00999999 0x005577BB</gradient_color>
+    <gradient_color>0x00FFCC33 0x00999999 0x005577BB</gradient_color>
+    <gradient_color>0x00FFCC33 0x00999999 0x00FF3333</gradient_color>
+    <gradient_color>0x00FFCC33 0x00EE6622 0x00FF3333</gradient_color>
+    <gradient_color>0x00FF3333 0x00AACCDD 0x00FF3333</gradient_color>
+    <gradient_color>0x005577BB 0x00449944 0x00FF3333</gradient_color>
+    <gradient_color>0x00EE6622 0x00AACCDD 0x00FFCC33</gradient_color>
+    <gradient_color>0x00FF3333 0x00AACCDD 0x005577BB</gradient_color>
+    <gradient_color>0x005577BB 0x00999999 0x00FF3333</gradient_color>
+    <gradient_color>0x00449944 0x00999999 0x00FF3333</gradient_color>
+    <gradient_color>0x00AACCDD 0x0088AACC 0x005577BB</gradient_color>
+    <gradient_color>0x00BBBBBB 0x00888888 0x00555555</gradient_color>
+    <gradient_color>0x00559955 0x00558888 0x005577BB</gradient_color>
+    <gradient_color>0x00AACCDD 0x008899AA 0x00777777</gradient_color>
+    <gradient_color>0x005577BB 0x00AA5577 0x00FF3333</gradient_color>
+    <gradient_color>0x00FF3333 0x00999999 0x005577BB</gradient_color>
+    <gradient_color>0x00FFCC33 0x00999999 0x005577BB</gradient_color>
+    <gradient_color>0x00FFCC33 0x00999999 0x00FF3333</gradient_color>
+    <gradient_color>0x00FFCC33 0x00EE6622 0x00FF3333</gradient_color>
+    <gradient_color>0x00FF3333 0x00AACCDD 0x00FF3333</gradient_color>
+    <gradient_color>0x005577BB 0x00449944 0x00FF3333</gradient_color>
+    <gradient_color>0x00EE6622 0x00AACCDD 0x00FFCC33</gradient_color>
+    <gradient_color>0x00FF3333 0x00AACCDD 0x005577BB</gradient_color>
+    <gradient_color>0x005577BB 0x00999999 0x00FF3333</gradient_color>
+    <gradient_color>0x00449944 0x00999999 0x00FF3333</gradient_color>
+    <gradient_color>0x00AACCDD 0x0088AACC 0x005577BB</gradient_color>
+    <gradient_color>0x00BBBBBB 0x00888888 0x00555555</gradient_color>
+    <gradient_color>0x00559955 0x00558888 0x005577BB</gradient_color>
+    <gradient_color>0x00AACCDD 0x008899AA 0x00777777</gradient_color>
+    <gradient_color>0x005577BB 0x00AA5577 0x00FF3333</gradient_color>
   </theme>
 </layout>
