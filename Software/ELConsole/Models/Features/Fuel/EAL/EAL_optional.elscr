@@ -1,14 +1,19 @@
 ##########################################################################################################################
 {if defined(EAL_FI_FUELPULSE)
-{if defined(EAL_FI_FUELPULSE_TABLE_2D)
-!create_item "EAL_FI_FuelPulse [ms]" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SENSOR_CLT [C]", add_input="SS_EngineRestTime [ms]"]
-{if defined(EAL_FI_FUELPULSE_TABLE_2D_CSV)
-!change_item "EAL_FI_FuelPulse [ms]" [2Dtable_csv=EAL_FI_FUELPULSE_TABLE_2D_CSV]
-}
-!else
-!create_item "EAL_FI_FuelPulse [ms]" [type="No Operation", initial_value="5"]
-}
+  {create_item "EAL_FI_FuelPulse [ms]"
+    {if defined(EAL_FI_FUELPULSE_TABLE_2D)
+      type : "2-Axis Lookup Table"
+      thread_ID : OAL_THREAD_WITH_SLEEP_20
+      inputs : ["SENSOR_CLT [C]", "SS_EngineRestTime [ms]"]
+      {if defined(EAL_FI_FUELPULSE_TABLE_2D_CSV)
+        csv : EAL_FI_FUELPULSE_TABLE_2D_CSV
+      }
+    !else
+      type : "No Operation"
+      initial_value : 5
+    }
+  }
 
-!notebook new_note "FUEL EAL optional submodel" [vendor="Enginelab, Inc.", item_wildcard="EAL_FI_FuelPulse", message="The optional EAL items required for the backend injector function(/Fuel/EAL/EAL_optional.elscr). See the Enginelab EAL required items for additional info."] 
+  !notebook new_note "FUEL EAL optional submodel" [vendor="Enginelab, Inc.", item_wildcard="EAL_FI_FuelPulse", message="The optional EAL items required for the backend injector function(/Fuel/EAL/EAL_optional.elscr). See the Enginelab EAL required items for additional info."] 
 }
 

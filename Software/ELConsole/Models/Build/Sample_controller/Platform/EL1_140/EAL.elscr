@@ -1,28 +1,14 @@
 {if defined(EAL_ENGINE_DESCRIPTION)
-!change_item "EAL_Engine" [ed_crank_pin="Digital0_In_Opto, C1-32"               ]
-!change_item "EAL_Engine" [ed_cam0_pin="Digital1_In_Opto, C1-31"                ]
-
-!change_item "EAL_Engine" [ed_spark0_timing="0"   ]
-!change_item "EAL_Engine" [ed_spark1_timing="630" ]
-!change_item "EAL_Engine" [ed_spark2_timing="270" ]
-!change_item "EAL_Engine" [ed_spark3_timing="180" ]
-!change_item "EAL_Engine" [ed_spark4_timing="450" ]
-!change_item "EAL_Engine" [ed_spark5_timing="360" ]
-!change_item "EAL_Engine" [ed_spark6_timing="540" ]
-!change_item "EAL_Engine" [ed_spark7_timing="90"  ]
-
-!change_item "EAL_Engine" [ed_injector0_timing="0"   ]
-!change_item "EAL_Engine" [ed_injector1_timing="630" ]
-!change_item "EAL_Engine" [ed_injector2_timing="270" ]
-!change_item "EAL_Engine" [ed_injector3_timing="180" ]
-!change_item "EAL_Engine" [ed_injector4_timing="450" ]
-!change_item "EAL_Engine" [ed_injector5_timing="360" ]
-!change_item "EAL_Engine" [ed_injector6_timing="540" ]
-!change_item "EAL_Engine" [ed_injector7_timing="90"  ]
-
-!change_item "SPK_DwellRef [degBTDC]" [initial_value="360"  ]
-!change_item "SPK_IgnRef [degBTDC]"   [initial_value="90"   ]
-!change_item "FI_TimRef [degBTDC]"    [initial_value="360"  ]
-!change_item "CAM_SyncAdjustment"     [initial_value="47"  ]
-
+  # Change EAL_Engine with the set parameters.
+  {change_item "EAL_Engine"
+    crank_pin : "Digital0_In_Opto, C1-32"
+    cam0_pin : "Digital1_In_Opto, C1-31"
+    spark_timings : [0, 630, 270, 180, 450, 360, 540, 90]
+    injector_timings : [0, 630, 270, 180, 450, 360, 540, 90]
+  }
+  
+  !change_item "SPK_DwellRef [degBTDC]" [initial_value = 360 ]
+  !change_item "SPK_IgnRef [degBTDC]"   [initial_value = 90  ]
+  !change_item "FI_TimRef [degBTDC]"    [initial_value = 360 ]
+  !change_item "CAM_SyncAdjustment"     [initial_value = 47  ]
 }

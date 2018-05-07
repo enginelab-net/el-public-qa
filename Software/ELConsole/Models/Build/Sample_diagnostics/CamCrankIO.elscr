@@ -9,7 +9,7 @@
 #!set PLATFORM_BUILD EL129ECU
 
 ## Connect to the simulator
-include=.\Common\Simulator.elscr
+!include .\Common\Simulator.elscr
 
 ## Create a simple model for counting crank and cam edges.
 !create_item "INPUT_CRANK_edge_counter_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
@@ -26,23 +26,21 @@ include=.\Common\Simulator.elscr
 # ***************************************************************
 
 !set BUILD_PHASE MAIN_BUILD_PHASE
-include=..\..\Features\Features.elscr
+!include ..\..\Features\Features.elscr
 
 #***************************************************************
 # Hardware IO platform resolution.
 {if PLATFORM_BUILD == "EL129ECU"
-include=.\Platform\EL129ECU\Output.elscr
-include=.\Platform\EL129ECU\EAL.elscr
-}
-{if PLATFORM_BUILD == "EL1_140"
-include=.\Platform\EL1_140\Output.elscr
-include=.\Platform\EL1_140\EAL.elscr
-}
-{if PLATFORM_BUILD == "Infinity_7"
-include=.\Platform\Infinity_7\Output.elscr
-#include=.\Platform\Infinity_7\EAL.elscr
-{if defined(PLATFORM_REV_C)
-include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
-}
+  !include .\Platform\EL129ECU\Output.elscr
+  !include .\Platform\EL129ECU\EAL.elscr
+!elseif PLATFORM_BUILD == "EL1_140"
+  !include .\Platform\EL1_140\Output.elscr
+  !include .\Platform\EL1_140\EAL.elscr
+!elseif PLATFORM_BUILD == "Infinity_7"
+  !include .\Platform\Infinity_7\Output.elscr
+#  !include .\Platform\Infinity_7\EAL.elscr
+  {if defined(PLATFORM_REV_C)
+    !include .\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
+  }
 }
 #***************************************************************

@@ -8,41 +8,42 @@
 ## Includes power steering pressure
 
 {if defined(IDLE_TARGET_COMPENSATION_RAMP_DOWN)
-{if defined (IDLE_TARGET_COMPENSATION_RAMP_DOWN_TIME)
-!else
-!set IDLE_TARGET_COMPENSATION_RAMP_DOWN_TIME 5000
-}
+  !default IDLE_TARGET_COMPENSATION_RAMP_DOWN_TIME 5000
+  !default IDLE_ENABLE_ENGINESPEED 2000
 
-{if defined (IDLE_ENABLE_ENGINESPEED)
-!else
-!set IDLE_ENABLE_ENGINESPEED 2000
-}
+  {create_item "IDLE_comp_rampdown [RPM]"
+    type : "Timer"
+    thread_ID : OAL_THREAD_WITH_SLEEP_100
+    mode : "Linear Transition Over Time reset=end"
+    inputs : ["IDLE_comp_rampdown_start",  \
+              "IDLE_comp_rampdown_time",   \
+              "IDLE_enable [bool]",        \
+              "IDLE_comp_rampdown_end"     \
+             ]
+    ## Since the reset uses the enable, invert it.
+    invert_reset : 1
+  }
+  ## The rampdown start RPM will be set to the idle enable engine speed.
+  !replace_item "IDLE_comp_rampdown_start" [type="Constant", value=IDLE_ENABLE_ENGINESPEED]
+  !replace_item "IDLE_comp_rampdown_time" [type="Constant", value=IDLE_TARGET_COMPENSATION_RAMP_DOWN_TIME]
+  !replace_item "IDLE_comp_rampdown_end" [type="Constant", value="0"]
 
-!create_item "IDLE_comp_rampdown [RPM]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_100, timer_mode="Linear Transition Over Time reset=end"]
-!change_item "IDLE_comp_rampdown [RPM]" [add_input="IDLE_comp_rampdown_start"]
-!change_item "IDLE_comp_rampdown [RPM]" [add_input="IDLE_comp_rampdown_time"]
-!change_item "IDLE_comp_rampdown [RPM]" [add_input="IDLE_enable [bool]"]
-!change_item "IDLE_comp_rampdown [RPM]" [add_input="IDLE_comp_rampdown_end"]
-## Since the reset uses the enable, invert it.
-!change_item "IDLE_comp_rampdown [RPM]" [timer_invert_reset="1"]
-## The rampdown start RPM will be set to the idle enable engine speed.
-!replace_item "IDLE_comp_rampdown_start" [type="Constant", constant_value=IDLE_ENABLE_ENGINESPEED]
-!replace_item "IDLE_comp_rampdown_time" [type="Constant", constant_value=IDLE_TARGET_COMPENSATION_RAMP_DOWN_TIME]
-!replace_item "IDLE_comp_rampdown_end" [type="Constant", constant_value="0"]
-
-## Add this compensation to the target.
-!change_item "IDLE_target [RPM]" [add_input="IDLE_comp_rampdown [RPM]"]
+  ## Add this compensation to the target.
+  !change_item "IDLE_target [RPM]" [add_input="IDLE_comp_rampdown [RPM]"]
 }
 
 {if defined(IDLE_TARGET_COMPENSATION_ENGINE_RUN_TIME)
-!create_item "IDLE_comp_runtime [RPM]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100]
-{if defined(IDLE_TARGET_COMP_RUNTIME_1D_CSV)
-!change_item "IDLE_comp_runtime [RPM]" [1Dtable_csv=IDLE_TARGET_COMP_RUNTIME_1D_CSV]
-}
-!change_item "IDLE_comp_runtime [RPM]" [add_input="SS_EngineRunningTime [ms]"]
+  {create_item "IDLE_comp_runtime [RPM]"
+    type : "1-Axis Lookup Table"
+    thread_ID : OAL_THREAD_WITH_SLEEP_100
+    inputs : "SS_EngineRunningTime [ms]"
+    {if defined(IDLE_TARGET_COMP_RUNTIME_1D_CSV)
+      csv : IDLE_TARGET_COMP_RUNTIME_1D_CSV
+    }
+  }
 
-## Add this compensation to the target.
-!change_item "IDLE_target [RPM]" [add_input="IDLE_comp_runtime [RPM]"]
+  ## Add this compensation to the target.
+  !change_item "IDLE_target [RPM]" [add_input="IDLE_comp_runtime [RPM]"]
 }
 
 {if defined(IDLE_TARGET_COMPENSATION_AIR_CONDITIONER)

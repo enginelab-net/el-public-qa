@@ -1,24 +1,41 @@
 ##########################################################################################################################
-!create_item "POWER_CltFan_AND_Ign [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_100]
-!change_item "POWER_CltFan_AND_Ign [bool]" [add_input="OUTPUT_CLTFAN_enable [bool]"]
-!change_item "POWER_CltFan_AND_Ign [bool]" [add_input="EAL_IgnitionPower"]
-!change_item "POWER_CltFan_AND_Ign [bool]" [math_expression="i0&&i1"]
+{create_item "POWER_CltFan_AND_Ign [bool]"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_100
+  inputs : ["OUTPUT_CLTFAN_enable [bool]", \
+            "EAL_IgnitionPower" \
+           ]
+  expression : "i0&&i1"
+}
 
-!create_item "POWER_Shutdown [bool]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_100, timer_mode="Linear Transition Over Time reset=start"]
-!change_item "POWER_Shutdown [bool]" [add_input="POWER_Shutdown_start_count"]
-!change_item "POWER_Shutdown [bool]" [add_input="POWER_Shutdown_delay"]
-!change_item "POWER_Shutdown [bool]" [add_input="POWER_CltFan_AND_Ign [bool]"]
-!change_item "POWER_Shutdown [bool]" [add_input="POWER_Shutdown_end_count"]
+{create_item "POWER_Shutdown [bool]"
+  type : "Timer"
+  thread_ID : OAL_THREAD_WITH_SLEEP_100
+  mode : "Linear Transition Over Time reset=start"
+  inputs : ["POWER_Shutdown_start_count", \
+            "POWER_Shutdown_delay", \
+            "POWER_CltFan_AND_Ign [bool]", \
+            "POWER_Shutdown_end_count" \
+           ]
+}
+
 ## Default to keep the fans going for 2 minutes. 120,000 ms
-!replace_item "POWER_Shutdown_delay" [type="Constant", constant_value="120000"]
-!replace_item "POWER_Shutdown_start_count" [type="Constant", constant_value="1000"]
-!replace_item "POWER_Shutdown_end_count" [type="Constant", constant_value="0"]
+!replace_item "POWER_Shutdown_delay" [type="Constant", value="120000"]
+!replace_item "POWER_Shutdown_start_count" [type="Constant", value="1000"]
+!replace_item "POWER_Shutdown_end_count" [type="Constant", value="0"]
 
-!create_item "EAL_SystemShutdown" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_100]
-!change_item "EAL_SystemShutdown" [add_input="POWER_Shutdown [bool]"]
-!change_item "EAL_SystemShutdown" [if_else_add_expression="!i0"]
+{create_item "EAL_SystemShutdown"
+  type : "If-Else Condition"
+  thread_ID : OAL_THREAD_WITH_SLEEP_100
+  inputs : "POWER_Shutdown [bool]"
+  expressions : "!i0"
+}
 
-!notebook new_note "Shutdown submodel" [vendor="Enginelab, Inc.", item_or_group="POWER_CltFan_AND_Ign [bool]", item_or_group="POWER_Shutdown [bool]", item_or_group="EAL_SystemShutdown", message=" The System Shutdown control. Keep the model running if the coolant fans are running."]
-
-
-
+{notebook new_note "Shutdown submodel"
+  vendor : "Enginelab, Inc."
+  item_or_group : ["POWER_CltFan_AND_Ign [bool]", \
+                   "POWER_Shutdown [bool]", \
+                   "EAL_SystemShutdown" \
+                  ]
+  message : " The System Shutdown control. Keep the model running if the coolant fans are running."]
+}

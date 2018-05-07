@@ -1,0 +1,6 @@
+{if defined(AF_THROTTLE_CTRL)
+{if defined(AF_THROTTLE_CTRL_DBW)
+  !include .\DBW.elscr
+}
+}
+

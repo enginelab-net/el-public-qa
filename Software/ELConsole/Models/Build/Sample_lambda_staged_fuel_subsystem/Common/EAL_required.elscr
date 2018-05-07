@@ -1,125 +1,134 @@
-!create_item "FI_DutyCyc1 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc2 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc3 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc4 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc5 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc6 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc7 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc8 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc9 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc10 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc11 [%high]" [type="No Operation", initial_value="100"]
-!create_item "FI_DutyCyc12 [%high]" [type="No Operation", initial_value="100"]
-
-{if VERSIONMAJOR == "096"
-!create_item "FI_CyclTime1 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime2 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime3 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime4 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime5 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime6 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime7 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime8 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime9 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime10 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime11 [us/10]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime12 [us/10]" [type="No Operation", initial_value="1000"]
+{create_items [type="No Operation", initial_value="100"]
+  "FI_DutyCyc1 [%high]"
+  "FI_DutyCyc2 [%high]"
+  "FI_DutyCyc3 [%high]"
+  "FI_DutyCyc4 [%high]"
+  "FI_DutyCyc5 [%high]"
+  "FI_DutyCyc6 [%high]"
+  "FI_DutyCyc7 [%high]"
+  "FI_DutyCyc8 [%high]"
+  "FI_DutyCyc9 [%high]"
+  "FI_DutyCyc10 [%high]"
+  "FI_DutyCyc11 [%high]"
+  "FI_DutyCyc12 [%high]"
 }
 
-{if VERSIONMAJOR == "097"
-!create_item "FI_CyclTime1 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime2 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime3 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime4 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime5 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime6 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime7 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime8 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime9 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime10 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime11 [ms]" [type="No Operation", initial_value="1000"]
-!create_item "FI_CyclTime12 [ms]" [type="No Operation", initial_value="1000"]
+{create_items [type="No Operation", initial_value="1000"]
+  {if VERSIONMAJOR == 96
+    "FI_CyclTime1 [us/10]" 
+    "FI_CyclTime2 [us/10]"
+    "FI_CyclTime3 [us/10]"
+    "FI_CyclTime4 [us/10]"
+    "FI_CyclTime5 [us/10]"
+    "FI_CyclTime6 [us/10]"
+    "FI_CyclTime7 [us/10]"
+    "FI_CyclTime8 [us/10]"
+    "FI_CyclTime9 [us/10]"
+    "FI_CyclTime10 [us/10]"
+    "FI_CyclTime11 [us/10]"
+    "FI_CyclTime12 [us/10]"
+  !elseif VERSIONMAJOR == 97
+    "FI_CyclTime1 [ms]"
+    "FI_CyclTime2 [ms]"
+    "FI_CyclTime3 [ms]"
+    "FI_CyclTime4 [ms]"
+    "FI_CyclTime5 [ms]"
+    "FI_CyclTime6 [ms]"
+    "FI_CyclTime7 [ms]"
+    "FI_CyclTime8 [ms]"
+    "FI_CyclTime9 [ms]"
+    "FI_CyclTime10 [ms]"
+    "FI_CyclTime11 [ms]"
+    "FI_CyclTime12 [ms]"
+  }
+}
+{create_items [type="No Operation", initial_value="0"]
+  "FI_Timing1 [degBTDC]"
+  "FI_Timing2 [degBTDC]"
+  "FI_Timing3 [degBTDC]"
+  "FI_Timing4 [degBTDC]"
+  "FI_Timing5 [degBTDC]"
+  "FI_Timing6 [degBTDC]"
+  "FI_Timing7 [degBTDC]"
+  "FI_Timing8 [degBTDC]"
+  "FI_Timing9 [degBTDC]"
+  "FI_Timing10 [degBTDC]"
+  "FI_Timing11 [degBTDC]"
+  "FI_Timing12 [degBTDC]"
 }
 
-!create_item "FI_Timing1 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing2 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing3 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing4 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing5 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing6 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing7 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing8 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing9 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing10 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing11 [degBTDC]" [type="No Operation", initial_value="0"]
-!create_item "FI_Timing12 [degBTDC]" [type="No Operation", initial_value="0"]
-
-{if VERSIONMAJOR == "096"
-!create_item "FI_OpenTime1 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime2 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime3 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime4 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime5 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime6 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime7 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime8 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime9 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime10 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime11 [us/10]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime12 [us/10]" [type="No Operation", initial_value="5000"]
-
-!create_item "ReqFuel1 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel2 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel3 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel4 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel5 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel6 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel7 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel8 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel9 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel10 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel11 [us/10]" [type="No Operation", initial_value="0"]
-!create_item "ReqFuel12 [us/10]" [type="No Operation", initial_value="0"]
+{create_items [type="No Operation", initial_value="5000"]
+  {if VERSIONMAJOR == 96
+    "FI_OpenTime1 [us/10]"
+    "FI_OpenTime2 [us/10]"
+    "FI_OpenTime3 [us/10]"
+    "FI_OpenTime4 [us/10]"
+    "FI_OpenTime5 [us/10]"
+    "FI_OpenTime6 [us/10]"
+    "FI_OpenTime7 [us/10]"
+    "FI_OpenTime8 [us/10]"
+    "FI_OpenTime9 [us/10]"
+    "FI_OpenTime10 [us/10]"
+    "FI_OpenTime11 [us/10]"
+    "FI_OpenTime12 [us/10]"  
+  !elseif VERSIONMAJOR == 97
+    "FI_OpenTime1 [ms]"
+    "FI_OpenTime2 [ms]"
+    "FI_OpenTime3 [ms]"
+    "FI_OpenTime4 [ms]"
+    "FI_OpenTime5 [ms]"
+    "FI_OpenTime6 [ms]"
+    "FI_OpenTime7 [ms]"
+    "FI_OpenTime8 [ms]"
+    "FI_OpenTime9 [ms]"
+    "FI_OpenTime10 [ms]"
+    "FI_OpenTime11 [ms]"
+    "FI_OpenTime12 [ms]"
+  }
 }
 
-{if VERSIONMAJOR == "097"
-!create_item "FI_OpenTime1 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime2 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime3 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime4 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime5 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime6 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime7 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime8 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime9 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime10 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime11 [ms]" [type="No Operation", initial_value="5000"]
-!create_item "FI_OpenTime12 [ms]" [type="No Operation", initial_value="5000"]
-
-!create_item "FI_Fuel1 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel2 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel3 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel4 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel5 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel6 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel7 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel8 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel9 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel10 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel11 [ms]" [type="No Operation", initial_value="0"]
-!create_item "FI_Fuel12 [ms]" [type="No Operation", initial_value="0"]
+{create_items [type="No Operation", initial_value="0"]
+  {if VERSIONMAJOR == 96
+    "ReqFuel1 [us/10]" 
+    "ReqFuel2 [us/10]" 
+    "ReqFuel3 [us/10]" 
+    "ReqFuel4 [us/10]" 
+    "ReqFuel5 [us/10]" 
+    "ReqFuel6 [us/10]" 
+    "ReqFuel7 [us/10]" 
+    "ReqFuel8 [us/10]" 
+    "ReqFuel9 [us/10]" 
+    "ReqFuel10 [us/10]"
+    "ReqFuel11 [us/10]"
+    "ReqFuel12 [us/10]"
+  !elseif VERSIONMAJOR == 97
+    "FI_Fuel1 [ms]" 
+    "FI_Fuel2 [ms]" 
+    "FI_Fuel3 [ms]" 
+    "FI_Fuel4 [ms]" 
+    "FI_Fuel5 [ms]" 
+    "FI_Fuel6 [ms]" 
+    "FI_Fuel7 [ms]" 
+    "FI_Fuel8 [ms]" 
+    "FI_Fuel9 [ms]" 
+    "FI_Fuel10 [ms]"
+    "FI_Fuel11 [ms]"
+    "FI_Fuel12 [ms]"
+  }
 }
 
-!create_item "FI_Trim_1" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_2" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_3" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_4" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_5" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_6" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_7" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_8" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_9" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_10" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_11" [type="No Operation", initial_value="1"]
-!create_item "FI_Trim_12" [type="No Operation", initial_value="1"]
+{create_items [type="No Operation", initial_value="1"]
+  "FI_Trim_1" 
+  "FI_Trim_2" 
+  "FI_Trim_3" 
+  "FI_Trim_4" 
+  "FI_Trim_5" 
+  "FI_Trim_6" 
+  "FI_Trim_7" 
+  "FI_Trim_8" 
+  "FI_Trim_9" 
+  "FI_Trim_10"
+  "FI_Trim_11"
+  "FI_Trim_12"
+}
 

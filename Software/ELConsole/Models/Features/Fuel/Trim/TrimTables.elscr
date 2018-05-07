@@ -1,28 +1,33 @@
 ##########################################################################################################################
 {if defined (FUEL_EAL_INJECTORS_TRIM_TABLES_1D)
-
-!create_item "FI_Trim_##INJECTOR_NUMBER##_table" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
-{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT)
-!change_item "FI_Trim_##INJECTOR_NUMBER##_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT]
-}
-{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
-!change_item "FI_Trim_##INJECTOR_NUMBER##_table" [1Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV]
-}
-!change_item "FI_Trim_##INJECTOR_NUMBER##" [add_input="FI_Trim_##INJECTOR_NUMBER##_table"]
-
+  {exclusive
+    !default FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT "EngineSpeed_final [RPM]"
+  }
+  {create_item "FI_Trim_##INJECTOR_NUMBER##_table"
+    type : "1-Axis Lookup Table"
+    thread_ID : OAL_THREAD_WITH_SLEEP_20
+    inputs : FUEL_EAL_INJECTORS_TRIM_TABLES_1D_INPUT
+    {if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV)
+      csv : FUEL_EAL_INJECTORS_TRIM_TABLES_1D_CSV
+    }
+  }
+  !change_item "FI_Trim_##INJECTOR_NUMBER##" [add_input="FI_Trim_##INJECTOR_NUMBER##_table"]
 }
 ##########################################################################################################################
 {if defined (FUEL_EAL_INJECTORS_TRIM_TABLES_2D)
-
-!create_item "FI_Trim_##INJECTOR_NUMBER##_table" [type="2-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]", add_input="SENSOR_MAP [kPa]"]
-{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0)
-!change_item "FI_Trim_##INJECTOR_NUMBER##_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0]
-}
-{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1)
-!change_item "FI_Trim_##INJECTOR_NUMBER##_table" [input0=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1]
-}
-{if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
-!change_item "FI_Trim_##INJECTOR_NUMBER##_table" [2Dtable_csv=FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV]
-}
-!change_item "FI_Trim_##INJECTOR_NUMBER##" [add_input="FI_Trim_1_table"]
+  {exclusive
+    !default FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0 "EngineSpeed_final [RPM]"
+    !default FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1 "SENSOR_MAP [kPa]"
+  }
+  {create_item "FI_Trim_##INJECTOR_NUMBER##_table"
+    type : "2-Axis Lookup Table"
+    thread_ID : OAL_THREAD_WITH_SLEEP_20
+    inputs : [FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_0, \
+              FUEL_EAL_INJECTORS_TRIM_TABLES_2D_INPUT_1  \
+             ]
+    {if defined(FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV)
+      csv : FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV
+    }
+  }
+  !change_item "FI_Trim_##INJECTOR_NUMBER##" [add_input="FI_Trim_1_table"]
 }

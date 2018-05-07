@@ -1,62 +1,11 @@
 ##########################################################################################################################
-{if EAL_NUM_INJECTORS > "00"
-!set INJECTOR_NUMBER 1
-include=.\TrimTables.elscr
+{exclusive
+  !set index 1
 }
-
-{if EAL_NUM_INJECTORS > "01"
-!set INJECTOR_NUMBER 2
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "02"
-!set INJECTOR_NUMBER 3
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "03"
-!set INJECTOR_NUMBER 4
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "04"
-!set INJECTOR_NUMBER 5
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "05"
-!set INJECTOR_NUMBER 6
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "06"
-!set INJECTOR_NUMBER 7
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "07"
-!set INJECTOR_NUMBER 8
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "08"
-!set INJECTOR_NUMBER 9
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "09"
-!set INJECTOR_NUMBER 10
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "10"
-!set INJECTOR_NUMBER 11
-include=.\TrimTables.elscr
-}
-
-{if EAL_NUM_INJECTORS > "11"
-!set INJECTOR_NUMBER 12
-include=.\TrimTables.elscr
+{loop (index <= number(EAL_NUM_INJECTORS)) && (index <= 12)
+  !set INJECTOR_NUMBER index
+  !include .\TrimTables.elscr
+  !increment index 1
 }
 
 ##########################################################################################################################
@@ -64,24 +13,23 @@ include=.\TrimTables.elscr
 ##########################################################################################################################
 
 {if defined (FUEL_LAMBDA_TRIM)
+  # 2 lambda sensors for feedback
+  !set FUEL_LAMBDA_FB_NUMBER 0
+  !include .\Lambda\Lambda.elscr
+  !set FUEL_LAMBDA_FB_NUMBER 1
+  !include .\Lambda\Lambda.elscr
 
-# 2 lambda sensors for feedback
-!set FUEL_LAMBDA_FB_NUMBER 0
-include=.\Lambda\Lambda.elscr
-!set FUEL_LAMBDA_FB_NUMBER 1
-include=.\Lambda\Lambda.elscr
+  # 2 lambda sensors for feedback, assign the correct feedback channel.
+  !include .\Lambda\LambdaFB_mapping.elscr
 
-# 2 lambda sensors for feedback, assign the correct feedback channel.
-include=.\Lambda\LambdaFB_mapping.elscr
-
-!notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 0 trim submodel"]
-!notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 1 trim submodel"]
+  !notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 0 trim submodel"]
+  !notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 1 trim submodel"]
 }
 
 ##########################################################################################################################
 {if defined (FUEL_TRIM_TPS_RATE_OF_CHANGE)
-include=.\TPS_RateOfChange\TPS_RateOfChange.elscr
-!notebook add_element "FUEL Trim submodel" [item_or_group="TPS rate of change trim submodel"]
+  !include .\TPS_RateOfChange\TPS_RateOfChange.elscr
+  !notebook add_element "FUEL Trim submodel" [item_or_group="TPS rate of change trim submodel"]
 }
 ##########################################################################################################################
 

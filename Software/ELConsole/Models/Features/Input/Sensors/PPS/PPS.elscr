@@ -1,0 +1,46 @@
+## ***************************************************************
+## TPS Sensor feature
+{exclusive
+  !default SENSOR_PPS_ANALOG_IN_MIN 0
+  !default SENSOR_PPS_ANALOG_IN_MAX 5
+  !default SENSOR_PPS_ANALOG_CLAMPL 0
+  !default SENSOR_PPS_ANALOG_CLAMPU 100
+}
+
+{create_item "SENSOR_PPS [%]"
+  type : "Analog In conditioner"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  inputs : "SENSOR_PPS_final [V]"
+  min : SENSOR_PPS_ANALOG_IN_MIN
+  max : SENSOR_PPS_ANALOG_IN_MAX
+  clamp_lower : SENSOR_PPS_ANALOG_CLAMPL
+  clamp_upper : SENSOR_PPS_ANALOG_CLAMPU
+}
+
+{if defined(SENSOR_PPS_ERROR_TIMER)
+  {create_item "SENSOR_PPS_error [bool]" 
+    type : "Timer"
+    thread_ID : OAL_THREAD_WITH_SLEEP_100
+    mode : "Signal Present Increment and Count"
+    inputs : ["SENSOR_PPS_error_event", \
+              "SENSOR_PPS_error_delay [ms]", \
+              "SENSOR_PPS_error_reset", \
+              "SENSOR_PPS_error_time [ms]", \
+              "SENSOR_PPS_error_count" \
+             ]
+  }
+
+  {create_items [type="No Operation"]
+    "SENSOR_PPS_error_time [ms]"
+    "SENSOR_PPS_error_count"
+  }
+
+  {if defined (SENSOR_PPS_ERROR_TIMER_DELAY_TIME)
+    !replace_item "SENSOR_PPS_error_delay [ms]" [type="Constant", value=SENSOR_PPS_ERROR_TIMER_DELAY_TIME]
+  !else
+    !create_item "SENSOR_PPS_error_delay [ms]" [type="No Operation", initial_value="3000"]
+  }
+}
+## ***************************************************************
+
+

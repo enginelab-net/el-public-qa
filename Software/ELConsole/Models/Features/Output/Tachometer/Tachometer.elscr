@@ -1,20 +1,18 @@
 ## ***************************************************************
 ## Tachometer output control hardware submodel
 ## ***************************************************************
-!create_item "OUTPUT_TACH_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_TACH_HW" [add_input=OUTPUT_TACH_input0]
-!change_item "OUTPUT_TACH_HW" [add_input=OUTPUT_TACH_input1]
+{create_item "OUTPUT_TACH_HW"
+  type : "Hardware Placeholder"
+  thread_ID : OAL_THREAD_WITH_SLEEP_500
+  inputs : [OUTPUT_TACH_input0, \
+            OUTPUT_TACH_input1 \
+           ]
+}
 
 ## default to toggle mode.
-{if defined(OUTPUT_TACHOMETER_INPUT_0_VALUE)
-!else
-!set OUTPUT_TACHOMETER_INPUT_0_VALUE 0
-}
-{if defined(OUTPUT_TACHOMETER_INPUT_1_VALUE)
-!else
-!set OUTPUT_TACHOMETER_INPUT_1_VALUE 1
-}
+!default OUTPUT_TACHOMETER_INPUT_0_VALUE 0
+!default OUTPUT_TACHOMETER_INPUT_1_VALUE 1
 
-!replace_item "OUTPUT_TACH_input0" [type="Constant", constant_value=OUTPUT_TACHOMETER_INPUT_0_VALUE]
-!replace_item "OUTPUT_TACH_input1" [type="Constant", constant_value=OUTPUT_TACHOMETER_INPUT_1_VALUE]
+!replace_item "OUTPUT_TACH_input0" [type="Constant", value=OUTPUT_TACHOMETER_INPUT_0_VALUE]
+!replace_item "OUTPUT_TACH_input1" [type="Constant", value=OUTPUT_TACHOMETER_INPUT_1_VALUE]
 

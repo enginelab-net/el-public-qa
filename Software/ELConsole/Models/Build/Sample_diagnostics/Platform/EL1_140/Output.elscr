@@ -1,6 +1,6 @@
 {if defined(DIAGNOSTIC_CRANK_CAM_EDGECOUNTER)
-!replace_item "INPUT_CRANK_edge_counter_HW" [type="Hardware IO", pin="Digital0_In_Opto, C1-32", board_conditioning="OptoCoupler Input", cpu_mode="Rising Edge Increment"]
-!replace_item "INPUT_CAM_edge_counter_HW" [type="Hardware IO", pin="Digital1_In_Opto, C1-31", board_conditioning="OptoCoupler Input", cpu_mode="Rising Edge Increment"]
+  !replace_item "INPUT_CRANK_edge_counter_HW" [type="Hardware IO", pin="Digital0_In_Opto, C1-32", board_conditioning="OptoCoupler Input", cpu_mode="Rising Edge Increment"]
+  !replace_item "INPUT_CAM_edge_counter_HW" [type="Hardware IO", pin="Digital1_In_Opto, C1-31", board_conditioning="OptoCoupler Input", cpu_mode="Rising Edge Increment"]
 }
 
 {if defined(DIAGNOSTIC_ED_TIMING_TEST)

@@ -1,5 +1,5 @@
 {if defined(POWER_SEQUENCE_SHUTDOWN)
-include=.\Shutdown.elscr
-!notebook new_note "POWER sequencing model" [vendor="Enginelab, Inc.", item_or_group="Shutdown submodel", message="The power sequencing submodel. (/PowerSequencing/PowerSequencing.elscr)"] 
+  !include .\Shutdown.elscr
+  !notebook new_note "POWER sequencing model" [vendor="Enginelab, Inc.", item_or_group="Shutdown submodel", message="The power sequencing submodel. (/PowerSequencing/PowerSequencing.elscr)"] 
 }
 ## ***************************************************************

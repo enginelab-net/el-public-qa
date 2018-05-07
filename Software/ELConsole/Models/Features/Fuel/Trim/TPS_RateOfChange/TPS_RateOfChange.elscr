@@ -1,111 +1,117 @@
 ## ***************************************************************
 ## Fuel trim accelerator pump feature.
 ## ***************************************************************
-!create_item "FI_Trim_AccelPumpDecay" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
-{if defined(FI_TRIM_ACCELPUMP_DECAY_1D_CSV)
-!change_item "FI_Trim_AccelPumpDecay" [1Dtable_csv=FI_TRIM_ACCELPUMP_DECAY_1D_CSV]
-}
-!create_item "FI_Trim_AccelPumpMult" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
-{if defined(FI_TRIM_ACCELPUMP_MULT_1D_CSV)
-!change_item "FI_Trim_AccelPumpMult" [1Dtable_csv=FI_TRIM_ACCELPUMP_MULT_1D_CSV]
-}
-
-{if defined(FI_TRIM_ACCELPUMP_CLAMP_L)
-!else
-!set FI_TRIM_ACCELPUMP_CLAMP_L 0
-}
-{if defined(FI_TRIM_ACCELPUMP_CLAMP_H)
-!else
-!set FI_TRIM_ACCELPUMP_CLAMP_H 0.5
+{create_item "FI_Trim_AccelPumpDecay"
+  type : "1-Axis Lookup Table"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  inputs : ["EngineSpeed_final [RPM]"]
+  {if defined(FI_TRIM_ACCELPUMP_DECAY_1D_CSV)
+    csv : FI_TRIM_ACCELPUMP_DECAY_1D_CSV
+  }
 }
 
-!create_item "FI_Trim_AccelPump" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "FI_Trim_AccelPump" [clamp_flag="1", clamp_lower=FI_TRIM_ACCELPUMP_CLAMP_L, clamp_upper=FI_TRIM_ACCELPUMP_CLAMP_H]
-!change_item "FI_Trim_AccelPump" [add_input="SENSOR_TPS_rate [%/s]"]
-!change_item "FI_Trim_AccelPump" [add_input="FI_Trim_AccelPumpMult"]
-!change_item "FI_Trim_AccelPump" [add_input="FI_Trim_AccelPumpDecay"]
+{create_item "FI_Trim_AccelPumpMult"
+  type : "1-Axis Lookup Table"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  inputs : ["EngineSpeed_final [RPM]"]
+  {if defined(FI_TRIM_ACCELPUMP_MULT_1D_CSV)
+    csv : FI_TRIM_ACCELPUMP_MULT_1D_CSV
+  }
+}
+
+!default FI_TRIM_ACCELPUMP_CLAMP_L 0
+!default FI_TRIM_ACCELPUMP_CLAMP_H 0.5
+
+{create_item "FI_Trim_AccelPump"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  clamp_flag : 1
+  clamp_lower : FI_TRIM_ACCELPUMP_CLAMP_L
+  clamp_upper : FI_TRIM_ACCELPUMP_CLAMP_H
+  inputs : ["SENSOR_TPS_rate [%/s]", \
+            "FI_Trim_AccelPumpMult", \
+            "FI_Trim_AccelPumpDecay" \
+           ]
 ## This math function will integrate the rate of change and add this to current accel pump. The accel pump will then decay as a function of the value of accel pump relative to the upper clamp.
-!change_item "FI_Trim_AccelPump" [math_expression="((i0>0)*i0*dt*i1)+self-((clampu+0.1-self)*i2)"]
-
-!create_item "FI_Trim_DecelPumpDecay" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
-{if defined(FI_TRIM_DECELPUMP_DECAY_1D_CSV)
-!change_item "FI_Trim_DecelPumpDecay" [1Dtable_csv=FI_TRIM_DECELPUMP_DECAY_1D_CSV]
-}
-!create_item "FI_Trim_DecelPumpMult" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="EngineSpeed_final [RPM]"]
-{if defined(FI_TRIM_DECELPUMP_MULT_1D_CSV)
-!change_item "FI_Trim_DecelPumpMult" [1Dtable_csv=FI_TRIM_DECELPUMP_MULT_1D_CSV]
+  expression : "((i0>0)*i0*dt*i1)+self-((clampu+0.1-self)*i2)"
 }
 
-{if defined(FI_TRIM_DECELPUMP_CLAMP_L)
-!else
-!set FI_TRIM_DECELPUMP_CLAMP_L -0.5
-}
-{if defined(FI_TRIM_DECELPUMP_CLAMP_H)
-!else
-!set FI_TRIM_DECELPUMP_CLAMP_H  0
+{create_item "FI_Trim_DecelPumpDecay"
+  type : "1-Axis Lookup Table"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  inputs : ["EngineSpeed_final [RPM]"]
+  {if defined(FI_TRIM_DECELPUMP_DECAY_1D_CSV)
+    csv : FI_TRIM_DECELPUMP_DECAY_1D_CSV
+  }
 }
 
-!create_item "FI_Trim_DecelPump" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "FI_Trim_DecelPump" [clamp_flag="1", clamp_lower=FI_TRIM_DECELPUMP_CLAMP_L, clamp_upper=FI_TRIM_DECELPUMP_CLAMP_H]
-!change_item "FI_Trim_DecelPump" [add_input="SENSOR_TPS_rate [%/s]"]
-!change_item "FI_Trim_DecelPump" [add_input="FI_Trim_DecelPumpMult"]
-!change_item "FI_Trim_DecelPump" [add_input="FI_Trim_DecelPumpDecay"]
+{create_item "FI_Trim_DecelPumpMult"
+  type : "1-Axis Lookup Table"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  inputs : ["EngineSpeed_final [RPM]"]
+  {if defined(FI_TRIM_DECELPUMP_MULT_1D_CSV)
+    csv : FI_TRIM_DECELPUMP_MULT_1D_CSV
+  }
+}
+
+!default FI_TRIM_DECELPUMP_CLAMP_L -0.5
+!default FI_TRIM_DECELPUMP_CLAMP_H  0
+
+{create_item "FI_Trim_DecelPump"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  clamp_flag : 1
+  clamp_lower : FI_TRIM_DECELPUMP_CLAMP_L
+  clamp_upper : FI_TRIM_DECELPUMP_CLAMP_H
+  inputs : ["SENSOR_TPS_rate [%/s]", \
+            "FI_Trim_DecelPumpMult", \
+            "FI_Trim_DecelPumpDecay" \
+           ]
 ## This math function will integrate the rate of change and add this to current decel pump. The decel pump will then decay as a function of the value of decel pump relative to the lower clamp.
-!change_item "FI_Trim_DecelPump" [math_expression="((i0<0)*i0*dt*i1)+self-(((clampl-0.1)-self)*i2)"]
-
-!create_item "FI_Trim_TPS_ROC_adder" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "FI_Trim_TPS_ROC_adder" [clamp_flag="1", clamp_lower=FI_TRIM_DECELPUMP_CLAMP_L, clamp_upper=FI_TRIM_ACCELPUMP_CLAMP_H]
-!change_item "FI_Trim_TPS_ROC_adder" [add_input="FI_Trim_AccelPump"]
-!change_item "FI_Trim_TPS_ROC_adder" [add_input="FI_Trim_DecelPump"]
-!change_item "FI_Trim_TPS_ROC_adder" [math_expression="i0+i1"]
-
-!create_item "FI_Trim_TPS_ROC_mux_ctrl" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "FI_Trim_TPS_ROC_mux_ctrl" [add_input="SENSOR_TPS_rate [%/s]"]
-!change_item "FI_Trim_TPS_ROC_mux_ctrl" [if_else_add_expression="i0>50", if_else_add_expression="i0<-50"]
-
-!create_item "FI_Trim_TPS_RateOfChange" [type="Multiplexor", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "FI_Trim_TPS_RateOfChange" [clamp_flag="1", clamp_lower=FI_TRIM_DECELPUMP_CLAMP_L, clamp_upper=FI_TRIM_ACCELPUMP_CLAMP_H]
-!change_item "FI_Trim_TPS_RateOfChange" [add_input="FI_Trim_TPS_ROC_adder"]
-!change_item "FI_Trim_TPS_RateOfChange" [add_input="FI_Trim_AccelPump"]
-!change_item "FI_Trim_TPS_RateOfChange" [add_input="FI_Trim_DecelPump"]
-!change_item "FI_Trim_TPS_RateOfChange" [add_input="FI_Trim_TPS_ROC_mux_ctrl"]
-
-{if EAL_NUM_INJECTORS > "00"
-!change_item "FI_Trim_1" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "01"
-!change_item "FI_Trim_2" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "02"
-!change_item "FI_Trim_3" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "03"
-!change_item "FI_Trim_4" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "04"
-!change_item "FI_Trim_5" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "05"
-!change_item "FI_Trim_6" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "06"
-!change_item "FI_Trim_7" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "07"
-!change_item "FI_Trim_8" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "08"
-!change_item "FI_Trim_9" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "09"
-!change_item "FI_Trim_10" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "10"
-!change_item "FI_Trim_11" [add_input="FI_Trim_TPS_RateOfChange"]
-}
-{if EAL_NUM_INJECTORS > "11"
-!change_item "FI_Trim_12" [add_input="FI_Trim_TPS_RateOfChange"]
+  expression : "((i0<0)*i0*dt*i1)+self-(((clampl-0.1)-self)*i2)"
 }
 
-!notebook new_note "TPS rate of change trim submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Trim_AccelPump", item_wildcard="FI_Trim_DecelPump", item_wildcard="FI_Trim_TPS_RateOfChange", item_wildcard="FI_Trim_TPS_ROC", message=" The TPS rate of change trim."]
+{create_item "FI_Trim_TPS_ROC_adder"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  clamp_flag : 1
+  clamp_lower : FI_TRIM_DECELPUMP_CLAMP_L
+  clamp_upper : FI_TRIM_ACCELPUMP_CLAMP_H
+  inputs : ["FI_Trim_AccelPump", \
+            "FI_Trim_DecelPump"  \
+           ]
+  expression : "i0+i1"
+}
+
+{create_item "FI_Trim_TPS_ROC_mux_ctrl"
+  type : "If-Else Condition"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  inputs : ["SENSOR_TPS_rate [%/s]"]
+  expressions : ["i0>50", \
+                 "i0<-50" \
+                ]
+}
+
+{create_item "FI_Trim_TPS_RateOfChange"
+  type : "Multiplexor"
+  thread_ID : OAL_THREAD_WITH_SLEEP_20
+  clamp_flag : 1
+  clamp_lower : FI_TRIM_DECELPUMP_CLAMP_L
+  clamp_upper : FI_TRIM_ACCELPUMP_CLAMP_H
+  inputs : ["FI_Trim_TPS_ROC_adder",   \
+            "FI_Trim_AccelPump",       \
+            "FI_Trim_DecelPump",       \
+            "FI_Trim_TPS_ROC_mux_ctrl" \
+           ]
+}
+
+{exclusive
+  !set index 1
+}
+{loop (index <= number(EAL_NUM_INJECTORS)) && (index <= 12)
+  !change_item "FI_Trim_##index##" [add_input="FI_Trim_TPS_RateOfChange"]
+  !increment index 1
+}
+
+!notebook new_note "TPS rate of change trim submodel" [vendor="Enginelab, Inc.", item_wildcard=["FI_Trim_AccelPump", "FI_Trim_DecelPump", "FI_Trim_TPS_RateOfChange", "FI_Trim_TPS_ROC"], message=" The TPS rate of change trim."]
 

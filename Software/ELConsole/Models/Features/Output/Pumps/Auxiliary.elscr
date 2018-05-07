@@ -2,37 +2,30 @@
 ## Aux pump relay control.
 ## ***************************************************************
 {if defined(OUTPUT_AUXPUMP_EXTERNAL_ENABLE_HW)
-!create_item "OUTPUT_AUXPUMP_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_AUXPUMP_HW" [add_input="OUTPUT_AUXPUMP_enable [bool]"]
+  {create_item "OUTPUT_AUXPUMP_HW"
+    type : "Hardware Placeholder"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    inputs : "OUTPUT_AUXPUMP_enable [bool]"
+  }
 }
 
 ## Use temperature by default.
-{if defined(OUTPUT_AUXPUMP_INPUT)
-!else
-!set OUTPUT_AUXPUMP_INPUT SENSOR_OILTEMP [C]
-}
-{if defined(OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT)
-!else
-!set OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT OUTPUT_AUXPUMP_On [C]
-}
-{if defined(OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT)
-!else
-!set OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT OUTPUT_AUXPUMP_Off [C]
-}
-{if defined(OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE)
-!else
-!set OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE 100
-}
-{if defined(OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE)
-!else
-!set OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE 95
-}
+!default OUTPUT_AUXPUMP_INPUT "SENSOR_OILTEMP [C]"
+!default OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT "OUTPUT_AUXPUMP_On [C]"
+!default OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT "OUTPUT_AUXPUMP_Off [C]"
+!default OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE 100
+!default OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE 95
 
-!create_item "OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE]
-!create_item "OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE]
+!create_item OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE]
+!create_item OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE]
 
-!create_item "OUTPUT_AUXPUMP_enable [bool]" [type="Limiter", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="1"]
-!change_item "OUTPUT_AUXPUMP_enable [bool]" [add_input=OUTPUT_AUXPUMP_INPUT]
-!change_item "OUTPUT_AUXPUMP_enable [bool]" [add_input=OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT]
-!change_item "OUTPUT_AUXPUMP_enable [bool]" [add_input=OUTPUT_AUXPUMP_INPUT]
-!change_item "OUTPUT_AUXPUMP_enable [bool]" [add_input=OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT]
+{create_item "OUTPUT_AUXPUMP_enable [bool]"
+  type : "Limiter"
+  thread_ID : OAL_THREAD_WITH_SLEEP_500
+  initial_value : 1
+  inputs : [OUTPUT_AUXPUMP_INPUT, \
+            OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT, \
+            OUTPUT_AUXPUMP_INPUT, \
+            OUTPUT_AUXPUMP_THRESHOLD_OFF_VALUE_INPUT \
+           ]
+}

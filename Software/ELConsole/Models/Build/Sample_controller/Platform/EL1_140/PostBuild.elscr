@@ -1,4 +1,4 @@
-!resolve_all_externs_to_noops
+!model resolve_externs_to_noops
 !change_item "FUEL_LAMBDA_target [L]" [plant_item_flag="0", initial_value="1"]
 
 !change_item "SENSOR_CLT_final [V]"        [use_test_output_flag="1", test_value="0.5"]
@@ -22,5 +22,4 @@
 #!change_item "AN_7_plant [V]"         [plant_item_flag="0"]
 #!change_item "AN_11_plant [V]"        [plant_item_flag="0"]
 #!change_item "AN_13_plant [V]"        [plant_item_flag="0"]
-
 

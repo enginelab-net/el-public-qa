@@ -9,7 +9,7 @@
 #!set PLATFORM_BUILD EL129ECU
 
 ## Connect to the simulator
-include=.\Common\Simulator.elscr
+!include .\Common\Simulator.elscr
 
 # ***************************************************************
 # EAL Engine description support
@@ -35,34 +35,35 @@ include=.\Common\Simulator.elscr
 # ------------------------------------------------------------------------
 
 ## Create the EAL event for testing the coil and injector signals.
-!create_item "EalEvent" [type="EAL Event", thread_ID=OAL_THREAD_WITH_SLEEP_50]
-!change_item "EalEvent" [ealevent_type="Injector", ealevent_type="Spark", ealevent_edge="Rising"]  
-!change_item "EalEvent" [add_input="EalEvent trigger"]
-!change_item "EalEvent" [add_input="EalEvent index"]
+{parameter_list EAL_EVENT_PARAM
+  type : "EAL Event"
+  thread : OAL_THREAD_WITH_SLEEP_50
+  event_type : ["Injector", "Spark", "Rising"]
+  inputs : ["EalEvent trigger", "EalEvent index"]
+}
+!create_item "EalEvent" EAL_EVENT_PARAM
 !create_item "EalEvent trigger" [type="No Operation"]
 !create_item "EalEvent index"   [type="No Operation"]
 
 !set BUILD_PHASE MAIN_BUILD_PHASE
-include=..\..\Features\Features.elscr
+!include ..\..\Features\Features.elscr
 
 #***************************************************************
 # Hardware IO platform resolution.
 {if PLATFORM_BUILD == "EL129ECU"
-include=.\Platform\EL129ECU\Output.elscr
-include=.\Platform\EL129ECU\EAL.elscr
-}
-{if PLATFORM_BUILD == "EL1_140"
-include=.\Platform\EL1_140\Output.elscr
-include=.\Platform\EL1_140\EAL.elscr
-}
-{if PLATFORM_BUILD == "Infinity_7"
-include=.\Platform\Infinity_7\Output.elscr
-#include=.\Platform\Infinity_7\EAL.elscr
-{if defined(PLATFORM_REV_C)
-include=.\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
-}
+  !include .\Platform\EL129ECU\Output.elscr
+  !include .\Platform\EL129ECU\EAL.elscr
+!elseif PLATFORM_BUILD == "EL1_140"
+  !include .\Platform\EL1_140\Output.elscr
+  !include .\Platform\EL1_140\EAL.elscr
+!elseif PLATFORM_BUILD == "Infinity_7"
+  !include .\Platform\Infinity_7\Output.elscr
+# !include .\Platform\Infinity_7\EAL.elscr
+  {if defined(PLATFORM_REV_C)
+    !include .\Platform\Infinity_7\revC\MoveToSecondaryHeap.elscr
+  }
 }
 #***************************************************************
 
-include=.\Common\EAL_required.elscr
+!include .\Common\EAL_required.elscr
 

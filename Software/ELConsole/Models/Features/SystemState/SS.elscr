@@ -14,56 +14,74 @@
 ## "SS_EngineState_starting [d]"
 
 {if defined(SS)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-!create_item "SS_EngineState [d]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20]
-!change_item "SS_EngineState [d]" [add_input="EngineSpeed_final [RPM]"]
-!change_item "SS_EngineState [d]" [add_input="SS_EngineSpeed_running [RPM]"]
-!change_item "SS_EngineState [d]" [if_else_clear_expressions]
-!change_item "SS_EngineState [d]" [if_else_add_expression="(i0 > 0) && (i0 < i1)"]
-!change_item "SS_EngineState [d]" [if_else_add_expression="(i0 > i1)"]
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    {create_item "SS_EngineState [d]"
+      type : "If-Else Condition"
+      thread_ID : OAL_THREAD_WITH_SLEEP_20
+      inputs : ["EngineSpeed_final [RPM]",     \
+                "SS_EngineSpeed_running [RPM]" \
+               ]
+      expressions : ["(i0 > 0) && (i0 < i1)",
+                     "(i0 > i1)"
+                    ]
+    }
 
-##******************************************************************************************************************************************************************
-## Helpers
-!create_item "SS_EngineRunning [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SS_EngineState [d]", if_else_add_expression="i0=2"]
-!create_item "SS_EngineAtRest [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, add_input="SS_EngineState [d]", if_else_add_expression="i0=0"]
+    ##******************************************************************************************************************************************************************
+    ## Helpers
+    !create_item "SS_EngineRunning [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, inputs="SS_EngineState [d]", expressions="i0=2"]
+    !create_item "SS_EngineAtRest [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, inputs="SS_EngineState [d]", expressions="i0=0"]
 
-!create_item "SS_EngineRunningTime [ms]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_500, timer_mode="Increment While Event Present"]
-!change_item "SS_EngineRunningTime [ms]" [add_input="SS_EngineRunning [bool]", add_input="time", add_input="SS_EngineAtRest [bool]"]
+    {create_item "SS_EngineRunningTime [ms]"
+      type : "Timer"
+      thread_ID : OAL_THREAD_WITH_SLEEP_500
+      mode : "Increment While Event Present"
+      inputs : ["SS_EngineRunning [bool]", \
+                "time", \
+                "SS_EngineAtRest [bool]" \
+               ]
+    }
 
-!create_item "SS_EngineRestTime [ms]" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_500, timer_mode="Increment While Event Present"]
-!change_item "SS_EngineRestTime [ms]" [add_input="SS_EngineAtRest [bool]", add_input="time", add_input="SS_EngineRunning [bool]"]
+    {create_item "SS_EngineRestTime [ms]"
+      type : "Timer"
+      thread_ID : OAL_THREAD_WITH_SLEEP_500
+      mode : "Increment While Event Present"
+      inputs : ["SS_EngineAtRest [bool]", \
+                "time", \
+                "SS_EngineRunning [bool]" \
+               ]
+    }
 
-!replace_item "time" [type="Constant", constant_value="0"]
-##******************************************************************************************************************************************************************
+    !replace_item "time" [type="Constant", value="0"]
+    ##******************************************************************************************************************************************************************
 
-!notebook new_note    "SS_EngineState [d]" [vendor="Enginelab, Inc.", message="This is the main system state variable. Defined in /SystemState/SS.elscr)\n"] 
-!notebook add_message "SS_EngineState [d]" [message="The engine states are defined as follows:\n"] 
-!notebook add_message "SS_EngineState [d]" [message="0 - Rest state      \"SS_EngineState_rest [d]\"    \n"] 
-!notebook add_message "SS_EngineState [d]" [message="1 - Starting state  \"SS_EngineState_starting [d]\"\n"] 
-!notebook add_message "SS_EngineState [d]" [message="2 - Steady state    \"SS_EngineState_running [d]\" \n"] 
-!notebook add_message "SS_EngineState [d]" [message="3 - Low load state  \"SS_EngineState_lowload [d]\" \n"] 
-!notebook add_message "SS_EngineState [d]" [message="4 - High load state \"SS_EngineState_highload [d]\"\n"] 
-!notebook add_message "SS_EngineState [d]" [message="5 - Stress state    \"SS_EngineState_stress [d]\"  \n"] 
-!notebook new_note "SS_EngineRunning [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently running. Defined in /SystemState/SS.elscr).\n See the note for \"SS_EngineState [d]\" for engine state details."] 
-!notebook new_note "SS_EngineAtRest [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently at rest. Defined in /SystemState/SS.elscr).\n See the note for \"SS_EngineState [d]\" for engine state details."] 
-!notebook new_note "SS_EngineRunningTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been running since last being at rest. Defined in /SystemState/SS.elscr)"] 
-!notebook new_note "SS_EngineRestTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been at rest since last running. Defined in /SystemState/SS.elscr)"] 
+    {notebook new_note    "SS_EngineState [d]"
+      vendor : "Enginelab, Inc."
+      message : ["This is the main system state variable. Defined in /SystemState/SS.elscr)\n", \
+                 "The engine states are defined as follows:\n", \
+                 "0 - Rest state      \"SS_EngineState_rest [d]\"    \n", \
+                 "1 - Starting state  \"SS_EngineState_starting [d]\"\n", \
+                 "2 - Steady state    \"SS_EngineState_running [d]\" \n", \
+                 "3 - Low load state  \"SS_EngineState_lowload [d]\" \n", \
+                 "4 - High load state \"SS_EngineState_highload [d]\"\n", \
+                 "5 - Stress state    \"SS_EngineState_stress [d]\"  \n"  \
+                ]
+    }
+    !notebook new_note "SS_EngineRunning [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently running. Defined in /SystemState/SS.elscr).\n See the note for \"SS_EngineState [d]\" for engine state details."]
+    !notebook new_note "SS_EngineAtRest [bool]" [vendor="Enginelab, Inc.", message="This decribes whether the engine is currently at rest. Defined in /SystemState/SS.elscr).\n See the note for \"SS_EngineState [d]\" for engine state details."]
+    !notebook new_note "SS_EngineRunningTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been running since last being at rest. Defined in /SystemState/SS.elscr)"]
+    !notebook new_note "SS_EngineRestTime [ms]" [vendor="Enginelab, Inc.", message="This is the total time the engine has been at rest since last running. Defined in /SystemState/SS.elscr)"]
 
-!notebook new_note "System state submodel" [vendor="Enginelab, Inc.", item_wildcard="SS_Engine", message="System state submodel. Defined in /SystemState/SS.elscr)"] 
-}
-
-{if BUILD_PHASE == "POSTBUILD_PHASE"
-## The post build phase will allow replacing global externs as needed.
-{if defined(SS_ENGINESPEED_RUNNING_RPM)
-!else
-!set SS_ENGINESPEED_RUNNING_RPM 500
-}
-!replace_item "SS_EngineSpeed_running [RPM]" [type="Constant", constant_value=SS_ENGINESPEED_RUNNING_RPM, ignore_if_extern_not_found]
-!replace_item "SS_EngineState_rest [d]"      [type="Constant", constant_value="0", ignore_if_extern_not_found]
-!replace_item "SS_EngineState_starting [d]"  [type="Constant", constant_value="1", ignore_if_extern_not_found]
-!replace_item "SS_EngineState_running [d]"   [type="Constant", constant_value="2", ignore_if_extern_not_found]
-!replace_item "SS_EngineState_lowload [d]"   [type="Constant", constant_value="3", ignore_if_extern_not_found]
-!replace_item "SS_EngineState_highload [d]"  [type="Constant", constant_value="4", ignore_if_extern_not_found]
-!replace_item "SS_EngineState_stress [d]"    [type="Constant", constant_value="5", ignore_if_extern_not_found]
-}
+    !notebook new_note "System state submodel" [vendor="Enginelab, Inc.", item_wildcard="SS_Engine", message="System state submodel. Defined in /SystemState/SS.elscr)"]
+    
+  !elseif BUILD_PHASE == "POSTBUILD_PHASE"
+    ## The post build phase will allow replacing global externs as needed.
+    !default SS_ENGINESPEED_RUNNING_RPM 500
+    !replace_item "SS_EngineSpeed_running [RPM]" [type="Constant", value=SS_ENGINESPEED_RUNNING_RPM, ignore_if_extern_not_found]
+    !replace_item "SS_EngineState_rest [d]"      [type="Constant", value="0", ignore_if_extern_not_found]
+    !replace_item "SS_EngineState_starting [d]"  [type="Constant", value="1", ignore_if_extern_not_found]
+    !replace_item "SS_EngineState_running [d]"   [type="Constant", value="2", ignore_if_extern_not_found]
+    !replace_item "SS_EngineState_lowload [d]"   [type="Constant", value="3", ignore_if_extern_not_found]
+    !replace_item "SS_EngineState_highload [d]"  [type="Constant", value="4", ignore_if_extern_not_found]
+    !replace_item "SS_EngineState_stress [d]"    [type="Constant", value="5", ignore_if_extern_not_found]    
+  }
 }

@@ -1,84 +1,22 @@
 ## ***************************************************************
 {if defined (IGN_SPKTIMING_TRIM_TABLES)
-
-{if EAL_NUM_SPARKS > "00"
-!set SPK_NUMBER 1
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "01"
-!set SPK_NUMBER 2
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "02"
-!set SPK_NUMBER 3
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "03"
-!set SPK_NUMBER 4
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "04"
-!set SPK_NUMBER 5
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "05"
-!set SPK_NUMBER 6
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "06"
-!set SPK_NUMBER 7
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "07"
-!set SPK_NUMBER 8
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "08"
-!set SPK_NUMBER 9
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
-{if EAL_NUM_SPARKS > "09"
-!set SPK_NUMBER 10
-include=.\TrimTables.elscr
-include=.\TrimIdle.elscr
-include=.\TrimEsLimit.elscr
-}
-
+  {exclusive
+    !set index 1
+  }
+  {loop (index <= number(EAL_NUM_SPARKS)) && (index <= 10)
+    !set SPK_NUMBER index
+    !include .\TrimTables.elscr
+    !include .\TrimIdle.elscr
+    !include .\TrimEsLimit.elscr
+    !increment index 1
+  }
 !else
-
-{if defined(IGN_SPKTIMING_TRIM_IDLE)
-!change_item "SPK_TimingX [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
-}
-{if defined (ENGINESPEED_LIMITER_SPARKTIMING)
-!change_item "SPK_TimingX [degBTDC]" [add_input="ES_Limit_SpkTiming [degBTDC]"]
-}
+  {if defined(IGN_SPKTIMING_TRIM_IDLE)
+    !change_item "SPK_TimingX [degBTDC]" [add_input="IDLE_IgnTiming_pid [degBTDC]"]
+  }
+  {if defined (ENGINESPEED_LIMITER_SPARKTIMING)
+    !change_item "SPK_TimingX [degBTDC]" [add_input="ES_Limit_SpkTiming [degBTDC]"]
+  }
 }
 ## ***************************************************************
 

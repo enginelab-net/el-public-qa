@@ -2,8 +2,11 @@
 ## Injector power relay control.
 ## ***************************************************************
 {if defined(OUTPUT_INJ_EXTERNAL_ENABLE_HW)
-!create_item "OUTPUT_INJ_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_INJ_HW" [add_input="OUTPUT_INJ_enable [bool]"]
+  {create_item "OUTPUT_INJ_HW"
+    type : "Hardware Placeholder"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    inputs : "OUTPUT_INJ_enable [bool]"
+  }
 }
 
 !create_item "OUTPUT_INJ_enable [bool]" [type="No Operation", initial_value="1"]

@@ -2,47 +2,43 @@
 ## Oil cooler fan relay control.
 ## ***************************************************************
 {if defined(OUTPUT_OILFAN_EXTERNAL_ENABLE_HW)
-!create_item "OUTPUT_OILFAN_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_OILFAN_HW" [add_input="OUTPUT_OILFAN_enable [bool]"]
+  {create_item "OUTPUT_OILFAN_HW"
+    type : "Hardware Placeholder"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    inputs : "OUTPUT_OILFAN_enable [bool]"
+  }
 }
 
 {if defined(OUTPUT_OILFAN_OILTEMP)
-{if defined(OUTPUT_OILFAN_OILTEMP_INPUT)
-!else
-!set OUTPUT_OILFAN_OILTEMP_INPUT SENSOR_OILTEMP [C]
-}
-{if defined(OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT)
-!else
-!set OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT OUTPUT_OILFAN_OILTEMP_On [C]
-}
-{if defined(OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT)
-!else
-!set OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT OUTPUT_OILFAN_OILTEMP_Off [C]
-}
-{if defined(OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE)
-!else
-!set OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE 90
-}
-{if defined(OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE)
-!else
-!set OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE 85
-}
+  !default OUTPUT_OILFAN_OILTEMP_INPUT "SENSOR_OILTEMP [C]"
+  !default OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT "OUTPUT_OILFAN_OILTEMP_On [C]"
+  !default OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT "OUTPUT_OILFAN_OILTEMP_Off [C]"
+  !default OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE 90
+  !default OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE 85
 }
 
 {if defined(OUTPUT_OILFAN_OILTEMP)
-!create_item "OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE]
-!create_item "OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE]
+  !create_item OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE]
+  !create_item OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE]
 
-!create_item "OUTPUT_OILFAN_OILTEMP_enable [bool]" [type="Limiter", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
-!change_item "OUTPUT_OILFAN_OILTEMP_enable [bool]" [add_input=OUTPUT_OILFAN_OILTEMP_INPUT]
-!change_item "OUTPUT_OILFAN_OILTEMP_enable [bool]" [add_input=OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT]
-!change_item "OUTPUT_OILFAN_OILTEMP_enable [bool]" [add_input=OUTPUT_OILFAN_OILTEMP_INPUT]
-!change_item "OUTPUT_OILFAN_OILTEMP_enable [bool]" [add_input=OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT]
+  {create_item "OUTPUT_OILFAN_OILTEMP_enable [bool]"
+    type : "Limiter"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    initial_value : 0
+    inputs : [OUTPUT_OILFAN_OILTEMP_INPUT, \
+              OUTPUT_OILFAN_OILTEMP_THRESHOLD_ON_VALUE_INPUT, \
+              OUTPUT_OILFAN_OILTEMP_INPUT, \
+              OUTPUT_OILFAN_OILTEMP_THRESHOLD_OFF_VALUE_INPUT \
+             ]
+  }
 }
 
-!create_item "OUTPUT_OILFAN_enable [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
-{if defined(OUTPUT_OILFAN_OILTEMP)
-!change_item "OUTPUT_OILFAN_enable [bool]" [add_input="OUTPUT_OILFAN_OILTEMP_enable [bool]"]
+{create_item "OUTPUT_OILFAN_enable [bool]"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_500
+  initial_value : 0
+  {if defined(OUTPUT_OILFAN_OILTEMP)
+    input : "OUTPUT_OILFAN_OILTEMP_enable [bool]"
+  }
+  expression : "and_inputs"
 }
-!change_item "OUTPUT_OILFAN_enable [bool]" [math_expression="and_inputs"]
-

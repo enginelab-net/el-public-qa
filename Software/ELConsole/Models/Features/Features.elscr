@@ -3,83 +3,83 @@
 ## ***************************************************************
 ## Airflow feature
 {if defined(AF)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-!echo Airflow feature
-include=.\Airflow\AF.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !echo Airflow feature
+    !include .\Airflow\AF.elscr
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Fuel feature
 {if defined(FUEL)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-include=.\Fuel\Fuel.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !include .\Fuel\Fuel.elscr
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## IGNition feature
 {if defined(IGN)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-include=.\Ignition\IGN.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !include .\Ignition\IGN.elscr
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Idle feature
 {if defined(IDLE)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-include=.\Idle\Idle.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !include .\Idle\Idle.elscr
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## System State feature
 {if defined(SS)
-!echo System State feature
-include=.\SystemState\SS.elscr
+  !echo System State feature
+  !include .\SystemState\SS.elscr
 }
 ## ***************************************************************
 
 ## ***************************************************************
 {if defined(INPUT)
-## Sensors feature
-{if defined(SENSORS)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-!echo Sensors feature
-include=.\Input\Sensors\SENSORS.elscr
-}
-}
+  ## Sensors feature
+  {if defined(SENSORS)
+    {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+      !echo Sensors feature
+      !include .\Input\Sensors\SENSORS.elscr
+    }
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Output feature
 {if defined(OUTPUT)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-include=.\Output\Output.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !include .\Output\Output.elscr
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Engine related features
 {if defined(EAL_ENGINE)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-include=.\Engine\Engine.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !include .\Engine\Engine.elscr
+  }
 }
 ## ***************************************************************
 
 ## ***************************************************************
 ## Power sequencing related features
 {if defined(POWER_SEQUENCE)
-{if BUILD_PHASE == "MAIN_BUILD_PHASE"
-include=.\PowerSequencing\PowerSequencing.elscr
-}
+  {if BUILD_PHASE == "MAIN_BUILD_PHASE"
+    !include .\PowerSequencing\PowerSequencing.elscr
+  }
 }
 ## ***************************************************************

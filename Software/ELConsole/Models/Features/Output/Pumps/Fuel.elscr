@@ -2,29 +2,38 @@
 ## Fuel pump relay control.
 ## ***************************************************************
 {if defined(OUTPUT_FUELPUMP_EXTERNAL_ENABLE_HW)
-!create_item "OUTPUT_FUELPUMP_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_FUELPUMP_HW" [add_input="OUTPUT_FUELPUMP_enable [bool]"]
+  {create_item "OUTPUT_FUELPUMP_HW"
+    type : "Hardware Placeholder"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    inputs : "OUTPUT_FUELPUMP_enable [bool]"
+  }
 }
 
-{if defined(OUTPUT_FUELPUMP_PRIME_TIME_MS)
-!else
-!set OUTPUT_FUELPUMP_PRIME_TIME_MS 3000
-}
+!default OUTPUT_FUELPUMP_PRIME_TIME_MS 3000
 
 !create_item "OUTPUT_FUELPUMP_prime [ms]" [type="No Operation", initial_value=OUTPUT_FUELPUMP_PRIME_TIME_MS]
 
-!create_item "OUTPUT_FUELPUMP_prime" [type="Timer", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_FUELPUMP_prime" [add_input="OUTPUT_FUELPUMP_prime_enable"]
-!change_item "OUTPUT_FUELPUMP_prime" [add_input="OUTPUT_FUELPUMP_prime [ms]"]
-!change_item "OUTPUT_FUELPUMP_prime" [add_input="OUTPUT_FUELPUMP_prime_reset"]
-!change_item "OUTPUT_FUELPUMP_prime" [timer_mode="One-shot"]
+{create_item "OUTPUT_FUELPUMP_prime"
+  type : "Timer"
+  thread_ID : OAL_THREAD_WITH_SLEEP_500
+  mode : "One-shot"
+  inputs : ["OUTPUT_FUELPUMP_prime_enable", \
+            "OUTPUT_FUELPUMP_prime [ms]", \
+            "OUTPUT_FUELPUMP_prime_reset" \
+           ]
+}
 
-!replace_item "OUTPUT_FUELPUMP_prime_enable" [type="Constant", constant_value="1"]
-!replace_item "OUTPUT_FUELPUMP_prime_reset" [type="Constant", constant_value="0"]
+!replace_item "OUTPUT_FUELPUMP_prime_enable" [type="Constant", value="1"]
+!replace_item "OUTPUT_FUELPUMP_prime_reset" [type="Constant", value="0"]
 
-!create_item "OUTPUT_FUELPUMP_enable [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
-!change_item "OUTPUT_FUELPUMP_enable [bool]" [add_input=OUTPUT_FUELPUMP_prime]
-!change_item "OUTPUT_FUELPUMP_enable [bool]" [add_input="SS_EngineAtRest [bool]"]
-!change_item "OUTPUT_FUELPUMP_enable [bool]" [if_else_add_expression="i0||(!i1)"]
+{create_item "OUTPUT_FUELPUMP_enable [bool]"
+  type : "If-Else Condition"
+  thread_ID : OAL_THREAD_WITH_SLEEP_500
+  initial_value : 0
+  inputs : ["OUTPUT_FUELPUMP_prime", \
+            "SS_EngineAtRest [bool]" \
+           ]
+  expressions : "i0||(!i1)"
+}
 
 

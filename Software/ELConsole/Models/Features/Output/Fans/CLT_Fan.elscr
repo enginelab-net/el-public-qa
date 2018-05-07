@@ -2,87 +2,71 @@
 ## Coolant fan relay control.
 ## ***************************************************************
 {if defined(OUTPUT_CLTFAN_EXTERNAL_ENABLE_HW)
-!create_item "OUTPUT_CLTFAN_HW" [type="Hardware Placeholder", thread_ID=OAL_THREAD_WITH_SLEEP_500]
-!change_item "OUTPUT_CLTFAN_HW" [add_input="OUTPUT_CLTFAN_enable [bool]"]
+  {create_item "OUTPUT_CLTFAN_HW"
+    type : "Hardware Placeholder"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    inputs : "OUTPUT_CLTFAN_enable [bool]"
+  }
 }
 
 {if defined(OUTPUT_CLTFAN_CLT)
-{if defined(OUTPUT_CLTFAN_CLT_INPUT)
-!else
-!set OUTPUT_CLTFAN_CLT_INPUT SENSOR_CLT [C]
-}
-{if defined(OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT)
-!else
-!set OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT OUTPUT_CLTFAN_CLT_On [C]
-}
-{if defined(OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT)
-!else
-!set OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT OUTPUT_CLTFAN_CLT_Off [C]
-}
-{if defined(OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE)
-!else
-!set OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE 85
-}
-
-{if defined(OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE)
-!else
-!set OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE 80
-}
+  !default OUTPUT_CLTFAN_CLT_INPUT "SENSOR_CLT [C]"
+  !default OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT "OUTPUT_CLTFAN_CLT_On [C]"
+  !default OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT "OUTPUT_CLTFAN_CLT_Off [C]"
+  !default OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE 85
+  !default OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE 80
 }
 
 {if defined(OUTPUT_CLTFAN_VS)
-{if defined(OUTPUT_CLTFAN_VS_INPUT)
-!else
-!set OUTPUT_CLTFAN_VS_INPUT SENSOR_VS [MPH]
-}
-{if defined(OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT)
-!else
-!set OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT OUTPUT_CLTFAN_VS_On [MPH]
-}
-{if defined(OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT)
-!else
-!set OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT OUTPUT_CLTFAN_VS_Off [MPH]
-}
-{if defined(OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE)
-!else
-!set OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE 50
-}
-
-{if defined(OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE)
-!else
-!set OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE 45
-}
+  !default OUTPUT_CLTFAN_VS_INPUT "SENSOR_VS [MPH]"
+  !default OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT "OUTPUT_CLTFAN_VS_On [MPH]"
+  !default OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT "OUTPUT_CLTFAN_VS_Off [MPH]"
+  !default OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE 50
+  !default OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE 45
 }
 
 {if defined(OUTPUT_CLTFAN_CLT)
-!create_item "OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE]
-!create_item "OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE]
+  !create_item OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE]
+  !create_item OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE]
 
-!create_item "OUTPUT_CLTFAN_CLT_enable [bool]" [type="Limiter", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
-!change_item "OUTPUT_CLTFAN_CLT_enable [bool]" [add_input=OUTPUT_CLTFAN_CLT_INPUT]
-!change_item "OUTPUT_CLTFAN_CLT_enable [bool]" [add_input=OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT]
-!change_item "OUTPUT_CLTFAN_CLT_enable [bool]" [add_input=OUTPUT_CLTFAN_CLT_INPUT]
-!change_item "OUTPUT_CLTFAN_CLT_enable [bool]" [add_input=OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT]
+  {create_item "OUTPUT_CLTFAN_CLT_enable [bool]"
+    type : "Limiter"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    initial_value : 0
+    inputs : [OUTPUT_CLTFAN_CLT_INPUT, \
+              OUTPUT_CLTFAN_CLT_THRESHOLD_ON_VALUE_INPUT, \
+              OUTPUT_CLTFAN_CLT_INPUT, \
+              OUTPUT_CLTFAN_CLT_THRESHOLD_OFF_VALUE_INPUT \
+             ]
+  }
 }
 
 {if defined(OUTPUT_CLTFAN_VS)
-!create_item "OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE]
-!create_item "OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT" [type="No Operation", initial_value=OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE]
+  !create_item OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE]
+  !create_item OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT [type="No Operation", initial_value=OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE]
 
-!create_item "OUTPUT_CLTFAN_VS_enable [bool]" [type="Limiter", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
-!change_item "OUTPUT_CLTFAN_VS_enable [bool]" [add_input=OUTPUT_CLTFAN_VS_INPUT]
-!change_item "OUTPUT_CLTFAN_VS_enable [bool]" [add_input=OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT]
-!change_item "OUTPUT_CLTFAN_VS_enable [bool]" [add_input=OUTPUT_CLTFAN_VS_INPUT]
-!change_item "OUTPUT_CLTFAN_VS_enable [bool]" [add_input=OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT]
+  {create_item "OUTPUT_CLTFAN_VS_enable [bool]"
+    type : "Limiter"
+    thread_ID : OAL_THREAD_WITH_SLEEP_500
+    initial_value : 0
+    input : [OUTPUT_CLTFAN_VS_INPUT, \
+             OUTPUT_CLTFAN_VS_THRESHOLD_ON_VALUE_INPUT, \
+             OUTPUT_CLTFAN_VS_INPUT, \
+             OUTPUT_CLTFAN_VS_THRESHOLD_OFF_VALUE_INPUT \
+            ]
+  }
 }
 
-!create_item "OUTPUT_CLTFAN_enable [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_500, initial_value="0"]
-{if defined(OUTPUT_CLTFAN_CLT)
-!change_item "OUTPUT_CLTFAN_enable [bool]" [add_input="OUTPUT_CLTFAN_CLT_enable [bool]"]
+{create_item "OUTPUT_CLTFAN_enable [bool]"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_500
+  initial_value : 0
+  {if defined(OUTPUT_CLTFAN_CLT)
+    inputs : "OUTPUT_CLTFAN_CLT_enable [bool]"
+  }
+  {if defined(OUTPUT_CLTFAN_VS)
+    inputs : "OUTPUT_CLTFAN_VS_enable [bool]"
+  }
+  expression : "and_inputs"
 }
-{if defined(OUTPUT_CLTFAN_VS)
-!change_item "OUTPUT_CLTFAN_enable [bool]" [add_input="OUTPUT_CLTFAN_VS_enable [bool]"]
-}
-!change_item "OUTPUT_CLTFAN_enable [bool]" [math_expression="and_inputs"]
-
 
