@@ -49,31 +49,8 @@
   !create_item "FUEL_lsfs_pri_duty_threshold [%]" [type="No Operation", initial_value="100"]
   !create_item "FUEL_lsfs_pri_duty [%]" [type="No Operation"]
 
-  {if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D)
-    {exclusive
-      !default FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT "SENSOR_CLT [C]"
-    }
-    {create_item "FUEL_lsfs_trim_multiplier"
-      type : "1-Axis Lookup Table"
-      thread_ID : OAL_THREAD_WITH_SLEEP_20
-      inputs : [FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT]
-    }
-  }
-  
-  {if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D)
-    {exclusive
-      !default FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_0 "SS_EngineRunningTime [ms]"
-      !default FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_1 "SENSOR_CLT [C]"
-    }
-    {create_item "FUEL_lsfs_trim_multiplier"
-      type : "2-Axis Lookup Table"
-      thread_ID : OAL_THREAD_WITH_SLEEP_20
-      inputs : [FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_0, \
-                FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_1]
-      {if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV)
-        csv : FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV
-      }
-    }
+  {if !defined(FUEL_LSFS_TRIM_MULTIPLIER)
+    !replace_item "FUEL_lsfs_trim_multiplier" [type="Constant", constant_value="1"]
   }
 
   {if defined(FUEL_LSFS_NONLINEAR_MULTIPLY)

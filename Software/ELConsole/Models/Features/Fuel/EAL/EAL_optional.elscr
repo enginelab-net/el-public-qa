@@ -1,12 +1,12 @@
 ##########################################################################################################################
-{if defined(EAL_FI_FUELPULSE)
+{if defined(FUEL_EAL_OPT_FUELPULSE)
   {create_item "EAL_FI_FuelPulse [ms]"
-    {if defined(EAL_FI_FUELPULSE_TABLE_2D)
+    {if defined(FUEL_EAL_OPT_FUELPULSE_TABLE_2D)
       type : "2-Axis Lookup Table"
       thread_ID : OAL_THREAD_WITH_SLEEP_20
       inputs : ["SENSOR_CLT [C]", "SS_EngineRestTime [ms]"]
-      {if defined(EAL_FI_FUELPULSE_TABLE_2D_CSV)
-        csv : EAL_FI_FUELPULSE_TABLE_2D_CSV
+      {if defined(FUEL_EAL_OPT_FUELPULSE_TABLE_2D_CSV)
+        csv : FUEL_EAL_OPT_FUELPULSE_TABLE_2D_CSV
       }
     !else
       type : "No Operation"

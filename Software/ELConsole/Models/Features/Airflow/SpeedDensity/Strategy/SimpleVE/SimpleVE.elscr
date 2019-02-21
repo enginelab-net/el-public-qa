@@ -3,12 +3,12 @@
   type : "2-Axis Lookup Table"
   thread_ID : OAL_THREAD_WITH_SLEEP_20
   {if defined(AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0)
-    inputs : FUELFLOW_OFFSET_TABLE_2D_INPUT_0
+    inputs : AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0
   !else
     inputs : "EngineSpeed_final [RPM]"
   }
   {if defined(AF_SD_VE_SIMPLE_TABLE_2D_INPUT_1)
-    inputs : FUELFLOW_OFFSET_TABLE_2D_INPUT_1
+    inputs : AF_SD_VE_SIMPLE_TABLE_2D_INPUT_1
   !else
     inputs : "SENSOR_MAP [kPa]"
   }  
@@ -22,12 +22,12 @@
     type : "2-Axis Lookup Table"
     thread_ID : OAL_THREAD_WITH_SLEEP_20
     {if defined(AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0)
-      inputs : FUELFLOW_OFFSET_TABLE_2D_INPUT_0
+      inputs : AF_SD_VE_SIMPLE_TABLE_2D_INPUT_0
     !else
       inputs : "EngineSpeed_final [RPM]"
     }
     {if defined(AF_SD_VE_SIMPLE_TABLE_2D_INPUT_1)
-      inputs : FUELFLOW_OFFSET_TABLE_2D_INPUT_1
+      inputs : AF_SD_VE_SIMPLE_TABLE_2D_INPUT_1
     !else
       inputs : "SENSOR_MAP [kPa]"
     }

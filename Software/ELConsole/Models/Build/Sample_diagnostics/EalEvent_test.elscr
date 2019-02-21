@@ -37,7 +37,7 @@
 ## Create the EAL event for testing the coil and injector signals.
 {parameter_list EAL_EVENT_PARAM
   type : "EAL Event"
-  thread : OAL_THREAD_WITH_SLEEP_50
+  thread_ID : OAL_THREAD_WITH_SLEEP_50
   event_type : ["Injector", "Spark", "Rising"]
   inputs : ["EalEvent trigger", "EalEvent index"]
 }

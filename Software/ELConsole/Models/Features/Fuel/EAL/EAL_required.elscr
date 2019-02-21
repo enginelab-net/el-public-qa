@@ -1,4 +1,7 @@
 # required items for fuel injectors.
+{exclusive
+  !set fuel_eal_required_notebook_created 0
+}
 
 {if defined(FUEL_EAL_INJECTORS_REQUIRED_SHARED_X)
   !create_item "FI_DutyCycX [%high]" [type="No Operation", initial_value="90"]
@@ -10,6 +13,42 @@
     !define FUEL_EAL_PW_NOT_SHARED
   !else
     !create_item "FI_FuelX [ms]" [type="No Operation", initial_value="0"]
+    {if fuel_eal_required_notebook_created == 0
+      !notebook new_note "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Fuel", message="The EAL items required for the backend injector function(/Fuel/EAL/EAL_required.elscr). See the Enginelab EAL required items for additional info."] 
+      !set fuel_eal_required_notebook_created 1
+    !else
+      !notebook add_element "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Fuel"] 
+    }
+  }
+
+  {if fuel_eal_required_notebook_created == 0
+      !notebook new_note "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_DutyCyc", message="The EAL items required for the backend injector function(/Fuel/EAL/EAL_required.elscr). See the Enginelab EAL required items for additional info."] 
+    !set fuel_eal_required_notebook_created 1
+  !else
+    !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_DutyCyc" ]
+  }
+
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_CyclTime"]
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Timing"  ]
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_OpenTime"]
+}
+
+{if defined(FUEL_EAL_PW_NOT_SHARED)
+  # Make sure index does not go outside this script file.
+  {exclusive
+    !set index 1
+  }
+  # Note the <= 12, as 12 is the highest number of injectors allowed.    
+  {loop (index <= number(EAL_NUM_INJECTORS)) && (index <= 12)
+    !create_item "FI_Fuel##index## [ms]" [type="No Operation", initial_value="0"]
+    !increment index 1
+  }
+
+  {if fuel_eal_required_notebook_created == 0
+    !notebook new_note "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Fuel", message="The EAL items required for the backend injector function(/Fuel/EAL/EAL_required.elscr). See the Enginelab EAL required items for additional info."] 
+    !set fuel_eal_required_notebook_created 1
+  !else
+    !notebook add_element "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Fuel"] 
   }
 }
 
@@ -29,22 +68,14 @@
     # Be sure to increment the counter.
     !increment index 1
   }
+
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_DutyCyc" ]
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_CyclTime"]
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Timing"  ]
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_OpenTime"]
 }
 
 ##############################################################################
-{if defined(FUEL_EAL_PW_NOT_SHARED)
-  # Make sure index does not go outside this script file.
-  {exclusive
-    !set index 1
-  }
-  # Note the <= 12, as 12 is the highest number of injectors allowed.    
-  {loop (index <= number(EAL_NUM_INJECTORS)) && (index <= 12)
-    !create_item "FI_Fuel##index## [ms]" [type="No Operation", initial_value="0"]
-    !increment index 1
-  }
-}
-
-##########################################################################################################################
 ## The trims should be math items.
 {if defined (FUEL_INJECTORS_TRIM)
   !default FI_TRIM_CLAMP_L 0
@@ -67,13 +98,8 @@
     }
     !increment index 1
   }
+
+  !notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Trim"    ]
 }
 ##########################################################################################################################
-
-!notebook new_note "FUEL EAL required submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Fuel", message="The EAL items required for the backend injector function(/Fuel/EAL/EAL_required.elscr). See the Enginelab EAL required items for additional info."] 
-!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Trim"    ]
-!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_DutyCyc" ]
-!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_CyclTime"]
-!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_Timing"  ]
-!notebook add_element "FUEL EAL required submodel" [item_wildcard="FI_OpenTime"]
 

@@ -2,13 +2,13 @@
 ## Idle airflow control submodel
 ## ***************************************************************
 
-!default IDLE_AIRFLOW_PID_KP 0.01
-!default IDLE_AIRFLOW_PID_KI 0.01
-!default IDLE_AIRFLOW_PID_KD 0.0
-!default IDLE_AIRFLOW_PID_CLAMP_L -50
-!default IDLE_AIRFLOW_PID_CLAMP_H 50
-!default IDLE_AIRFLOW_PID_INT_L -10
-!default IDLE_AIRFLOW_PID_INT_H 10
+!default IDLE_AIRFLOW_PID_KP      0.07
+!default IDLE_AIRFLOW_PID_KI      0.01
+!default IDLE_AIRFLOW_PID_KD      0.0
+!default IDLE_AIRFLOW_PID_CLAMP_L -1
+!default IDLE_AIRFLOW_PID_CLAMP_H 1
+!default IDLE_AIRFLOW_PID_INT_L   -1
+!default IDLE_AIRFLOW_PID_INT_H   1
 
 {create_item "IDLE_AF_pid [%]"
   type : "PID Controller"
@@ -39,8 +39,8 @@
 !create_item "IDLE_AF_pid_icontrib" [type="No Operation"]
 !create_item "IDLE_AF_pid_dcontrib" [type="No Operation"]
 
-## Default to disabled.
-!create_item "IDLE_AF_pid_enable_noop" [type="No Operation", initial_value="0"]
+## Default to enabled.
+!create_item "IDLE_AF_pid_enable_noop" [type="No Operation", initial_value="1"]
 !create_item "IDLE_AF_pid_enable [bool]" [type="Math Calculation", inputs=["IDLE_AF_pid_enable_noop", "IDLE_enable [bool]"], math_expression="and_inputs"]
 
 !notebook new_note "IDLE_airflow pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_AF_pid", message=" The Idle airflow pid submodel."]
@@ -54,13 +54,26 @@
   }
 }
 
+!default IDLE_AIRFLOW_POSITION_ADDER_CLAMP_L -40
+!default IDLE_AIRFLOW_POSITION_ADDER_CLAMP_H 100
+
+{create_item "IDLE_AF_position_adder [%]"
+  type : "Math Calculation"
+  thread_ID : OAL_THREAD_WITH_SLEEP_50
+  clamp_flag : 1
+  clamp_lower : IDLE_AIRFLOW_POSITION_ADDER_CLAMP_L 
+  clamp_upper : IDLE_AIRFLOW_POSITION_ADDER_CLAMP_H
+  inputs : ["IDLE_AF_pid [%]"]
+  expression : "self+i0"
+}
+
 {create_item "IDLE_AF_position [%]"
   type : "Math Calculation"
   thread_ID : OAL_THREAD_WITH_SLEEP_50
   clamp_flag : 1
   clamp_lower : IDLE_AIRFLOW_PID_CLAMP_L
   clamp_upper : IDLE_AIRFLOW_PID_CLAMP_H
-  inputs : ["IDLE_AF_initial_position [%]", "IDLE_AF_pid [%]"]
+  inputs : ["IDLE_AF_initial_position [%]", "IDLE_AF_position_adder [%]"]
   expression : "i0+i1"
 }
 

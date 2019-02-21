@@ -8,7 +8,7 @@
     injector_timings : [0, 630, 270, 180, 450, 360, 540, 90]
   }
   !change_item "SPK_DwellRef [degBTDC]" [initial_value="360"  ]
-  !change_item "SPK_IgnRef [degBTDC]"   [initial_value="90"   ]
+  !change_item "SPK_IgnRef [degBTDC]"   [initial_value="30"   ]
   !change_item "FI_TimRef [degBTDC]"    [initial_value="360"  ]
   !change_item "CAM_SyncAdjustment"     [initial_value="47"  ]
 }

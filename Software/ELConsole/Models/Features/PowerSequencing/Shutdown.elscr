@@ -35,7 +35,8 @@
   vendor : "Enginelab, Inc."
   item_or_group : ["POWER_CltFan_AND_Ign [bool]", \
                    "POWER_Shutdown [bool]", \
-                   "EAL_SystemShutdown" \
+                   "EAL_SystemShutdown", \
+                   "EAL_IgnitionPower" \
                   ]
   message : " The System Shutdown control. Keep the model running if the coolant fans are running."]
 }

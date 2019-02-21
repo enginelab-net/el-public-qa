@@ -29,5 +29,5 @@
       csv : FUEL_EAL_INJECTORS_TRIM_TABLES_2D_CSV
     }
   }
-  !change_item "FI_Trim_##INJECTOR_NUMBER##" [add_input="FI_Trim_1_table"]
+  !change_item "FI_Trim_##INJECTOR_NUMBER##" [add_input="FI_Trim_##INJECTOR_NUMBER##_table"]
 }

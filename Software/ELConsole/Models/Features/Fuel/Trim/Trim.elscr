@@ -1,15 +1,30 @@
 ##########################################################################################################################
 {exclusive
-  !set index 1
-}
-{loop (index <= number(EAL_NUM_INJECTORS)) && (index <= 12)
-  !set INJECTOR_NUMBER index
-  !include .\TrimTables.elscr
-  !increment index 1
+  !set trim_file_trim_notebook_created 0
+  !set trim_file_trim_tables           0
 }
 
-##########################################################################################################################
-!notebook new_note "FUEL Trim submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Trim", message="The Fuel injector trim function (/Fuel/Trim/Trim.elscr)."] 
+{if defined (FUEL_EAL_INJECTORS_TRIM_TABLES_1D)
+  !set trim_file_trim_tables           1
+!elseif defined (FUEL_EAL_INJECTORS_TRIM_TABLES_2D)
+  !set trim_file_trim_tables           1
+}
+
+{if trim_file_trim_tables == 1
+  {exclusive
+    !set index 1
+  }
+  {loop (index <= number(EAL_NUM_INJECTORS)) && (index <= 12)
+    !set INJECTOR_NUMBER index
+    !include .\TrimTables.elscr
+    !increment index 1
+  }
+
+  {if trim_file_trim_notebook_created == 0
+    !notebook new_note "FUEL Trim submodel" [vendor="Enginelab, Inc.", item_wildcard="FI_Trim", message="The Fuel injector trim function (/Fuel/Trim/Trim.elscr)."] 
+    !set trim_file_trim_notebook_created 1
+  }
+}
 ##########################################################################################################################
 
 {if defined (FUEL_LAMBDA_TRIM)
@@ -22,14 +37,117 @@
   # 2 lambda sensors for feedback, assign the correct feedback channel.
   !include .\Lambda\LambdaFB_mapping.elscr
 
+{if trim_file_trim_notebook_created == 0
+  !notebook new_note "FUEL Trim submodel" [vendor="Enginelab, Inc.", item_or_group="Lambda 0 trim submodel", message="The Fuel injector trim function (/Fuel/Trim/Trim.elscr)."] 
+  !set trim_file_trim_notebook_created 1
+!else
   !notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 0 trim submodel"]
+}
   !notebook add_element "FUEL Trim submodel" [item_or_group="Lambda 1 trim submodel"]
 }
 
 ##########################################################################################################################
 {if defined (FUEL_TRIM_TPS_RATE_OF_CHANGE)
   !include .\TPS_RateOfChange\TPS_RateOfChange.elscr
-  !notebook add_element "FUEL Trim submodel" [item_or_group="TPS rate of change trim submodel"]
+  {if trim_file_trim_notebook_created == 0
+    !notebook new_note "FUEL Trim submodel" [vendor="Enginelab, Inc.", item_or_group="TPS rate of change trim submodel", message="The Fuel injector trim function (/Fuel/Trim/Trim.elscr)."] 
+    !set trim_file_trim_notebook_created 1
+  !else
+    !notebook add_element "FUEL Trim submodel" [item_or_group="TPS rate of change trim submodel"]
+  }
+}
+##########################################################################################################################
+##########################################################################################################################
+## LSFS Global Trim Multiplier
+{if defined(FUEL_LSFS)
+  {if defined(FUEL_LSFS_TRIM_MULTIPLIER)
+    {create_item "FUEL_lsfs_trim_multiplier"
+      type : "Math Calculation"
+      thread_ID : OAL_THREAD_WITH_SLEEP_20
+      expression : "1"
+    }
+
+    {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING)
+      {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_1D)
+        {exclusive
+          !default FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_1D_INPUT "SS_EngineRunningTime [ms]"
+        }
+        {create_item "FUEL_lsfs_trim_multiplier_cranking_table"
+          type : "1-Axis Lookup Table"
+          width : "4"
+          thread_ID : OAL_THREAD_WITH_SLEEP_20
+          inputs : [FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_1D_INPUT]
+          {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_1D_CSV)
+            csv : FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_1D_CSV
+          }
+        }
+        !change_item "FUEL_lsfs_trim_multiplier" [add_input="SS_EngineStarting [bool]", add_input="FUEL_lsfs_trim_multiplier_cranking_table", append_expression="*?(i0,i1,1)"]
+        
+      }
+      
+      {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D)
+        {exclusive
+          !default FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D_INPUT_0 "SS_EngineRunningTime [ms]"
+          !default FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D_INPUT_1 "SENSOR_CLT [C]"
+        }
+        {create_item "FUEL_lsfs_trim_multiplier_cranking_table"
+          type : "2-Axis Lookup Table"
+          thread_ID : OAL_THREAD_WITH_SLEEP_20
+          inputs : [FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D_INPUT_0, \
+                    FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D_INPUT_1]
+          {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D_CSV)
+            csv : FUEL_LSFS_TRIM_MULTIPLIER_CRANKING_TABLE_2D_CSV
+          }
+        }
+        !change_item "FUEL_lsfs_trim_multiplier" [add_input="SS_EngineStarting [bool]", add_input="FUEL_lsfs_trim_multiplier_cranking_table", append_expression="*?(i0,i1,1)"]
+      }
+    }
+
+    {if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D)
+      {exclusive
+        !default FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT "SENSOR_CLT [C]"
+      }
+      {create_item "FUEL_lsfs_trim_multiplier_table"
+        type : "1-Axis Lookup Table"
+        thread_ID : OAL_THREAD_WITH_SLEEP_20
+        inputs : [FUEL_LSFS_TRIM_MULTIPLIER_TABLE_1D_INPUT]
+      }
+      {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING)
+        !change_item "FUEL_lsfs_trim_multiplier" [add_input="FUEL_lsfs_trim_multiplier_table", append_expression="*i2"]
+      !else
+        !change_item "FUEL_lsfs_trim_multiplier" [add_input="FUEL_lsfs_trim_multiplier_table", append_expression="*i0"]
+      }
+    }
+    
+    {if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D)
+      {exclusive
+        !default FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_0 "SS_EngineRunningTime [ms]"
+        !default FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_1 "SENSOR_CLT [C]"
+      }
+      {create_item "FUEL_lsfs_trim_multiplier_table"
+        type : "2-Axis Lookup Table"
+        thread_ID : OAL_THREAD_WITH_SLEEP_20
+        inputs : [FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_0, \
+                  FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_INPUT_1]
+        {if defined(FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV)
+          csv : FUEL_LSFS_TRIM_MULTIPLIER_TABLE_2D_CSV
+        }
+      }
+      {if defined(FUEL_LSFS_TRIM_MULTIPLIER_CRANKING)
+        !change_item "FUEL_lsfs_trim_multiplier" [add_input="FUEL_lsfs_trim_multiplier_table", append_expression="*i2"]
+      !else
+        !change_item "FUEL_lsfs_trim_multiplier" [add_input="FUEL_lsfs_trim_multiplier_table", append_expression="*i0"]
+      }
+    }
+
+  {if trim_file_trim_notebook_created == 0
+    !notebook new_note "FUEL Trim submodel" [vendor="Enginelab, Inc.", item_wildcard="FUEL_lsfs_trim_multiplier", message="The Fuel injector trim function (/Fuel/Trim/Trim.elscr)."] 
+    !set trim_file_trim_notebook_created 1
+  !else
+    !notebook add_element "FUEL Trim submodel" [item_wildcard="FUEL_lsfs_trim_multiplier"]
+  }
+
+  }
 }
 ##########################################################################################################################
 

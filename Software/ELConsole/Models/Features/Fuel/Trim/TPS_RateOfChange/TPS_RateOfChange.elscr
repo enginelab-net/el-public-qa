@@ -54,7 +54,7 @@
   }
 }
 
-!default FI_TRIM_DECELPUMP_CLAMP_L -0.5
+!default FI_TRIM_DECELPUMP_CLAMP_L -1
 !default FI_TRIM_DECELPUMP_CLAMP_H  0
 
 {create_item "FI_Trim_DecelPump"

@@ -22,7 +22,7 @@
 {create_item "OUTPUT_AUXPUMP_enable [bool]"
   type : "Limiter"
   thread_ID : OAL_THREAD_WITH_SLEEP_500
-  initial_value : 1
+  initial_value : 0
   inputs : [OUTPUT_AUXPUMP_INPUT, \
             OUTPUT_AUXPUMP_THRESHOLD_ON_VALUE_INPUT, \
             OUTPUT_AUXPUMP_INPUT, \

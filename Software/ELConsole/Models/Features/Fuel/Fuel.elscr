@@ -1,12 +1,20 @@
 ## ***************************************************************
 ## Model targets
 ## ***************************************************************
+{exclusive
+  !set fuel_file_notebook_created 0
+}
 
 ## ***************************************************************
 ## Fuelflow simple feature
 {if defined(FUELFLOW)
   !include .\FuelFlow\FuelFlow.elscr
-  !notebook new_note "Fuel submodel" [vendor="Enginelab, Inc.", item_or_group="Fuelflow submodel", message="This is the main fuel submodel (/Fuel/Fuel.elscr)."] 
+  {if fuel_file_notebook_created == 0
+    !notebook new_note "Fuel submodel" [vendor="Enginelab, Inc.", item_or_group="Fuelflow submodel", message="This is the main fuel submodel (/Fuel/Fuel.elscr)."] 
+    !set fuel_file_notebook_created 1
+  !else
+    !notebook add_element "Fuel submodel" [vendor="Enginelab, Inc.", item_or_group="Fuelflow submodel"] 
+  }
 }
 ## ***************************************************************
 
@@ -14,22 +22,45 @@
 ## Fuel LambdaStagedFuelSubsystem feature
 {if defined(FUEL_LSFS)
   !include .\LSFS\LSFS.elscr
-  !notebook add_element "Fuel submodel" [item_or_group="Lsfs submodel"] 
+
+  {if fuel_file_notebook_created == 0
+    !notebook new_note "Fuel submodel" [item_or_group="Lsfs submodel"] 
+    !set fuel_file_notebook_created 1
+  !else
+    !notebook add_element "Fuel submodel" [item_or_group="Lsfs submodel"] 
+  }
   !notebook add_message "Fuel submodel" [message="The Lambda Staged Fuel Submodel will handle the main fuel delivery for the system."] 
 }
 ## ***************************************************************
 
-!include .\EAL\EAL_required.elscr
-!notebook add_element "Fuel submodel" [item_or_group="FUEL EAL required submodel"] 
+## ***************************************************************
+{if defined(FUEL_EAL)
+  !include .\EAL\EAL_required.elscr
+  {if fuel_file_notebook_created == 0
+    !notebook new_note "Fuel submodel" [item_or_group="FUEL EAL required submodel"] 
+    !set fuel_file_notebook_created 1
+  !else
+    !notebook add_element "Fuel submodel" [item_or_group="FUEL EAL required submodel"] 
+  }
 
-!include .\EAL\EAL_optional.elscr
-!notebook add_element "Fuel submodel" [item_or_group="FUEL EAL optional submodel"] 
+  {if defined(FUEL_EAL_OPT)
+    !include .\EAL\EAL_optional.elscr
+    !notebook add_element "Fuel submodel" [item_or_group="FUEL EAL optional submodel"] 
+  }
+}
+## ***************************************************************
 
 ## ***************************************************************
 ## Fuel LambdaStagedFuelSubsystem feature
 {if defined(FUEL_INJECTORS_TRIM)
   !include .\Trim\Trim.elscr
-  !notebook add_element "Fuel submodel" [item_or_group="FUEL Trim submodel"] 
+
+  {if fuel_file_notebook_created == 0
+    !notebook new_note "Fuel submodel" [item_or_group="FUEL Trim submodel"] 
+    !set fuel_file_notebook_created 1
+  !else
+    !notebook add_element "Fuel submodel" [item_or_group="FUEL Trim submodel"] 
+  }
 }
 ## ***************************************************************
 
@@ -37,7 +68,12 @@
 ## Fuel Lambda target feature
 {if defined(FUEL_LAMBDA_TARGET)
   !include .\Lambda\Lambda.elscr
-  !notebook add_element "Fuel submodel" [item_or_group="FUEL Lambda target submodel"] 
+  {if fuel_file_notebook_created == 0
+    !notebook new_note "Fuel submodel" [item_or_group="FUEL Lambda target submodel"] 
+    !set fuel_file_notebook_created 1
+  !else
+    !notebook add_element "Fuel submodel" [item_or_group="FUEL Lambda target submodel"] 
+  }
 }
 ## ***************************************************************
 

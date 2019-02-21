@@ -38,7 +38,7 @@
   thread_ID : OAL_THREAD_WITH_SLEEP_500
   initial_value : 0
   {if defined(OUTPUT_OILFAN_OILTEMP)
-    input : "OUTPUT_OILFAN_OILTEMP_enable [bool]"
+    inputs : "OUTPUT_OILFAN_OILTEMP_enable [bool]"
   }
   expression : "and_inputs"
 }

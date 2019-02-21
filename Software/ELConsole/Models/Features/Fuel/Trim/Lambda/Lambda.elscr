@@ -1,12 +1,12 @@
 ## ***************************************************************
 ## Oxygen sensor feedback feature
-!default LAMBDA_PID_KP 1
-!default LAMBDA_PID_KI 0
-!default LAMBDA_PID_KD 0
-!default LAMBDA_PID_CLAMP_L -0.10
-!default LAMBDA_PID_CLAMP_H 0.10
-!default LAMBDA_PID_INT_L 0
-!default LAMBDA_PID_INT_H 0
+!default LAMBDA_PID_KP       0.4
+!default LAMBDA_PID_KI       0.05
+!default LAMBDA_PID_KD       0.01
+!default LAMBDA_PID_CLAMP_L -0.30
+!default LAMBDA_PID_CLAMP_H 0.30
+!default LAMBDA_PID_INT_L   -0.30
+!default LAMBDA_PID_INT_H   0.30 
 
 {create_item "L_FB_##FUEL_LAMBDA_FB_NUMBER##_PID [%]"
   type : "PID Controller"
@@ -72,6 +72,18 @@
            ]
 ## The lambda feedback would depend on whether the lambda sensor was functional.
   expression : "?(i1, -1*i0, 0)"
+}
+
+{if defined(FUEL_LAMBDA_TRIM_LEARN)
+  {create_item "L_FB_##FUEL_LAMBDA_FB_NUMBER##_Trim_learn_table [%]"
+    type : "2-Axis Lookup Table"
+    thread_ID : OAL_THREAD_WITH_SLEEP_50
+    inputs : ["EngineSpeed_final [RPM]", "SENSOR_MAP [kPa]", "L_FB_##FUEL_LAMBDA_FB_NUMBER##_Trim"]
+    cell_adjust : "80"
+    {if defined(FUEL_LAMBDA_TRIM_LEARN_2D_CSV)
+      csv : FUEL_LAMBDA_TRIM_LEARN_2D_CSV
+    }
+  }
 }
 
 !notebook new_note "Lambda ##FUEL_LAMBDA_FB_NUMBER## trim submodel" [vendor="Enginelab, Inc.", item_wildcard="L_FB_##FUEL_LAMBDA_FB_NUMBER##", message=" The Lambda ##FUEL_LAMBDA_FB_NUMBER## feedback."]

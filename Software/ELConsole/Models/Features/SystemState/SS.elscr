@@ -10,9 +10,6 @@
 ## These engine speeds need to be resolved. Either with constants or nops. 
 ## SS_EngineSpeed_running [RPM] - This is the threshold RPM where one would consider the engine to be running. ~500 RPM in most cases. 
 
-## These engine states need to be resolved.
-## "SS_EngineState_starting [d]"
-
 {if defined(SS)
   {if BUILD_PHASE == "MAIN_BUILD_PHASE"
     {create_item "SS_EngineState [d]"
@@ -21,14 +18,15 @@
       inputs : ["EngineSpeed_final [RPM]",     \
                 "SS_EngineSpeed_running [RPM]" \
                ]
-      expressions : ["(i0 > 0) && (i0 < i1)",
-                     "(i0 > i1)"
+      expressions : ["(i0 > 0) && (i0 < i1)", \
+                     "(i0 > i1)"              \
                     ]
     }
 
     ##******************************************************************************************************************************************************************
     ## Helpers
     !create_item "SS_EngineRunning [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, inputs="SS_EngineState [d]", expressions="i0=2"]
+    !create_item "SS_EngineStarting [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, inputs="SS_EngineState [d]", expressions="i0=1"]
     !create_item "SS_EngineAtRest [bool]" [type="If-Else Condition", thread_ID=OAL_THREAD_WITH_SLEEP_20, inputs="SS_EngineState [d]", expressions="i0=0"]
 
     {create_item "SS_EngineRunningTime [ms]"

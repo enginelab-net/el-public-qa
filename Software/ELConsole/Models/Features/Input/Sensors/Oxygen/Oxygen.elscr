@@ -31,6 +31,7 @@
       !set_path SENSOR_OXYGEN_LAMBDA_1DTABLE_CSV_FILE ".\Strategy\OnboardCJ125\lambda_1Dtable_v2.csv"
     }
     !create_item "SENSOR_Lambda##UEGO_NUMBER## [L]" [type="1-Axis Lookup Table", thread_ID=OAL_THREAD_WITH_SLEEP_100, csv=SENSOR_OXYGEN_LAMBDA_1DTABLE_CSV_FILE, inputs="SENSOR_UEGO_##UEGO_NUMBER##_UA [V]"]
+    ## The determination of the validity of the UEGO sensor needs additional work.
     !create_item "SENSOR_Lambda##UEGO_NUMBER##_valid [bool]" [type="Math Calculation", thread_ID=OAL_THREAD_WITH_SLEEP_200, inputs=["UEGO_##UEGO_NUMBER##_heater_using_pid [bool]", "UEGO_##UEGO_NUMBER##_cj125v2_diag"], expression="1"]
     ##****************************************************************************************************************************
     !notebook new_note "SENSOR_Lambda##UEGO_NUMBER## [L]" [vendor="Enginelab, Inc.", message=" The Lambda value of the UEGO ##UEGO_NUMBER## sensor."]

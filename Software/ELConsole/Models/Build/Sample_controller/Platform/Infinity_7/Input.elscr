@@ -295,7 +295,7 @@
     !else
       "SENSOR_Battery_final [V]" -> "AN_BatteryVoltageRef [V]"
       {if defined(SENSOR_BATTERYVOLTAGE_ERROR_TIMER)
-        "SENSOR_Battery_error_event" -> "AN_8 Error"
+        "SENSOR_Battery_error_event" -> "AN_24 Error"
         "SENSOR_Battery_error_reset" -> "SENSOR_ALL_error_reset"
       }
     }

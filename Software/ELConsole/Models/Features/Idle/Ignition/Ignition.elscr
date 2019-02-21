@@ -40,8 +40,8 @@
 !create_item "IDLE_SpkTiming_pid_icontrib" [type="No Operation"]
 !create_item "IDLE_SpkTiming_pid_dcontrib" [type="No Operation"]
 
-## Default to disabled.
-!create_item "IDLE_SpkTiming_pid_enable_noop" [type="No Operation", initial_value="0"]
+## Default to enabled.
+!create_item "IDLE_SpkTiming_pid_enable_noop" [type="No Operation", initial_value="1"]
 !create_item "IDLE_SpkTiming_pid_enable [bool]" [type="Math Calculation", inputs=["IDLE_SpkTiming_pid_enable_noop", "IDLE_enable [bool]"], math_expression="and_inputs"]
 
 !notebook new_note "IDLE IgnTiming pid submodel" [vendor="Enginelab, Inc.", item_wildcard="IDLE_SpkTiming_pid", message=" The Idle ignition timing pid submodel."]
