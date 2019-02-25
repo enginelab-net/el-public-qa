@@ -1,5 +1,52 @@
 EngineLab El Console release notes:
 
+Version 1.97.8739
+Logging support:
+- Multiple log file support added.
+- Added a new window.
+-- Lists all loaded logs and their corresponding segments.
+- Can now have multiple logs loaded at a time.
+- Added ability to open logs without the need of a session file.
+-- Can open logs at once, or one at a time.
+- Logs are now loaded/saved in the background.
+-- This allows the host to be used while saving/loading a large log.
+- Added ability to close logs that have been open.  Freeing memory.
+- Added a properties window for logs.
+-- Displays the length, number of samples, segments, and channels that exist in the log.
+-- Each channel has its range, min and max, and current value listed.
+- Added ability to restart logging.
+-- Hotkey: CTRL + SHIFT + L
+
+Segments:
+- Attached to a particular log.
+- Allows for breaking up logs into multiple parts for viewing.
+- Can set an offset so that each segment will start at the same time.
+-- Allows for viewing differences quickly.
+- Can be saved as its own log.
+- Can be hidden from view.
+- Can be set to active.
+-- Active means the controls will use the data within when a cursor is active.
+
+Plot Control:
+- Added knowledge about multiple logs/segments.
+- Will display each visible segment in order.
+- Added ends to the lines to easily display when a segment is being fulled viewed in the plot.
+
+Script:
+- Added looping support. {loop ...}
+- Number support added.
+-- Numbers (eg: 12) no longer treated as a string ("12")
+-- Conditions can be exact.  Now: 112 < 13 rather than "112" < "013".
+- Switching added. {select ... !when ...}
+- Breaking support added.
+-- Allows early out when in looping, and switching.
+- Added scoping for variables.
+- Incrementing and decrementing support added for numbers.
+- The tool cfg_script can now be used as an interpreter for the script language.
+
+Misc.
+- Added background image support.
+
 Version 1.97.8617
 - Fix for the Engine description item corruption that occurred in version 1.97.8616. 1.97.8616 has been deleted. Models built with 1.97.8616 should delete the engine description item and re-create this item with 1.97.8617.
 
